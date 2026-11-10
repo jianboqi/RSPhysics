@@ -123,3 +123,6 @@ Original MATLAB source is not included. See I2EM_COMPONENT_LICENSE.txt.
 The scientific implementation and optical data retain GPL-3.0 terms and author
 attribution. See the component NOTICE.md / packaged FLUSPECT_ORIGIN.md and
 FLUSPECT_GPL-3.0.txt. Original project code remains Apache-2.0.
+
+GOMS: Li and Strahler (1992), DOI 10.1109/36.134078.
+Component distribution authorization is recorded in GOMS_COMPONENT_LICENSE.txt.

@@ -1,0 +1,13 @@
+GOMS scientific component
+
+Scientific model: Xiaowen Li and Alan H. Strahler (1992), DOI 10.1109/36.134078.
+The supplied C implementation does not identify its implementation author or
+include a redistribution license. The RSPhysics maintainer has confirmed
+authorization for public distribution of that code and adapted implementations.
+This project-specific authorization does not relicense the original C program
+under Apache-2.0 or assert an unrestricted redistribution grant for it.
+
+The original C program is not bundled. Its reference results, source checksum,
+and the explicitly documented overlap-area correction are retained separately.
+RSPhysics-authored interfaces and packaging are Apache-2.0.
+Questions: https://github.com/jianboqi/RSPhysics/issues

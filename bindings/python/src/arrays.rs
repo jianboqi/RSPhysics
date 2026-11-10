@@ -1,6 +1,6 @@
 //! Typed NumPy batch collector. Only selectors and manifests use JSON.
 use numpy::{
-    IntoPyArray, PyReadonlyArray2, PyUntypedArrayMethods,
+    IntoPyArray, PyReadonlyArray2, PyReadonlyArray3, PyUntypedArrayMethods,
     ndarray::{ArrayD, IxDyn},
 };
 use pyo3::{prelude::*, types::PyDict};
@@ -9,6 +9,21 @@ use rsphysics_runtime::RunManifest;
 use serde_json::{Map, Value};
 use std::{collections::BTreeMap, sync::OnceLock};
 
+const GOMS: &[&str] = &[
+    "normalized_crown_density",
+    "crown_axis_ratio",
+    "crown_height_ratio",
+    "relative_height_variation",
+    "sunlit_ground_reflectance",
+    "sunlit_crown_reflectance",
+    "shaded_reflectance",
+    "solar_zenith_deg",
+    "solar_azimuth_deg",
+    "view_zenith_deg",
+    "view_azimuth_deg",
+    "slope_deg",
+    "slope_aspect_deg",
+];
 const FLUSPECT: &[&str] = &[
     "n",
     "chlorophyll",
@@ -19,6 +34,8 @@ const FLUSPECT: &[&str] = &[
     "dry_matter",
     "xanthophyll_state",
     "fluorescence_efficiency",
+    "protein",
+    "carbon_based_constituents",
 ];
 const I2EM: &[&str] = &[
     "frequency_ghz",
@@ -27,6 +44,7 @@ const I2EM: &[&str] = &[
     "rms_height_m",
     "correlation_length_m",
     "observation_zenith_deg",
+    "correlation_exponent",
 ];
 const SORT: &[&str] = &[
     "solar_zenith_deg",
@@ -85,6 +103,8 @@ const PROSAIL: &[&str] = &[
     "relative_azimuth_deg",
     "soil_brightness",
     "soil_dry_fraction",
+    "lidf_a",
+    "lidf_b",
 ];
 const ROSS: &[&str] = &[
     "f_iso",
@@ -108,6 +128,8 @@ const WATER: &[&str] = &[
     "attenuation_coefficient",
     "soil_backscatter",
     "observation_zenith_deg",
+    "scattering_descriptor",
+    "attenuation_descriptor",
 ];
 const SMAC: &[&str] = &[
     "reflectance",
@@ -140,6 +162,9 @@ const LMEB: &[&str] = &[
     "roughness_exponent_v",
     "roughness_exponent_h",
     "observation_zenith_deg",
+    "frequency_ghz",
+    "water_temperature_k",
+    "water_salinity",
 ];
 const GORT: &[&str] = &[
     "leaf_area_index",
@@ -167,6 +192,7 @@ const GORT: &[&str] = &[
 ];
 fn columns(id: &str) -> Result<&'static [&'static str], ModelError> {
     match id {
+        "vegetation.goms" => Ok(GOMS),
         "vegetation.fluspect-cx" => Ok(FLUSPECT),
         "microwave.i2em" => Ok(I2EM),
         "soil.sort" => Ok(SORT),
@@ -324,6 +350,7 @@ macro_rules! cache {
         }
     };
 }
+cache!(goms, GOMS_MODEL, rsphysics_goms::Model);
 cache!(fluspect, FLUSPECT_MODEL, rsphysics_fluspect_cx::Model);
 cache!(i2em, I2EM_MODEL, rsphysics_i2em::Model);
 cache!(sort, SORT_MODEL, rsphysics_sort::Model);
@@ -375,7 +402,19 @@ where
                         "batch parameters must be finite",
                     )
                 })?;
-                params.insert((*k).to_owned(), Value::Number(n));
+                let value = Value::Number(n);
+                let value = if id == "vegetation.goms"
+                    && matches!(
+                        *k,
+                        "sunlit_ground_reflectance"
+                            | "sunlit_crown_reflectance"
+                            | "shaded_reflectance"
+                    ) {
+                    Value::Array(vec![value])
+                } else {
+                    value
+                };
+                params.insert((*k).to_owned(), value);
             }
             let input: M::Input = serde_json::from_value(Value::Object(params))
                 .map_err(|e| ModelError::new(ErrorKind::InvalidParameter, e.to_string()))?;
@@ -402,6 +441,9 @@ fn sort_row(o: rsphysics_sort::Output) -> Row {
             ("wavelengths_nm", o.wavelengths_nm.wavelengths_nm().to_vec()),
             ("dry_brf", o.dry_brf),
             ("wet_brf", o.wet_brf),
+            ("dry_basis_reflectance", o.dry_basis_reflectance),
+            ("single_scattering_albedo", o.single_scattering_albedo),
+            ("substrate_brf", o.substrate_brf),
         ],
         ..Row::default()
     }
@@ -432,6 +474,16 @@ fn prosail_row(o: rsphysics_prosail_d::Output) -> Row {
             ("wavelengths_nm", o.wavelengths_nm.wavelengths_nm().to_vec()),
             ("brf", o.brf),
             ("hemispherical_reflectance", o.hemispherical_reflectance),
+            (
+                "hemispherical_directional_reflectance",
+                o.hemispherical_directional_reflectance,
+            ),
+            ("bihemispherical_reflectance", o.bihemispherical_reflectance),
+            ("vegetation_cover", o.vegetation_cover),
+            ("direct_absorptance", o.direct_absorptance),
+            ("diffuse_absorptance", o.diffuse_absorptance),
+            ("direct_albedo", o.direct_albedo),
+            ("diffuse_albedo", o.diffuse_albedo),
         ],
         ..Row::default()
     }
@@ -473,6 +525,35 @@ fn tau_row(o: rsphysics_tau_omega::Output) -> Row {
             ("sweep_total", o.sweep_total),
         ],
         ..Row::default()
+    }
+}
+fn goms_row(o: rsphysics_goms::Output) -> Row {
+    Row {
+        scalars: vec![
+            ("hotspot_view_zenith_deg", o.hotspot_view_zenith_deg),
+            ("hotspot_view_azimuth_deg", o.hotspot_view_azimuth_deg),
+            ("hotspot_shaded_weight", o.hotspot_shaded_weight),
+            ("sunlit_ground_weight", o.point.sunlit_ground_weight),
+            ("sunlit_crown_weight", o.point.sunlit_crown_weight),
+            ("shaded_weight", o.point.shaded_weight),
+        ],
+        integers: vec![("invalid_weight_count", o.point.invalid_weight_count as i64)],
+        arrays: vec![
+            ("hotspot_brf", o.hotspot_brf),
+            ("principal_shaded_weight", o.principal_shaded_weight),
+            ("brf", o.point.brf),
+            ("brdf", o.point.brdf),
+            ("band_index", o.band_index),
+            ("principal_view_zenith_deg", o.principal_view_zenith_deg),
+            ("principal_valid", o.principal_valid),
+            ("hemisphere_view_zenith_deg", o.hemisphere_view_zenith_deg),
+            ("hemisphere_azimuth_deg", o.hemisphere_azimuth_deg),
+            ("hemisphere_valid", o.hemisphere_valid),
+        ],
+        matrices: vec![
+            ("principal_brf", o.principal_brf),
+            ("hemisphere_brf", o.hemisphere_brf),
+        ],
     }
 }
 fn fluspect_row(o: rsphysics_fluspect_cx::Output) -> Row {
@@ -635,14 +716,25 @@ pub fn model_batch_native<'py>(
     let fixed: Map<String, Value> = serde_json::from_str(fixed_parameters)
         .map_err(|e| pyo3::exceptions::PyValueError::new_err(e.to_string()))?;
     if fixed.keys().any(|k| !match id {
+        "vegetation.prosail-d" => k == "leaf_angle_distribution",
+        "vegetation.goms" => k == "geometry_convention",
         "atmosphere.smac" => matches!(k.as_str(), "coefficient_id" | "direction"),
-        "soil.sort" => k == "roughness_correction",
+        "ecosystem.gort-gpp" => k == "numerical_convention",
+        "microwave.water-cloud" => k == "descriptor_mode",
+        "microwave.lmeb" => k == "surface_type",
+        "soil.sort" => matches!(
+            k.as_str(),
+            "roughness_correction" | "substrate_angle_mode" | "water_film_mode"
+        ),
         "microwave.i2em" => k == "correlation_function",
+        "vegetation.fluspect-cx" => {
+            matches!(k.as_str(), "spectral_resolution" | "optical_coefficients")
+        }
         _ => false,
     }) {
         return Err(super::error(ModelError::new(
             ErrorKind::InvalidParameter,
-            "fixed accepts only model string selectors: SMAC coefficient_id/direction, SORT roughness_correction, or I2EM correlation_function",
+            "fixed accepts only model-specific string selectors",
         )));
     }
     if parameters.shape()[1] != names.len() {
@@ -659,6 +751,10 @@ pub fn model_batch_native<'py>(
     // Initialize cached models/runtime with the GIL, then release it for all rows.
     super::runtime()?;
     let (buffers, manifests) = match id {
+        "vegetation.goms" => {
+            let m = goms()?;
+            py.detach(|| typed(m, id, &values, shared_axes, goms_row, &fixed))
+        }
         "vegetation.fluspect-cx" => {
             let m = fluspect()?;
             py.detach(|| typed(m, id, &values, shared_axes, fluspect_row, &fixed))
@@ -710,6 +806,15 @@ pub fn model_batch_native<'py>(
         _ => unreachable!("validated model ID"),
     }
     .map_err(super::error)?;
+    pack(py, count, buffers, manifests, shared_axes)
+}
+fn pack<'py>(
+    py: Python<'py>,
+    count: usize,
+    buffers: Buffers,
+    manifests: Vec<RunManifest>,
+    shared_axes: bool,
+) -> PyResult<Bound<'py, PyDict>> {
     let result = PyDict::new(py);
     for (k, b) in buffers.numbers {
         let mut shape = vec![count];
@@ -743,4 +848,84 @@ pub fn model_batch_native<'py>(
             .map_err(|e| pyo3::exceptions::PyRuntimeError::new_err(e.to_string()))?,
     )?;
     Ok(envelope)
+}
+
+#[pyfunction]
+pub fn goms_multiband_native<'py>(
+    py: Python<'py>,
+    geometry: PyReadonlyArray2<'py, f64>,
+    reflectances: PyReadonlyArray3<'py, f64>,
+    convention: &str,
+    shared_axes: bool,
+) -> PyResult<Bound<'py, PyDict>> {
+    let shape = reflectances.shape();
+    let count = geometry.shape()[0];
+    if geometry.shape()[1] != 10
+        || shape[0] != count
+        || !(1..=10).contains(&shape[1])
+        || shape[2] != 3
+    {
+        return Err(super::error(ModelError::new(
+            ErrorKind::InvalidParameter,
+            "geometry must be (batch,10) and reflectances (batch,band,3), with 1..10 bands",
+        )));
+    }
+    let nb = shape[1];
+    let geo: Vec<f64> = geometry.as_array().iter().copied().collect();
+    let optics: Vec<f64> = reflectances.as_array().iter().copied().collect();
+    let convention: rsphysics_goms::GeometryConvention =
+        serde_json::from_value(Value::String(convention.into())).map_err(|e| {
+            super::error(ModelError::new(ErrorKind::InvalidParameter, e.to_string()))
+        })?;
+    let model = goms()?;
+    let runtime = super::runtime()?;
+    let (buffers, manifests) = py
+        .detach(|| {
+            let template = rsphysics_goms::Input {
+                sunlit_ground_reflectance: vec![0.2; nb],
+                sunlit_crown_reflectance: vec![0.55; nb],
+                shaded_reflectance: vec![0.05; nb],
+                geometry_convention: convention,
+                ..Default::default()
+            };
+            let mut buffers = Buffers::new(goms_row(model.simulate(&template)?), shared_axes);
+            let mut manifests = Vec::with_capacity(count);
+            for i in 0..count {
+                let run = || {
+                    let g = &geo[i * 10..(i + 1) * 10];
+                    let a = &optics[i * nb * 3..(i + 1) * nb * 3];
+                    let p = rsphysics_goms::Input {
+                        normalized_crown_density: g[0],
+                        crown_axis_ratio: g[1],
+                        crown_height_ratio: g[2],
+                        relative_height_variation: g[3],
+                        solar_zenith_deg: g[4],
+                        solar_azimuth_deg: g[5],
+                        view_zenith_deg: g[6],
+                        view_azimuth_deg: g[7],
+                        slope_deg: g[8],
+                        slope_aspect_deg: g[9],
+                        sunlit_ground_reflectance: a.chunks_exact(3).map(|v| v[0]).collect(),
+                        sunlit_crown_reflectance: a.chunks_exact(3).map(|v| v[1]).collect(),
+                        shaded_reflectance: a.chunks_exact(3).map(|v| v[2]).collect(),
+                        geometry_convention: convention,
+                    };
+                    let out = model.simulate(&p)?;
+                    let manifest = runtime.manifest_for(
+                        "vegetation.goms",
+                        &serde_json::to_value(p)
+                            .map_err(|e| ModelError::new(ErrorKind::Internal, e.to_string()))?,
+                    )?;
+                    Ok::<_, ModelError>((goms_row(out), manifest))
+                };
+                let (row, manifest) = run().map_err(|e| {
+                    ModelError::new(e.kind, format!("batch row {i}: {}", e.message))
+                })?;
+                buffers.push(row)?;
+                manifests.push(manifest);
+            }
+            Ok::<_, ModelError>((buffers, manifests))
+        })
+        .map_err(super::error)?;
+    pack(py, count, buffers, manifests, shared_axes)
 }

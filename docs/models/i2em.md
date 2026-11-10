@@ -3,7 +3,7 @@
 I²EM computes the normalized radar cross section of a single-scale random
 rough surface from its dielectric properties, height statistics and radar
 geometry. This interface provides monostatic HH and VV co-polarization for
-isotropic exponential or Gaussian height autocorrelation. It is useful for
+isotropic exponential, Gaussian, x-power or x-exponential height autocorrelation. It is useful for
 studying bare-soil radar response without an empirical soil-moisture conversion.
 
 The scientific model is attributed to **Adrian Fung**. The reference description
@@ -106,3 +106,16 @@ and model coupling are outside this interface.
   Sensing*. University of Michigan Press, section 10-3.9.
   ISBN 978-0-472-11935-6.
   [Book resources](https://ulabyweb.eecs.umich.edu/mrs/).
+
+
+`correlation_function` accepts `exponential`, `gaussian`, `x_power` and
+`x_exponential`. The latter two use `correlation_exponent` (default 1.5).
+X-power requires an exponent greater than one; x-exponential additionally
+requires at most two for a nonnegative covariance spectrum. The numeric batch
+has seven columns, with the exponent last; the correlation type is fixed per
+batch. Integrals that do not converge return an error.
+
+```python
+rough = rsp.microwave.i2em(correlation_function="x_power",
+    correlation_exponent=1.5)
+```

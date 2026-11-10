@@ -50,5 +50,29 @@
   },
   "zero_efficiency": "Original leaves Mb/Mf absent when fqe=0; reference wrapper fills defined 53x71 zero matrices.",
   "coefficients_raw_sha256": "8e5bd7d11d6afbfb5a6f03879935e2300b242c6d5e00b7b3adc6b1ebf7918dbe",
-  "expected_raw_sha256": "23e7168b11e714ea41e3f0e5c40bbe58a5055ac0f84347a492d4fbac8f90e6b7"
+  "expected_raw_sha256": "23e7168b11e714ea41e3f0e5c40bbe58a5055ac0f84347a492d4fbac8f90e6b7",
+  "full_modes": {
+    "source": {
+      "src/RTMs/fluspect_B_CX.m": {
+        "sha256": "5dfcc9b0dd9c1d487422a6c959a6bc88d815cdf44bae1549eb27834b2555aa6a",
+        "url": "https://raw.githubusercontent.com/Christiaanvandertol/SCOPE/f4d07b33828f82c572cb1965cf82b1db4579c5b4/src/RTMs/fluspect_B_CX.m",
+        "bytes": 9787
+      },
+      "input/fluspect_parameters/Optipar2017_ProspectD.mat": {
+        "sha256": "03bd2dfc37e11fa085f00013ce99d6c8ed5a0b427e4c65211f4d32e36f8cc596",
+        "url": "https://raw.githubusercontent.com/Christiaanvandertol/SCOPE/f4d07b33828f82c572cb1965cf82b1db4579c5b4/input/fluspect_parameters/Optipar2017_ProspectD.mat",
+        "bytes": 89038
+      },
+      "input/fluspect_parameters/Optipar2021_ProspectPRO_CX.mat": {
+        "sha256": "eeaad96a1646bc238aa580a50b3d4e68bbf193a59eb63555c1f2c4bdd69ed63a",
+        "url": "https://raw.githubusercontent.com/Christiaanvandertol/SCOPE/f4d07b33828f82c572cb1965cf82b1db4579c5b4/input/fluspect_parameters/Optipar2021_ProspectPRO_CX.mat",
+        "bytes": 106182
+      }
+    },
+    "full_grid_reference": "Source unchanged except int=1 and emission grid 640:1:850; compared separately to the original v1.0 1 nm routine for its supported input subset.",
+    "full_cases": 8,
+    "default_resolution": "full_1nm",
+    "unmodified_full_expected_sha256": "f479ba349ea81e912fe0a7f7571c3a4c7f4c5251ef153e51e0d97c51720bedb6",
+    "emission_fix": "D coefficient phi(641 nm)=-4.5368895016696e-6 is a negative emission calibration artifact. Use max(phi,0) for physical emission; affected unmodified matrix rows retained as negative-emission-evidence.json.zlib. Coefficient file remains unchanged."
+  }
 }

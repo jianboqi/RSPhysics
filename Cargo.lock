@@ -696,6 +696,7 @@ name = "rsphysics-catalog"
 version = "0.1.0"
 dependencies = [
  "rsphysics-fluspect-cx",
+ "rsphysics-goms",
  "rsphysics-gort-gpp",
  "rsphysics-i2em",
  "rsphysics-lmeb",
@@ -738,6 +739,17 @@ dependencies = [
  "serde",
  "serde_json",
  "sha2",
+]
+
+[[package]]
+name = "rsphysics-goms"
+version = "0.1.0"
+dependencies = [
+ "miniz_oxide",
+ "rsphysics-model-api",
+ "schemars",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -808,6 +820,7 @@ dependencies = [
 name = "rsphysics-prosail-d"
 version = "0.1.0"
 dependencies = [
+ "miniz_oxide",
  "rsphysics-core",
  "rsphysics-model-api",
  "rsphysics-prospect-d",
@@ -839,6 +852,7 @@ dependencies = [
  "rsphysics-catalog",
  "rsphysics-core",
  "rsphysics-fluspect-cx",
+ "rsphysics-goms",
  "rsphysics-gort-gpp",
  "rsphysics-i2em",
  "rsphysics-lmeb",
@@ -892,6 +906,8 @@ dependencies = [
 name = "rsphysics-sort"
 version = "0.1.0"
 dependencies = [
+ "libm",
+ "miniz_oxide",
  "num-complex",
  "rsphysics-core",
  "rsphysics-model-api",

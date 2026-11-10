@@ -1,8 +1,12 @@
 //! SORT and SORT-L soil optical radiative transfer. Model author: Anxin Ding.
 //! Component attribution and distribution terms are in LICENSE-ORIGIN.md.
+#[cfg(test)]
+mod extended_reference;
+mod layer;
 mod parameters;
+mod shiltz;
 mod solver;
-pub use parameters::{Input, LambertInput, Roughness};
+pub use parameters::{FilmTransport, Input, LambertInput, Roughness, SubstrateAngles};
 use rsphysics_core::SpectralAxis;
 use rsphysics_model_api::{
     ErrorKind, ModelError, ModelMetadata, PhysicsModel, parse_model_manifest,
@@ -90,6 +94,9 @@ fn data(metadata: &ModelMetadata) -> Result<Arc<SpectralData>, ModelError> {
 #[derive(Debug, Clone, Serialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Output {
+    pub dry_basis_reflectance: Vec<f64>,
+    pub single_scattering_albedo: Vec<f64>,
+    pub substrate_brf: Vec<f64>,
     pub wavelengths_nm: SpectralAxis,
     pub dry_brf: Vec<f64>,
     pub wet_brf: Vec<f64>,
@@ -126,6 +133,8 @@ impl Model {
         solver::screen_energy(p, weights.iter().copied().fold(f64::NEG_INFINITY, f64::max))?;
         let mut dry_brf = Vec::with_capacity(BAND_COUNT);
         let mut wet_brf = Vec::with_capacity(BAND_COUNT);
+        let mut dry_basis_reflectance = Vec::with_capacity(BAND_COUNT);
+        let mut substrate_brf = Vec::with_capacity(BAND_COUNT);
         for (sample, &w) in self.data.samples.iter().zip(&weights) {
             let dry = solver::checked(
                 solver::directional(
@@ -138,12 +147,18 @@ impl Model {
                 false,
             )?;
             dry_brf.push(dry);
-            wet_brf.push(solver::wet_directional(sample, p, w, dry)?);
+            let (wet, substrate) = solver::wet_directional(sample, p, w, dry)?;
+            wet_brf.push(wet);
+            substrate_brf.push(substrate);
+            dry_basis_reflectance.push(solver::basis(sample, p)?);
         }
         let o = Output {
             wavelengths_nm: self.data.axis.clone(),
             dry_brf,
             wet_brf,
+            dry_basis_reflectance,
+            single_scattering_albedo: weights,
+            substrate_brf,
         };
         self.validate_output(&o)?;
         Ok(o)

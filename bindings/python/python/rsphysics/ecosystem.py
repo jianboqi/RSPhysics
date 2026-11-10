@@ -25,11 +25,11 @@ def gort_gpp(*,
     leaf_angle_parameter:float=0.5,
     leaf_single_scattering_albedo:float=0.1,
     background_reflectance:float=0.1,
-    minimum_stomatal_conductance:float=0.01
+    minimum_stomatal_conductance:float=0.01,numerical_convention:str="corrected"
 )->dict:
     """Run the selected supplied-reference forward parameterization; see model documentation."""
     return run('ecosystem.gort-gpp',locals())
 
-def gort_gpp_batch(parameters, *, shared_axes=False)->dict:
+def gort_gpp_batch(parameters, *, shared_axes=False,numerical_convention="corrected")->dict:
     """Native NumPy batch in parameters_for('ecosystem.gort-gpp') column order."""
-    return run_array('ecosystem.gort-gpp',parameters,shared_axes=shared_axes)
+    return run_array('ecosystem.gort-gpp',parameters,shared_axes=shared_axes,fixed={'numerical_convention':numerical_convention})

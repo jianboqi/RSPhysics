@@ -3,11 +3,11 @@ id = "microwave.water-cloud"
 name = "WCM 水云模型"
 family = "water-cloud"
 category = "microwave"
-scientific_version = "Attema-Ulaby / V1=V2=VWC / linear power"
+scientific_version = "Attema-Ulaby / V1=V2=VWC by default; optional independent V1/V2 descriptors / linear power"
 implementation_version = "0.1.0"
 api_version = "0.1"
 status = "reference-validated"
-limitations = "Independent single-channel VWC water-cloud forward parameterization, V1=V2=VWC. A and B depend on frequency, polarization, canopy and descriptor; illustrative defaults are not universal calibration. Bare-soil sigma0 is supplied in linear power; no soil moisture conversion, empirical C/D fit, soil scattering solver, double bounce, inversion or coupling. Sweep holds A, B and bare-soil sigma0 fixed with angle."
+limitations = "Independent single-channel VWC water-cloud forward parameterization, V1=V2=VWC by default; optional independent V1/V2 descriptors. A and B depend on frequency, polarization, canopy and descriptor; illustrative defaults are not universal calibration. Bare-soil sigma0 is supplied in linear power; no soil moisture conversion, empirical C/D fit, soil scattering solver, double bounce, inversion or coupling. Sweep holds A, B and bare-soil sigma0 fixed with angle."
 [source]
 crate = "rsphysics-water-cloud"
 authors = ["RSPhysics contributors (independent published-equation implementation)"]
@@ -34,7 +34,7 @@ backend = "python"
 [input_semantics."/vegetation_water_content"]
 unit = "kg m^-2"
 axes = []
-description = "Canopy water mass per ground area; V1=V2=VWC in this parameterization."
+description = "Canopy water mass per ground area; V1=V2=VWC by default; optional independent V1/V2 descriptors in this parameterization."
 [input_semantics."/scattering_coefficient"]
 unit = "m^2 kg^-1"
 axes = []
@@ -80,3 +80,18 @@ unit = "1"
 quantity = "radar_backscatter"
 axes = ["zenith"]
 description = "Total response at sweep angles; all other inputs held fixed, including soil response."
+
+[input_semantics."/descriptor_mode"]
+unit = "1"
+axes = []
+description = "water_content sets V1=V2=VWC by default; optional independent V1/V2 descriptors (default); independent uses distinct descriptors."
+
+[input_semantics."/scattering_descriptor"]
+unit = "1"
+axes = []
+description = "Independent V1. Its user-selected descriptor units must match the calibrated A coefficient."
+
+[input_semantics."/attenuation_descriptor"]
+unit = "1"
+axes = []
+description = "Independent V2. Its user-selected descriptor units must match the calibrated B coefficient."

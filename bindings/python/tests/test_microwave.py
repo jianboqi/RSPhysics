@@ -5,6 +5,9 @@ import pytest
 import rsphysics as rsp
 ROOT=Path(__file__).resolve().parents[3]
 SUITES={slug:json.loads((ROOT/f'benchmarks/reference/{slug}/expected.json').read_text()) for slug in ['tau-omega','water-cloud']}
+for slug,suite in SUITES.items():
+    defaults={k:v['default'] for k,v in rsp.describe('microwave.'+slug)['input_schema']['properties'].items()}
+    for c in suite['cases']:c['parameters']=defaults|c['parameters']
 CASES=[(slug,c) for slug,s in SUITES.items() for c in s['cases']]
 @pytest.mark.parametrize('slug,case',CASES,ids=[slug+'-'+c['name'] for slug,c in CASES])
 def test_all_reference_fields_and_sweeps(slug,case):

@@ -8,9 +8,18 @@ mod solver;
 fn domain(s: impl Into<String>) -> ModelError {
     ModelError::new(ErrorKind::OutOfDomain, s)
 }
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum NumericalConvention {
+    #[default]
+    Corrected,
+    LegacyMatlab,
+}
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema)]
 #[serde(default, deny_unknown_fields)]
 pub struct Input {
+    #[schemars(with="String",extend("enum"=["corrected", "legacy_matlab"]))]
+    pub numerical_convention: NumericalConvention,
     /// Total one-sided leaf area per ground area.
     #[schemars(range(min=0.5,max=10.0),extend("x-unit"="m^2 m^-2"))]
     pub leaf_area_index: f64,
@@ -30,7 +39,7 @@ pub struct Input {
     #[schemars(range(min=0.1,max=5.0),extend("x-unit"="1"))]
     pub crown_axis_ratio: f64,
     /// Solar zenith; positive lower bound avoids original one-based zero-index failure.
-    #[schemars(range(min=1.0,max=80.0),extend("x-unit"="deg"))]
+    #[schemars(range(min=0.0,max=80.0),extend("x-unit"="deg"))]
     pub solar_zenith_deg: f64,
     /// Direct incident PAR per ground area.
     #[schemars(range(min=0.0,max=2500.0),extend("x-unit"="umol m^-2 s^-1"))]
@@ -81,6 +90,7 @@ pub struct Input {
 impl Default for Input {
     fn default() -> Self {
         Self {
+            numerical_convention: NumericalConvention::Corrected,
             leaf_area_index: 4.31,
             crown_radius_m: 1.7,
             crown_density_m2: 0.1905,
@@ -115,7 +125,7 @@ impl Input {
             ("crown_base_height_m", self.crown_base_height_m, 0.0, 60.0),
             ("crown_top_height_m", self.crown_top_height_m, 0.1, 80.0),
             ("crown_axis_ratio", self.crown_axis_ratio, 0.1, 5.0),
-            ("solar_zenith_deg", self.solar_zenith_deg, 1.0, 80.0),
+            ("solar_zenith_deg", self.solar_zenith_deg, 0.0, 80.0),
             (
                 "direct_par_umol_m2_s",
                 self.direct_par_umol_m2_s,

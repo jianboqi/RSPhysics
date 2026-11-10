@@ -1,0 +1,23 @@
+{
+  "goms/expected.json.zlib": "23bae6bf997268b5cda081acb5f7b31792fa6fcb2c13d88630bd0e868a4aacbb",
+  "goms/inputs.json": "5a3d82488fa3ec57339a03fa481a03bd95c080dae70f4e476940563840257f34",
+  "goms/manifest.json": "b23db3390e5a404d5afbee4cd931551a5eceb6fb70f3c1c742c6cbe7168e58ae",
+  "goms/original-c.json": "bea2a40c8e3581b0c9e2d0b3ecac48021955822721a664546af5cb21f6d2ccac",
+  "goms/provenance.json": "c1920743a5519bde8d5fc69f6ddd05441a82efc0be9082256a3906c4fba37933",
+  "gort-gpp/full-expected.json": "1d68258d209bc1e4323133acdd82f982ff283f3e7f4ba3ca0da2bb75fdf5dea2",
+  "gort-gpp/full-inputs.json": "70a6be6edf71deaa4f1c691c0dc565bbbc8ca77f83404cab5f8cc8f90be90f7a",
+  "gort-gpp/full-provenance.json": "e48fd1cb9bf0019d1d24390a95fe60af68023821787a42b25b4b36638deab006",
+  "i2em/full-expected.json": "6342018d136e88d0825f00d831bf7b57236595d3efe7bae81d81ca44f944c338",
+  "i2em/full-inputs.json": "30eb517366bfadbe1cdd654611f9f7f7bcd2cfafcfee783eedec5b04071e2685",
+  "i2em/full-original-tolerance.json": "c74914d0c6d6bb037c357d2aea7f9a7c346f4ec2a4fd5a66b5ad98d4f7354457",
+  "lmeb/full-expected.json": "891c5bdb696eae67e9d6e7d450587e879d265bd4264a5ec2805e5c2f5e68d6c5",
+  "lmeb/full-inputs.json": "5014efa8868f72d591afc56782ec3f4ed77b18b7e21dbaef1992fc5d57845f39",
+  "lmeb/full-provenance.json": "63931eeb29d61d93ae1026bfca548379590783b2f979acd4c13cbb30c8f2947e",
+  "prosail-d/full-expected.json.zlib": "2faf73caa6bceef15f5cb3da8c93fd284ca1bafaddfc65e4f35610c71e24f53d",
+  "prosail-d/full-leaf-inputs.json.zlib": "8fdd988f97cc0369f9db5e7f99816fff883d99d0f50d79905d4de02871b59b27",
+  "prosail-d/full-provenance.json": "c0d2a40954dfb5e67c88d2c5a2ed589d4c94c4e00dd958e836ac2cd14eb64e81",
+  "sort/extended-expected.json.zlib": "8e094ee7c87988508ff9ad8c8f9bb379bfa1571e9aecd381ef727e57d67c5311",
+  "sort/extended-provenance.json": "68a2711a651224b7335a6c5c8cc5f95a35ae6fd4397e8b1e2f8a296b674f58a2",
+  "sort/layer-expected.json": "5dddd671972c81a17ff1d4ff21d7c4994e245a8f5b8c3b97d86d01b360abb0f3",
+  "sort/roughness-expected.json": "3d5583109bb9953aab3d544a416f9ba60cfb8a9884ae82824282dcd916787b17"
+}

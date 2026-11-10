@@ -4,9 +4,26 @@ use rsphysics_model_api::{
 };
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum DescriptorMode {
+    #[default]
+    WaterContent,
+    Independent,
+}
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema)]
 #[serde(default, deny_unknown_fields)]
 pub struct Input {
+    /// water_content uses V1=V2=VWC; independent uses the two supplied descriptors.
+    #[schemars(with="String",extend("enum"=["water_content", "independent"]))]
+    pub descriptor_mode: DescriptorMode,
+    /// V1 for vegetation scattering; coefficient A must match its units.
+    #[schemars(range(min=0.0,max=100.0),extend("x-unit"="1"))]
+    pub scattering_descriptor: f64,
+    /// V2 for attenuation; coefficient B must match its units.
+    #[schemars(range(min=0.0,max=100.0),extend("x-unit"="1"))]
+    pub attenuation_descriptor: f64,
+
     /// Canopy water mass per ground area; V1=V2=VWC in this parameterization.
     #[schemars(range(min=0.0,max=10.0),extend("x-unit"="kg m^-2"))]
     pub vegetation_water_content: f64,
@@ -26,6 +43,9 @@ pub struct Input {
 impl Default for Input {
     fn default() -> Self {
         Self {
+            descriptor_mode: DescriptorMode::WaterContent,
+            scattering_descriptor: 1.,
+            attenuation_descriptor: 1.,
             vegetation_water_content: 1.0,
             scattering_coefficient: 0.1,
             attenuation_coefficient: 0.2,
@@ -37,6 +57,18 @@ impl Default for Input {
 impl Input {
     pub fn validate(&self) -> Result<(), ModelError> {
         for (key, v, lo, hi) in [
+            (
+                "scattering_descriptor",
+                self.scattering_descriptor,
+                0.,
+                100.,
+            ),
+            (
+                "attenuation_descriptor",
+                self.attenuation_descriptor,
+                0.,
+                100.,
+            ),
             (
                 "vegetation_water_content",
                 self.vegetation_water_content,
@@ -91,9 +123,14 @@ pub fn evaluate(p: &Input) -> Result<Point, ModelError> {
 }
 fn point(p: &Input) -> Point {
     let c = p.observation_zenith_deg.to_radians().cos();
-    let x = -2. * p.attenuation_coefficient * p.vegetation_water_content / c;
+    let (v1, v2) = if p.descriptor_mode == DescriptorMode::WaterContent {
+        (p.vegetation_water_content, p.vegetation_water_content)
+    } else {
+        (p.scattering_descriptor, p.attenuation_descriptor)
+    };
+    let x = -2. * p.attenuation_coefficient * v2 / c;
     let transmission = x.exp();
-    let vegetation = p.scattering_coefficient * p.vegetation_water_content * c * (-x.exp_m1());
+    let vegetation = p.scattering_coefficient * v1 * c * (-x.exp_m1());
     let soil = p.soil_backscatter * transmission;
     Point {
         sigma0: vegetation + soil,

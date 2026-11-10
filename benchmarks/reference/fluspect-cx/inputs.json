@@ -8,7 +8,11 @@
     "water": 0.01,
     "dry_matter": 0.009,
     "xanthophyll_state": 0.0,
-    "fluorescence_efficiency": 0.01
+    "fluorescence_efficiency": 0.01,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 1.0,
@@ -19,7 +23,11 @@
     "water": 0.01,
     "dry_matter": 0.009,
     "xanthophyll_state": 0.0,
-    "fluorescence_efficiency": 0.01
+    "fluorescence_efficiency": 0.01,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 2.5,
@@ -30,7 +38,11 @@
     "water": 0.025,
     "dry_matter": 0.015,
     "xanthophyll_state": 0.0,
-    "fluorescence_efficiency": 0.01
+    "fluorescence_efficiency": 0.01,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 1.5,
@@ -41,7 +53,11 @@
     "water": 0.01,
     "dry_matter": 0.009,
     "xanthophyll_state": 0.0,
-    "fluorescence_efficiency": 0.01
+    "fluorescence_efficiency": 0.01,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 1.5,
@@ -52,7 +68,11 @@
     "water": 0.01,
     "dry_matter": 0.009,
     "xanthophyll_state": 0.0,
-    "fluorescence_efficiency": 0.01
+    "fluorescence_efficiency": 0.01,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 1.5,
@@ -63,7 +83,11 @@
     "water": 0.01,
     "dry_matter": 0.009,
     "xanthophyll_state": 0.0,
-    "fluorescence_efficiency": 0.01
+    "fluorescence_efficiency": 0.01,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 1.5,
@@ -74,7 +98,11 @@
     "water": 0.01,
     "dry_matter": 0.009,
     "xanthophyll_state": 1.0,
-    "fluorescence_efficiency": 0.01
+    "fluorescence_efficiency": 0.01,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 1.5,
@@ -85,7 +113,11 @@
     "water": 0.01,
     "dry_matter": 0.009,
     "xanthophyll_state": 0.5,
-    "fluorescence_efficiency": 0.01
+    "fluorescence_efficiency": 0.01,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 1.5,
@@ -96,7 +128,11 @@
     "water": 0.01,
     "dry_matter": 0.009,
     "xanthophyll_state": 0.0,
-    "fluorescence_efficiency": 0.0
+    "fluorescence_efficiency": 0.0,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 1.5,
@@ -107,7 +143,11 @@
     "water": 0.01,
     "dry_matter": 0.009,
     "xanthophyll_state": 0.0,
-    "fluorescence_efficiency": 0.02
+    "fluorescence_efficiency": 0.02,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 1.5,
@@ -118,7 +158,11 @@
     "water": 0.0,
     "dry_matter": 0.0,
     "xanthophyll_state": 0.0,
-    "fluorescence_efficiency": 0.01
+    "fluorescence_efficiency": 0.01,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   },
   {
     "n": 3.2,
@@ -129,6 +173,10 @@
     "water": 0.005,
     "dry_matter": 0.02,
     "xanthophyll_state": 0.8,
-    "fluorescence_efficiency": 0.01
+    "fluorescence_efficiency": 0.01,
+    "protein": 0.0,
+    "carbon_based_constituents": 0.0,
+    "optical_coefficients": "prospect_d",
+    "spectral_resolution": "light_5x4"
   }
 ]

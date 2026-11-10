@@ -36,3 +36,11 @@ python tooling/reference-runner/clean.py --model lmeb --remove
 
 Cleanup preserves reference fixtures, provenance, Rust source, and Python runtime.
 Daily tests do not require the original sources or MATLAB.
+
+
+## Complete forward reference
+
+40 cases cover Dobson/Wang frequencies, fresh/saline water and pure ice. Only the undefined water emission temperature is corrected.
+
+`full-provenance.json` records the changes and fixture hashes. Recompute using
+`python tooling/reference-runner/verify_extended_matlab.py --model lmeb --source PATH`.

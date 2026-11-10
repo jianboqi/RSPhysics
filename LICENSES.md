@@ -38,3 +38,7 @@ not bundled. RSPhysics-authored interfaces and packaging are Apache-2.0.
 The scientific implementation and optical data retain GPL-3.0 terms and author
 attribution. See the component NOTICE.md / packaged FLUSPECT_ORIGIN.md and
 FLUSPECT_GPL-3.0.txt. Original project code remains Apache-2.0.
+
+GOMS retains the maintainer-confirmed distribution authorization recorded in
+[its component terms](crates/models/vegetation/goms/LICENSE.component), identified
+as `LicenseRef-GOMS-Authorized-Adaptation`.

@@ -49,3 +49,23 @@ A and B must be calibrated for the channel, vegetation descriptor, and observing
 E. P. W. Attema and Fawwaz T. Ulaby.
 
 - [Attema & Ulaby (1978). Vegetation modeled as a water cloud. Radio Science 13(2), 357–364.](https://doi.org/10.1029/RS013i002p00357)
+
+
+## Independent vegetation descriptors
+
+The default `descriptor_mode="water_content"` retains V1=V2=VWC. For the
+general form, select `descriptor_mode="independent"` and provide
+`scattering_descriptor` (V1) and `attenuation_descriptor` (V2). A and B must be
+calibrated in units matching those descriptors; they cannot be transferred
+unchanged between VWC, LAI or other descriptors.
+
+```python
+canopy = rsp.microwave.water_cloud(descriptor_mode="independent",
+    scattering_descriptor=3., attenuation_descriptor=0.5)
+```
+
+The NumPy table has seven columns: the original five followed by V1 and V2.
+The selector is fixed per batch. This interface still takes the bare-soil
+backscatter directly and performs no soil-moisture inversion.
+
+- [Park et al. (2019). Theoretical Evaluation of Water Cloud Model Vegetation Parameters.](https://doi.org/10.3390/rs11080894)

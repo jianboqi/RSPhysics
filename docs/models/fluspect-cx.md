@@ -7,7 +7,7 @@ changes in visible reflectance.
 
 The model was developed by **Nastassia Vilfan, Christiaan van der Tol, Wout
 Verhoef and colleagues**. This interface uses PROSPECT-D optical coefficients
-and the SCOPE light spectral grid. Photosystems I and II are combined.
+with a full 1 nm fluorescence grid by default. An optional light grid matches the SCOPE 5/4 nm calculation. Photosystems I and II are combined.
 
 ## Basic use
 
@@ -21,7 +21,7 @@ simulation = fluspect_cx(
 )
 leaf = simulation["result"]
 assert leaf["reflectance"].shape == (2001,)
-assert leaf["fluorescence_backward"].shape == (53, 71)
+assert leaf["fluorescence_backward"].shape == (211, 351)
 ```
 
 | Parameter | Unit | Meaning |
@@ -33,8 +33,12 @@ assert leaf["fluorescence_backward"].shape == (53, 71)
 | `brown_pigments` | 1 | Brown/senescent material |
 | `water` | g cm⁻² | Equivalent water thickness |
 | `dry_matter` | g cm⁻² | Dry matter content |
-| `xanthophyll_state` | 1 | Violaxanthin-to-zeaxanthin state, 0–1 |
+| `xanthophyll_state` | 1 | Violaxanthin-to-zeaxanthin state 0–1, or −999 for fixed carotenoid absorption |
 | `fluorescence_efficiency` | 1 | Combined-photosystem fluorescence efficiency |
+| `protein` | g cm⁻² | PRO protein content |
+| `carbon_based_constituents` | g cm⁻² | PRO carbon-based constituent content |
+| `optical_coefficients` | — | `prospect_d` or `prospect_pro` |
+| `spectral_resolution` | — | `full_1nm` (default) or `light_5x4` |
 
 Zero fluorescence efficiency produces zero fluorescence matrices while leaving
 reflectance and transmittance unchanged. Efficiency scales the matrices linearly.
@@ -55,14 +59,35 @@ an additional configurable solar/view geometry.
 `fluorescence_forward` describes emission toward the opposite side. Each is a
 matrix with **emission wavelength in rows** and **excitation wavelength in columns**:
 
-- `emission_wavelengths_nm`: 640, 644, …, 848 nm — 53 rows.
-- `excitation_wavelengths_nm`: 400, 405, …, 750 nm — 71 columns.
+- Full grid: emission 640–850 nm, 211 rows; excitation 400–750 nm, 351 columns. Both grids are 1 nm.
+- Light grid: emission 640–848 nm / 4 nm, 53 rows; excitation 400–750 nm / 5 nm, 71 columns.
 
-The matrices are **transfer responses**, not absolute canopy SIF or directional
-radiance. They already include the **5 nm excitation-bin integration weight**.
-For a separately specified compatible spectral irradiance vector, use a matrix
-product without multiplying by 5 again. Illumination, atmospheric transmission,
-and canopy escape are not assumed or calculated here.
+The matrices are **photon-domain transfer responses**, not absolute canopy SIF
+or directional radiance. They include the selected **excitation-bin width**
+(1 or 5 nm); do not multiply by this width a second time. To apply a measured
+energy irradiance spectrum, convert through photon flux. The Rust-backed helper
+implements `F_energy[f] = sum(M[f,e] * E_energy[e] * lambda_exc[e]/lambda_em[f])`.
+Planck's constant and the speed of light cancel in this wavelength ratio.
+
+```python
+import numpy as np
+from rsphysics.vegetation import fluspect_fluorescence
+
+incident = np.ones(351)  # W m^-2 nm^-1 on the full excitation grid
+emitted = fluspect_fluorescence(incident)
+assert emitted["backward_w_m2_nm"].shape == (211,)
+```
+
+PRO mode accepts the original protein and carbon-based constituent inputs.
+Avoid double counting those constituents in the total dry matter term.
+
+```python
+pro_leaf = fluspect_cx(
+    optical_coefficients="prospect_pro", dry_matter=0,
+    protein=0.001, carbon_based_constituents=0.008,
+)
+assert pro_leaf["result"]["fluorescence_forward"].shape == (211, 351)
+```
 
 `chlorophyll_absorption_fraction` and `carotenoid_absorption_fraction` are the
 relative contributions to bulk absorption. They are not the leaf absorptance
@@ -79,17 +104,20 @@ table = rsp.parameter_grid(
 )
 batch = fluspect_cx_batch(table, shared_axes=True)
 assert batch["result"]["reflectance"].shape == (3, 2001)
-assert batch["result"]["fluorescence_backward"].shape == (3, 53, 71)
-assert batch["coordinates"]["excitation_wavelengths_nm"].shape == (71,)
+assert batch["result"]["fluorescence_backward"].shape == (3, 211, 351)
+assert batch["coordinates"]["excitation_wavelengths_nm"].shape == (351,)
 ```
 
 ## Scope
 
 This is a leaf-scale, combined-photosystem forward model. It does not separate
-PSI/PSII, implement the PRO protein/carbon-based coefficient set, calculate
+PSI/PSII, calculate
 photosynthetic regulation or energy balance, or perform canopy/atmosphere
 coupling or inversion. The conservative zero-absorption case uses the analytic
-Stokes limit to avoid an ill-conditioned floating-point division.
+Stokes limit to avoid an ill-conditioned floating-point division. The negative
+641 nm emission-coefficient calibration residue in the D table is set to zero
+when computing emission. Raw coefficient values and unmodified negative-response
+rows are retained separately for verification.
 
 ## References
 

@@ -79,8 +79,9 @@ fn invalid_domains_are_classified() {
             ..Input::default()
         },
         Input {
-            water: 0.,
-            dry_matter: 0.,
+            leaf_angle_distribution: rsphysics_prosail_d::LeafAngleDistribution::Verhoef,
+            lidf_a: 0.8,
+            lidf_b: 0.8,
             ..Input::default()
         },
     ] {

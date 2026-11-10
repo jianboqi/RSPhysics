@@ -4,7 +4,7 @@ PROSAIL-D combines leaf optics with canopy radiative transfer to predict directi
 
 ## How it works
 
-PROSPECT-D supplies leaf optical properties. The 4SAIL canopy formulation represents direct illumination, leaf-angle distribution, hotspot geometry, and a soil background. The supported leaf-angle distribution uses 13 Campbell bins.
+PROSPECT-D supplies leaf optical properties. The 4SAIL canopy formulation represents direct illumination, leaf-angle distribution, hotspot geometry, and a soil background. Both Campbell ellipsoidal and Verhoef bimodal leaf-angle distributions use the original 13 inclination bins. Direct and diffuse illumination responses are computed together.
 
 ## Usage
 
@@ -47,6 +47,11 @@ Model ID: `vegetation.prosail-d`. Use the same ID with `rsp.run`, `rsp.run_array
 | Field | Meaning |
 |---|---|
 | `wavelengths_nm` | Wavelengths, nm; 400–2500 nm |
+| `hemispherical_directional_reflectance` | Diffuse-illumination response in the viewing direction (rdot) |
+| `bihemispherical_reflectance` | Diffuse-illumination hemispherical reflectance (rddt) |
+| `vegetation_cover` | One minus view-direction beam transmittance |
+| `direct_absorptance / diffuse_absorptance` | Canopy absorptance with soil feedback |
+| `direct_albedo / diffuse_albedo` | Direct/diffuse albedo (rsdstar/rddstar) |
 | `brf` | Dimensionless bidirectional reflectance factor |
 | `hemispherical_reflectance` | Directional-hemispherical reflectance under direct illumination |
 
@@ -61,3 +66,17 @@ PROSPECT-D: Féret, Gitelson, Noble, and Jacquemoud. SAIL/4SAIL: Wout Verhoef an
 - [Jacquemoud et al. (2009). PROSPECT + SAIL models: A review of use for vegetation characterization. Remote Sensing of Environment.](https://doi.org/10.1016/j.rse.2008.01.026)
 - [Verhoef et al. (2007). Unified Optical-Thermal Four-Stream Radiative Transfer Theory for Homogeneous Vegetation Canopies. IEEE TGRS.](https://doi.org/10.1109/TGRS.2007.895844)
 - [Féret et al. (2017). PROSPECT-D.](https://doi.org/10.1016/j.rse.2017.03.004)
+
+
+Select the Verhoef distribution with `leaf_angle_distribution="verhoef"`,
+`lidf_a` and `lidf_b`, with `|a|+|b| <= 1`. Campbell uses `mean_leaf_angle_deg`.
+The NumPy table has 18 columns; the final two are `lidf_a` and `lidf_b`.
+The distribution selector is fixed per numeric batch. The exact conservative
+transfer-matrix limit handles nonabsorbing leaves without a 0/0 singularity.
+
+```python
+diffuse = rsp.vegetation.prosail_d(
+    leaf_angle_distribution="verhoef", lidf_a=-0.35, lidf_b=-0.15)
+rddt = diffuse['result']['bihemispherical_reflectance']
+absorbed = diffuse['result']['diffuse_absorptance']
+```

@@ -23,7 +23,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.1,
       "background_reflectance": 0.1,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -50,7 +51,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.1810638656259959,
       "background_reflectance": 0.15972440096499774,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -77,7 +79,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.12931236334640545,
       "background_reflectance": 0.1306532729538279,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -104,7 +107,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.10118736393230748,
       "background_reflectance": 0.21736297093897677,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -131,7 +135,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.09852693429711645,
       "background_reflectance": 0.11018197284834143,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -158,7 +163,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.051340936258914054,
       "background_reflectance": 0.16675048288466854,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -185,7 +191,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.15350383765965647,
       "background_reflectance": 0.1074020409044441,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -212,7 +219,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.11623071146762558,
       "background_reflectance": 0.16303355693468474,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -239,7 +247,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.18994753866707415,
       "background_reflectance": 0.14487554538183467,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -266,7 +275,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.14954241442883084,
       "background_reflectance": 0.06278813423506073,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -293,7 +303,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.08276501095287064,
       "background_reflectance": 0.14533903008599253,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -320,7 +331,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.1434690938977226,
       "background_reflectance": 0.11039469747974555,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -347,7 +359,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.09528688846370464,
       "background_reflectance": 0.10896139308338969,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -374,7 +387,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.09480159662076745,
       "background_reflectance": 0.06190990145405474,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -401,7 +415,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.12662450214814633,
       "background_reflectance": 0.08376473246894257,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -428,7 +443,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.05672798170316122,
       "background_reflectance": 0.13312047544056593,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -455,7 +471,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.1392777253409195,
       "background_reflectance": 0.06141100238574866,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -482,7 +499,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.1377998225448884,
       "background_reflectance": 0.14220827926728513,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -509,7 +527,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.10076230193037208,
       "background_reflectance": 0.1385520365114229,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -536,7 +555,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.19722403305084818,
       "background_reflectance": 0.14129210182506008,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -563,7 +583,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.19556546848623413,
       "background_reflectance": 0.1137670049188939,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -590,7 +611,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.19293702117015377,
       "background_reflectance": 0.2615746804933096,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -617,7 +639,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.15728733617213136,
       "background_reflectance": 0.2683238456992011,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -644,7 +667,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.16937652772717543,
       "background_reflectance": 0.2999673562146104,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -671,7 +695,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.11746400822892551,
       "background_reflectance": 0.16624654313240533,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -698,7 +723,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.054502675498690284,
       "background_reflectance": 0.2947043817388503,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -725,7 +751,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.16457900179930096,
       "background_reflectance": 0.27836132123375557,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -752,7 +779,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.15046476117427415,
       "background_reflectance": 0.18885685045360023,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -779,7 +807,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.17786671892042588,
       "background_reflectance": 0.2445870716496254,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -806,7 +835,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.08664283354092855,
       "background_reflectance": 0.22911752726905082,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -833,7 +863,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.0836892690451555,
       "background_reflectance": 0.1743298381267645,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   },
   {
@@ -860,7 +891,8 @@
       "leaf_angle_parameter": 0.5,
       "leaf_single_scattering_albedo": 0.1136545599404796,
       "background_reflectance": 0.2532599096672687,
-      "minimum_stomatal_conductance": 0.01
+      "minimum_stomatal_conductance": 0.01,
+      "numerical_convention": "legacy_matlab"
     }
   }
 ]

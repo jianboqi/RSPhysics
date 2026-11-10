@@ -17,7 +17,7 @@ def test_complete_spectra_and_numpy_selectors_match_original_python(slug):
         array=rsp.run_array(model,np.array([[parameters[k] for k in columns]]),fixed=fixed)
         assert array['manifests'][0]==out['manifest']
         for key,values in out['result'].items():
-            np.testing.assert_allclose(values,want[key],atol=2e-9,rtol=2e-9)
+            if key in want:np.testing.assert_allclose(values,want[key],atol=2e-9,rtol=2e-9)
             np.testing.assert_allclose(array['result'][key] if key=='wavelengths_nm' else array['result'][key][0],values,atol=2e-12,rtol=2e-12)
         assert out['manifest']['data_hashes']['soil_basis']=='sha256:ad52839c4b9ad852595c0830ec9332476b399be7fb9f582e881c2acd8bfd4e88'
 
@@ -33,8 +33,8 @@ def test_soil_wrappers_dry_limits_batch_empty_and_errors():
         assert empty['coordinates']['wavelengths_nm'].shape==(2001,)
         assert all(x.shape==(0,2001) for x in empty['result'].values())
         endian=rsp.run_array(model,batch.astype('>f8'));assert len(endian['manifests'])==3
-    with pytest.raises(rsp.ModelError):rsp.soil.sort(roughness_correction='shiltz_full')
+    with pytest.raises(rsp.ModelError):rsp.soil.sort(roughness_correction='unknown')
     with pytest.raises(rsp.ModelError):rsp.soil.sort(water_film_thickness_mm=-1)
     with pytest.raises(rsp.ModelError):rsp.soil.sort(phase_asymmetry=0,phase_backscatter=.5)
     with pytest.raises(rsp.ModelError):rsp.soil.sort_l(soil_brightness=5)
-    with pytest.raises(rsp.ModelError):rsp.run_array('soil.sort',rsp.parameter_grid('soil.sort',{}),fixed={'water_film_mode':'adding'})
+    with pytest.raises(rsp.ModelError):rsp.run_array('soil.sort',rsp.parameter_grid('soil.sort',{}),fixed={'water_film_mode':'adding','roughness_correction':'shiltz_full'})

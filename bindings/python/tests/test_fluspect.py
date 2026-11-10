@@ -24,8 +24,8 @@ def test_matlab_full_spectra_and_matrices(index):
 def test_native_numpy_matrix_shapes_chunks_and_strides():
     cols=rsp.parameters_for(ID);assert cols==rsp.vegetation.FLUSPECT_CX_PARAMETERS
     table=np.array([[p[k] for k in cols] for p in CASES[:3]])
-    view=np.zeros((3,18));view[:,::2]=table;view=view[:,::2]
-    out=rsp.vegetation.fluspect_cx_batch(view,shared_axes=True)
+    view=np.zeros((3,2*len(cols)));view[:,::2]=table;view=view[:,::2]
+    out=rsp.vegetation.fluspect_cx_batch(view,shared_axes=True,spectral_resolution='light_5x4')
     assert out['result']['fluorescence_backward'].shape==(3,53,71)
     assert out['result']['reflectance'].shape==(3,2001)
     assert set(out['coordinates'])=={'wavelengths_nm','excitation_wavelengths_nm','emission_wavelengths_nm'}
@@ -33,10 +33,10 @@ def test_native_numpy_matrix_shapes_chunks_and_strides():
         scalar=rsp.vegetation.fluspect_cx(**p)
         assert scalar['manifest']==out['manifests'][i]
         for key,value in out['result'].items():np.testing.assert_allclose(value[i],scalar['result'][key],rtol=1e-13,atol=1e-14)
-    chunks=list(rsp.iter_array(ID,view,chunk_size=2,shared_axes=True))
+    chunks=list(rsp.iter_array(ID,view,chunk_size=2,shared_axes=True,fixed={'spectral_resolution':'light_5x4'}))
     assert [c['row_offset'] for c in chunks]==[0,2]
     np.testing.assert_array_equal(np.concatenate([c['result']['fluorescence_forward'] for c in chunks]),out['result']['fluorescence_forward'])
-    empty=rsp.vegetation.fluspect_cx_batch(view[:0],shared_axes=True)
+    empty=rsp.vegetation.fluspect_cx_batch(view[:0],shared_axes=True,spectral_resolution='light_5x4')
     assert empty['result']['fluorescence_forward'].shape==(0,53,71)
     assert empty['result']['reflectance'].shape==(0,2001)
 
@@ -49,6 +49,28 @@ def test_linear_efficiency_zero_fluorescence_and_xanthophyll():
     cx=rsp.vegetation.fluspect_cx(xanthophyll_state=1)['result']
     assert np.max(np.abs(cx['reflectance']-a['reflectance']))>1e-4
 
-@pytest.mark.parametrize('kw',[{'n':.9},{'fluorescence_efficiency':-.01},{'water':-.01},{'xanthophyll_state':-999},{'chlorophyll':float('nan')}])
+@pytest.mark.parametrize('kw',[{'n':.9},{'fluorescence_efficiency':-.01},{'water':-.01},{'xanthophyll_state':-1},{'chlorophyll':float('nan')},{'protein':.001}])
 def test_invalid_parameters(kw):
     with pytest.raises(rsp.ModelError):rsp.vegetation.fluspect_cx(**kw)
+
+FULL_CASES=json.loads((ROOT/'full-inputs.json').read_text(encoding='utf-8'))
+FULL_EXPECTED=json.loads(zlib.decompress((ROOT/'full-expected.json.zlib').read_bytes()))
+
+@pytest.mark.parametrize('index',range(8))
+def test_full_resolution_and_pro_modes(index):
+    out=rsp.vegetation.fluspect_cx(**FULL_CASES[index])['result']
+    for key,want in FULL_EXPECTED[index].items():np.testing.assert_allclose(out[key],want,atol=2e-10,rtol=2e-9)
+    assert np.all(out['fluorescence_backward']>=0)
+    if FULL_CASES[index]['spectral_resolution']=='full_1nm':
+        assert out['fluorescence_backward'].shape==(211,351)
+        assert out['emission_wavelengths_nm'][-1]==850
+
+def test_photon_energy_conversion_and_full_native_batch():
+    p=rsp.vegetation.fluspect_cx()['result']
+    incident=np.zeros(351);incident[50]=2.
+    flux=rsp.vegetation.fluspect_fluorescence(incident)
+    np.testing.assert_allclose(flux['backward_w_m2_nm'],p['fluorescence_backward'][:,50]*2*450/p['emission_wavelengths_nm'],atol=1e-15,rtol=1e-13)
+    with pytest.raises(rsp.ModelError):rsp.vegetation.fluspect_fluorescence([1.])
+    grid=rsp.parameter_grid(ID,{'protein':[.001,.002]},base={'dry_matter':0.,'carbon_based_constituents':.008})
+    batch=rsp.vegetation.fluspect_cx_batch(grid,optical_coefficients='prospect_pro',shared_axes=True)
+    assert batch['result']['fluorescence_backward'].shape==(2,211,351)

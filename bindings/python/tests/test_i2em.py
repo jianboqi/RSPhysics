@@ -7,6 +7,7 @@ from rsphysics import microwave
 
 ROOT=Path(__file__).resolve().parents[3]/'benchmarks/reference/i2em'
 CASES=json.loads((ROOT/'inputs.json').read_text(encoding='utf-8'))
+for p in CASES:p.setdefault('correlation_exponent',1.5)
 EXPECTED=json.loads((ROOT/'expected.json').read_text(encoding='utf-8'))
 
 @pytest.mark.parametrize('index',range(20))
@@ -34,7 +35,7 @@ def test_numpy_and_grid(correlation):
     chunks=list(rsp.iter_array('microwave.i2em',grid,chunk_size=2,fixed={'correlation_function':correlation}))
     np.testing.assert_array_equal(np.concatenate([c['result']['sigma0_hh'] for c in chunks]),direct['result']['sigma0_hh'])
 
-@pytest.mark.parametrize('kwargs',[{'rms_height_m':0.},{'rms_height_m':.1},{'correlation_length_m':.01},{'permittivity_loss':-1.},{'observation_zenith_deg':0.},{'correlation_function':'x_power'}])
+@pytest.mark.parametrize('kwargs',[{'rms_height_m':0.},{'rms_height_m':.1},{'correlation_length_m':.01},{'permittivity_loss':-1.},{'observation_zenith_deg':0.},{'correlation_function':'unknown'}])
 def test_domain(kwargs):
     with pytest.raises(rsp.ModelError):microwave.i2em(**kwargs)
 

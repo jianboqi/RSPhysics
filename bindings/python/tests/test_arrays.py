@@ -13,8 +13,11 @@ def test_typed_buffers_match_all_existing_references_and_json_runtime(model):
     columns=rsp.parameters_for(model);cases=suite if isinstance(suite,list) else suite['cases']
     if model=='vegetation.fluspect-cx':cases=[{'parameters':p} for p in cases]
     if model=='microwave.i2em':cases=[{'parameters':p} for p in cases if p['correlation_function']=='exponential']
+    defaults={k:v['default'] for k,v in rsp.describe(model)['input_schema']['properties'].items()}
+    cases=[{**c,'parameters':defaults|c['parameters']} for c in cases]
     matrix=np.array([[c['parameters'][k] for k in columns] for c in cases])
-    actual=rsp.run_array(model,matrix)
+    fixed={k:v for k,v in cases[0]['parameters'].items() if isinstance(v,str)}
+    actual=rsp.run_array(model,matrix,fixed=fixed)
     for i,c in enumerate(cases):
         expected=rsp.run(model,c['parameters'])
         assert actual['manifests'][i]==expected['manifest']

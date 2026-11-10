@@ -13,6 +13,8 @@ pub enum CorrelationFunction {
     #[default]
     Exponential,
     Gaussian,
+    XPower,
+    XExponential,
 }
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema)]
@@ -36,8 +38,11 @@ pub struct Input {
     /// Incidence angle from surface normal; exact normal/grazing limits excluded.
     #[schemars(range(min=1.0,max=80.0),extend("x-unit"="deg"))]
     pub observation_zenith_deg: f64,
-    #[schemars(with = "String", extend("enum" = ["exponential", "gaussian"]))]
+    #[schemars(with = "String", extend("enum" = ["exponential", "gaussian", "x_power", "x_exponential"]))]
     pub correlation_function: CorrelationFunction,
+    /// Shape exponent of x-power / x-exponential correlations (unused otherwise).
+    #[schemars(range(min=1.000001,max=10.0),extend("x-unit"="1"))]
+    pub correlation_exponent: f64,
 }
 impl Default for Input {
     fn default() -> Self {
@@ -49,6 +54,7 @@ impl Default for Input {
             correlation_length_m: 0.06,
             observation_zenith_deg: 30.,
             correlation_function: CorrelationFunction::Exponential,
+            correlation_exponent: 1.5,
         }
     }
 }
@@ -58,6 +64,12 @@ fn domain(message: impl Into<String>) -> ModelError {
 impl Input {
     pub fn validate(&self) -> Result<(), ModelError> {
         for (name, v, lo, hi) in [
+            (
+                "correlation_exponent",
+                self.correlation_exponent,
+                1.000001,
+                10.,
+            ),
             ("frequency_ghz", self.frequency_ghz, 0.1, 100.),
             ("permittivity_real", self.permittivity_real, 1.01, 100.),
             ("permittivity_loss", self.permittivity_loss, 0., 100.),
@@ -78,6 +90,13 @@ impl Input {
             if !v.is_finite() || !(lo..=hi).contains(&v) {
                 return Err(domain(format!("{name} must be finite in [{lo}, {hi}]")));
             }
+        }
+        if matches!(self.correlation_function, CorrelationFunction::XExponential)
+            && self.correlation_exponent > 2.
+        {
+            return Err(domain(
+                "x-exponential covariance requires 1 < exponent <= 2 for a nonnegative spectrum",
+            ));
         }
         if self.ks() >= 1. {
             return Err(domain(
@@ -137,14 +156,22 @@ pub fn evaluate(p: &Input) -> Result<Output, ModelError> {
     let wn: Vec<f64> = (1..=ts)
         .map(|n| {
             let n = n as f64;
-            match p.correlation_function {
+            Ok(match p.correlation_function {
                 CorrelationFunction::Exponential => {
                     l * l / n.powi(2) * (1. + (ql / n).powi(2)).powf(-1.5)
                 }
                 CorrelationFunction::Gaussian => l * l / (2. * n) * (-ql * ql / (4. * n)).exp(),
-            }
+                CorrelationFunction::XPower => {
+                    l * l * x_power_spectrum(ql, p.correlation_exponent * n)?
+                }
+                CorrelationFunction::XExponential => {
+                    let scale = n.powf(1. / p.correlation_exponent);
+                    l * l / (scale * scale)
+                        * x_exponential_spectrum(ql / scale, p.correlation_exponent)?
+                }
+            })
         })
-        .collect();
+        .collect::<Result<_, ModelError>>()?;
     let ft = 8. * rv0 * rv0 * ss * (cs + rt) / (cs * rt);
     let mut a1 = 0.;
     let mut b1 = 0.;
@@ -195,6 +222,8 @@ pub fn evaluate(p: &Input) -> Result<Output, ModelError> {
     let rss = match p.correlation_function {
         CorrelationFunction::Exponential => sig / l,
         CorrelationFunction::Gaussian => 2_f64.sqrt() * sig / l,
+        CorrelationFunction::XPower => (2. * p.correlation_exponent).sqrt() * sig / l,
+        CorrelationFunction::XExponential => sig / l,
     };
     let ct = 1. / theta.tan() / 2_f64.sqrt() / rss;
     let shad = 0.5 * ((-ct * ct).exp() / PI.sqrt() / ct - libm::erfc(ct));
@@ -320,4 +349,104 @@ impl PhysicsModel for Model {
         }
         Ok(())
     }
+}
+
+// Positive Laplace representation of q^(p-1) K_(p-1)(q)/(2^(p-1) Gamma(p)).
+// Log-coordinate quadrature avoids overflow of separate Bessel-K/Gamma factors.
+fn x_power_spectrum(q: f64, p: f64) -> Result<f64, ModelError> {
+    if q == 0. {
+        return Ok(1. / (2. * (p - 1.)));
+    }
+    let t = ((p - 1.) + ((p - 1.).powi(2) + q * q).sqrt()) / 2.;
+    let center = t.ln();
+    let log = |u: f64| {
+        (p - 1.) * u - u.exp() - q * q / (4. * u.exp()) - std::f64::consts::LN_2 - libm::lgamma(p)
+    };
+    let peak = log(center);
+    if peak < -740. {
+        return Ok(0.);
+    }
+    let mut lo = center;
+    let mut hi = center;
+    while log(lo) > peak - 45. {
+        lo -= 0.5;
+    }
+    while log(hi) > peak - 45. {
+        hi += 0.5;
+    }
+    integrate(&|u| (log(u) - peak).exp(), lo, hi, 1e-12).map(|v| v * peak.exp())
+}
+fn x_exponential_spectrum(q: f64, exponent: f64) -> Result<f64, ModelError> {
+    if exponent == 2. {
+        return Ok(0.5 * (-q * q / 4.).exp());
+    }
+    // Original source's upper integration bound is nine, retained for comparison.
+    let segments = ((9. * q / std::f64::consts::PI).ceil() as usize).max(8);
+    if segments > 100000 {
+        return Err(domain(
+            "x-exponential Hankel quadrature exceeds the supported oscillation count",
+        ));
+    }
+    let f = |z: f64| (-z.powf(exponent)).exp() * libm::j0(z * q) * z;
+    let mut sum = 0.;
+    for i in 0..segments {
+        sum += integrate(
+            &f,
+            9. * i as f64 / segments as f64,
+            9. * (i + 1) as f64 / segments as f64,
+            1e-12 / segments as f64,
+        )?;
+    }
+    if sum < 0. {
+        return Err(domain(
+            "x-exponential reference quadrature produced a negative roughness spectrum",
+        ));
+    }
+    Ok(sum)
+}
+fn integrate<F: Fn(f64) -> f64>(f: &F, a: f64, b: f64, tol: f64) -> Result<f64, ModelError> {
+    #[allow(clippy::too_many_arguments)]
+    fn step<F: Fn(f64) -> f64>(
+        f: &F,
+        a: f64,
+        b: f64,
+        fa: f64,
+        fm: f64,
+        fb: f64,
+        whole: f64,
+        tol: f64,
+        depth: u32,
+    ) -> Result<f64, ModelError> {
+        let m = (a + b) / 2.;
+        let l = f((a + m) / 2.);
+        let r = f((m + b) / 2.);
+        let left = (m - a) * (fa + 4. * l + fm) / 6.;
+        let right = (b - m) * (fm + 4. * r + fb) / 6.;
+        let delta = left + right - whole;
+        if delta.abs() <= 15. * tol {
+            return Ok(left + right + delta / 15.);
+        }
+        if depth == 0 {
+            return Err(ModelError::new(
+                ErrorKind::NonConvergence,
+                "roughness spectrum quadrature did not converge",
+            ));
+        }
+        Ok(step(f, a, m, fa, l, fm, left, tol / 2., depth - 1)?
+            + step(f, m, b, fm, r, fb, right, tol / 2., depth - 1)?)
+    }
+    let fa = f(a);
+    let fm = f((a + b) / 2.);
+    let fb = f(b);
+    step(
+        f,
+        a,
+        b,
+        fa,
+        fm,
+        fb,
+        (b - a) * (fa + 4. * fm + fb) / 6.,
+        tol,
+        24,
+    )
 }

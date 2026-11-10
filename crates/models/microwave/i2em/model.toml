@@ -7,7 +7,7 @@ scientific_version = "Fung / single-scale monostatic HH-VV / exponential-Gaussia
 implementation_version = "0.1.0"
 api_version = "0.1"
 status = "reference-validated"
-limitations = "Single-scale isotropic random bare surface, monostatic HH/VV, exponential or Gaussian covariance. Requires ks < 1 and s/L <= 0.25; implemented incidence range 1..80 degrees. Relative permittivity supplied directly as real - i*loss. Retains reference c=0.30 m/ns and incident-angle offset 0.01 rad. No HV, bistatic, x-power, x-exponential, dielectric mixing, inversion or model coupling. Numerically underflowing configurations return an error rather than a dB floor."
+limitations = "Single-scale isotropic random bare surface, monostatic HH/VV, exponential, Gaussian, x-power or x-exponential covariance. Requires ks < 1 and s/L <= 0.25; implemented incidence range 1..80 degrees. Relative permittivity supplied directly as real - i*loss. Retains reference c=0.30 m/ns and incident-angle offset 0.01 rad. No HV, bistatic, dielectric mixing, inversion or model coupling. Numerically underflowing configurations return an error rather than a dB floor."
 [source]
 crate = "rsphysics-i2em"
 authors = ["Adrian Fung", "Fawwaz T. Ulaby", "David G. Long"]
@@ -83,3 +83,8 @@ description = "Dimensionless roughness k*s."
 unit = "1"
 axes = []
 description = "RMS height divided by correlation length."
+
+[input_semantics."/correlation_exponent"]
+unit = "1"
+axes = []
+description = "Shape exponent for x-power (greater than one) and x-exponential (greater than one, at most two) covariance."

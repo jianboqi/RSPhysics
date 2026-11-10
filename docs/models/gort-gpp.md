@@ -41,7 +41,7 @@ Model ID: `ecosystem.gort-gpp`. Use the same ID with `rsp.run`, `rsp.run_array`,
 | `leaf_single_scattering_albedo` | `0.1` | 1 | 0.0–0.9 |
 | `minimum_stomatal_conductance` | `0.01` | mol m^-2 s^-1 | 0.001–0.1 |
 | `pressure_pa` | `101325` | Pa | 50000.0–110000.0 |
-| `solar_zenith_deg` | `40` | deg | 1.0–80.0 |
+| `solar_zenith_deg` | `40` | deg | 0.0–80.0 |
 | `stomatal_slope` | `8` | 1 | 1.0–20.0 |
 | `vapour_pressure_deficit_pa` | `1000` | Pa | 0.0–8000.0 |
 | `vcmax25_mature` | `34.17` | umol m^-2 s^-1 | 1.0–200.0 |
@@ -67,3 +67,19 @@ The output is net assimilation, including respiration; it is not directly GPP, G
 Qiaoli Wu, Conghe Song, Jinling Song, Jindi Wang, Shaoyuan Chen, Lei Yang, Wenhua Xiang, Zhonghui Zhao, and Jie Jiang.
 
 - [Wu et al. (2021). Effects of leaf age and canopy structure on gross ecosystem production in a subtropical evergreen Chinese fir forest. Agricultural and Forest Meteorology 310, 108618.](https://doi.org/10.1016/j.agrformet.2021.108618)
+
+
+## Numerical conventions
+
+`numerical_convention="corrected"` is the default. It evaluates the full
+conditional Poisson path expectation, uses distinct trapezoid endpoint angles,
+uses a consistent angular lookup including nadir, and allocates direct canopy
+absorption per unit sunlit leaf area. Thus the leaf-class PAR contributions sum
+to the computed canopy absorption. A stable quadratic evaluation handles its
+linear limit. These corrections affect results, especially dense crowns and
+large viewing paths.
+
+`numerical_convention="legacy_matlab"` reproduces the original finite crown sum,
+quadrature, angle indexing and PAR allocation for comparison. It requires
+solar zenith >= 0.5 degrees. Both conventions have independent MATLAB reference
+fixtures. The selector is also available in `gort_gpp_batch`.

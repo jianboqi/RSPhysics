@@ -1,5 +1,5 @@
 //! Selected Main4PSN path; constants/indexing preserve the supplied reference.
-use super::{Input, ModelError, Output};
+use super::{Input, ModelError, NumericalConvention, Output};
 // This original constant is part of the reference implementation's numerical identity.
 #[allow(clippy::approx_constant)]
 const PI: f64 = 3.1415926;
@@ -31,6 +31,9 @@ fn gaps(p: &Input) -> (Vec<f64>, Vec<f64>, f64, f64) {
             let pn = t.powi(n as i32) * (-t).exp() / (fac * (1. - (-t).exp()));
             sr += pn * n as f64 * (4. / 3.) * r;
         }
+        if p.numerical_convention == NumericalConvention::Corrected {
+            sr = t / (-(-t).exp_m1()) * (4. / 3.) * r;
+        }
         wgap[i] = (-favd * b * 0.5 * sr).exp();
     }
     let integrate = |v: &[f64]| -> f64 {
@@ -38,7 +41,12 @@ fn gaps(p: &Input) -> (Vec<f64>, Vec<f64>, f64, f64) {
         // Preserve original endpoint convention, including shared sin(2*theta).
         for i in 0..89 {
             let theta = (i + 1) as f64 * PI / 180.;
-            s += (v[i] * (2. * theta).sin() + v[i + 1] * (2. * theta).sin()) / 2. * PI / 180.;
+            let left = if p.numerical_convention == NumericalConvention::Corrected {
+                i as f64 * PI / 180.
+            } else {
+                theta
+            };
+            s += (v[i] * (2. * left).sin() + v[i + 1] * (2. * theta).sin()) / 2. * PI / 180.;
         }
         s
     };
@@ -46,8 +54,11 @@ fn gaps(p: &Input) -> (Vec<f64>, Vec<f64>, f64, f64) {
     let wo = integrate(&wgap);
     (bgap, wgap, bo, wo)
 }
-fn quadratic(a: f64, b: f64, c: f64) -> Result<f64, ModelError> {
+fn quadratic(a: f64, b: f64, c: f64, corrected: bool) -> Result<f64, ModelError> {
     if a.abs() < 1e-14 {
+        if corrected && b.abs() > 1e-14 {
+            return Ok(-c / b);
+        }
         return Err(super::domain(
             "degenerate original photosynthesis quadratic",
         ));
@@ -56,7 +67,11 @@ fn quadratic(a: f64, b: f64, c: f64) -> Result<f64, ModelError> {
     Ok(if d < 0. {
         -1.
     } else {
-        (-b + d.sqrt()) / (2. * a)
+        if corrected && b > 0. {
+            -2. * c / (b + d.sqrt())
+        } else {
+            (-b + d.sqrt()) / (2. * a)
+        }
     })
 }
 fn assimilation(p: &Input, apar: f64, vmax: f64) -> Result<f64, ModelError> {
@@ -73,11 +88,13 @@ fn assimilation(p: &Input, apar: f64, vmax: f64) -> Result<f64, ModelError> {
     let g1 = p.stomatal_slope * rh / ca;
     let k = kc * (1. + o2 / ko);
     let rd = 0.015 * vmax;
+    let corrected = p.numerical_convention == NumericalConvention::Corrected;
     let av = quadratic(
         ca * g1 + g1 * k - 1.,
         ca * g0 + g0 * k - vmax * ca * g1 + vmax + vmax * g1 * gamma + rd * ca * g1 - rd
             + rd * g1 * k,
         -vmax * ca * g0 + vmax * gamma * g0 + rd * ca * g0 + rd * k * g0,
+        corrected,
     )?;
     let jmax = 2.1 * vmax;
     let b = -jmax - apar / p.electron_photon_ratio;
@@ -89,6 +106,7 @@ fn assimilation(p: &Input, apar: f64, vmax: f64) -> Result<f64, ModelError> {
             - 4.5 * rd
             + 10.5 * gamma * g1 * rd,
         -j * ca * g0 + 4.5 * rd * ca * g0 + 10.5 * gamma * g0 * rd,
+        corrected,
     )?;
     Ok(if av == -1. && aj == -1. {
         0.
@@ -105,7 +123,17 @@ pub(super) fn simulate(p: &Input) -> Result<Output, ModelError> {
     let theta = p.solar_zenith_deg * PI / 180.;
     let kb = extinction(p.leaf_angle_parameter, theta);
     // Main4PSN int16 rounds degrees, but lacks radiation's explicit +1.
-    let main_index = p.solar_zenith_deg.round() as usize - 1;
+    let corrected = p.numerical_convention == NumericalConvention::Corrected;
+    if !corrected && p.solar_zenith_deg < 0.5 {
+        return Err(super::domain(
+            "legacy MATLAB convention requires zenith >=0.5 degrees",
+        ));
+    }
+    let main_index = if corrected {
+        p.solar_zenith_deg.round() as usize
+    } else {
+        p.solar_zenith_deg.round() as usize - 1
+    };
     let notgap = 1. - bg[main_index] - (1. - bg[main_index]) * wg[main_index];
     let sunlit = notgap / kb;
     let shaded = p.leaf_area_index - sunlit;
@@ -134,7 +162,11 @@ pub(super) fn simulate(p: &Input) -> Result<Output, ModelError> {
         floor += reflected * (1. - br);
     }
     let apar_shaded = absorbed / p.leaf_area_index;
-    let apar_sunlit = absorbed_direct * kb + apar_shaded;
+    let apar_sunlit = if corrected {
+        absorbed_direct / sunlit + apar_shaded
+    } else {
+        absorbed_direct * kb + apar_shaded
+    };
     let vc =
         p.vcmax25_young * p.young_leaf_fraction + p.vcmax25_mature * (1. - p.young_leaf_fraction);
     let vc_canopy = p.leaf_area_index * vc * (1. - (-0.1_f64).exp()) / 0.1;

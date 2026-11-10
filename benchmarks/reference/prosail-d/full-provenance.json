@@ -1,0 +1,8 @@
+{
+  "source_commit": "46549958295b605ac1e211a693d4b2287c3a5a13",
+  "leaf_input": "PROSPECT-D spectra from the separately author-validated leaf solver; only original R fourSAIL is evaluated in this fixture suite",
+  "files": {
+    "full-leaf-inputs.json.zlib": "8fdd988f97cc0369f9db5e7f99816fff883d99d0f50d79905d4de02871b59b27",
+    "full-expected.json.zlib": "2faf73caa6bceef15f5cb3da8c93fd284ca1bafaddfc65e4f35610c71e24f53d"
+  }
+}

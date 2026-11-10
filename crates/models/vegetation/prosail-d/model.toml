@@ -7,7 +7,7 @@ scientific_version = "PROSPECT-D + 4SAIL / Campbell-13"
 implementation_version = "0.1.0"
 api_version = "0.1"
 status = "reference-validated"
-limitations = "Homogeneous canopy, direct illumination, 13-bin Campbell distribution, original dry/wet soil blend. BRF may exceed one. LAI=0 uses an analytical bare-soil limit because the pinned R routine produces undefined arithmetic there. Conservative leaf scattering with both water and dry matter zero is excluded. No inversion or generic model coupling."
+limitations = "PROSPECT-D plus author 4SAIL, Campbell and Verhoef 13-bin leaf-angle distributions, direct and diffuse reflectance/absorption outputs. Original dry/wet soil blend. Analytical bare-soil and conservative-scattering limits. No 4SAIL2, inversion or model coupling framework."
 
 [source]
 crate = "rsphysics-prosail-d"
@@ -116,3 +116,53 @@ unit = "1"
 quantity = "reflectance"
 axes = ["wavelength"]
 description = "Directional-hemispherical reflectance for direct solar illumination (original rsdt). Not transmittance."
+
+[input_semantics."/leaf_angle_distribution"]
+unit = "1"
+axes = []
+description = "campbell or verhoef distribution."
+
+[input_semantics."/lidf_a"]
+unit = "1"
+axes = []
+description = "Verhoef average-slope parameter; |a|+|b| <= 1."
+
+[input_semantics."/lidf_b"]
+unit = "1"
+axes = []
+description = "Verhoef bimodality parameter."
+
+[output_semantics."/hemispherical_directional_reflectance"]
+unit = "1"
+axes = ["wavelength"]
+description = "rdot, response to diffuse illumination in the viewing direction."
+
+[output_semantics."/bihemispherical_reflectance"]
+unit = "1"
+axes = ["wavelength"]
+description = "rddt, diffuse-illumination hemispherical reflectance."
+
+[output_semantics."/vegetation_cover"]
+unit = "1"
+axes = ["wavelength"]
+description = "fcover, 1 minus target-to-observer beam transmittance."
+
+[output_semantics."/direct_absorptance"]
+unit = "1"
+axes = ["wavelength"]
+description = "abs_dir, canopy absorption under direct illumination including soil feedback."
+
+[output_semantics."/diffuse_absorptance"]
+unit = "1"
+axes = ["wavelength"]
+description = "abs_hem, canopy absorption under diffuse illumination including soil feedback."
+
+[output_semantics."/direct_albedo"]
+unit = "1"
+axes = ["wavelength"]
+description = "rsdstar, direct-flux albedo."
+
+[output_semantics."/diffuse_albedo"]
+unit = "1"
+axes = ["wavelength"]
+description = "rddstar, diffuse-flux albedo."

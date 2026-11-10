@@ -7,7 +7,7 @@ scientific_version = "1.0.0"
 implementation_version = "0.1.0"
 api_version = "0.1"
 status = "reference-validated"
-limitations = "400-2400 nm embedded soil basis; forward optical reflectance. SORT supports none and Hapke single/multifacet roughness; fixed refracted substrate and scalar water-film closure, without Shiltz or angular adding. Wet BRF is not a general reciprocal BSDF. Parameter ranges and energy screening do not establish observational validity."
+limitations = "400-2400 nm embedded soil basis; forward optical reflectance. SORT supports none, Hapke single/multifacet and Shiltz single/full roughness; refracted/external substrate angles; legacy scalar, directional single-pass and experimental angular-adding water transport. Adding with nonzero Shiltz roughness is not validated and is rejected. Legacy scalar wet BRF is not a general reciprocal BSDF. Parameter ranges and energy screening do not establish observational validity."
 [source]
 crate = "rsphysics-sort"
 authors = ["Anxin Ding"]
@@ -122,3 +122,27 @@ unit = "1"
 quantity = "brf"
 axes = ["wavelength"]
 description = "Directional BRF; pi times BRDF."
+
+[input_semantics."/substrate_angle_mode"]
+unit = "1"
+axes = []
+description = "refracted (default) or external substrate directions for legacy scalar transport."
+[input_semantics."/water_film_mode"]
+unit = "1"
+axes = []
+description = "legacy_scalar, single_pass (Beer-Lambert with radiance Jacobian), or convergence-checked angular adding (experimental)."
+
+[output_semantics."/dry_basis_reflectance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Dry soil spectral basis reflectance before the directional scattering operator."
+
+[output_semantics."/single_scattering_albedo"]
+unit = "1"
+axes = ["wavelength"]
+description = "SSA inferred from the dry spectral basis."
+
+[output_semantics."/substrate_brf"]
+unit = "1"
+axes = ["wavelength"]
+description = "Covered substrate BRF before film propagation and any adding return paths."

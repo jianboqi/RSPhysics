@@ -1,0 +1,392 @@
+[
+  {
+    "brf": [
+      0.2747735264798438
+    ],
+    "brdf": [
+      0.08746312994011789
+    ],
+    "sunlit_ground_weight": 0.3620596175578864,
+    "sunlit_crown_weight": 0.34092916769232173,
+    "shaded_weight": 0.29701121474979186,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.3436415672207743
+    ],
+    "brdf": [
+      0.10938450815006413
+    ],
+    "sunlit_ground_weight": 0.5895955307385813,
+    "sunlit_crown_weight": 0.4104044752199742,
+    "shaded_weight": -5.95855548235491e-09,
+    "invalid_weight_count": 1
+  },
+  {
+    "brf": [
+      0.3920655935648508
+    ],
+    "brdf": [
+      0.124798354464208
+    ],
+    "sunlit_ground_weight": 0.3474719502363853,
+    "sunlit_crown_weight": 0.5798896020587859,
+    "shaded_weight": 0.07263844770482886,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.17650306748614591
+    ],
+    "brdf": [
+      0.05618267132260503
+    ],
+    "sunlit_ground_weight": 0.3678755272739005,
+    "sunlit_crown_weight": 0.14264347679012163,
+    "shaded_weight": 0.4894809959359779,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.22105816600425385
+    ],
+    "brdf": [
+      0.07036499966081156
+    ],
+    "sunlit_ground_weight": 0.3419855450597461,
+    "sunlit_crown_weight": 0.23952066849058384,
+    "shaded_weight": 0.41849378644967006,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.2546699654209254
+    ],
+    "brdf": [
+      0.08106396770756467
+    ],
+    "sunlit_ground_weight": 0.5120299924657828,
+    "sunlit_crown_weight": 0.25573093310211586,
+    "shaded_weight": 0.2322390744321013,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.3911699522125984
+    ],
+    "brdf": [
+      0.12451326296731105
+    ],
+    "sunlit_ground_weight": 0.27033102976442,
+    "sunlit_crown_weight": 0.6012405954958708,
+    "shaded_weight": 0.12842837473970914,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.27186337652524406
+    ],
+    "brdf": [
+      0.08653680043929148
+    ],
+    "sunlit_ground_weight": 0.005743906593503352,
+    "sunlit_crown_weight": 0.4420035810724371,
+    "shaded_weight": 0.5522525123340596,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.16757962532271747
+    ],
+    "brdf": [
+      0.05334225146319649
+    ],
+    "sunlit_ground_weight": 0.10546706368490372,
+    "sunlit_crown_weight": 0.20351913153996384,
+    "shaded_weight": 0.6910138047751324,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.2
+    ],
+    "brdf": [
+      0.06366197723675814
+    ],
+    "sunlit_ground_weight": 1.0,
+    "sunlit_crown_weight": 0.0,
+    "shaded_weight": 0.0,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.20856065188838316
+    ],
+    "brdf": [
+      0.06638691736500843
+    ],
+    "sunlit_ground_weight": 0.9033956787126652,
+    "sunlit_crown_weight": 0.046102600162966745,
+    "shaded_weight": 0.050501721124368015,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.42453174255003345
+    ],
+    "brdf": [
+      0.13513265065250749
+    ],
+    "sunlit_ground_weight": 0.006221576444661354,
+    "sunlit_crown_weight": 0.7471970121666685,
+    "shaded_weight": 0.24658141138867018,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.5060815584191033
+    ],
+    "brdf": [
+      0.1610907632601002
+    ],
+    "sunlit_ground_weight": 3.870801345676502e-05,
+    "sunlit_crown_weight": 0.9121515044341696,
+    "shaded_weight": 0.08780978755237367,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.30503980137355163
+    ],
+    "brdf": [
+      0.09709718445674134
+    ],
+    "sunlit_ground_weight": 0.5463023326960085,
+    "sunlit_crown_weight": 0.3461889029383008,
+    "shaded_weight": 0.10750876436569073,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.27208432262687127
+    ],
+    "brdf": [
+      0.08660712976775317
+    ],
+    "sunlit_ground_weight": 0.21080856012296495,
+    "sunlit_crown_weight": 0.38092607721685307,
+    "shaded_weight": 0.40826536266018193,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.29930244373120973
+    ],
+    "brdf": [
+      0.09527092679861178
+    ],
+    "sunlit_ground_weight": 0.38732735566113363,
+    "sunlit_crown_weight": 0.38240668076407935,
+    "shaded_weight": 0.230265963574787,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.26108936336622723
+    ],
+    "brdf": [
+      0.08310732553690216
+    ],
+    "sunlit_ground_weight": 0.3419855450597461,
+    "sunlit_crown_weight": 0.3195830632145306,
+    "shaded_weight": 0.3384313917257233,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.28738500185298066
+    ],
+    "brdf": [
+      0.09147748723075075
+    ],
+    "sunlit_ground_weight": 0.3620596175578864,
+    "sunlit_crown_weight": 0.3661521184385953,
+    "shaded_weight": 0.2717882640035183,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.2670534229856937
+    ],
+    "brdf": [
+      0.08500574467556786
+    ],
+    "sunlit_ground_weight": 0.3620596175578864,
+    "sunlit_crown_weight": 0.32548896070402134,
+    "shaded_weight": 0.31245142173809226,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.3620596175578864
+    ],
+    "brdf": [
+      0.1152471556565976
+    ],
+    "sunlit_ground_weight": 0.3620596175578864,
+    "sunlit_crown_weight": 0.34092916769232173,
+    "shaded_weight": 0.29701121474979186,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.34092916769232173
+    ],
+    "brdf": [
+      0.10852112456487742
+    ],
+    "sunlit_ground_weight": 0.3620596175578864,
+    "sunlit_crown_weight": 0.34092916769232173,
+    "shaded_weight": 0.29701121474979186,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.29701121474979186
+    ],
+    "brdf": [
+      0.09454160596231566
+    ],
+    "sunlit_ground_weight": 0.3620596175578864,
+    "sunlit_crown_weight": 0.34092916769232173,
+    "shaded_weight": 0.29701121474979186,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.3
+    ],
+    "brdf": [
+      0.0954929658551372
+    ],
+    "sunlit_ground_weight": 0.3620596175578864,
+    "sunlit_crown_weight": 0.34092916769232173,
+    "shaded_weight": 0.29701121474979186,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.05814788675881771
+    ],
+    "brdf": [
+      0.018509047216027214
+    ],
+    "sunlit_ground_weight": 0.002014862878637145,
+    "sunlit_crown_weight": 0.01569131465404428,
+    "shaded_weight": 0.9822938224673186,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.22675249441575474
+    ],
+    "brdf": [
+      0.07217756068936952
+    ],
+    "sunlit_ground_weight": 0.42459146117602475,
+    "sunlit_crown_weight": 0.22612755047870203,
+    "shaded_weight": 0.3492809883452732,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.23443203749976926
+    ],
+    "brdf": [
+      0.0746220351743857
+    ],
+    "sunlit_ground_weight": 0.3419855450597461,
+    "sunlit_crown_weight": 0.2662684114816147,
+    "shaded_weight": 0.3917460434586392,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.11604622986791589
+    ],
+    "brdf": [
+      0.03693866222131432
+    ],
+    "sunlit_ground_weight": 0.35238333746508915,
+    "sunlit_crown_weight": 0.02637745849630505,
+    "shaded_weight": 0.6212392040386059,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.2649107282186249
+    ],
+    "brdf": [
+      0.0843237037481356
+    ],
+    "sunlit_ground_weight": 0.3523833423567107,
+    "sunlit_crown_weight": 0.3241064537302365,
+    "shaded_weight": 0.32351020391305285,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.144424936358481,
+      0.15575514953215566,
+      0.16708536270583033,
+      0.17841557587950502,
+      0.18974578905317968,
+      0.20107600222685437,
+      0.21240621540052904,
+      0.22373642857420373,
+      0.23506664174787836,
+      0.24639685492155305
+    ],
+    "brdf": [
+      0.0459718850543693,
+      0.049578403920119765,
+      0.05318492278587023,
+      0.056791441651620714,
+      0.06039796051737118,
+      0.06400447938312166,
+      0.06761099824887212,
+      0.0712175171146226,
+      0.07482403598037306,
+      0.07843055484612353
+    ],
+    "sunlit_ground_weight": 0.3620596175578864,
+    "sunlit_crown_weight": 0.34092916769232173,
+    "shaded_weight": 0.29701121474979186,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.2503256648270599
+    ],
+    "brdf": [
+      0.07968113387998318
+    ],
+    "sunlit_ground_weight": 0.38190538124513174,
+    "sunlit_crown_weight": 0.2860797152805803,
+    "shaded_weight": 0.33201490347428797,
+    "invalid_weight_count": 0
+  },
+  {
+    "brf": [
+      0.11604622986791589
+    ],
+    "brdf": [
+      0.03693866222131432
+    ],
+    "sunlit_ground_weight": 0.35238333746508915,
+    "sunlit_crown_weight": 0.02637745849630505,
+    "shaded_weight": 0.6212392040386059,
+    "invalid_weight_count": 0
+  }
+]

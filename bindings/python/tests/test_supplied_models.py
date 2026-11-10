@@ -13,9 +13,12 @@ def test_original_matlab_cases_and_numpy(model_id,directory):
     ref=ROOT/'benchmarks'/'reference'/directory
     inputs=json.loads((ref/'inputs.json').read_text())
     expected=json.loads((ref/'expected.json').read_text())['cases']
+    defaults={k:v['default'] for k,v in rsp.describe(model_id)['input_schema']['properties'].items()}
+    for c in inputs:c['parameters']=defaults|c['parameters']
+    fixed={k:v for k,v in inputs[0]['parameters'].items() if isinstance(v,str)}
     columns=rsp.parameters_for(model_id)
     matrix=np.array([[c['parameters'][n] for n in columns] for c in inputs])
-    batch=rsp.run_array(model_id,matrix,shared_axes=True)
+    batch=rsp.run_array(model_id,matrix,shared_axes=True,fixed=fixed)
     for i,(case,want) in enumerate(zip(inputs,expected,strict=True)):
         single=rsp.run(model_id,case['parameters'])['result']
         for name,value in want.items():
@@ -23,9 +26,9 @@ def test_original_matlab_cases_and_numpy(model_id,directory):
             np.testing.assert_allclose(single[name],value,rtol=2e-9,atol=2e-9)
             np.testing.assert_allclose(batch['result'][name][i],value,rtol=2e-9,atol=2e-9)
     assert len(batch['manifests'])==32
-    empty=rsp.run_array(model_id,matrix[:0],shared_axes=True)
+    empty=rsp.run_array(model_id,matrix[:0],shared_axes=True,fixed=fixed)
     assert empty['result'][next(k for k in expected[0] if k!='name')].shape[0]==0
-    chunks=list(rsp.iter_array(model_id,matrix,chunk_size=7,shared_axes=True))
+    chunks=list(rsp.iter_array(model_id,matrix,chunk_size=7,shared_axes=True,fixed=fixed))
     assert [c['row_offset'] for c in chunks]==[0,7,14,21,28]
 
 def test_lmeb_physics_and_domains():
@@ -45,5 +48,5 @@ def test_gort_physical_meaning_and_domains():
     dark=rsp.ecosystem.gort_gpp(direct_par_umol_m2_s=0.,diffuse_par_umol_m2_s=0.)['result']
     assert dark['net_assimilation_umol_m2_s']<0.  # Net assimilation includes respiration.
     assert np.all((p['between_crown_gaps']>=0)&(p['between_crown_gaps']<=1))
-    for params in [dict(solar_zenith_deg=0.),dict(crown_base_height_m=20.,crown_top_height_m=10.),dict(air_temperature_c=10.,vapour_pressure_deficit_pa=5000.)]:
+    for params in [dict(solar_zenith_deg=0.,numerical_convention="legacy_matlab"),dict(crown_base_height_m=20.,crown_top_height_m=10.),dict(air_temperature_c=10.,vapour_pressure_deficit_pa=5000.)]:
         with pytest.raises(rsp.ModelError):rsp.ecosystem.gort_gpp(**params)

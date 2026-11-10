@@ -1,10 +1,19 @@
 {
-  "source": {
-    "sha256": "03bd2dfc37e11fa085f00013ce99d6c8ed5a0b427e4c65211f4d32e36f8cc596",
-    "url": "https://raw.githubusercontent.com/Christiaanvandertol/SCOPE/f4d07b33828f82c572cb1965cf82b1db4579c5b4/input/fluspect_parameters/Optipar2017_ProspectD.mat",
-    "bytes": 89038
+  "tables": {
+    "d": {
+      "source_file": "Optipar2017_ProspectD.mat",
+      "source_sha256": "03bd2dfc37e11fa085f00013ce99d6c8ed5a0b427e4c65211f4d32e36f8cc596",
+      "file": "optics-d.csv.zlib",
+      "sha256": "c7d9dc9e0e987fdcddec26c703e0ac28138e632d2f180d7f4a7f8b91854e6e3c",
+      "raw_sha256": "fee297ae67f26bece0320d9cffdacae7c73d94185d9d1fdf1bdf1fb83858a232"
+    },
+    "pro": {
+      "source_file": "Optipar2021_ProspectPRO_CX.mat",
+      "source_sha256": "eeaad96a1646bc238aa580a50b3d4e68bbf193a59eb63555c1f2c4bdd69ed63a",
+      "file": "optics-pro.csv.zlib",
+      "sha256": "ee34773e5bae1521988b8d029c94358e374d01dc507b271f14d393d7bf914134",
+      "raw_sha256": "00316f9a4c9a21ee456bf527d756c3fa894ad6cd702d7dade9a28c25a67a3995"
+    }
   },
-  "sha256": "8867eb9c0617a955d60331b5f26b660e1440296a5117a11b9c8d37251e277318",
-  "raw_sha256": "8e5bd7d11d6afbfb5a6f03879935e2300b242c6d5e00b7b3adc6b1ebf7918dbe",
-  "export": "MATLAB fprintf %.17g; selected columns wl,nr,Kab,Kca,Ks,Kw,Kdm,KcaV,KcaZ,Kant,phi from optipar; unchanged numerical values."
+  "export": "MATLAB %.17g, lossless zlib; raw negative phi calibration coefficient retained; nonnegative physical emission applied in solver."
 }

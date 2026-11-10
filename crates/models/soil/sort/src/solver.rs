@@ -1,6 +1,6 @@
 //! SORT soil optical transport. Scientific author: Anxin Ding.
 //! Hapke roughness adaptation retains the Dylan Shiltz MIT notice.
-use crate::{Input, Roughness, Sample, domain};
+use crate::{FilmTransport, Input, Roughness, Sample, SubstrateAngles, domain};
 use num_complex::Complex64;
 use rsphysics_model_api::{ErrorKind, ModelError};
 use std::{f64::consts::PI, sync::OnceLock};
@@ -40,7 +40,7 @@ fn h_function(mu: f64, w: f64, packing: f64) -> f64 {
     1.0 / (1.0 - w * (m * r + 0.5 * (1.0 - 2.0 * r * m) * xlog))
 }
 
-fn flat(p: &Input, w: f64, i: f64, e: f64, phase: f64) -> f64 {
+pub(crate) fn flat(p: &Input, w: f64, i: f64, e: f64, phase: f64) -> f64 {
     let mu0 = i.cos().clamp(0.0, 1.0);
     let mu = e.cos().clamp(0.0, 1.0);
     let b = p.phase_asymmetry;
@@ -109,6 +109,13 @@ fn effective_geometry(p: &Input, i: f64, e: f64, psi: f64) -> (f64, f64, f64) {
 }
 
 pub fn directional(p: &Input, w: f64, i: f64, e: f64, psi: f64) -> f64 {
+    if matches!(
+        p.roughness_correction,
+        Roughness::ShiltzSingle | Roughness::ShiltzFull
+    ) && p.rms_slope > TINY
+    {
+        return crate::shiltz::converged(p, w, i, e, psi).unwrap_or(f64::NAN);
+    }
     let phase = (i.cos() * e.cos() + i.sin() * e.sin() * psi.cos())
         .clamp(-1.0, 1.0)
         .acos();
@@ -170,7 +177,7 @@ fn film_optics(s: &Sample, p: &Input) -> (f64, f64) {
     (n.re, 4.0 * PI * n.im / wl_cm)
 }
 
-fn fresnel(n1: f64, n2: f64, i: f64, t: f64) -> f64 {
+pub(crate) fn fresnel(n1: f64, n2: f64, i: f64, t: f64) -> f64 {
     let ci = i.cos().max(0.0);
     let ct = t.cos().max(0.0);
     let rs = (n1 * ci - n2 * ct) / (n1 * ci + n2 * ct).max(TINY);
@@ -202,9 +209,9 @@ fn mix(dry: f64, wet: f64, coverage: f64) -> Result<f64, ModelError> {
     )
 }
 
-pub fn wet_directional(s: &Sample, p: &Input, w: f64, dry: f64) -> Result<f64, ModelError> {
+pub fn wet_directional(s: &Sample, p: &Input, w: f64, dry: f64) -> Result<(f64, f64), ModelError> {
     if p.water_coverage == 0.0 || p.water_film_thickness_mm == 0.0 {
-        return Ok(dry);
+        return Ok((dry, dry));
     }
     let (index, alpha) = film_optics(s, p);
     let n = index.max(1.0 + 1e-6);
@@ -217,16 +224,35 @@ pub fn wet_directional(s: &Sample, p: &Input, w: f64, dry: f64) -> Result<f64, M
     let length = p.water_film_thickness_mm * 0.1;
     let ts = diffuse_transmission(alpha * length / it.cos().max(TINY));
     let tv = diffuse_transmission(alpha * length / et.cos().max(TINY));
-    let substrate = checked(
-        directional(p, w, it, et, p.relative_azimuth_deg.to_radians()),
-        false,
-    )?;
+    let psi = p.relative_azimuth_deg.to_radians();
+    let substrate = if p.substrate_angle_mode == SubstrateAngles::External {
+        dry
+    } else {
+        checked(directional(p, w, it, et, psi), false)?
+    };
+    let covered_boundary = substrate;
+    if p.water_film_mode != FilmTransport::LegacyScalar {
+        let substrate = if p.water_film_mode == FilmTransport::Adding {
+            crate::layer::adding(p, w, n, alpha * length, it, et, psi)?
+        } else {
+            substrate
+        };
+        return mix(
+            dry,
+            (1. - r12) * (1. - r21) / (n * n)
+                * (-alpha * length * (1. / it.cos() + 1. / et.cos())).exp()
+                * substrate,
+            p.water_coverage,
+        )
+        .map(|wet| (wet, covered_boundary));
+    }
     let x = substrate * ts * tv;
     mix(
         dry,
         (1.0 - r12) * (1.0 - r21) * x / feedback(r21 * x)?,
         p.water_coverage,
     )
+    .map(|wet| (wet, covered_boundary))
 }
 
 pub fn wet_lambert(s: &Sample, p: &Input, dry: f64) -> Result<f64, ModelError> {
@@ -254,7 +280,7 @@ pub fn wet_lambert(s: &Sample, p: &Input, dry: f64) -> Result<f64, ModelError> {
     )
 }
 
-fn gauss_legendre(order: usize) -> Vec<(f64, f64)> {
+pub(crate) fn gauss_legendre(order: usize) -> Vec<(f64, f64)> {
     let mut values = vec![(0.0, 0.0); order];
     for j in 0..order.div_ceil(2) {
         let mut z = (PI * (j as f64 + 0.75) / (order as f64 + 0.5)).cos();
@@ -285,7 +311,7 @@ static QUADRATURE: OnceLock<Quadrature> = OnceLock::new();
 
 pub fn screen_energy(p: &Input, max_ssa: f64) -> Result<(), ModelError> {
     let rules = QUADRATURE.get_or_init(|| {
-        [24, 48, 96, 192]
+        [12, 24, 48, 96, 192]
             .iter()
             .map(|&n| (gauss_legendre(n), gauss_legendre(2 * n)))
             .collect()
@@ -294,6 +320,13 @@ pub fn screen_energy(p: &Input, max_ssa: f64) -> Result<(), ModelError> {
         let mut previous: Option<f64> = None;
         let mut accepted = false;
         for (mu_rule, phi_rule) in rules {
+            let shiltz = matches!(
+                p.roughness_correction,
+                Roughness::ShiltzSingle | Roughness::ShiltzFull
+            ) && p.rms_slope > TINY;
+            if shiltz && mu_rule.len() > 48 || !shiltz && mu_rule.len() == 12 {
+                continue;
+            }
             let mut dhr = 0.0;
             for &(node, weight) in mu_rule {
                 let mu = (node + 1.0) * 0.5;
@@ -303,7 +336,18 @@ pub fn screen_energy(p: &Input, max_ssa: f64) -> Result<(), ModelError> {
                         * 0.5
                         * azimuth_weight
                         * mu
-                        * directional(p, max_ssa, incidence.to_radians(), mu.acos(), phi);
+                        * if shiltz {
+                            crate::shiltz::at_order(
+                                p,
+                                max_ssa,
+                                incidence.to_radians(),
+                                mu.acos(),
+                                phi,
+                                100,
+                            )
+                        } else {
+                            directional(p, max_ssa, incidence.to_radians(), mu.acos(), phi)
+                        };
                 }
             }
             if !dhr.is_finite() {

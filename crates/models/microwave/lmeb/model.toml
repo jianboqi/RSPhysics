@@ -3,11 +3,11 @@ id = "microwave.lmeb"
 name = "L-MEB"
 family = "lmeb"
 category = "microwave"
-scientific_version = "JPW 2001-2007 / 1.41 GHz / soil forward"
+scientific_version = "JPW 2001-2007 / soil-water-ice forward"
 implementation_version = "0.1.0"
 api_version = "0.1"
 status = "reference-validated"
-limitations = "Adapted supplied tauw1i soil forward branch, fixed 1.41 GHz. Includes Dobson soil permittivity, frozen-soil/dry-sand branches, effective soil temperature, roughness/polarization mixing, directional vegetation opacity and prescribed L-band sky model. No water/ice-surface branch, higher-frequency Wang branch or inversion. The sky air temperature is supplied separately exactly as para(3) in the reference. No external model coupling. Publication of the supplied source and adaptations is authorized by the project maintainer; see LICENSE-ORIGIN.md for component terms."
+limitations = "Supplied tauw1i forward formulation with soil, water and pure-ice branches; variable frequency and dual polarization. Original L-band sky approximation retained at all frequencies; high-frequency sky accuracy is not implied. Water emission uses the defined water temperature, correcting the original undefined tg variable. No inversion or model coupling."
 [source]
 crate = "rsphysics-lmeb"
 authors = ["Jean-Pierre Wigneron (supplied MATLAB source attribution)", "RSPhysics contributors (Rust adaptation)"]
@@ -197,3 +197,23 @@ description = "Vertical response with other parameters fixed."
 unit = "K"
 axes = ["zenith"]
 description = "Horizontal response with other parameters fixed."
+
+[input_semantics."/frequency_ghz"]
+unit = "GHz"
+axes = []
+description = "Frequency used in Dobson (up to 18 GHz), Wang (above 18 GHz), saline-water or pure-ice dielectric branches. Prescribed sky formula remains the original L-band approximation."
+
+[input_semantics."/surface_type"]
+unit = "1"
+axes = []
+description = "soil or water. Water branch selects pure ice at water_temperature_k <= 272.65 K, disables empirical soil roughness and uses water temperature for emission."
+
+[input_semantics."/water_temperature_k"]
+unit = "K"
+axes = []
+description = "Water or ice physical temperature."
+
+[input_semantics."/water_salinity"]
+unit = "g kg^-1"
+axes = []
+description = "Salinity of open water; pure-ice branch does not use salinity."

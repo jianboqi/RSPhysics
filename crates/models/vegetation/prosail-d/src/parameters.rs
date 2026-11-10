@@ -2,6 +2,13 @@ use rsphysics_model_api::{ErrorKind, ModelError};
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum LeafAngleDistribution {
+    #[default]
+    Campbell,
+    Verhoef,
+}
 /// PROSAIL-D is one scientific model with its own flat parameter contract.
 /// Leaf equations are delegated to the existing PROSPECT-D solver.
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema)]
@@ -29,6 +36,13 @@ pub struct Input {
     /// Average leaf inclination for the author's 13-bin Campbell distribution.
     #[schemars(range(min=5.0,max=85.0),extend("x-unit"="deg"))]
     pub mean_leaf_angle_deg: f64,
+    /// Leaf inclination distribution: Campbell ellipsoid or Verhoef bimodal.
+    #[schemars(with="String",extend("enum"=["campbell", "verhoef"]))]
+    pub leaf_angle_distribution: LeafAngleDistribution,
+    #[schemars(range(min=-1.0,max=1.0),extend("x-unit"="1"))]
+    pub lidf_a: f64,
+    #[schemars(range(min=-1.0,max=1.0),extend("x-unit"="1"))]
+    pub lidf_b: f64,
     /// Hotspot size parameter of 4SAIL.
     #[schemars(range(min=0.0,max=1.0),extend("x-unit"="1"))]
     pub hotspot: f64,
@@ -59,6 +73,9 @@ impl Default for Input {
             incidence_angle_deg: 40.0,
             leaf_area_index: 3.0,
             mean_leaf_angle_deg: 60.0,
+            leaf_angle_distribution: LeafAngleDistribution::Campbell,
+            lidf_a: -0.35,
+            lidf_b: -0.15,
             hotspot: 0.1,
             solar_zenith_deg: 30.0,
             view_zenith_deg: 0.0,
@@ -86,6 +103,8 @@ impl Input {
         for (name, value, min, max) in [
             ("leaf_area_index", self.leaf_area_index, 0.0, 10.0),
             ("mean_leaf_angle_deg", self.mean_leaf_angle_deg, 5.0, 85.0),
+            ("lidf_a", self.lidf_a, -1., 1.),
+            ("lidf_b", self.lidf_b, -1., 1.),
             ("hotspot", self.hotspot, 0.0, 1.0),
             ("solar_zenith_deg", self.solar_zenith_deg, 0.0, 85.0),
             ("view_zenith_deg", self.view_zenith_deg, 0.0, 85.0),
@@ -105,10 +124,12 @@ impl Input {
                 ));
             }
         }
-        if self.leaf_area_index > 0.0 && self.water == 0.0 && self.dry_matter == 0.0 {
+        if self.leaf_angle_distribution == LeafAngleDistribution::Verhoef
+            && self.lidf_a.abs() + self.lidf_b.abs() > 1. + 1e-12
+        {
             return Err(ModelError::new(
                 ErrorKind::OutOfDomain,
-                "conservative leaf scattering (both water and dry matter zero) is outside this 4SAIL implementation",
+                "Verhoef LIDF requires |a|+|b| <= 1",
             ));
         }
         Ok(())

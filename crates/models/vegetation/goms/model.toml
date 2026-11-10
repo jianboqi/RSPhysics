@@ -1,0 +1,197 @@
+[model]
+id = "vegetation.goms"
+name = "GOMS"
+family = "goms"
+category = "vegetation"
+scientific_version = "Li-Strahler 1992 / supplied GOMS forward model"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Discrete ellipsoidal crowns, mutual shadowing, 1..10 user-supplied spectral bands, shared shaded-crown/ground coefficient, absolute directions and terrain slope/aspect. The default area_consistent convention corrects overlap-area units, angular wrapping and terrain rotation; legacy_c retains supplied C arithmetic for comparison. Three identifiable weights, not a four-component decomposition. Invalid local directions carry masks in angular grids. No inversion or model coupling."
+[source]
+crate = "rsphysics-goms"
+authors = ["Xiaowen Li", "Alan H. Strahler"]
+references = ["https://doi.org/10.1109/36.134078"]
+license = "LicenseRef-GOMS-Authorized-Adaptation"
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "goms-c-full-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "goms-c-full-v1"
+implementation_version = "0.1.0"
+backend = "python"
+
+[input_semantics."/normalized_crown_density"]
+unit = "1"
+axes = []
+description = "Crown number density times horizontal radius squared."
+
+[input_semantics."/crown_axis_ratio"]
+unit = "1"
+axes = []
+description = "Vertical/horizontal crown semi-axis b/r."
+
+[input_semantics."/crown_height_ratio"]
+unit = "1"
+axes = []
+description = "Crown center height / vertical semi-axis h/b."
+
+[input_semantics."/relative_height_variation"]
+unit = "1"
+axes = []
+description = "Dimensionless height-variation term in beta."
+
+[input_semantics."/geometry_convention"]
+unit = "1"
+axes = []
+description = "area_consistent or legacy_c numerical convention."
+
+[input_semantics."/sunlit_ground_reflectance"]
+unit = "1"
+axes = ["band"]
+description = "Per-band component reflectance; equal vector lengths 1..10."
+
+[input_semantics."/sunlit_crown_reflectance"]
+unit = "1"
+axes = ["band"]
+description = "Per-band component reflectance; equal vector lengths 1..10."
+
+[input_semantics."/shaded_reflectance"]
+unit = "1"
+axes = ["band"]
+description = "Per-band component reflectance; equal vector lengths 1..10."
+
+[input_semantics."/solar_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Absolute direction in degrees; azimuths share the terrain-aspect reference."
+
+[input_semantics."/solar_azimuth_deg"]
+unit = "deg"
+axes = []
+description = "Absolute direction in degrees; azimuths share the terrain-aspect reference."
+
+[input_semantics."/view_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Absolute direction in degrees; azimuths share the terrain-aspect reference."
+
+[input_semantics."/view_azimuth_deg"]
+unit = "deg"
+axes = []
+description = "Absolute direction in degrees; azimuths share the terrain-aspect reference."
+
+[input_semantics."/slope_deg"]
+unit = "deg"
+axes = []
+description = "Absolute direction in degrees; azimuths share the terrain-aspect reference."
+
+[input_semantics."/slope_aspect_deg"]
+unit = "deg"
+axes = []
+description = "Absolute direction in degrees; azimuths share the terrain-aspect reference."
+
+[output_semantics."/brf"]
+unit = "1"
+axes = ["band"]
+description = "Dimensionless directional reflectance factor."
+
+[output_semantics."/brdf"]
+unit = "sr^-1"
+axes = ["band"]
+description = "BRF divided by pi."
+
+[output_semantics."/band_index"]
+unit = "1"
+axes = ["band"]
+description = "One-based band index; no wavelength is inferred."
+
+[output_semantics."/sunlit_ground_weight"]
+unit = "1"
+axes = []
+description = "Geometric mixing weight; check invalid_weight_count for approximation failures."
+
+[output_semantics."/sunlit_crown_weight"]
+unit = "1"
+axes = []
+description = "Geometric mixing weight; check invalid_weight_count for approximation failures."
+
+[output_semantics."/shaded_weight"]
+unit = "1"
+axes = []
+description = "Geometric mixing weight; check invalid_weight_count for approximation failures."
+
+[output_semantics."/invalid_weight_count"]
+unit = "1"
+axes = []
+description = "Selected-point weights outside [0,1]; retained rather than clipped."
+
+[output_semantics."/principal_view_zenith_deg"]
+unit = "deg"
+axes = ["principal"]
+description = "Angular-grid coordinate."
+
+[output_semantics."/principal_valid"]
+unit = "1"
+axes = ["principal"]
+description = "1=finite illuminated visible geometry; 0=invalid and BRF placeholder zero."
+
+[output_semantics."/principal_brf"]
+unit = "1"
+axes = ["band", "principal"]
+description = "Per-band angular reflectance factor; use the validity mask."
+
+[output_semantics."/hemisphere_view_zenith_deg"]
+unit = "deg"
+axes = ["hemisphere"]
+description = "Angular-grid coordinate."
+
+[output_semantics."/hemisphere_valid"]
+unit = "1"
+axes = ["hemisphere"]
+description = "1=finite illuminated visible geometry; 0=invalid and BRF placeholder zero."
+
+[output_semantics."/hemisphere_brf"]
+unit = "1"
+axes = ["band", "hemisphere"]
+description = "Per-band angular reflectance factor; use the validity mask."
+
+[output_semantics."/hemisphere_azimuth_deg"]
+unit = "deg"
+axes = ["hemisphere"]
+description = "Absolute viewing azimuth."
+
+[output_semantics."/hotspot_view_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Backscatter alignment zenith, equal to solar zenith."
+
+[output_semantics."/hotspot_view_azimuth_deg"]
+unit = "deg"
+axes = []
+description = "Backscatter alignment azimuth, equal to solar azimuth."
+
+[output_semantics."/hotspot_brf"]
+unit = "1"
+axes = ["band"]
+description = "BRF at exact sun-observer alignment, not necessarily the global angular maximum."
+
+[output_semantics."/hotspot_shaded_weight"]
+unit = "1"
+axes = []
+description = "Shared shade weight at exact alignment; zero in the corrected geometric convention."
+
+[output_semantics."/principal_shaded_weight"]
+unit = "1"
+axes = ["principal"]
+description = "Shared shade weight along the principal plane; invalid directions carry zero placeholders and a separate validity mask."

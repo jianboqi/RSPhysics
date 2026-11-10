@@ -4,7 +4,7 @@ from pathlib import Path
 import shutil
 
 ROOT = Path(__file__).resolve().parents[2]
-MODELS=['prospect-d','prosail-d','ross-li','tau-omega','water-cloud','sensors','smac','lmeb','gort-gpp']
+MODELS=['prospect-d','prosail-d','ross-li','tau-omega','water-cloud','sensors','smac','lmeb','gort-gpp','sort','i2em','fluspect','goms']
 
 
 def main():

@@ -21,7 +21,8 @@ def sort(*,
     water_film_thickness_mm: float = 0.3,
     particle_volume_fraction: float = 0.05,
     particle_refractive_index: float = 1.53,
-    particle_extinction_coefficient: float = 0.001
+    particle_extinction_coefficient: float = 0.001,
+    substrate_angle_mode:str='refracted',water_film_mode:str='legacy_scalar'
 ) -> dict:
     """Run the SORT soil optical forward model."""
     return run("soil.sort", locals())
@@ -39,9 +40,9 @@ def sort_l(*,
     """Run the SORT-L soil optical forward model."""
     return run("soil.sort-l", locals())
 
-def sort_batch(parameters, *, roughness_correction="none", shared_axes=False):
+def sort_batch(parameters, *, roughness_correction="none", substrate_angle_mode="refracted",water_film_mode="legacy_scalar",shared_axes=False):
     """NumPy batch in parameters_for("soil.sort") column order."""
-    return run_array("soil.sort", parameters, shared_axes=shared_axes, fixed={"roughness_correction":roughness_correction})
+    return run_array("soil.sort", parameters, shared_axes=shared_axes, fixed={"roughness_correction":roughness_correction,"substrate_angle_mode":substrate_angle_mode,"water_film_mode":water_film_mode})
 
 def sort_l_batch(parameters, *, shared_axes=False):
     """NumPy batch in parameters_for("soil.sort-l") column order."""

@@ -3,11 +3,11 @@ id = "ecosystem.gort-gpp"
 name = "GORT-GPP"
 family = "gort-gpp"
 category = "ecosystem"
-scientific_version = "Supplied Main4PSN / mvp=1 / flagSeason=0 / pointwise"
+scientific_version = "GORT pointwise photosynthesis / corrected and legacy numerics"
 implementation_version = "0.1.0"
 api_version = "0.1"
 status = "reference-validated"
-limitations = "Pointwise GORT radiation and sunlit/shaded Farquhar-Ball-Berry photosynthesis path from supplied Main4PSN. Explicit incident direct/diffuse PAR and solar zenith replace site/time/Excel preprocessing. Fixed MAXCROWNS=10, MAXORDER=5, original PI=3.1415926 and original angular lookup conventions retained. Output is net assimilation, not gross primary productivity or NEE. No annual station driver, ET, seasonal Vcmax tables, Beer/CI alternative modes or generic model coupling. Publication of the supplied source and adaptations is authorized by the project maintainer; see LICENSE-ORIGIN.md for component terms."
+limitations = "Pointwise GORT radiation and sunlit/shaded Farquhar-Ball-Berry photosynthesis path from supplied Main4PSN. Explicit incident direct/diffuse PAR and solar zenith replace site/time/Excel preprocessing. Default corrected gap/PAR arithmetic; legacy_matlab retains MAXCROWNS=10 and original angular conventions. MAXORDER=5 and original PI=3.1415926 retained. Output is net assimilation, not gross primary productivity or NEE. No annual station driver, ET, seasonal Vcmax tables, Beer/CI alternative modes or generic model coupling. Publication of the supplied source and adaptations is authorized by the project maintainer; see LICENSE-ORIGIN.md for component terms."
 [source]
 crate = "rsphysics-gort-gpp"
 authors = ["Authors of supplied GORT-GPP MATLAB research implementation", "RSPhysics contributors (Rust adaptation)"]
@@ -66,7 +66,7 @@ description = "Crown vertical/horizontal axis ratio."
 [input_semantics."/solar_zenith_deg"]
 unit = "deg"
 axes = []
-description = "Solar zenith; positive lower bound avoids original one-based zero-index failure."
+description = "Solar zenith; nadir is supported by corrected numerics; legacy mode requires at least 0.5 degrees."
 
 [input_semantics."/direct_par_umol_m2_s"]
 unit = "umol m^-2 s^-1"
@@ -181,12 +181,12 @@ description = "Absorbed PAR per shaded leaf area."
 [output_semantics."/between_crown_openness"]
 unit = "1"
 axes = []
-description = "Integrated between-crown openness using original quadrature."
+description = "Integrated between-crown openness using the selected numerical convention."
 
 [output_semantics."/within_crown_openness"]
 unit = "1"
 axes = []
-description = "Integrated within-crown openness using original quadrature."
+description = "Integrated within-crown openness using the selected numerical convention."
 
 [output_semantics."/floor_absorbed_par"]
 unit = "umol m^-2 s^-1"
@@ -207,3 +207,8 @@ description = "Between-crown gap probability at gap angles."
 unit = "1"
 axes = ["zenith"]
 description = "Within-crown gap probability at gap angles."
+
+[input_semantics."/numerical_convention"]
+unit = "1"
+axes = []
+description = "corrected (default): full Poisson conditional path expectation, separate quadrature endpoint angles, consistent zero-based angular lookup, energy-conserving direct PAR allocation and stable quadratic limit; legacy_matlab reproduces original numerical conventions."

@@ -1,9 +1,15 @@
 //! Supplied JPW tauw1i soil-forward path, fixed 1.41 GHz.
-use super::{Input, ModelError, Output};
+use super::{Input, ModelError, Output, SurfaceType};
 use num_complex::Complex64 as C;
 
 fn permittivity(p: &Input, tg: f64) -> C {
-    let f = 1.41e9;
+    let f = p.frequency_ghz * 1e9;
+    if p.surface_type == SurfaceType::Water {
+        return water(p, tg);
+    }
+    if p.frequency_ghz > 18. {
+        return wang(p, tg);
+    }
     let ts = tg - 273.15;
     let m = p.soil_moisture;
     if ts <= -0.5 {
@@ -58,11 +64,11 @@ fn point(p: &Input, tg: f64, eps: C, angle: f64) -> Point {
     let v = (root * mu - cc2) / (root * mu + cc2);
     let rv0 = v.norm_sqr();
     let rh0 = h.norm_sqr();
-    let q = p.roughness_mixing;
-    let rv =
-        ((1. - q) * rv0 + q * rh0) * (-p.roughness_height * mu.powf(p.roughness_exponent_v)).exp();
-    let rh =
-        ((1. - q) * rh0 + q * rv0) * (-p.roughness_height * mu.powf(p.roughness_exponent_h)).exp();
+    let water = p.surface_type == SurfaceType::Water;
+    let q = if water { 0. } else { p.roughness_mixing };
+    let height = if water { 0. } else { p.roughness_height };
+    let rv = ((1. - q) * rv0 + q * rh0) * (-height * mu.powf(p.roughness_exponent_v)).exp();
+    let rh = ((1. - q) * rh0 + q * rv0) * (-height * mu.powf(p.roughness_exponent_h)).exp();
     let tauh = p.nadir_optical_depth * (mu * mu + p.canopy_structure_h * sin2);
     let tauv = p.nadir_optical_depth
         * (mu * mu + p.canopy_structure_h * p.canopy_structure_v_ratio * sin2);
@@ -89,9 +95,13 @@ fn point(p: &Input, tg: f64, eps: C, angle: f64) -> Point {
     }
 }
 pub(super) fn simulate(p: &Input) -> Result<Output, ModelError> {
-    let tg = p.deep_temperature_k
-        + (p.soil_moisture / p.temperature_moisture_scale).powf(p.temperature_moisture_exponent)
-            * (p.surface_temperature_k - p.deep_temperature_k);
+    let tg = if p.surface_type == SurfaceType::Water {
+        p.water_temperature_k
+    } else {
+        p.deep_temperature_k
+            + (p.soil_moisture / p.temperature_moisture_scale).powf(p.temperature_moisture_exponent)
+                * (p.surface_temperature_k - p.deep_temperature_k)
+    };
     if !tg.is_finite() || !(250. ..=330.).contains(&tg) {
         return Err(super::domain(
             "effective soil temperature must be within [250,330] K",
@@ -122,4 +132,67 @@ pub(super) fn simulate(p: &Input) -> Result<Output, ModelError> {
         sweep_brightness_temperature_v_k: vs,
         sweep_brightness_temperature_h_k: hs,
     })
+}
+
+fn debye(ts: f64, sal: f64, f: f64) -> C {
+    let a =
+        1. + 1.613e-5 * ts * sal - 3.656e-3 * sal + 3.21e-5 * sal * sal - 4.232e-7 * sal.powi(3);
+    let ep0 = a * (87.134 - 1.949e-1 * ts - 1.276e-2 * ts * ts + 2.491e-4 * ts.powi(3));
+    let b =
+        1. + 2.282e-5 * ts * sal - 7.638e-4 * sal - 7.76e-6 * sal * sal + 1.105e-8 * sal.powi(3);
+    let tau = b * (1.1109e-10 - 3.824e-12 * ts + 6.938e-14 * ts * ts - 5.096e-16 * ts.powi(3));
+    C::new(4.9, 0.) + (ep0 - 4.9) / C::new(1., tau * f)
+}
+fn water(p: &Input, t: f64) -> C {
+    let f = p.frequency_ghz;
+    if t <= 272.65 {
+        let theta = 300. / t - 1.;
+        let alpha = (0.00504 + 0.0062 * theta) * (-22.1 * theta).exp();
+        let x = (335. / t).exp();
+        let beta = (0.0207 / t) * x / (x - 1.).powi(2)
+            + 1.16e-11 * f * f
+            + (-10.02 + 0.0364 * (t - 273.)).exp();
+        return C::new(3.1884 + 9.1e-4 * (t - 273.), -(alpha / f + beta * f));
+    }
+    let ts = t - 273.15;
+    let sal = p.water_salinity;
+    let dt = 25. - ts;
+    let io25 = sal * (0.18252 - 1.4619e-3 * sal + 2.093e-5 * sal * sal - 1.282e-7 * sal.powi(3));
+    let phi = dt
+        * (2.033e-2 + 1.266e-4 * dt + 2.464e-6 * dt * dt
+            - sal * (1.849e-5 - 2.551e-7 * dt + 2.551e-8 * dt * dt));
+    debye(ts, sal, f * 1e9)
+        - C::new(
+            0.,
+            io25 * (-phi).exp() / (2. * std::f64::consts::PI * 8.854e-12 * f * 1e9),
+        )
+}
+fn wang(p: &Input, t: f64) -> C {
+    let f = p.frequency_ghz * 1e9;
+    let moisture = p.soil_moisture;
+    let transition = 0.17;
+    let gamma = if p.frequency_ghz < 30. {
+        0.60
+    } else if p.frequency_ghz < 60. {
+        0.81
+    } else {
+        1.19
+    };
+    let epfw = debye(t - 273.15, 0.738, f)
+        - C::new(
+            0.,
+            0.13 * (2.66 - p.bulk_density_g_cm3)
+                / (2. * std::f64::consts::PI * f * 8.854e-12 * 2.66 * moisture),
+        );
+    let ice = C::new(3.2, 0.1);
+    let solids = C::new(5.5, 0.2);
+    if moisture <= transition {
+        let ex = ice + (epfw - ice) * gamma * moisture / transition;
+        1. + p.bulk_density_g_cm3 * (solids - 1.) / 2.66 + moisture * (ex - 1.)
+    } else {
+        let ex = ice + (epfw - ice) * gamma;
+        1. + p.bulk_density_g_cm3 * (solids - 1.) / 2.66
+            + transition * (ex - epfw)
+            + moisture * (epfw - 1.)
+    }
 }

@@ -3,11 +3,11 @@ id = "vegetation.fluspect-cx"
 name = "FLUSPECT-CX"
 family = "fluspect-cx"
 category = "vegetation"
-scientific_version = "FLUSPECT-CX / PROSPECT-D optics / SCOPE light 5x4 nm"
+scientific_version = "FLUSPECT-CX / D-PRO optics / full 1nm and light 5x4nm"
 implementation_version = "0.1.0"
 api_version = "0.1"
 status = "reference-validated"
-limitations = "Leaf-scale forward optics and fluorescence transfer, combined PSI+PSII. Optical grid 400..2400 nm at 1 nm. Excitation grid 400..750 nm at 5 nm; emission 640..848 nm at 4 nm. Matrices include the original 5 nm excitation integration weight; do not multiply by this weight twice. Fixed 59 degree leaf illumination transmission convention. PROSPECT-D optical data, no PRO protein/cellulose coefficients, no legacy -999 carotenoid selector, no photosystem separation, canopy or atmospheric coupling, energy balance, illumination spectrum or inversion. Matrices are transfer responses, not absolute SIF radiance."
+limitations = "Leaf-scale forward optics and fluorescence transfer, combined PSI+PSII as defined by the CX model. Optical grid 400..2400 nm at 1 nm. Full fluorescence grid: excitation 400..750 and emission 640..850 nm at 1 nm (default); optional original light grid 5/4 nm. Matrices act on photon spectra and include excitation-bin width. Energy spectra require lambda_exc/lambda_em conversion. Supports D/PRO coefficients, protein/CBC (PRO only), and fixed-carotenoid state -999. Negative emission calibration residue at 641 nm is set to zero; raw data and original negative responses are retained as evidence. Fixed 59 degree leaf illumination transmission. No canopy/atmosphere coupling, energy balance, photosynthetic regulation or inversion."
 [source]
 crate = "rsphysics-fluspect-cx"
 authors = ["Nastassia Vilfan", "Christiaan van der Tol", "Wout Verhoef", "Joris Timmermans", "Onno Muller", "Uwe Rascher"]
@@ -31,7 +31,8 @@ suite = "fluspect-cx-matlab-light-v1"
 implementation_version = "0.1.0"
 backend = "python"
 [data.hashes]
-"optics.csv.zlib" = "sha256:8867eb9c0617a955d60331b5f26b660e1440296a5117a11b9c8d37251e277318"
+"optics-d.csv.zlib" = "sha256:c7d9dc9e0e987fdcddec26c703e0ac28138e632d2f180d7f4a7f8b91854e6e3c"
+"optics-pro.csv.zlib" = "sha256:ee34773e5bae1521988b8d029c94358e374d01dc507b271f14d393d7bf914134"
 [input_semantics."/n"]
 unit = "1"
 axes = []
@@ -59,11 +60,11 @@ description = "Equivalent water thickness."
 [input_semantics."/dry_matter"]
 unit = "g cm^-2"
 axes = []
-description = "Dry matter content; PROSPECT-D coefficients."
+description = "Dry matter content; Coefficient-specific dry matter term; avoid double counting with protein/CBC."
 [input_semantics."/xanthophyll_state"]
 unit = "1"
 axes = []
-description = "Violaxanthin to zeaxanthin state, 0..1."
+description = "Violaxanthin to zeaxanthin state 0..1, or -999 for the original fixed carotenoid spectrum."
 [input_semantics."/fluorescence_efficiency"]
 unit = "1"
 axes = []
@@ -91,16 +92,36 @@ description = "Carotenoid fraction of total bulk absorption; not total absorptan
 [output_semantics."/excitation_wavelengths_nm"]
 unit = "nm"
 axes = ["excitation"]
-description = "71 excitation samples, 400..750 nm step 5."
+description = "Excitation grid 400..750 nm: 351 samples at 1 nm or 71 at 5 nm."
 [output_semantics."/emission_wavelengths_nm"]
 unit = "nm"
 axes = ["emission"]
-description = "53 emission samples, 640..848 nm step 4."
+description = "Emission grid: 211 samples 640..850 nm at 1 nm, or 53 samples 640..848 nm at 4 nm."
 [output_semantics."/fluorescence_backward"]
 unit = "1"
 axes = ["emission", "excitation"]
-description = "Combined-photosystem backward transfer matrix, includes 5 nm excitation-bin integration weight."
+description = "Combined-photosystem backward transfer matrix, acts on photon spectra and includes the selected excitation-bin integration weight."
 [output_semantics."/fluorescence_forward"]
 unit = "1"
 axes = ["emission", "excitation"]
-description = "Combined-photosystem forward transfer matrix, includes 5 nm excitation-bin integration weight."
+description = "Combined-photosystem forward transfer matrix, acts on photon spectra and includes the selected excitation-bin integration weight."
+
+[input_semantics."/protein"]
+unit = "g cm^-2"
+axes = []
+description = "Protein constituent; PRO coefficients required."
+
+[input_semantics."/carbon_based_constituents"]
+unit = "g cm^-2"
+axes = []
+description = "Carbon-based constituents; PRO coefficients required."
+
+[input_semantics."/optical_coefficients"]
+unit = "1"
+axes = []
+description = "prospect_d or prospect_pro optical coefficient table."
+
+[input_semantics."/spectral_resolution"]
+unit = "1"
+axes = []
+description = "full_1nm (default) or light_5x4 excitation/emission grid."

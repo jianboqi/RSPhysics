@@ -10,10 +10,12 @@ The original upstream license is retained in the component's
 UPSTREAM_LICENSE.txt; a complete GPLv3 text is included as LICENSE.
 The Apache-2.0 license for project-original code does not replace these terms.
 
-The selected optical data are Optipar2017_ProspectD.mat, exported to a canonical
-CSV with 17 significant digits and compressed losslessly. Protein/CBC inputs
-are fixed to zero. The Rust implementation retains the 15 doubling steps,
-5 nm excitation integration weight, and 4 nm emission grid. At zero absorption,
+The optical tables are Optipar2017_ProspectD.mat and
+Optipar2021_ProspectPRO_CX.mat, exported to canonical CSV with 17 significant
+digits and compressed losslessly. The PRO table supports protein/CBC inputs. The Rust implementation retains the 15 doubling steps,
+selected excitation-bin weight, and full 1 nm or original light 5/4 nm grids.
+The 641 nm negative calibration residue is set to zero for physical emission;
+raw coefficients and original negative matrix rows remain recorded. At zero absorption,
 the analytic conservative Stokes limit is used; at zero efficiency, both
 fluorescence matrices are explicitly zero rather than absent.
 

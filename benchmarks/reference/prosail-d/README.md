@@ -38,3 +38,14 @@ Native Debug maximum absolute error: 4.662936703e-15 on this Windows machine.
 Installed Python Release metrics are in `validation-report.json`. Browser
 metrics belong to the independent private RSPhysics-app project, whose
 public-model capabilities remain unchanged (`wasm=false` here).
+
+
+`full-expected.json.zlib` contains all nine original R fourSAIL outputs for
+32 Campbell/Verhoef cases. The corresponding leaf spectra are stored in
+`full-leaf-inputs.json.zlib` and come from the independently author-validated
+PROSPECT-D solver. The original canopy R routine is evaluated without arithmetic
+changes. `full-provenance.json` hashes both files. Recheck with:
+
+```sh
+node tooling/reference-runner/verify_prosail_full.mjs --source PATH/author-prosail
+```

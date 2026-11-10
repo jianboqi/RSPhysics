@@ -1,0 +1,711 @@
+[
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 0.0,
+    "view_zenith_deg": 0.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 45.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 20.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 180.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 90.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 20.0,
+    "view_zenith_deg": 0.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 0.0,
+    "view_zenith_deg": 60.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 180.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 75.0,
+    "view_zenith_deg": 80.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 90.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 50.0,
+    "view_zenith_deg": 70.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 150.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.0,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.01,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.5,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 1.0,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 0.5,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 3.0,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 1.0,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 5.0,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.0,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 1.5,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      1.0
+    ],
+    "sunlit_crown_reflectance": [
+      0.0
+    ],
+    "shaded_reflectance": [
+      0.0
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.0
+    ],
+    "sunlit_crown_reflectance": [
+      1.0
+    ],
+    "shaded_reflectance": [
+      0.0
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.0
+    ],
+    "sunlit_crown_reflectance": [
+      0.0
+    ],
+    "shaded_reflectance": [
+      1.0
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.3
+    ],
+    "sunlit_crown_reflectance": [
+      0.3
+    ],
+    "shaded_reflectance": [
+      0.3
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 80.0,
+    "view_zenith_deg": 80.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 180.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 30.0,
+    "view_azimuth_deg": 100.0,
+    "slope_deg": 20.0,
+    "slope_aspect_deg": 90.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 30.0,
+    "view_azimuth_deg": 100.0,
+    "slope_deg": 0.1,
+    "slope_aspect_deg": 90.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 350.0,
+    "view_azimuth_deg": 10.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 10.0,
+    "view_azimuth_deg": 30.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.1,
+      0.11,
+      0.12000000000000001,
+      0.13,
+      0.14,
+      0.15000000000000002,
+      0.16,
+      0.17,
+      0.18,
+      0.19
+    ],
+    "sunlit_crown_reflectance": [
+      0.3,
+      0.32,
+      0.33999999999999997,
+      0.36,
+      0.38,
+      0.4,
+      0.42,
+      0.44,
+      0.45999999999999996,
+      0.48
+    ],
+    "shaded_reflectance": [
+      0.02,
+      0.023,
+      0.026000000000000002,
+      0.029,
+      0.032,
+      0.035,
+      0.038000000000000006,
+      0.041,
+      0.044,
+      0.047
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 0.0,
+    "view_azimuth_deg": 0.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "area_consistent"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 70.0,
+    "view_azimuth_deg": 150.0,
+    "slope_deg": 12.0,
+    "slope_aspect_deg": 45.0,
+    "geometry_convention": "legacy_c"
+  },
+  {
+    "normalized_crown_density": 0.1,
+    "crown_axis_ratio": 1.733,
+    "crown_height_ratio": 2.577,
+    "relative_height_variation": 0.769,
+    "sunlit_ground_reflectance": [
+      0.2
+    ],
+    "sunlit_crown_reflectance": [
+      0.55
+    ],
+    "shaded_reflectance": [
+      0.05
+    ],
+    "solar_zenith_deg": 45.0,
+    "view_zenith_deg": 30.0,
+    "solar_azimuth_deg": 350.0,
+    "view_azimuth_deg": 10.0,
+    "slope_deg": 0.0,
+    "slope_aspect_deg": 0.0,
+    "geometry_convention": "legacy_c"
+  }
+]

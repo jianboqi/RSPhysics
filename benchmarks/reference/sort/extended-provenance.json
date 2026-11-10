@@ -1,0 +1,12 @@
+{
+  "source": "Supplied SORT forward source, same archive and pinned hashes as provenance.json",
+  "roughness_cases": 16,
+  "roughness_quadrature": "N=200, five standard deviations, bisector frame",
+  "layer_cases": 6,
+  "spectral_cases": 2,
+  "files": {
+    "roughness-expected.json": "3d5583109bb9953aab3d544a416f9ba60cfb8a9884ae82824282dcd916787b17",
+    "layer-expected.json": "5dddd671972c81a17ff1d4ff21d7c4994e245a8f5b8c3b97d86d01b360abb0f3",
+    "extended-expected.json.zlib": "8e094ee7c87988508ff9ad8c8f9bb379bfa1571e9aecd381ef727e57d67c5311"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "cases": 34,
+  "runtime": "MATLAB R2026a",
+  "source_manifest": "upstream-provenance.json",
+  "corrections": [
+    "Replace truncated conditional Poisson first moment with t/(1-exp(-t)).",
+    "Use distinct endpoint angles in trapezoidal openness quadrature.",
+    "Use angle index round(theta)+1 consistently.",
+    "Allocate direct absorbed PAR per unit sunlit leaf area as rad.direct/sunlitlai."
+  ],
+  "files": {
+    "inputs.json": "70a6be6edf71deaa4f1c691c0dc565bbbc8ca77f83404cab5f8cc8f90be90f7a",
+    "expected.json": "1d68258d209bc1e4323133acdd82f982ff283f3e7f4ba3ca0da2bb75fdf5dea2"
+  }
+}

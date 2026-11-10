@@ -18,3 +18,17 @@ reference source and leaves the original source unchanged. It retains the
 original arithmetic, including unused Fresnel integrations, the approximate
 wave number and the 0.01 rad incident-angle offset; it does not call the HV
 solver. Original MATLAB code is not bundled with RSPhysics.
+
+
+`full-inputs.json` / `full-expected.json` add 18 unmodified MATLAB reference
+cases for x-power and x-exponential roughness, exponents 1.2, 1.5 and 2, and
+incidence angles 10, 30 and 60 degrees. Rust evaluates the x-power transform
+through its positive Laplace integral, avoiding separate Bessel-K/Gamma overflow.
+The x-exponential Hankel transform retains the reference upper bound of nine.
+An exponent greater than two does not define a positive-definite isotropic
+x-exponential covariance and is rejected. Nonconverged integrals are errors.
+
+The extended oracle tightens only the original `quad` tolerance to 1e-12;
+`full-original-tolerance.json` retains its default-tolerance outputs. This
+separates default MATLAB integration error from a difference in the equations.
+Use `verify_i2em_source.py --extended` to reproduce the extended reference.

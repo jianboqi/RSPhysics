@@ -16,5 +16,8 @@ serde_json.workspace = true
 schemars.workspace = true
 sha2.workspace = true
 
+[dev-dependencies]
+miniz_oxide = "=0.8.9"
+
 [lints]
 workspace = true

@@ -1,0 +1,322 @@
+[
+  {
+    "mode": "shiltz_single",
+    "rms_slope": 0.1,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      20,
+      40,
+      60
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.0622453482535146,
+      0.1862073678117349,
+      0.40446671488714897
+    ]
+  },
+  {
+    "mode": "shiltz_single",
+    "rms_slope": 0.1,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      0,
+      0,
+      0
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.09953732412163374,
+      0.2772189138492583,
+      0.546521610778153
+    ]
+  },
+  {
+    "mode": "shiltz_single",
+    "rms_slope": 0.1,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      40,
+      40,
+      0
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.1293324602527995,
+      0.35569447436050033,
+      0.6789714072040917
+    ]
+  },
+  {
+    "mode": "shiltz_single",
+    "rms_slope": 0.1,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      60,
+      20,
+      150
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.038158520244305404,
+      0.1275022844461396,
+      0.31057189045043454
+    ]
+  },
+  {
+    "mode": "shiltz_single",
+    "rms_slope": 0.4,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      20,
+      40,
+      60
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.06070375585074878,
+      0.18032628225054967,
+      0.38642921236849437
+    ]
+  },
+  {
+    "mode": "shiltz_single",
+    "rms_slope": 0.4,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      0,
+      0,
+      0
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.09933198257879505,
+      0.2751018498376643,
+      0.5345848014649004
+    ]
+  },
+  {
+    "mode": "shiltz_single",
+    "rms_slope": 0.4,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      40,
+      40,
+      0
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.12920229375146222,
+      0.3545521945942505,
+      0.6742957379802789
+    ]
+  },
+  {
+    "mode": "shiltz_single",
+    "rms_slope": 0.4,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      60,
+      20,
+      150
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.033038983975677276,
+      0.10970476605516623,
+      0.2647300222292337
+    ]
+  },
+  {
+    "mode": "shiltz_full",
+    "rms_slope": 0.1,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      20,
+      40,
+      60
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.06795478007786224,
+      0.19191679963608252,
+      0.4101761467114966
+    ]
+  },
+  {
+    "mode": "shiltz_full",
+    "rms_slope": 0.1,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      0,
+      0,
+      0
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.10523745332766804,
+      0.2829190430552926,
+      0.5522217399841873
+    ]
+  },
+  {
+    "mode": "shiltz_full",
+    "rms_slope": 0.1,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      40,
+      40,
+      0
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.13503258945884922,
+      0.36139460356655,
+      0.6846715364101413
+    ]
+  },
+  {
+    "mode": "shiltz_full",
+    "rms_slope": 0.1,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      60,
+      20,
+      150
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.04449735830902808,
+      0.13384112251086228,
+      0.3169107285151572
+    ]
+  },
+  {
+    "mode": "shiltz_full",
+    "rms_slope": 0.4,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      20,
+      40,
+      60
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.08354148314813936,
+      0.20316400954794026,
+      0.40926693966588495
+    ]
+  },
+  {
+    "mode": "shiltz_full",
+    "rms_slope": 0.4,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      0,
+      0,
+      0
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.12213249940293225,
+      0.2979023666618015,
+      0.5573853182890376
+    ]
+  },
+  {
+    "mode": "shiltz_full",
+    "rms_slope": 0.4,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      40,
+      40,
+      0
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.15200281057566103,
+      0.37735271141844934,
+      0.6970962548044777
+    ]
+  },
+  {
+    "mode": "shiltz_full",
+    "rms_slope": 0.4,
+    "multifacet_reflectance": 0.3,
+    "geometry_deg": [
+      60,
+      20,
+      150
+    ],
+    "ssa": [
+      0.2,
+      0.5,
+      0.8
+    ],
+    "expected": [
+      0.058394336234567995,
+      0.13506011831405695,
+      0.29008537448812444
+    ]
+  }
+]

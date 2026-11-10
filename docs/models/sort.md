@@ -77,3 +77,34 @@ If coverage or film thickness is zero, wet and dry outputs are exactly equal. Th
 Anxin Ding (丁安心), Fujian Normal University. Contact: danxin@whu.edu.cn; danxin@fjnu.edu.cn.
 
 Ding, A. (2026). *SORT / SORT-L: Soil Optical Radiative Transfer Model*. Model documentation, version 1.0.0.
+
+
+## Roughness and water-film modes
+
+`roughness_correction` accepts `none`, `hapke_single`, `hapke_multi`,
+`shiltz_single` and `shiltz_full`. Shiltz uses a convergence-checked Gaussian
+slope integral; the full mode adds the multifacet contribution. These modes
+can be substantially slower than the Hapke approximations.
+
+`substrate_angle_mode` is `refracted` by default. `external` reproduces the
+external-angle substrate convention with legacy scalar water transport.
+`water_film_mode` accepts:
+
+- `legacy_scalar`: original scalar water-film closure and diffuse transmission.
+- `single_pass`: directional Beer–Lambert attenuation and the n^-2 radiance
+  Jacobian; omits internal return paths.
+- `adding`: experimental, convergence-checked angular transport with repeated
+  substrate/interface reflections, including azimuth reversal at the interface.
+
+Directional modes require refracted substrate angles. Adding with nonzero
+Shiltz roughness is explicitly unvalidated in the scientific reference and is
+rejected. Energy-invalid, singular or nonconverged configurations return errors;
+results are not normalized or clipped into range.
+
+```python
+wet = rsp.soil.sort(water_film_mode="single_pass")
+```
+
+The additional outputs `dry_basis_reflectance`, `single_scattering_albedo` and
+`substrate_brf` expose the spectral basis and the covered boundary before film
+propagation. All three selectors are available in `sort_batch`.

@@ -1,0 +1,80 @@
+[
+  {
+    "mode": "none",
+    "index": 1.33,
+    "tau": 0.02,
+    "ssa": 0.3,
+    "expected": 0.06702956119110731,
+    "report": {
+      "mu_order_per_segment": 8,
+      "azimuth_points": 32,
+      "absolute_difference": 4.0860619500288076e-06,
+      "converged": true
+    }
+  },
+  {
+    "mode": "none",
+    "index": 1.4,
+    "tau": 0.2,
+    "ssa": 0.3,
+    "expected": 0.06580608788411753,
+    "report": {
+      "mu_order_per_segment": 8,
+      "azimuth_points": 32,
+      "absolute_difference": 1.492332926525397e-06,
+      "converged": true
+    }
+  },
+  {
+    "mode": "hapke_single",
+    "index": 1.33,
+    "tau": 0.02,
+    "ssa": 0.3,
+    "expected": 0.06680193288099881,
+    "report": {
+      "mu_order_per_segment": 8,
+      "azimuth_points": 32,
+      "absolute_difference": 3.2261559590185396e-06,
+      "converged": true
+    }
+  },
+  {
+    "mode": "hapke_single",
+    "index": 1.4,
+    "tau": 0.2,
+    "ssa": 0.3,
+    "expected": 0.06563313854203369,
+    "report": {
+      "mu_order_per_segment": 8,
+      "azimuth_points": 32,
+      "absolute_difference": 8.487457294342748e-07,
+      "converged": true
+    }
+  },
+  {
+    "mode": "hapke_multi",
+    "index": 1.33,
+    "tau": 0.02,
+    "ssa": 0.3,
+    "expected": 0.06688811736702378,
+    "report": {
+      "mu_order_per_segment": 8,
+      "azimuth_points": 32,
+      "absolute_difference": 3.3542675913905695e-06,
+      "converged": true
+    }
+  },
+  {
+    "mode": "hapke_multi",
+    "index": 1.4,
+    "tau": 0.2,
+    "ssa": 0.3,
+    "expected": 0.06569659227704447,
+    "report": {
+      "mu_order_per_segment": 8,
+      "azimuth_points": 32,
+      "absolute_difference": 8.530363049263912e-07,
+      "converged": true
+    }
+  }
+]

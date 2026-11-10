@@ -1,6 +1,6 @@
 //! Forward equations adapted from jbferet/prosail commit 46549958 (MIT).
 //! 4SAIL, Campbell's original 13 irregular angle bins, and 20-step hotspot integral.
-use crate::Input;
+use crate::{Input, LeafAngleDistribution};
 use std::f64::consts::PI;
 
 pub struct Geometry {
@@ -26,7 +26,11 @@ impl Geometry {
             .max(0.)
             .sqrt(),
         };
-        for (angle, weight) in campbell(p.mean_leaf_angle_deg) {
+        let distribution = match p.leaf_angle_distribution {
+            LeafAngleDistribution::Campbell => campbell(p.mean_leaf_angle_deg),
+            LeafAngleDistribution::Verhoef => verhoef(p.lidf_a, p.lidf_b),
+        };
+        for (angle, weight) in distribution {
             let (chi_s, chi_o, frho, ftau) = volscatt(
                 sun,
                 view,
@@ -41,7 +45,7 @@ impl Geometry {
         }
         g
     }
-    pub fn solve(&self, rho: f64, tau: f64, soil: f64, p: &Input) -> (f64, f64) {
+    pub fn solve(&self, rho: f64, tau: f64, soil: f64, p: &Input) -> [f64; 9] {
         let Self {
             ks,
             ko,
@@ -66,35 +70,43 @@ impl Geometry {
         let vb = dob * rho + dof * tau;
         let vf = dof * rho + dob * tau;
         let w = sob * rho + sof * tau;
-        let e1 = (-m * lai).exp();
-        let e2 = e1 * e1;
-        let rinf = (att - m) / sigb;
-        let rinf2 = rinf * rinf;
-        let re = rinf * e1;
-        let denom = 1. - rinf2 * e2;
-        let j1ks = jfunc1(ks, m, lai);
-        let j2ks = jfunc2(ks, m, lai);
-        let j1ko = jfunc1(ko, m, lai);
-        let j2ko = jfunc2(ko, m, lai);
-        let ps = (sf + sb * rinf) * j1ks;
-        let qs = (sf * rinf + sb) * j2ks;
-        let pv = (vf + vb * rinf) * j1ko;
-        let qv = (vf * rinf + vb) * j2ko;
-        let rdd = rinf * (1. - e2) / denom;
-        let tdd = (1. - rinf2) * e1 / denom;
-        let tsd = (ps - re * qs) / denom;
-        let rsd = (qs - re * ps) / denom;
-        let tdo = (pv - re * qv) / denom;
-        let rdo = (qv - re * pv) / denom;
+        let (rdd, tdd, tsd, rsd, tdo, rdo, rsod) = if (1. - rho - tau).abs() < 1e-12 {
+            conservative(att, sigb, sf, sb, vf, vb, ks, ko, lai)
+        } else {
+            let e1 = (-m * lai).exp();
+            let e2 = e1 * e1;
+            let rinf = (att - m) / sigb;
+            let rinf2 = rinf * rinf;
+            let re = rinf * e1;
+            let denom = 1. - rinf2 * e2;
+            let j1ks = jfunc1(ks, m, lai);
+            let j2ks = jfunc2(ks, m, lai);
+            let j1ko = jfunc1(ko, m, lai);
+            let j2ko = jfunc2(ko, m, lai);
+            let ps = (sf + sb * rinf) * j1ks;
+            let qs = (sf * rinf + sb) * j2ks;
+            let pv = (vf + vb * rinf) * j1ko;
+            let qv = (vf * rinf + vb) * j2ko;
+            let rdd = rinf * (1. - e2) / denom;
+            let tdd = (1. - rinf2) * e1 / denom;
+            let tsd = (ps - re * qs) / denom;
+            let rsd = (qs - re * ps) / denom;
+            let tdo = (pv - re * qv) / denom;
+            let rdo = (qv - re * pv) / denom;
+            let tss = (-ks * lai).exp();
+            let too = (-ko * lai).exp();
+            let z = jfunc2(ks, ko, lai);
+            let g1 = (z - j1ks * too) / (ko + m);
+            let g2 = (z - j1ko * tss) / (ks + m);
+            let tv1 = (vf * rinf + vb) * g1;
+            let tv2 = (vf + vb * rinf) * g2;
+            let rsod = (tv1 * (sf + sb * rinf) + tv2 * (sf * rinf + sb)
+                - (rdo * qs + tdo * ps) * rinf)
+                / (1. - rinf2);
+            (rdd, tdd, tsd, rsd, tdo, rdo, rsod)
+        };
         let tss = (-ks * lai).exp();
         let too = (-ko * lai).exp();
-        let z = jfunc2(ks, ko, lai);
-        let g1 = (z - j1ks * too) / (ko + m);
-        let g2 = (z - j1ko * tss) / (ks + m);
-        let tv1 = (vf * rinf + vb) * g1;
-        let tv2 = (vf + vb * rinf) * g2;
-        let rsod = (tv1 * (sf + sb * rinf) + tv2 * (sf * rinf + sb) - (rdo * qs + tdo * ps) * rinf)
-            / (1. - rinf2);
         let alf = if p.hotspot > 0. {
             (self.dso / p.hotspot) * 2. / (ks + ko)
         } else {
@@ -134,7 +146,22 @@ impl Geometry {
         let dn = 1. - soil * rdd;
         let hemi = rsd + (tsd + tss) * soil * tdd / dn;
         let rsodt = rsod + ((tss + tsd) * tdo + (tsd + tss * soil * rdd) * too) * soil / dn;
-        (rsos + tsstoo * soil + rsodt, hemi)
+        let brf = rsos + tsstoo * soil + rsodt;
+        let rddt = rdd + tdd * soil * tdd / dn;
+        let rdot = rdo + tdd * soil * (tdo + too) / dn;
+        let abs_dir = 1. - hemi - (1. - soil) * tss - (1. - soil) * (tss * soil * rdd + tsd) / dn;
+        let abs_hem = 1. - rddt - (1. - soil) * tdd - (1. - soil) * (tdd * rdd * soil) / dn;
+        [
+            rdot,
+            brf,
+            rddt,
+            hemi,
+            1. - too,
+            abs_dir,
+            abs_hem,
+            hemi,
+            rddt,
+        ]
     }
 }
 fn jfunc1(k: f64, m: f64, l: f64) -> f64 {
@@ -224,4 +251,75 @@ fn volscatt(s: f64, o: f64, psi: f64, l: f64) -> (f64, f64, f64, f64) {
         ((PI - bt2) * t1 + t2).max(0.) / (2. * PI * PI),
         (-bt2 * t1 + t2).max(0.) / (2. * PI * PI),
     )
+}
+
+// Exact m=0 transfer-matrix limit: exp(A*x)=I+A*x, avoiding 0/0 in rinf.
+#[allow(clippy::too_many_arguments)]
+fn conservative(
+    att: f64,
+    sigb: f64,
+    sf: f64,
+    sb: f64,
+    vf: f64,
+    vb: f64,
+    ks: f64,
+    ko: f64,
+    l: f64,
+) -> (f64, f64, f64, f64, f64, f64, f64) {
+    let j0 = |k: f64| -(-k * l).exp_m1() / k;
+    let j1 = |k: f64| (j0(k) - l * (-k * l).exp()) / k;
+    let source = |k: f64, f: f64, b: f64| {
+        let i0 = j0(k);
+        let i1 = (l - i0) / k;
+        let reflect = (b * i0 + (sigb * f + att * b) * i1) / (1. + att * l);
+        let transmit = sigb * l * reflect + f * i0 + (-att * f - sigb * b) * i1;
+        (transmit, reflect)
+    };
+    let (tsd, rsd) = source(ks, sf, sb);
+    let (tdo, rdo) = source(ko, vf, vb);
+    let s0 = (j0(ko) - j0(ko + ks)) / ks;
+    let s1 = j1(ko) / ks - s0 / ks;
+    let d = sigb * rsd * j1(ko) + sf * s0 + (-att * sf - sigb * sb) * s1;
+    let u = rsd * (j0(ko) + att * j1(ko)) - sb * s0 + (-sigb * sf - att * sb) * s1;
+    (
+        sigb * l / (1. + att * l),
+        1. / (1. + att * l),
+        tsd,
+        rsd,
+        tdo,
+        rdo,
+        vb * d + vf * u,
+    )
+}
+fn verhoef(a: f64, b: f64) -> Vec<(f64, f64)> {
+    let upper: [f64; 13] = [
+        10., 20., 30., 40., 50., 60., 70., 80., 82., 84., 86., 88., 90.,
+    ];
+    let mut previous = 0.;
+    let mut lower = 0.;
+    let mut out = vec![];
+    for t in upper {
+        let cumulative = if t == 90. {
+            1.
+        } else if a >= 1. {
+            1. - t.to_radians().cos()
+        } else {
+            let p = 2. * t.to_radians();
+            let mut x = p;
+            let mut y = 0.;
+            for _ in 0..10000 {
+                y = a * x.sin() + 0.5 * b * (2. * x).sin();
+                let dx = 0.5 * (y - x + p);
+                x += dx;
+                if dx.abs() < 1e-8 {
+                    break;
+                }
+            }
+            (2. * y + p) / PI
+        };
+        out.push(((lower + t) / 2., cumulative - previous));
+        previous = cumulative;
+        lower = t;
+    }
+    out
 }

@@ -110,3 +110,25 @@ fn physical_limits_and_invalid_inputs() {
         assert!(evaluate(&p).is_err());
     }
 }
+
+#[test]
+fn independent_scattering_and_attenuation_descriptors() {
+    use rsphysics_water_cloud::DescriptorMode;
+    let input = Input {
+        descriptor_mode: DescriptorMode::Independent,
+        scattering_descriptor: 3.,
+        attenuation_descriptor: 0.5,
+        ..Input::default()
+    };
+    let o = evaluate(&input).unwrap();
+    let c = 40_f64.to_radians().cos();
+    let t = (-2. * 0.2 * 0.5 / c).exp();
+    close(o.two_way_transmissivity, t);
+    close(o.vegetation_backscatter, 0.1 * 3. * c * (1. - t));
+    let no_attenuation = evaluate(&Input {
+        attenuation_descriptor: 0.,
+        ..input
+    })
+    .unwrap();
+    close(no_attenuation.sigma0, 0.1);
+}

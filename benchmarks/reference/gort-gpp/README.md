@@ -36,3 +36,11 @@ python tooling/reference-runner/clean.py --model gort-gpp --remove
 
 Cleanup preserves reference fixtures, provenance, Rust source, and Python runtime.
 Daily tests do not require the original sources or MATLAB.
+
+
+## Complete forward reference
+
+34 corrected cases include nadir. Original fixtures select legacy_matlab explicitly; the corrected suite verifies full conditional Poisson expectation, matching trapezoid endpoints, angular lookup and PAR allocation.
+
+`full-provenance.json` records the changes and fixture hashes. Recompute using
+`python tooling/reference-runner/verify_extended_matlab.py --model gort-gpp --source PATH`.

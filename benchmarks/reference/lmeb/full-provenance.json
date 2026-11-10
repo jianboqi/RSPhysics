@@ -1,0 +1,12 @@
+{
+  "cases": 40,
+  "runtime": "MATLAB R2026a",
+  "source_manifest": "upstream-provenance.json",
+  "corrections": [
+    "Define tg=teff before water/ice surface emission; numerical functions otherwise unchanged."
+  ],
+  "files": {
+    "inputs.json": "5014efa8868f72d591afc56782ec3f4ed77b18b7e21dbaef1992fc5d57845f39",
+    "expected.json": "891c5bdb696eae67e9d6e7d450587e879d265bd4264a5ec2805e5c2f5e68d6c5"
+  }
+}

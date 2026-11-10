@@ -1,6 +1,6 @@
 // FLUSPECT-CX equations adapted from the authors' SCOPE implementation (GPLv3).
 // Verhoef, van der Tol, Timmermans and Vilfan. See component notices.
-use crate::{EMISSION_COUNT, EXCITATION_COUNT, Input, Output};
+use crate::{Input, Output};
 
 // The E1 numerical helper follows the MIT-origin RSPhysics PROSPECT implementation.
 fn e1(x: f64) -> f64 {
@@ -79,15 +79,35 @@ struct Band {
     talf: f64,
     phi: f64,
 }
-fn band(p: &Input, c: &[f64; 11]) -> Band {
-    let [_, nr, kab, _, ks, kw, kdm, kcav, kcaz, kant, phi] = *c;
-    let kca = (1. - p.xanthophyll_state) * kcav + p.xanthophyll_state * kcaz;
+fn band(p: &Input, c: &[f64; 13]) -> Band {
+    let [
+        _,
+        nr,
+        kab,
+        kca_fixed,
+        ks,
+        kw,
+        kdm,
+        kcav,
+        kcaz,
+        kant,
+        phi,
+        kp,
+        kcbc,
+    ] = *c;
+    let kca = if p.xanthophyll_state == -999. {
+        kca_fixed
+    } else {
+        (1. - p.xanthophyll_state) * kcav + p.xanthophyll_state * kcaz
+    };
     let kall = (p.chlorophyll * kab
         + p.carotenoids * kca
         + p.dry_matter * kdm
         + p.water * kw
         + p.brown_pigments * ks
-        + p.anthocyanins * kant)
+        + p.anthocyanins * kant
+        + p.protein * kp
+        + p.carbon_based_constituents * kcbc)
         / p.n;
     let tint = if kall > 0. {
         (1. - kall) * (-kall).exp() + kall * kall * e1(kall)
@@ -169,14 +189,15 @@ fn band(p: &Input, c: &[f64; 11]) -> Band {
         r21,
         t21,
         talf,
-        phi,
+        phi: phi.max(0.),
     }
 }
-pub(super) fn simulate(p: &Input, coefficients: &[[f64; 11]]) -> Output {
+pub(super) fn simulate(p: &Input, coefficients: &[[f64; 13]]) -> Output {
     let bands: Vec<_> = coefficients.iter().map(|c| band(p, c)).collect();
-    let ei: Vec<usize> = (0..EXCITATION_COUNT).map(|i| i * 5).collect();
-    let fi: Vec<usize> = (0..EMISSION_COUNT).map(|i| 240 + i * 4).collect();
-    let mut mb = vec![vec![0.; EXCITATION_COUNT]; EMISSION_COUNT];
+    let (ne, nf, excitation_step, emission_step) = p.spectral_resolution.grid();
+    let ei: Vec<usize> = (0..ne).map(|i| i * excitation_step).collect();
+    let fi: Vec<usize> = (0..nf).map(|i| 240 + i * emission_step).collect();
+    let mut mb = vec![vec![0.; ne]; nf];
     let mut mf = mb.clone();
     if p.fluorescence_efficiency > 0. {
         let eps = 2_f64.powi(-15);
@@ -195,7 +216,7 @@ pub(super) fn simulate(p: &Input, coefficients: &[[f64; 11]]) -> Output {
             for (e, &i) in ei.iter().enumerate() {
                 let sigmoid = 1.
                     / (1. + (-((400 + j) as f64) / 10.).exp() * (((400 + i) as f64) / 10.).exp());
-                mb[f][e] = 5.
+                mb[f][e] = excitation_step as f64
                     * p.fluorescence_efficiency
                     * (0.5 * bands[j].phi)
                     * eps
@@ -207,8 +228,8 @@ pub(super) fn simulate(p: &Input, coefficients: &[[f64; 11]]) -> Output {
         for _ in 0..15 {
             let xe: Vec<_> = te.iter().zip(&re).map(|(t, r)| t / (1. - r * r)).collect();
             let xf: Vec<_> = tf.iter().zip(&rf).map(|(t, r)| t / (1. - r * r)).collect();
-            for f in 0..EMISSION_COUNT {
-                for e in 0..EXCITATION_COUNT {
+            for f in 0..nf {
+                for e in 0..ne {
                     let x = xf[f] * xe[e];
                     let a11 = xf[f] + xe[e];
                     let a12 = x * (rf[f] + re[e]);
@@ -220,11 +241,11 @@ pub(super) fn simulate(p: &Input, coefficients: &[[f64; 11]]) -> Output {
                     mb[f][e] = backward * a21 + forward * a22;
                 }
             }
-            for i in 0..EXCITATION_COUNT {
+            for i in 0..ne {
                 te[i] *= xe[i];
                 re[i] *= 1. + te[i];
             }
-            for i in 0..EMISSION_COUNT {
+            for i in 0..nf {
                 tf[i] *= xf[i];
                 rf[i] *= 1. + tf[i];
             }

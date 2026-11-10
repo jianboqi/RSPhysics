@@ -79,6 +79,10 @@ def parameter_grid(model_id, varying, *, base=None, max_samples=1_000_000):
     if unknown:raise ModelError('invalid_parameter','unknown parameters: '+', '.join(sorted(unknown)))
     schema=describe(model_id)['input_schema']['properties']
     defaults={key:schema[key]['default'] for key in columns};defaults.update(base or {})
+    for key,value in list(defaults.items()):
+        if isinstance(value,(list,tuple)):
+            if len(value)!=1:raise ModelError("invalid_parameter","numeric parameter grids require single-band coefficients; use run_batch for multiband mappings")
+            defaults[key]=value[0]
     choices=[real_array(varying[key],ndim=1,name=key) if key in varying else real_array([defaults[key]],ndim=1,name=key) for key in columns]
     count=1
     for choice in choices:count*=len(choice)

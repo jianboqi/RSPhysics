@@ -8,9 +8,26 @@ mod solver;
 fn domain(s: impl Into<String>) -> ModelError {
     ModelError::new(ErrorKind::OutOfDomain, s)
 }
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum SurfaceType {
+    #[default]
+    Soil,
+    Water,
+}
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, JsonSchema)]
 #[serde(default, deny_unknown_fields)]
 pub struct Input {
+    #[schemars(range(min=0.1,max=100.0),extend("x-unit"="GHz"))]
+    pub frequency_ghz: f64,
+    #[schemars(with="String",extend("enum"=["soil", "water"]))]
+    pub surface_type: SurfaceType,
+    /// Water/ice temperature; water branch selects ice at <=272.65 K.
+    #[schemars(range(min=250.0,max=330.0),extend("x-unit"="K"))]
+    pub water_temperature_k: f64,
+    #[schemars(range(min=0.0,max=40.0),extend("x-unit"="g kg^-1"))]
+    pub water_salinity: f64,
+
     /// Volumetric soil moisture; positive to avoid original zero-moisture singularity.
     #[schemars(range(min=0.005,max=0.6),extend("x-unit"="m^3 m^-3"))]
     pub soil_moisture: f64,
@@ -75,6 +92,10 @@ pub struct Input {
 impl Default for Input {
     fn default() -> Self {
         Self {
+            frequency_ghz: 1.41,
+            surface_type: SurfaceType::Soil,
+            water_temperature_k: 300.,
+            water_salinity: 0.,
             soil_moisture: 0.07,
             nadir_optical_depth: 0.0,
             sky_air_temperature_k: 300.0,
@@ -101,6 +122,9 @@ impl Default for Input {
 impl Input {
     pub fn validate(&self) -> Result<(), ModelError> {
         for (name, v, lo, hi) in [
+            ("frequency_ghz", self.frequency_ghz, 0.1, 100.),
+            ("water_temperature_k", self.water_temperature_k, 250., 330.),
+            ("water_salinity", self.water_salinity, 0., 40.),
             ("soil_moisture", self.soil_moisture, 0.005, 0.6),
             ("nadir_optical_depth", self.nadir_optical_depth, 0.0, 3.0),
             (

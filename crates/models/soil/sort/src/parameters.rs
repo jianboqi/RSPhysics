@@ -11,9 +11,26 @@ pub enum Roughness {
     None,
     HapkeSingle,
     HapkeMulti,
+    ShiltzSingle,
+    ShiltzFull,
+}
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum SubstrateAngles {
+    #[default]
+    Refracted,
+    External,
+}
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum FilmTransport {
+    #[default]
+    LegacyScalar,
+    SinglePass,
+    Adding,
 }
 fn roughness_schema(_: &mut schemars::SchemaGenerator) -> schemars::Schema {
-    schemars::json_schema!({"type":"string","enum":["none","hapke_single","hapke_multi"]})
+    schemars::json_schema!({"type":"string","enum":["none","hapke_single","hapke_multi","shiltz_single","shiltz_full"]})
 }
 #[derive(Debug, Clone, Serialize, Deserialize, JsonSchema)]
 #[serde(default, deny_unknown_fields)]
@@ -75,6 +92,10 @@ pub struct Input {
     /// Macroscopic surface roughness operator.
     #[schemars(schema_with="roughness_schema",extend("x-unit"="1"))]
     pub roughness_correction: Roughness,
+    #[schemars(with="String",extend("enum"=["refracted", "external"]))]
+    pub substrate_angle_mode: SubstrateAngles,
+    #[schemars(with="String",extend("enum"=["legacy_scalar", "single_pass", "adding"]))]
+    pub water_film_mode: FilmTransport,
 }
 impl Default for Input {
     fn default() -> Self {
@@ -98,6 +119,8 @@ impl Default for Input {
             rms_slope: 0.4,
             multifacet_reflectance: 0.0,
             roughness_correction: Roughness::None,
+            substrate_angle_mode: SubstrateAngles::Refracted,
+            water_film_mode: FilmTransport::LegacyScalar,
         }
     }
 }
@@ -206,6 +229,24 @@ impl Input {
                     "phase parameters yield a negative scattering function",
                 ));
             }
+        }
+        if self.water_film_mode != FilmTransport::LegacyScalar
+            && self.substrate_angle_mode != SubstrateAngles::Refracted
+        {
+            return Err(domain(
+                "directional film transport requires refracted substrate angles",
+            ));
+        }
+        if self.water_film_mode == FilmTransport::Adding
+            && matches!(
+                self.roughness_correction,
+                Roughness::ShiltzSingle | Roughness::ShiltzFull
+            )
+            && self.rms_slope > 0.
+        {
+            return Err(domain(
+                "angular adding with a nonzero Shiltz slope integral is not validated; choose single_pass or legacy_scalar",
+            ));
         }
         Ok(())
     }

@@ -25,3 +25,15 @@ Run `python benchmarks/reference/fluspect-cx/verify.py` for offline checks.
 
 Recompute with separately obtained pinned source/data files using
 `python tooling/reference-runner/verify_fluspect_source.py --source DIRECTORY`.
+
+
+Eight additional cases in `full-inputs.json` and `full-expected.json.zlib` cover
+the full 1 nm fluorescence grid, D/PRO coefficients, protein/CBC, fixed-carotenoid
+state -999 and zero fluorescence efficiency. On common inputs the full-grid
+SCOPE wrapper agrees exactly with the standalone author full-grid routine.
+
+The D table has a negative emission residue at 641 nm (-4.5368895016696e-6).
+The solver and full-grid wrapper set it to zero for physical emission;
+`negative-emission-evidence.json.zlib` retains original negative matrix rows.
+Raw coefficient bytes remain unchanged. Matrices act on photon spectra;
+energy-flux conversion is tested independently using lambda_exc/lambda_em.

@@ -1,5 +1,8 @@
 {
   "expected.json.zlib": "89746b6ed57a5ea0d354d41d69a1817fdf7b9a0255a77747834d4243e9d2fb71",
-  "inputs.json": "505ca10041f90c01aa5677d1055c35ab7e5378e2401f65dcd7ed847acd7aa37f",
-  "provenance.json": "c0c2f7a8dba2de4625ebd97b2d6967aabcd4d750f98067ea6399bb0e76b262b9"
+  "full-expected.json.zlib": "e957b50b8e02c4eccba60888055b447b7079cd9513d61f0ad4e85991d05ed0e3",
+  "full-inputs.json": "93b7f935f5cb23fbe2e0ce8d4c91ad489e57cc3f0cfacb55911147319f4b2cf5",
+  "inputs.json": "9221aee71abd949059469019d719c8c8d74be14e95e13723571618b34a617b15",
+  "negative-emission-evidence.json.zlib": "5df7d4b9576fdc435f1d6481fbcb59ea518c085a5d8dd702c47a6782b2aa18e3",
+  "provenance.json": "0f12e21c7c5cbb1536f6aa82ffc63dfe064dbd3f0b574e4b04c2b88e58f8b144"
 }

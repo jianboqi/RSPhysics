@@ -1,6 +1,6 @@
 # L-MEB
 
-L-MEB models L-band soil–vegetation microwave emission. This interface provides 1.41 GHz soil-forward calculations at vertical and horizontal polarization.
+L-MEB models L-band soil–vegetation microwave emission. The forward interface provides soil, water and ice calculations at vertical and horizontal polarization; the default frequency is 1.41 GHz.
 
 ## How it works
 
@@ -58,10 +58,26 @@ Model ID: `microwave.lmeb`. Use the same ID with `rsp.run`, `rsp.run_array`, or
 
 ## Scope
 
-The supported frequency is 1.41 GHz. Soil-forward mode includes frozen-soil and dry-sand parameterizations. Water surfaces, higher-frequency formulations, and inversion are outside this interface. Soil moisture is a volume fraction; texture fractions sum to at most one. Sky-model air temperature is supplied separately.
+Frequency is selectable from 0.1–100 GHz. Soil uses the supplied Dobson branch up to 18 GHz and Wang branch above 18 GHz, including its 30/60 GHz parameter changes. Water uses saline-water dielectric properties, switching to pure ice at 272.65 K. These numerical branches do not establish validity across the full input range. The prescribed sky model remains an L-band approximation; its accuracy at higher frequencies is not implied. Inversion is outside this forward interface. Soil moisture is a volume fraction; texture fractions sum to at most one. Sky-model air temperature is supplied separately.
 
 ## Authors and references
 
 Jean-Pierre Wigneron and collaborators.
 
 - [Wigneron et al. (2007). L-band Microwave Emission of the Biosphere (L-MEB) Model: Description and calibration against experimental data sets over crop fields. Remote Sensing of Environment 107, 639–655.](https://doi.org/10.1016/j.rse.2006.10.014)
+
+
+Set `surface_type="water"`, `water_temperature_k` and `water_salinity` (g/kg)
+for water/ice. This branch disables empirical soil roughness and uses the water
+temperature for surface emission. The undefined soil-temperature variable in
+the original water branch is corrected. Retained `soil_*` output names refer
+to the selected surface's dielectric and reflectivity diagnostics.
+
+```python
+water = rsp.microwave.lmeb(surface_type="water", frequency_ghz=1.41,
+    water_temperature_k=290., water_salinity=35.)
+ice = rsp.microwave.lmeb(surface_type="water", water_temperature_k=260.)
+```
+
+The NumPy table has 23 columns: the original 20, followed by frequency,
+water temperature and salinity. `surface_type` is a batch selector.

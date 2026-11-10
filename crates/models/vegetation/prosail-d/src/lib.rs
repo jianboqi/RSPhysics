@@ -1,7 +1,7 @@
 //! PROSAIL-D (PROSPECT-D + 4SAIL), authored forward-model reference, not a coupling framework.
 mod parameters;
 mod sail;
-pub use parameters::Input;
+pub use parameters::{Input, LeafAngleDistribution};
 
 use rsphysics_core::SpectralAxis;
 use rsphysics_model_api::{
@@ -16,6 +16,14 @@ const SOIL: &str = include_str!("../data/soil.tsv");
 #[derive(Debug, Clone, Serialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Output {
+    pub hemispherical_directional_reflectance: Vec<f64>,
+    pub bihemispherical_reflectance: Vec<f64>,
+    pub vegetation_cover: Vec<f64>,
+    pub direct_absorptance: Vec<f64>,
+    pub diffuse_absorptance: Vec<f64>,
+    pub direct_albedo: Vec<f64>,
+    pub diffuse_albedo: Vec<f64>,
+
     pub wavelengths_nm: SpectralAxis,
     /// Direct-beam bidirectional reflectance factor, not bounded by one.
     pub brf: Vec<f64>,
@@ -98,6 +106,13 @@ impl Model {
             return Ok(Output {
                 wavelengths_nm: axis,
                 brf: soil.clone(),
+                hemispherical_directional_reflectance: soil.clone(),
+                bihemispherical_reflectance: soil.clone(),
+                vegetation_cover: vec![0.; BAND_COUNT],
+                direct_absorptance: vec![0.; BAND_COUNT],
+                diffuse_absorptance: vec![0.; BAND_COUNT],
+                direct_albedo: soil.clone(),
+                diffuse_albedo: soil.clone(),
                 hemispherical_reflectance: soil,
             });
         }
@@ -105,15 +120,36 @@ impl Model {
         let geometry = sail::Geometry::new(input);
         let mut brf = Vec::with_capacity(BAND_COUNT);
         let mut hemispherical_reflectance = Vec::with_capacity(BAND_COUNT);
+        let mut hemispherical_directional_reflectance = Vec::with_capacity(BAND_COUNT);
+        let mut bihemispherical_reflectance = Vec::with_capacity(BAND_COUNT);
+        let mut vegetation_cover = Vec::with_capacity(BAND_COUNT);
+        let mut direct_absorptance = Vec::with_capacity(BAND_COUNT);
+        let mut diffuse_absorptance = Vec::with_capacity(BAND_COUNT);
+        let mut direct_albedo = Vec::with_capacity(BAND_COUNT);
+        let mut diffuse_albedo = Vec::with_capacity(BAND_COUNT);
         for ((rho, tau), soil) in leaf.reflectance.iter().zip(&leaf.transmittance).zip(soil) {
-            let (r, h) = geometry.solve(*rho, *tau, soil, input);
+            let [rdot, r, rddt, h, fc, ad, ah, asd, add] = geometry.solve(*rho, *tau, soil, input);
             brf.push(r);
             hemispherical_reflectance.push(h);
+            hemispherical_directional_reflectance.push(rdot);
+            bihemispherical_reflectance.push(rddt);
+            vegetation_cover.push(fc);
+            direct_absorptance.push(ad);
+            diffuse_absorptance.push(ah);
+            direct_albedo.push(asd);
+            diffuse_albedo.push(add);
         }
         let output = Output {
             wavelengths_nm: axis,
             brf,
             hemispherical_reflectance,
+            hemispherical_directional_reflectance,
+            bihemispherical_reflectance,
+            vegetation_cover,
+            direct_absorptance,
+            diffuse_absorptance,
+            direct_albedo,
+            diffuse_albedo,
         };
         self.validate_output(&output)?;
         Ok(output)
@@ -140,6 +176,22 @@ impl PhysicsModel for Model {
                 ErrorKind::Internal,
                 "PROSAIL output shape mismatch",
             ));
+        }
+        for a in [
+            &output.hemispherical_directional_reflectance,
+            &output.bihemispherical_reflectance,
+            &output.vegetation_cover,
+            &output.direct_absorptance,
+            &output.diffuse_absorptance,
+            &output.direct_albedo,
+            &output.diffuse_albedo,
+        ] {
+            if a.len() != BAND_COUNT || a.iter().any(|v| !v.is_finite() || *v < -2e-8) {
+                return Err(ModelError::new(
+                    ErrorKind::NonConvergence,
+                    "invalid 4SAIL flux or absorptance",
+                ));
+            }
         }
         for (&brf, &hemi) in output.brf.iter().zip(&output.hemispherical_reflectance) {
             if !brf.is_finite()

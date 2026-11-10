@@ -42,6 +42,7 @@ reflectance = leaf["result"]["reflectance"]
 | Vegetation optics | [FLUSPECT-CX](docs/models/fluspect-cx.md) | Leaf optics and fluorescence transfer |
 | Vegetation optics | [PROSPECT-D](docs/models/prospect-d.md) | Leaf reflectance and transmittance |
 | Vegetation optics | [PROSAIL-D](docs/models/prosail-d.md) | Canopy reflectance |
+| Vegetation optics | [GOMS](docs/models/goms.md) | Discrete-crown reflectance and mutual shadowing |
 | Surface reflectance | [Ross–Li](docs/models/ross-li.md) | Directional reflectance and BRDF |
 | Passive microwave | [Tau–omega](docs/models/tau-omega.md) | Soil–vegetation brightness temperature |
 | Passive microwave | [L-MEB](docs/models/lmeb.md) | L-band dual-polarization emission |

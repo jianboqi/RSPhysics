@@ -1,0 +1,28 @@
+{
+  "archive_sha256": "c5b1aada467e68b7e997100bf06ed6c52aae727456831402af8d4556aeb64f48",
+  "source_sha256": "d40e48bf3cd9cf0063ce3e567aab71b62ebc25b234b1dae045dd69406ee337af",
+  "compiler": "MSVC 2022 /O2 /fp:precise, Windows x64",
+  "cases": 31,
+  "features": [
+    "All original structural parameters",
+    "1..10 spectral bands",
+    "Absolute solar/view zenith and azimuth",
+    "Terrain slope/aspect",
+    "Area-consistent and original-C numerical conventions"
+  ],
+  "instrumentation": "Copy three local weights into output globals after their calculation; no scientific arithmetic changed. Original supplied source hash retained.",
+  "corrections": [
+    "Use full precision pi.",
+    "Remove the erroneous /PI from general-azimuth overlap area.",
+    "Update projected tangent distances after slope-frame rotation.",
+    "Fold relative azimuth into 0..PI.",
+    "Use atan2 for the slope-frame azimuth, including its normal-direction limit.",
+    "Apply every nonzero terrain slope; the legacy-C convention retains the original 0.01 rad threshold."
+  ],
+  "backfacing": "Directions below the local transformed horizon are marked invalid. Angular arrays carry validity masks; zero values in invalid cells are placeholders.",
+  "nadir_example": {
+    "original_ground_weight": 0.5895955307385813,
+    "consistent_ground_weight": 0.7304026910486456,
+    "poisson_ground_probability": 0.7304026910486456
+  }
+}
