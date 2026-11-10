@@ -126,3 +126,12 @@ FLUSPECT_GPL-3.0.txt. Original project code remains Apache-2.0.
 
 GOMS: Li and Strahler (1992), DOI 10.1109/36.134078.
 Component distribution authorization is recorded in GOMS_COMPONENT_LICENSE.txt.
+
+## Shared 4SAIL transport and 4SAIL-TIR
+
+The shared optical transport in rsphysics-numerics/src/sail.rs retains the
+MIT attribution to Jean-Baptiste Féret (2026), pinned prosail commit
+46549958295b605ac1e211a693d4b2287c3a5a13, and the MIT terms above.
+The new thermal source implementation follows Verhoef, Jia, Xiao and Su (2007)
+and is RSPhysics-original Apache-2.0 code. No external optical coefficient
+table or third-party thermal source implementation is bundled for this model.

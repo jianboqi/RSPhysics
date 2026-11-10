@@ -14,6 +14,7 @@ crate-type = ["cdylib", "rlib"]
 extension-module = ["pyo3/extension-module"]
 
 [dependencies]
+rsphysics-foursail-tir.workspace = true
 rsphysics-goms.workspace = true
 rsphysics-fluspect-cx.workspace = true
 rsphysics-i2em.workspace = true

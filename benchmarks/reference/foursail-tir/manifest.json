@@ -1,0 +1,9 @@
+{
+  "files": {
+    "cases.json": "7da2eefe0599a70fbd205a52e89b0d4db5a7212d78b5e0e0bd100b1e1567cbdc",
+    "expected.json": "7d1f054cd8a2adda5d746b064af7bc5d16fdd63a2d542fc9f09d9f0f52e67ff5",
+    "geometry.json.zlib": "3daf46fd199563ec8ae4bafdc5a8aeb0db2c4463cc1757b02a3dabe59be50954",
+    "provenance.json": "96d530127c007a83237e5e315cbf80d9eea54ba945ce93f11446d8e09410865e",
+    "generate_reference.py": "c6dc185c01ccd009c7402497afa8e8744e852ca6792d21d8b8aeb3d8e66dbada"
+  }
+}

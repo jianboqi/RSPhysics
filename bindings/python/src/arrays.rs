@@ -9,6 +9,25 @@ use rsphysics_runtime::RunManifest;
 use serde_json::{Map, Value};
 use std::{collections::BTreeMap, sync::OnceLock};
 
+const FOURSAIL: &[&str] = &[
+    "wavelength_nm",
+    "leaf_area_index",
+    "mean_leaf_angle_deg",
+    "lidf_a",
+    "lidf_b",
+    "hotspot",
+    "solar_zenith_deg",
+    "view_zenith_deg",
+    "relative_azimuth_deg",
+    "leaf_emissivity",
+    "soil_emissivity",
+    "sunlit_leaf_temperature_k",
+    "shaded_leaf_temperature_k",
+    "sunlit_soil_temperature_k",
+    "shaded_soil_temperature_k",
+    "sky_brightness_temperature_k",
+    "direct_irradiance_w_m2_um",
+];
 const GOMS: &[&str] = &[
     "normalized_crown_density",
     "crown_axis_ratio",
@@ -192,6 +211,7 @@ const GORT: &[&str] = &[
 ];
 fn columns(id: &str) -> Result<&'static [&'static str], ModelError> {
     match id {
+        "thermal.foursail" => Ok(FOURSAIL),
         "vegetation.goms" => Ok(GOMS),
         "vegetation.fluspect-cx" => Ok(FLUSPECT),
         "microwave.i2em" => Ok(I2EM),
@@ -350,6 +370,7 @@ macro_rules! cache {
         }
     };
 }
+cache!(foursail, FOURSAIL_MODEL, rsphysics_foursail_tir::Model);
 cache!(goms, GOMS_MODEL, rsphysics_goms::Model);
 cache!(fluspect, FLUSPECT_MODEL, rsphysics_fluspect_cx::Model);
 cache!(i2em, I2EM_MODEL, rsphysics_i2em::Model);
@@ -434,6 +455,95 @@ where
         manifests.push(manifest);
     }
     Ok((buffers, manifests))
+}
+fn foursail_row(o: rsphysics_foursail_tir::Output) -> Row {
+    Row {
+        scalars: vec![
+            ("radiance_w_m2_sr_um", o.point.radiance_w_m2_sr_um),
+            ("brightness_temperature_k", o.point.brightness_temperature_k),
+            ("effective_emissivity", o.point.effective_emissivity),
+            ("leaf_emission_weight", o.point.leaf_emission_weight),
+            ("soil_emission_weight", o.point.soil_emission_weight),
+            ("sunlit_leaf_weight", o.point.sunlit_leaf_weight),
+            ("shaded_leaf_weight", o.point.shaded_leaf_weight),
+            ("sunlit_soil_weight", o.point.sunlit_soil_weight),
+            ("shaded_soil_weight", o.point.shaded_soil_weight),
+            ("sky_reflectance", o.point.sky_reflectance),
+            (
+                "direct_reflectance_factor",
+                o.point.direct_reflectance_factor,
+            ),
+            (
+                "sunlit_leaf_radiance_w_m2_sr_um",
+                o.point.sunlit_leaf_radiance_w_m2_sr_um,
+            ),
+            (
+                "shaded_leaf_radiance_w_m2_sr_um",
+                o.point.shaded_leaf_radiance_w_m2_sr_um,
+            ),
+            (
+                "sunlit_soil_radiance_w_m2_sr_um",
+                o.point.sunlit_soil_radiance_w_m2_sr_um,
+            ),
+            (
+                "shaded_soil_radiance_w_m2_sr_um",
+                o.point.shaded_soil_radiance_w_m2_sr_um,
+            ),
+            (
+                "reflected_sky_radiance_w_m2_sr_um",
+                o.point.reflected_sky_radiance_w_m2_sr_um,
+            ),
+            (
+                "reflected_direct_radiance_w_m2_sr_um",
+                o.point.reflected_direct_radiance_w_m2_sr_um,
+            ),
+            ("hemispherical_emissivity", o.point.hemispherical_emissivity),
+            ("upwelling_flux_w_m2_um", o.point.upwelling_flux_w_m2_um),
+            (
+                "ground_downwelling_irradiance_w_m2_um",
+                o.point.ground_downwelling_irradiance_w_m2_um,
+            ),
+            (
+                "ground_upwelling_flux_w_m2_um",
+                o.point.ground_upwelling_flux_w_m2_um,
+            ),
+            (
+                "hotspot_brightness_temperature_k",
+                o.hotspot_brightness_temperature_k,
+            ),
+        ],
+        arrays: vec![
+            ("wavelengths_nm", o.wavelengths_nm),
+            (
+                "spectral_radiance_w_m2_sr_um",
+                o.spectral_radiance_w_m2_sr_um,
+            ),
+            (
+                "spectral_brightness_temperature_k",
+                o.spectral_brightness_temperature_k,
+            ),
+            ("principal_view_zenith_deg", o.principal_view_zenith_deg),
+            (
+                "principal_brightness_temperature_k",
+                o.principal_brightness_temperature_k,
+            ),
+            (
+                "principal_effective_emissivity",
+                o.principal_effective_emissivity,
+            ),
+            ("hemisphere_view_zenith_deg", o.hemisphere_view_zenith_deg),
+            ("hemisphere_azimuth_deg", o.hemisphere_azimuth_deg),
+            (
+                "hemisphere_brightness_temperature_k",
+                o.hemisphere_brightness_temperature_k,
+            ),
+            (
+                "hemisphere_effective_emissivity",
+                o.hemisphere_effective_emissivity,
+            ),
+        ],
+        ..Row::default()
+    }
 }
 fn sort_row(o: rsphysics_sort::Output) -> Row {
     Row {
@@ -716,7 +826,7 @@ pub fn model_batch_native<'py>(
     let fixed: Map<String, Value> = serde_json::from_str(fixed_parameters)
         .map_err(|e| pyo3::exceptions::PyValueError::new_err(e.to_string()))?;
     if fixed.keys().any(|k| !match id {
-        "vegetation.prosail-d" => k == "leaf_angle_distribution",
+        "vegetation.prosail-d" | "thermal.foursail" => k == "leaf_angle_distribution",
         "vegetation.goms" => k == "geometry_convention",
         "atmosphere.smac" => matches!(k.as_str(), "coefficient_id" | "direction"),
         "ecosystem.gort-gpp" => k == "numerical_convention",
@@ -751,6 +861,10 @@ pub fn model_batch_native<'py>(
     // Initialize cached models/runtime with the GIL, then release it for all rows.
     super::runtime()?;
     let (buffers, manifests) = match id {
+        "thermal.foursail" => {
+            let m = foursail()?;
+            py.detach(|| typed(m, id, &values, shared_axes, foursail_row, &fixed))
+        }
         "vegetation.goms" => {
             let m = goms()?;
             py.detach(|| typed(m, id, &values, shared_axes, goms_row, &fixed))

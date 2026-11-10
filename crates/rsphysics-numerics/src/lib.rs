@@ -59,3 +59,5 @@ mod tests {
         assert_eq!(interpolate_linear(&single, &[2.0], 500.0).unwrap(), 2.0);
     }
 }
+
+pub mod sail;

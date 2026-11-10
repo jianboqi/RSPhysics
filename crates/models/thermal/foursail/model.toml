@@ -1,0 +1,286 @@
+[model]
+id = "thermal.foursail"
+name = "4SAIL-TIR"
+family = "4SAIL"
+category = "thermal"
+scientific_version = "Verhoef et al. 2007 / four-component thermal infrared"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Prescribed four surface temperatures and isotropic blackbody-equivalent sky radiance. Homogeneous turbid canopy, opaque Lambertian leaves and Lambertian soil. No atmospheric path radiance, energy-balance temperature solution, inversion or generic model coupling. The 8–14 um diagnostic spectrum holds emissivities, sky brightness temperature and direct spectral irradiance fixed."
+
+[source]
+crate = "rsphysics-foursail-tir"
+authors = ["Wout Verhoef", "Li Jia", "Qing Xiao", "Zhongbo Su", "RSPhysics contributors"]
+references = ["https://reports.nlr.nl/server/api/core/bitstreams/ecd3960d-4c3c-4a76-9bd6-186044eb0862/content", "https://research.utwente.nl/en/publications/unified-optical-thermal-four-stream-radiative-transfer-theory-for-2/"]
+license = "Apache-2.0 AND MIT"
+
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+
+[input_semantics."/wavelength_nm"]
+unit = "nm"
+axes = []
+description = "Selected monochromatic vacuum wavelength; arbitrary spectral emissivity can be supplied in separate batch rows."
+
+[input_semantics."/leaf_area_index"]
+unit = "1"
+axes = []
+description = "One-sided leaf area per horizontal ground area."
+
+[input_semantics."/mean_leaf_angle_deg"]
+unit = "deg"
+axes = []
+description = "Mean leaf angle deg."
+
+[input_semantics."/lidf_a"]
+unit = "1"
+axes = []
+description = "Lidf a."
+
+[input_semantics."/lidf_b"]
+unit = "1"
+axes = []
+description = "Lidf b."
+
+[input_semantics."/hotspot"]
+unit = "1"
+axes = []
+description = "4SAIL leaf-size/canopy-height hotspot parameter; 0 disables the hotspot correction."
+
+[input_semantics."/solar_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Solar zenith deg."
+
+[input_semantics."/view_zenith_deg"]
+unit = "deg"
+axes = []
+description = "View zenith deg."
+
+[input_semantics."/relative_azimuth_deg"]
+unit = "deg"
+axes = []
+description = "Unsigned sun-view azimuth difference; 0 means same azimuth (backscatter)."
+
+[input_semantics."/leaf_emissivity"]
+unit = "1"
+axes = []
+description = "Leaf emissivity on either side; reflectance=1-emissivity, transmittance=0."
+
+[input_semantics."/soil_emissivity"]
+unit = "1"
+axes = []
+description = "Opaque Lambertian soil emissivity; reflectance=1-emissivity."
+
+[input_semantics."/sunlit_leaf_temperature_k"]
+unit = "K"
+axes = []
+description = "Sunlit leaf temperature k."
+
+[input_semantics."/shaded_leaf_temperature_k"]
+unit = "K"
+axes = []
+description = "Shaded leaf temperature k."
+
+[input_semantics."/sunlit_soil_temperature_k"]
+unit = "K"
+axes = []
+description = "Sunlit soil temperature k."
+
+[input_semantics."/shaded_soil_temperature_k"]
+unit = "K"
+axes = []
+description = "Shaded soil temperature k."
+
+[input_semantics."/sky_brightness_temperature_k"]
+unit = "K"
+axes = []
+description = "Isotropic downwelling spectral sky radiance is B_lambda(Tsky); not air temperature."
+
+[input_semantics."/direct_irradiance_w_m2_um"]
+unit = "W m^-2 um^-1"
+axes = []
+description = "Direct spectral irradiance on a horizontal surface, excluding diffuse sky irradiance."
+
+[input_semantics."/leaf_angle_distribution"]
+unit = "1"
+axes = []
+description = "Leaf angle distribution."
+
+[output_semantics."/radiance_w_m2_sr_um"]
+unit = "W m^-2 sr^-1 um^-1"
+axes = []
+description = "Total top-of-canopy radiance: four surface thermal contributions plus reflected sky and direct irradiance."
+
+[output_semantics."/brightness_temperature_k"]
+unit = "K"
+axes = []
+description = "Monochromatic inverse Planck temperature of total top-of-canopy radiance, without emissivity correction."
+
+[output_semantics."/effective_emissivity"]
+unit = "1"
+axes = []
+description = "Directional ensemble emissivity; 1 minus hemispherical-directional reflectance."
+
+[output_semantics."/leaf_emission_weight"]
+unit = "1"
+axes = []
+description = "Leaf emission weight."
+
+[output_semantics."/soil_emission_weight"]
+unit = "1"
+axes = []
+description = "Soil emission weight."
+
+[output_semantics."/sunlit_leaf_weight"]
+unit = "1"
+axes = []
+description = "Sunlit leaf weight."
+
+[output_semantics."/shaded_leaf_weight"]
+unit = "1"
+axes = []
+description = "Shaded leaf weight."
+
+[output_semantics."/sunlit_soil_weight"]
+unit = "1"
+axes = []
+description = "Sunlit soil weight."
+
+[output_semantics."/shaded_soil_weight"]
+unit = "1"
+axes = []
+description = "Shaded soil weight."
+
+[output_semantics."/sky_reflectance"]
+unit = "1"
+axes = []
+description = "Hemispherical-directional reflectance multiplying isotropic sky radiance."
+
+[output_semantics."/direct_reflectance_factor"]
+unit = "1"
+axes = []
+description = "Direct-illumination BRF; multiply horizontal irradiance/pi to obtain reflected radiance."
+
+[output_semantics."/sunlit_leaf_radiance_w_m2_sr_um"]
+unit = "W m^-2 sr^-1 um^-1"
+axes = []
+description = "Sunlit leaf radiance w m2 sr um."
+
+[output_semantics."/shaded_leaf_radiance_w_m2_sr_um"]
+unit = "W m^-2 sr^-1 um^-1"
+axes = []
+description = "Shaded leaf radiance w m2 sr um."
+
+[output_semantics."/sunlit_soil_radiance_w_m2_sr_um"]
+unit = "W m^-2 sr^-1 um^-1"
+axes = []
+description = "Sunlit soil radiance w m2 sr um."
+
+[output_semantics."/shaded_soil_radiance_w_m2_sr_um"]
+unit = "W m^-2 sr^-1 um^-1"
+axes = []
+description = "Shaded soil radiance w m2 sr um."
+
+[output_semantics."/reflected_sky_radiance_w_m2_sr_um"]
+unit = "W m^-2 sr^-1 um^-1"
+axes = []
+description = "Reflected sky radiance w m2 sr um."
+
+[output_semantics."/reflected_direct_radiance_w_m2_sr_um"]
+unit = "W m^-2 sr^-1 um^-1"
+axes = []
+description = "Reflected direct radiance w m2 sr um."
+
+[output_semantics."/hemispherical_emissivity"]
+unit = "1"
+axes = []
+description = "Ensemble hemispherical emissivity; 1 minus bihemispherical reflectance."
+
+[output_semantics."/upwelling_flux_w_m2_um"]
+unit = "W m^-2 um^-1"
+axes = []
+description = "Total top-of-canopy upward hemispherical spectral flux, not radiance."
+
+[output_semantics."/ground_downwelling_irradiance_w_m2_um"]
+unit = "W m^-2 um^-1"
+axes = []
+description = "Total direct plus diffuse spectral irradiance at the soil boundary."
+
+[output_semantics."/ground_upwelling_flux_w_m2_um"]
+unit = "W m^-2 um^-1"
+axes = []
+description = "Soil thermal emission plus reflected irradiance at the soil boundary."
+
+[output_semantics."/wavelengths_nm"]
+unit = "nm"
+axes = ["wavelength"]
+description = "Fixed 8000–14000 nm diagnostic coordinate, step 100 nm."
+
+[output_semantics."/spectral_radiance_w_m2_sr_um"]
+unit = "W m^-2 sr^-1 um^-1"
+axes = ["wavelength"]
+description = "Grey-emissivity diagnostic spectrum at the selected geometry."
+
+[output_semantics."/spectral_brightness_temperature_k"]
+unit = "K"
+axes = ["wavelength"]
+description = "Brightness-temperature diagnostic spectrum with emissivities and sky temperature held fixed."
+
+[output_semantics."/principal_view_zenith_deg"]
+unit = "deg"
+axes = ["principal_angle"]
+description = "Signed viewing zenith -85..85 deg; positive uses solar azimuth, negative the opposite azimuth."
+
+[output_semantics."/principal_brightness_temperature_k"]
+unit = "K"
+axes = ["principal_angle"]
+description = "Principal brightness temperature k."
+
+[output_semantics."/principal_effective_emissivity"]
+unit = "1"
+axes = ["principal_angle"]
+description = "Principal effective emissivity."
+
+[output_semantics."/hemisphere_view_zenith_deg"]
+unit = "deg"
+axes = ["hemisphere_angle"]
+description = "Viewing zenith 0..85 deg in steps of 5, repeated for each azimuth."
+
+[output_semantics."/hemisphere_azimuth_deg"]
+unit = "deg"
+axes = ["hemisphere_angle"]
+description = "Viewing azimuth relative to solar azimuth, 0..350 deg in steps of 10."
+
+[output_semantics."/hemisphere_brightness_temperature_k"]
+unit = "K"
+axes = ["hemisphere_angle"]
+description = "Hemisphere brightness temperature k."
+
+[output_semantics."/hemisphere_effective_emissivity"]
+unit = "1"
+axes = ["hemisphere_angle"]
+description = "Hemisphere effective emissivity."
+
+[output_semantics."/hotspot_brightness_temperature_k"]
+unit = "K"
+axes = []
+description = "Exact sun-observer alignment brightness temperature at the selected wavelength."
+
+
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "foursail-tir-independent-ode-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "foursail-tir-independent-ode-v1"
+implementation_version = "0.1.0"
+backend = "python"

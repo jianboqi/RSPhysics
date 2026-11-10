@@ -8,6 +8,7 @@ license = "MIT"
 description = "PROSPECT-D plus author-referenced 4SAIL with 13-bin Campbell LIDF"
 
 [dependencies]
+rsphysics-numerics.workspace = true
 rsphysics-core.workspace = true
 rsphysics-model-api.workspace = true
 rsphysics-prospect-d.workspace = true

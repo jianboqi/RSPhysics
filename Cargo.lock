@@ -696,6 +696,7 @@ name = "rsphysics-catalog"
 version = "0.1.0"
 dependencies = [
  "rsphysics-fluspect-cx",
+ "rsphysics-foursail-tir",
  "rsphysics-goms",
  "rsphysics-gort-gpp",
  "rsphysics-i2em",
@@ -739,6 +740,17 @@ dependencies = [
  "serde",
  "serde_json",
  "sha2",
+]
+
+[[package]]
+name = "rsphysics-foursail-tir"
+version = "0.1.0"
+dependencies = [
+ "rsphysics-model-api",
+ "rsphysics-numerics",
+ "schemars",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -823,6 +835,7 @@ dependencies = [
  "miniz_oxide",
  "rsphysics-core",
  "rsphysics-model-api",
+ "rsphysics-numerics",
  "rsphysics-prospect-d",
  "schemars",
  "serde",
@@ -852,6 +865,7 @@ dependencies = [
  "rsphysics-catalog",
  "rsphysics-core",
  "rsphysics-fluspect-cx",
+ "rsphysics-foursail-tir",
  "rsphysics-goms",
  "rsphysics-gort-gpp",
  "rsphysics-i2em",

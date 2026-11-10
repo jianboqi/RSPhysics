@@ -19,6 +19,10 @@
 - [PROSAIL-D — canopy reflectance](models/prosail-d.md)
 - [GOMS — discrete-crown reflectance and mutual shadowing](models/goms.md)
 
+### Thermal infrared
+
+- [4SAIL-TIR — four-component canopy thermal radiation](models/foursail-tir.md)
+
 ### Surface reflectance
 
 - [Ross–Li — directional reflectance](models/ross-li.md)
