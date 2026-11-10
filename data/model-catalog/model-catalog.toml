@@ -1,4 +1,8 @@
 [[models]]
+id = "atmosphere.sixsv21"
+manifest = "crates/models/atmosphere/sixs/model.toml"
+
+[[models]]
 id = "atmosphere.smac"
 manifest = "crates/models/atmosphere/smac/model.toml"
 

@@ -1,0 +1,107 @@
+[model]
+id="atmosphere.sixsv21"
+name="6SV2.1"
+family="6S"
+category="atmosphere"
+scientific_version="6SV2.1"
+implementation_version="0.1.0"
+api_version="0.1"
+status="reference-validated"
+limitations="Original vector solar-spectrum model (0.25–4 micrometres), not a thermal model. Original mixed REAL/DOUBLE PRECISION is retained. Fixed polarization setting ipol=1. No model coupling. Raw input cards bypass structured physical validation."
+[source]
+crate="rsphysics-sixs"
+authors=["Eric Vermote", "Svetlana Kotchenova", "Didier Tanre", "Jean-Luc Deuze", "Maurice Herman", "Jean-Jacques Morcrette"]
+references=["https://doi.org/10.1109/36.581987", "https://doi.org/10.1364/AO.45.006762", "https://salsa.umd.edu/files/6S/6sV2.1.tar"]
+license="LicenseRef-6SV21-Original-Distribution; RSPhysics interfaces Apache-2.0"
+[capabilities]
+native=true
+python=true
+wasm=true
+batch=true
+precision="mixed_f32_f64"
+[[validation.evidence]]
+kind="implementation"
+suite="sixsv21-direct-library-v1"
+implementation_version="0.1.0"
+backend="native"
+[[validation.evidence]]
+kind="implementation"
+suite="sixsv21-direct-library-v1"
+implementation_version="0.1.0"
+backend="python"
+[[validation.evidence]]
+kind="implementation"
+suite="sixsv21-direct-library-v1"
+implementation_version="0.1.0"
+backend="wasm"
+[data.hashes]
+original_distribution="sha256:42422db29c095a49eaa98556b416405eb818be1ee30139d2a1913dbf3b0c7de1"
+standard_profiles_and_band_labels="sha256:1960055071dd7e7576fe6626b7a110e9ef7f05820f2a8833a7f3a015fa483491"
+[input_semantics."/geometry"]
+unit="deg, UTC hour, calendar month/day"
+axes=[]
+description="User-defined or original satellite observation geometry. Solar/view azimuths are absolute directions, not a BRDF relative-azimuth convention."
+[input_semantics."/atmosphere"]
+unit="km, hPa, K, g m^-3, g cm^-2, atm-cm"
+axes=["radiosonde_level"]
+description="Original standard profiles 0..6, 34-level profile 7, water/ozone columns 8."
+[input_semantics."/aerosol"]
+unit="1, km, um"
+axes=["wavelength20", "mode", "layer"]
+description="Original aerosol selectors -1..12, loading, Mie distributions, 20-node refractive indices, layer profile and saved Mie files."
+[input_semantics."/altitudes"]
+unit="km, hPa, g cm^-2, atm-cm, 1"
+axes=[]
+description="Target pressure or altitude; satellite, ground, or sensor height above target and aircraft path columns."
+[input_semantics."/spectrum"]
+unit="um"
+axes=["wavelength"]
+description="Monochromatic, uniform band, step output, custom 2.5 nm response, or original built-in band 2..199."
+[input_semantics."/surface"]
+unit="1, km"
+axes=["azimuth13", "zenith10"]
+description="Homogeneous/heterogeneous Lambertian spectra or original BRDF models 0..11; native BRDF units/conventions apply."
+[input_semantics."/correction"]
+unit="1 or W m^-2 sr^-1 um^-1"
+axes=[]
+description="Forward calculation or atmospheric correction from apparent reflectance/radiance."
+[input_semantics."/polarization"]
+unit="1, m s^-1, deg"
+axes=[]
+description="Optional original surface Stokes Q/U, vegetation fraction, or wind-driven ocean polarization."
+[input_semantics."/input_cards"]
+unit="ASCII"
+axes=[]
+description="Optional original input overrides all structured configuration sections; original options remain accessible."
+[input_semantics."/files"]
+unit="ASCII"
+axes=[]
+description="Named auxiliary file contents scoped to an isolated calculation directory/MEMFS."
+[input_semantics."/program"]
+unit="selector"
+axes=[]
+description="Original standard or aerosol lookup-table entry point."
+[output_semantics."/apparent_reflectance"]
+unit="1"
+axes=[]
+description="Original band-integrated apparent reflectance, at original printed precision."
+[output_semantics."/apparent_radiance_w_m2_sr_um"]
+unit="W m^-2 sr^-1 um^-1"
+axes=[]
+description="Original apparent radiance, at original printed precision."
+[output_semantics."/quantities"]
+unit="field-dependent original report units"
+axes=["component"]
+description="Named rows from the original report; transmittance columns down/up/total and scattering columns Rayleigh/aerosol/total. Undefined printed values are null."
+[output_semantics."/report"]
+unit="ASCII"
+axes=[]
+description="Complete original formatted report; preserves results beyond convenience fields."
+[output_semantics."/files"]
+unit="ASCII"
+axes=[]
+description="Complete original auxiliary files, including Mie and aerosol LUT products."
+[output_semantics."/spectral_rows"]
+unit="original report units by column"
+axes=["wavelength", "quantity"]
+description="Original iwave=-2 step-output rows."

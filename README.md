@@ -12,7 +12,7 @@
 RSPhysics brings remote sensing physical models into a shared scientific
 computing library. It makes models scattered across research software easier to
 use, compare, and extend through consistent interfaces and physical conventions.
-Rust implementations and Python/NumPy interfaces support research, education,
+Native numerical kernels and Python/NumPy interfaces support research, education,
 and application development.
 
 ## Installation
@@ -54,11 +54,12 @@ reflectance = leaf["result"]["reflectance"]
 | Soil optics | [BSM](docs/models/bsm.md) | Brightness, shape and water-film moisture effects |
 | Soil optics | [GSV](docs/models/gsv.md) | GSV1/GSV3 hyperspectral soil spectra |
 | Atmosphere | [SMAC](docs/models/smac.md) | Band-wise atmospheric correction |
+| Atmosphere | [6SV2.1](docs/models/sixsv21.md) | Vector atmospheric radiative transfer and correction |
 | Ecosystem processes | [GORT-GPP](docs/models/gort-gpp.md) | Canopy photosynthesis and net carbon assimilation |
 | Ecosystem processes | [FvCB Leaf](docs/models/fvcb.md) | C₃ leaf biochemistry and alternative stomatal formulations |
 | Ecosystem processes | [FvCB Big Leaf](docs/models/fvcb-big-leaf.md) | Homogeneous canopy carbon and water-vapour fluxes |
 
-FvCB, RPV, SOILSPECT, BSM and GSV currently require a source installation and are not included in
+FvCB, RPV, SOILSPECT, BSM, GSV and 6SV2.1 currently require a source installation and are not included in
 the published PyPI 0.1.0 wheels.
 
 ## Documentation

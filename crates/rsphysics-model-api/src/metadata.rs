@@ -60,6 +60,8 @@ pub enum Backend {
 pub enum Precision {
     #[serde(rename = "f64")]
     F64,
+    #[serde(rename = "mixed_f32_f64")]
+    MixedF32F64,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]

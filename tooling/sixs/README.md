@@ -1,17 +1,40 @@
-# Building 6SV2.1
+# Building and validating 6SV2.1
 
-The two original programs are compiled from the preserved Fortran source.
+The production interfaces call libraries compiled from the preserved Fortran source.
 No Rust numerical replacement, precision promotion, or fast-math is used.
 
-## Native
+## Direct native library
 
-A GNU Fortran compiler is required to build, but not to run the resulting
-executables. GNU Fortran 13.3 (Linux) and 16.2 (Windows) have been tested.
+GNU Fortran 10+ and Python are required to build. Installing a prebuilt wheel
+requires neither a compiler nor a separate 6S program. Both original entry
+points are embedded in the extension as direct C ABI libraries.
+
+```sh
+python tooling/sixs/build.py verify
+python tooling/sixs/library.py native --output target/sixs-library
+python tooling/sixs/validate_library.py --library-dir target/sixs-library
+```
+
+Use `FC` or `--fc PATH` to select GNU Fortran. Native Python builds invoke the
+same recipe automatically. The build implementation resides in the source-only
+Cargo component under `components/6sv2.1/build_tools`, so source archives are
+self-contained. The CLI files here are thin entry points.
+
+`library-build-info.json` records compiler flags, original archive hash,
+compatibility corrections, and state-reset storage. Source files in `upstream/`
+are verified before each build. Windows bundles a statically linked runtime;
+Linux bundles shared GNU runtimes. Required license texts accompany the package.
+
+## Original executables for reference validation
+
+Original executables are retained only as numerical oracles and performance
+baselines. Production Python and browser execution does not launch them.
 
 ```sh
 python tooling/sixs/build.py verify
 python tooling/sixs/build.py native --output target/sixs-native
 python tooling/sixs/build.py native --original --output target/sixs-original
+python tooling/sixs/generate_reference.py --corrected target/sixs-native
 ```
 
 Use `--fc PATH` or `FC` to select the compiler executable. Compiler warnings are
@@ -25,15 +48,25 @@ The pinned image supplies Flang 23.1.4, its WASM Fortran runtime, and Emscripten
 5.0.7. The same Fortran source and original object list are used for both targets.
 
 ```sh
+docker build -f tooling/sixs/Dockerfile.library-wasm -t rsphysics-sixs-library-wasm .
+docker run --rm --mount type=bind,source="$PWD",target=/workspace rsphysics-sixs-library-wasm
+```
+
+The product exports `rsp_fortran_run`, with Emscripten's `ccall` and `FS` helpers.
+Each calculation starts a fresh module in a Web Worker. Configuration is validated
+by the public Rust adapter; original input/output files use the module's MEMFS.
+
+The separate executable-WASM smoke baseline remains available:
+
+```sh
 docker build -f tooling/sixs/Dockerfile.wasm -t rsphysics-sixs-wasm .
 docker run --rm --mount type=bind,source="$PWD",target=/workspace rsphysics-sixs-wasm
 node tooling/sixs/run-wasm.mjs target/sixs-wasm benchmarks/reference/6sv2.1/inputs.json target/sixs-wasm-results.json
 python tooling/sixs/verify.py target/sixs-original target/sixs-native --wasm-results target/sixs-wasm-results.json
 ```
 
-The Node runner creates a fresh module per calculation, preserving the original
-program's initialization and STOP behavior. Browser integration uses a worker
-and must also preserve original auxiliary-file input and output.
+The Node smoke runner preserves the reference program's initialization and STOP
+behavior; it is not the product's direct-library transport.
 
 ## Performance
 

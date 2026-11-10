@@ -15,6 +15,7 @@ Included model implementations and scientific resources retain their own terms.
 | BSM implementation and coefficient table | GPL-3.0-only; Wout Verhoef / Peiqi Yang attribution retained |
 | SMAC component | GPL-3.0-only |
 | Preserved 6SV2.1 Fortran distribution | Original authorship retained; retrieved archive has no standalone license file; see [component record](components/6sv2.1/README.md) |
+| GNU Fortran/compiler runtimes in native 6SV2.1 builds | GPL-3.0-or-later with GCC-exception-3.1; libquadmath where included is LGPL-2.1-or-later; see [runtime notices](bindings/python/python/rsphysics/SIXSV21_ORIGIN.md) |
 | Supplied L-MEB and GORT-GPP components | LicenseRef-User-Supplied-Research-Code; publication authorized by the project maintainer |
 | Coefficients, spectra, and sensor response data | Resource-specific terms and attribution |
 

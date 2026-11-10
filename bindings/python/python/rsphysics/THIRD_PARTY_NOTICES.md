@@ -145,3 +145,7 @@ BSM: Wout Verhoef / Peiqi Yang, DOI10.1016/j.rse.2020.111870. Adapted solver
 and coefficients retain GPL-3.0-only; see BSM_ORIGIN.md. Full GPL v3 terms
 are included in SMAC_GPL-3.0.txt. RPV and SOILSPECT are newly written
 implementations of published equations, licensed Apache-2.0.
+
+## 6SV2.1
+
+The original Fortran kernel and its runtime notices are recorded in [SIXSV21_ORIGIN.md](SIXSV21_ORIGIN.md). Source builds retain the complete original distribution and document build-copy corrections separately.

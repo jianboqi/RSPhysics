@@ -1,0 +1,45 @@
+/* Snapshot only model-owned writable data; never the Fortran runtime. */
+#include <stdatomic.h>
+#include <stdlib.h>
+#include <string.h>
+@DECLARATIONS@
+struct segment { unsigned char *address; size_t size; int zero; int mie; };
+static const struct segment segments[] = {@SEGMENTS@};
+static atomic_flag running=ATOMIC_FLAG_INIT;
+static unsigned char *initial;
+static int has_run;
+extern _Bool rsp_mie_used;
+extern int rsp_fortran_run(const char *directory);
+#ifdef _WIN32
+__declspec(dllexport)
+#endif
+int rsp_sixs_run(const char *directory) {
+  while(atomic_flag_test_and_set_explicit(&running,memory_order_acquire)) {}
+  size_t size=0, offset=0;
+  const size_t count=sizeof(segments)/sizeof(segments[0]);
+  for(size_t i=0;i<count;i++) if(!segments[i].zero) size+=segments[i].size;
+  if(!initial) {
+    initial=malloc(size);
+    if(!initial) { atomic_flag_clear_explicit(&running,memory_order_release); return 3; }
+    for(size_t i=0;i<count;i++) {
+      if(!segments[i].zero) {
+        memcpy(initial+offset,segments[i].address,segments[i].size);
+        offset+=segments[i].size;
+      }
+    }
+  }
+  offset=0;
+  for(size_t i=0;i<count;i++) {
+    if(segments[i].zero) {
+      if(has_run && (!segments[i].mie || rsp_mie_used)) memset(segments[i].address,0,segments[i].size);
+    } else {
+      memcpy(segments[i].address,initial+offset,segments[i].size);
+      offset+=segments[i].size;
+    }
+  }
+  rsp_mie_used=0;
+  int status=rsp_fortran_run(directory);
+  has_run=1;
+  atomic_flag_clear_explicit(&running,memory_order_release);
+  return status;
+}

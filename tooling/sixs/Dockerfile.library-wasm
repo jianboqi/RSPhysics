@@ -1,0 +1,4 @@
+FROM ghcr.io/r-wasm/flang-wasm@sha256:8d9bc80f8067550a692ccfe570660625edf251b17c9be455446a0bd592c7dd19
+ENV EM_LLVM_ROOT=/opt/flang/host/llvm/bin
+WORKDIR /workspace
+ENTRYPOINT ["/bin/bash", "-c", ". /opt/emsdk/emsdk_env.sh && exec python3 components/6sv2.1/build_tools/library.py wasm --output target/sixs-library-wasm"]

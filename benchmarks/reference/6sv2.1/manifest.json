@@ -1,0 +1,6 @@
+{
+  "suite": "sixsv21-direct-library-v1",
+  "cases": 330,
+  "fixture": "full-reference.json.zlib",
+  "sha256": "3d0719f6175f3b9afef56428b49d93c6340fd1ab6a3eed22634368f9f82716db"
+}

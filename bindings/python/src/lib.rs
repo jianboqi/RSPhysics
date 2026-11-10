@@ -69,6 +69,27 @@ fn smac_coefficients_json() -> PyResult<String> {
 }
 
 #[pyfunction]
+fn sixs_prepare_json(parameters: &str) -> PyResult<String> {
+    let input: rsphysics_sixs::Input =
+        serde_json::from_str(parameters).map_err(|e| PyValueError::new_err(e.to_string()))?;
+    let prepared = input.prepare().map_err(error)?;
+    serde_json::to_string(&serde_json::json!({"parameters":input,"prepared":prepared}))
+        .map_err(|e| PyRuntimeError::new_err(e.to_string()))
+}
+
+#[pyfunction]
+fn sixs_resources_json() -> &'static str {
+    rsphysics_sixs::RESOURCES_JSON
+}
+
+#[pyfunction]
+fn sixs_parse_report_json(report: &str, files: &str) -> PyResult<String> {
+    let files = serde_json::from_str(files).map_err(|e| PyValueError::new_err(e.to_string()))?;
+    let result = rsphysics_sixs::parse_report(report.to_owned(), files).map_err(error)?;
+    serde_json::to_string(&result).map_err(|e| PyRuntimeError::new_err(e.to_string()))
+}
+
+#[pyfunction]
 fn run_json(py: Python<'_>, id: &str, parameters: &str) -> PyResult<String> {
     let parameters: Value =
         serde_json::from_str(parameters).map_err(|e| PyValueError::new_err(e.to_string()))?;
@@ -130,6 +151,9 @@ fn _native(module: &Bound<'_, PyModule>) -> PyResult<()> {
     module.add_function(wrap_pyfunction!(list_models_json, module)?)?;
     module.add_function(wrap_pyfunction!(describe_json, module)?)?;
     module.add_function(wrap_pyfunction!(smac_coefficients_json, module)?)?;
+    module.add_function(wrap_pyfunction!(sixs_prepare_json, module)?)?;
+    module.add_function(wrap_pyfunction!(sixs_resources_json, module)?)?;
+    module.add_function(wrap_pyfunction!(sixs_parse_report_json, module)?)?;
     module.add_function(wrap_pyfunction!(run_json, module)?)?;
     module.add_function(wrap_pyfunction!(run_batch_json, module)?)?;
     module.add_function(wrap_pyfunction!(prospect_d_native, module)?)?;

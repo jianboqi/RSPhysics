@@ -5,6 +5,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 CHECKS = [
+    "benchmarks/reference/6sv2.1/verify.py",
     "benchmarks/reference/verify_soil_optics.py",
     "benchmarks/reference/fvcb/verify.py",
     "benchmarks/reference/foursail-tir/verify.py",
@@ -25,4 +26,4 @@ CHECKS = [
 if __name__ == '__main__':
     for check in CHECKS:
         print(f'Checking {check}', flush=True)
-        subprocess.run([sys.executable, str(ROOT / check)], cwd=ROOT, check=True)
+        subprocess.run([sys.executable, "-X", "utf8", str(ROOT / check)], cwd=ROOT, check=True)

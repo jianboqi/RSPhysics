@@ -86,6 +86,19 @@ jobs:
         with:
           python-version: ${{ matrix.python.version }}
           architecture: ${{ matrix.platform.architecture }}
+      - name: Install GNU Fortran
+        if: runner.os != 'Linux'
+        id: fortran
+        uses: fortran-lang/setup-fortran@1f630c95fa9e0c941248f52e4674260139020365 # v1
+        with:
+          compiler: gcc
+          version: '13'
+          update-environment: false
+      - name: Select the Fortran compiler
+        if: runner.os != 'Linux'
+        env:
+          RSP_FORTRAN_COMPILER: ${{ steps.fortran.outputs.fc }}
+        run: python tooling/ci/configure_fortran.py
       - name: Install pinned Rust
         run: rustup toolchain install 1.97.0 --profile minimal --no-self-update
       - name: Build portable wheel
@@ -95,6 +108,7 @@ jobs:
           rust-toolchain: 1.97.0
           target: ${{ matrix.platform.target }}
           manylinux: '2014'
+          before-script-linux: gfortran --version
           args: >-
             --manifest-path bindings/python/Cargo.toml
             --release --locked --strip --auditwheel repair
@@ -131,6 +145,17 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.13'
+      - name: Install GNU Fortran
+        id: fortran
+        uses: fortran-lang/setup-fortran@1f630c95fa9e0c941248f52e4674260139020365 # v1
+        with:
+          compiler: gcc
+          version: '13'
+          update-environment: false
+      - name: Select the Fortran compiler
+        env:
+          RSP_FORTRAN_COMPILER: ${{ steps.fortran.outputs.fc }}
+        run: python tooling/ci/configure_fortran.py
       - run: rustup toolchain install 1.97.0 --profile minimal --no-self-update
       - run: python -m pip install "maturin[patchelf]==1.16.0" "numpy>=1.26" "pytest>=8,<10" "matplotlib>=3.8"
       - run: python -m maturin sdist --manifest-path bindings/python/Cargo.toml --out dist

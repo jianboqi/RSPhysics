@@ -1,6 +1,9 @@
 [workspace]
 resolver = "3"
 members = [
+    "components/6sv2.1",
+    "crates/rsphysics-sixs-native",
+    "crates/models/atmosphere/sixs",
     "crates/models/surface/rpv",
     "crates/models/soil/soilspect",
     "crates/models/soil/bsm",
@@ -39,6 +42,7 @@ repository = "https://github.com/jianboqi/RSPhysics"
 homepage = "https://github.com/jianboqi/RSPhysics"
 
 [workspace.dependencies]
+rsphysics-sixs = { path = "crates/models/atmosphere/sixs" }
 rsphysics-rpv = { path = "crates/models/surface/rpv" }
 rsphysics-soilspect = { path = "crates/models/soil/soilspect" }
 rsphysics-bsm = { path = "crates/models/soil/bsm" }

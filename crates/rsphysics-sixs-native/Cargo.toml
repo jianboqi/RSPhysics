@@ -1,0 +1,16 @@
+[package]
+name="rsphysics-sixs-native"
+version.workspace=true
+edition.workspace=true
+rust-version.workspace=true
+license.workspace=true
+publish.workspace=true
+[dependencies]
+libloading="0.8.9"
+sha2.workspace=true
+[build-dependencies]
+rsphysics-sixs-source={path="../../components/6sv2.1"}
+# Only the foreign-function boundary needs unsafe; numerical/model crates retain
+# the workspace-wide forbid. Each unsafe operation is contained in native.rs.
+[lints.rust]
+unsafe_code="deny"

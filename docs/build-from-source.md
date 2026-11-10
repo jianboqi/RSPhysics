@@ -1,6 +1,7 @@
 # Build from source
 
-Install Python 3.11+, Rust through rustup, and a native C/C++ build toolchain.
+Install Python 3.11+, Rust through rustup, a native C/C++ build toolchain, and
+GNU Fortran 10 or newer for the bundled 6SV2.1 kernel.
 The repository's `rust-toolchain.toml` selects the required Rust version.
 
 ```sh
@@ -14,6 +15,11 @@ python -m pip install --no-index --no-deps --find-links dist rsphysics
 On Windows, use the Visual Studio C++ Build Tools. On macOS, install the Xcode
 Command Line Tools. On Linux, install the compiler/linker packages supplied by
 your distribution.
+
+Set `FC` to the GNU Fortran executable if it is not named `gfortran` on `PATH`.
+On Windows, GNU Fortran builds the embedded DLL while Visual Studio builds the
+Rust/Python extension. The resulting wheel includes the required Fortran runtime;
+users installing a wheel do not need a compiler or a separate 6S program.
 
 ## Run the checks
 

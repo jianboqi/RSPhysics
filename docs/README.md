@@ -37,6 +37,7 @@
 
 ### Atmosphere
 
+- [6SV2.1 — vector atmospheric radiative transfer](models/sixsv21.md)
 - [SMAC — band-wise atmospheric correction](models/smac.md)
 
 ### Ecosystem processes
