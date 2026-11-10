@@ -61,3 +61,7 @@ See [Build from source](docs/build-from-source.md).
 
 Project-original code is licensed under [Apache-2.0](LICENSE). Included models
 and resources retain their applicable [component licenses](LICENSES.md).
+
+Model authors and rights holders are welcome to [contact the maintainers](https://github.com/jianboqi/RSPhysics/issues)
+with any concerns about inclusion, attribution, or licensing. We will review each
+request and make appropriate corrections or remove the affected material where necessary.
