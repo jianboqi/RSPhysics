@@ -31,6 +31,19 @@ wavelengths = leaf["result"]["wavelengths_nm"]
 reflectance = leaf["result"]["reflectance"]
 ```
 
+## Models
+
+| Category | Model | Main purpose |
+|---|---|---|
+| Vegetation optics | [PROSPECT-D](docs/models/prospect-d.md) | Leaf reflectance and transmittance |
+| Vegetation optics | [PROSAIL-D](docs/models/prosail-d.md) | Canopy reflectance |
+| Surface reflectance | [Ross–Li](docs/models/ross-li.md) | Directional reflectance and BRDF |
+| Passive microwave | [Tau–omega](docs/models/tau-omega.md) | Soil–vegetation brightness temperature |
+| Passive microwave | [L-MEB](docs/models/lmeb.md) | L-band dual-polarization emission |
+| Active microwave | [Water-cloud model](docs/models/water-cloud.md) | Vegetation and soil radar backscatter |
+| Atmosphere | [SMAC](docs/models/smac.md) | Band-wise atmospheric correction |
+| Ecosystem processes | [GORT-GPP](docs/models/gort-gpp.md) | Canopy photosynthesis and net carbon assimilation |
+
 ## Documentation
 
 [Documentation](docs/README.md) covers basic usage, physical tools, and individual
