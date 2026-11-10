@@ -36,7 +36,12 @@ print(result["sigma0_vv_db"], result["sigma0_hh_db"])
 | `rms_height_m` | m | Surface RMS height s |
 | `correlation_length_m` | m | Correlation length L |
 | `observation_zenith_deg` | degrees | Incidence angle from the surface normal |
-| `correlation_function` | — | `exponential` or `gaussian` |
+| `correlation_function` | — | `exponential`, `gaussian`, `x_power` or `x_exponential` |
+| `correlation_exponent` | 1 | Shape exponent for `x_power` / `x_exponential`, default 1.5 |
+
+X-power requires an exponent greater than one; x-exponential additionally
+requires at most two for a nonnegative covariance spectrum. Integrals that do
+not converge return an error. The other correlation functions ignore this exponent.
 
 Height and correlation length are in **meters**, not centimeters. Permittivity
 is supplied directly; this model does not calculate it from soil moisture.
@@ -94,8 +99,16 @@ are part of this formulation and affect numerical comparisons.
 
 Extremely weak responses that underflow floating-point arithmetic return a
 domain error; no arbitrary dB floor is applied. HV polarization, bistatic
-geometry, x-power/x-exponential covariance, vegetation scattering, inversion
+geometry, vegetation scattering, inversion
 and model coupling are outside this interface.
+
+The numeric batch has seven columns, with `correlation_exponent` last; the
+correlation type is fixed per batch. For example:
+
+```python
+rough = rsp.microwave.i2em(correlation_function="x_power",
+    correlation_exponent=1.5)
+```
 
 ## References
 
@@ -106,16 +119,3 @@ and model coupling are outside this interface.
   Sensing*. University of Michigan Press, section 10-3.9.
   ISBN 978-0-472-11935-6.
   [Book resources](https://ulabyweb.eecs.umich.edu/mrs/).
-
-
-`correlation_function` accepts `exponential`, `gaussian`, `x_power` and
-`x_exponential`. The latter two use `correlation_exponent` (default 1.5).
-X-power requires an exponent greater than one; x-exponential additionally
-requires at most two for a nonnegative covariance spectrum. The numeric batch
-has seven columns, with the exponent last; the correlation type is fixed per
-batch. Integrals that do not converge return an error.
-
-```python
-rough = rsp.microwave.i2em(correlation_function="x_power",
-    correlation_exponent=1.5)
-```

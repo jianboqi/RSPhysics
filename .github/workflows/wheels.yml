@@ -3,9 +3,10 @@ name: Wheels
 on:
   push:
     branches: [main]
-    tags: ['v*']
   pull_request:
   workflow_dispatch:
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -21,7 +22,29 @@ env:
   MACOSX_DEPLOYMENT_TARGET: '11.0'
 
 jobs:
+  metadata:
+    name: Package version and release tag
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      version: ${{ steps.metadata.outputs.version }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - name: Check package version and release tag
+        id: metadata
+        env:
+          RSP_RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: python tooling/ci/verify_distribution.py
+      - name: Test release validation
+        run: python -m unittest discover -s tooling/ci/tests
+
   build:
+    needs: metadata
     name: ${{ matrix.platform.name }} / CPython ${{ matrix.python.version }}
     runs-on: ${{ matrix.platform.runner }}
     timeout-minutes: 40
@@ -82,6 +105,10 @@ jobs:
         run: python -m pip install --no-index --no-deps --find-links dist rsphysics
       - name: Verify the installed wheel
         run: python -m pytest bindings/python/tests -q
+      - name: Run installed-package examples
+        run: |
+          python bindings/python/examples/quickstart.py --output-dir target/quickstart
+          python bindings/python/examples/all_models.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: wheel-${{ matrix.platform.target }}-cp${{ matrix.python.version }}
@@ -89,25 +116,122 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+  source:
+    name: Verified source distribution
+    needs: metadata
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      CARGO_TARGET_DIR: ${{ github.workspace }}/target/release-sdist-build
+      RUSTUP_TOOLCHAIN: '1.97.0'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - run: rustup toolchain install 1.97.0 --profile minimal --no-self-update
+      - run: python -m pip install "maturin[patchelf]==1.16.0" "numpy>=1.26" "pytest>=8,<10" "matplotlib>=3.8"
+      - run: python -m maturin sdist --manifest-path bindings/python/Cargo.toml --out dist
+      - name: Install from source archive
+        run: python -m pip install --no-build-isolation --no-deps dist/*.tar.gz
+      - name: Test installed source build
+        run: python -m pytest bindings/python/tests -q
+      - name: Check documentation and examples
+        run: |
+          python tooling/ci/verify_documentation.py
+          python bindings/python/examples/quickstart.py --plot --output-dir target/quickstart
+          python bindings/python/examples/all_models.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: release-source-distribution
+          path: dist/*.tar.gz
+          if-no-files-found: error
+          retention-days: 30
+
   collect:
-    name: Verified wheel bundle
-    needs: build
+    name: Verified distribution bundle
+    needs: [build, source]
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           pattern: wheel-*
-          path: wheelhouse
+          path: release/dist
           merge-multiple: true
-      - name: Record wheel checksums
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: release-source-distribution
+          path: release/dist
+      - name: Validate distributions
+        run: |
+          python -m pip install "twine>=6,<7"
+          python -m twine check --strict release/dist/*
+          python tooling/ci/verify_distribution.py --dist release/dist --expected-wheels 25
+      - name: Record distribution checksums
         shell: bash
         run: |
-          cd wheelhouse
-          sha256sum *.whl > SHA256SUMS
+          cd release
+          sha256sum dist/* > SHA256SUMS
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: rsphysics-wheels
-          path: wheelhouse/
+          name: rsphysics-distributions
+          path: release/
           if-no-files-found: error
           retention-days: 30
+
+  publish:
+    name: Publish to PyPI
+    if: github.event_name == 'release' && github.repository == 'jianboqi/RSPhysics'
+    needs: collect
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment:
+      name: pypi
+      url: https://pypi.org/project/rsphysics/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: rsphysics-distributions
+          path: release
+      - name: Verify checksums
+        working-directory: release
+        run: sha256sum --check SHA256SUMS
+      - name: Publish verified wheels and source archive
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # release/v1
+        with:
+          packages-dir: release/dist/
+
+  verify-pypi:
+    name: Install from PyPI / ${{ matrix.os }}
+    needs: [metadata, publish]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022, macos-15]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - name: Install published wheel
+        run: >-
+          python -m pip install --only-binary=:all: "rsphysics==${{ needs.metadata.outputs.version }}"
+      - name: Run public examples
+        run: |
+          python bindings/python/examples/quickstart.py --output-dir target/quickstart
+          python bindings/python/examples/all_models.py

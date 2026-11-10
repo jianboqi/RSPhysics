@@ -24,6 +24,8 @@ assert leaf["reflectance"].shape == (2001,)
 assert leaf["fluorescence_backward"].shape == (211, 351)
 ```
 
+## Parameters
+
 | Parameter | Unit | Meaning |
 | --- | --- | --- |
 | `n` | 1 | Leaf mesophyll structure parameter, 1–5 |

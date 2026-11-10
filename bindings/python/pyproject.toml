@@ -6,6 +6,7 @@ build-backend = "maturin"
 name = "rsphysics"
 version = "0.1.0"
 description = "A scientific computing library for remote sensing physics"
+authors = [{name = "Jianbo Qi", email = "jianboqi@126.com"}]
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = ["numpy>=1.26"]
@@ -27,6 +28,7 @@ license-files = ["python/rsphysics/GOMS_COMPONENT_LICENSE.txt", "python/rsphysic
 
 [project.optional-dependencies]
 test = ["pytest>=8,<10"]
+examples = ["matplotlib>=3.8"]
 
 [project.urls]
 Homepage = "https://github.com/jianboqi/RSPhysics"

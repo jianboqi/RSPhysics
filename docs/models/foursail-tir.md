@@ -34,6 +34,27 @@ in nanometres, with a supported numerical range of 3000–50000 nm. This range
 does not imply that every leaf or soil remains opaque or Lambertian throughout
 it; emissivities and physical assumptions must match the material and wavelength.
 
+## Parameters
+
+| Parameter | Unit | Meaning |
+|---|---|---|
+| `wavelength_nm` | nm | Selected wavelength, default 9500 |
+| `sunlit_leaf_temperature_k`, `shaded_leaf_temperature_k` | K | Prescribed sunlit and shaded leaf temperatures |
+| `sunlit_soil_temperature_k`, `shaded_soil_temperature_k` | K | Prescribed sunlit and shaded soil temperatures |
+| `sky_brightness_temperature_k` | K | Isotropic downwelling sky brightness temperature |
+| `leaf_emissivity`, `soil_emissivity` | 1 | Opaque leaf and soil emissivities at the selected wavelength |
+| `leaf_area_index` | 1 | One-sided leaf area per unit ground area |
+| `leaf_angle_distribution` | — | `campbell` (default) or `verhoef` |
+| `mean_leaf_angle_deg` | degrees | Campbell mean leaf inclination |
+| `lidf_a`, `lidf_b` | 1 | Verhoef leaf-angle distribution parameters |
+| `hotspot` | 1 | Leaf-size / canopy-height hotspot parameter |
+| `solar_zenith_deg`, `view_zenith_deg` | degrees | Solar and viewing zenith angles |
+| `relative_azimuth_deg` | degrees | Relative solar-view azimuth |
+| `direct_irradiance_w_m2_um` | W m⁻² µm⁻¹ | Optional direct irradiance on a horizontal surface, default 0 |
+
+Use `rsp.describe('thermal.foursail')['input_schema']` for defaults and
+accepted numeric ranges.
+
 ## How it works
 
 The four-stream equations propagate diffuse upward/downward fluxes, a direct

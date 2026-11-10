@@ -17,13 +17,11 @@ and application development.
 
 ## Installation
 
-PyPI installation, available after the first package release:
-
 ```sh
 pip install rsphysics
 ```
 
-For current builds, install a [prebuilt wheel](docs/installation.md).
+See [Installation](docs/installation.md) for supported platforms and prebuilt wheels.
 
 ## Quick start
 

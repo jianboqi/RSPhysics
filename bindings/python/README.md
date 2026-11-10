@@ -5,13 +5,12 @@ interfaces to physical models and numerical tools.
 
 ## Installation
 
-After the first PyPI release:
-
 ```sh
 pip install rsphysics
 ```
 
-Current packages are available as [prebuilt wheels](https://github.com/jianboqi/RSPhysics/blob/main/docs/installation.md).
+Python 3.11 or later is required. NumPy is installed automatically. Compatible
+prebuilt wheels run without a Rust compiler on Windows, Linux and macOS.
 
 ## Usage
 
@@ -26,8 +25,8 @@ See [Documentation](https://github.com/jianboqi/RSPhysics/blob/main/docs/README.
 for basic usage, physical tools, and model guides, or
 [Build from source](https://github.com/jianboqi/RSPhysics/blob/main/docs/build-from-source.md).
 
-The [I²EM model guide](https://github.com/jianboqi/RSPhysics/blob/main/docs/models/i2em.md)
-covers rough-surface HH/VV backscatter and NumPy parameter sweeps.
+For plotting examples, install the optional dependencies with
+`pip install "rsphysics[examples]"`.
 
 ## License
 

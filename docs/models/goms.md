@@ -36,6 +36,25 @@ Normalized crown density is number density multiplied by squared horizontal
 crown radius, not stems per square metre. Azimuths and terrain aspect share
 the same directional reference.
 
+## Parameters
+
+| Parameter | Unit | Meaning |
+|---|---|---|
+| `normalized_crown_density` | 1 | Crown number density times squared horizontal crown radius |
+| `crown_axis_ratio` | 1 | Vertical-to-horizontal ellipsoid semi-axis ratio |
+| `crown_height_ratio` | 1 | Mean crown-center height divided by vertical semi-axis |
+| `relative_height_variation` | 1 | Crown-center height distribution parameter |
+| `sunlit_ground_reflectance` | 1 | Per-band sunlit-ground reflectance |
+| `sunlit_crown_reflectance` | 1 | Per-band sunlit-crown reflectance |
+| `shaded_reflectance` | 1 | Per-band shared shaded-crown / shaded-ground reflectance |
+| `solar_zenith_deg`, `view_zenith_deg` | degrees | Solar and viewing zenith angles |
+| `solar_azimuth_deg`, `view_azimuth_deg` | degrees | Solar and viewing azimuths in a shared reference frame |
+| `slope_deg`, `slope_aspect_deg` | degrees | Terrain slope and aspect |
+| `geometry_convention` | — | `area_consistent` (default) or `legacy_c`; see below |
+
+Use `rsp.describe('vegetation.goms')['input_schema']` for defaults and accepted
+numeric ranges.
+
 ## Outputs
 
 | Field | Meaning |
