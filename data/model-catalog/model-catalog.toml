@@ -37,3 +37,7 @@ manifest = "crates/models/soil/sort/model.toml"
 [[models]]
 id = "soil.sort-l"
 manifest = "crates/models/soil/sort/model-l.toml"
+
+[[models]]
+id = "microwave.i2em"
+manifest = "crates/models/microwave/i2em/model.toml"

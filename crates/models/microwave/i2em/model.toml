@@ -1,0 +1,85 @@
+[model]
+id = "microwave.i2em"
+name = "I²EM 粗糙面散射"
+family = "i2em"
+category = "microwave"
+scientific_version = "Fung / single-scale monostatic HH-VV / exponential-Gaussian"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Single-scale isotropic random bare surface, monostatic HH/VV, exponential or Gaussian covariance. Requires ks < 1 and s/L <= 0.25; implemented incidence range 1..80 degrees. Relative permittivity supplied directly as real - i*loss. Retains reference c=0.30 m/ns and incident-angle offset 0.01 rad. No HV, bistatic, x-power, x-exponential, dielectric mixing, inversion or model coupling. Numerically underflowing configurations return an error rather than a dB floor."
+[source]
+crate = "rsphysics-i2em"
+authors = ["Adrian Fung", "Fawwaz T. Ulaby", "David G. Long"]
+references = ["https://doi.org/10.21982/M8BC7Z", "https://tools.grss-ieee.org/rscl1/coderecord.php?id=469", "https://ulabyweb.eecs.umich.edu/mrs/"]
+license = "LicenseRef-I2EM-Authorized-Adaptation"
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "i2em-matlab-copol-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "i2em-matlab-copol-v1"
+implementation_version = "0.1.0"
+backend = "python"
+[data.hashes]
+[input_semantics."/frequency_ghz"]
+unit = "GHz"
+axes = []
+description = "Radar frequency; reference c=0.30 m/ns."
+[input_semantics."/permittivity_real"]
+unit = "1"
+axes = []
+description = "Real relative permittivity."
+[input_semantics."/permittivity_loss"]
+unit = "1"
+axes = []
+description = "Nonnegative loss; epsilon = real - i*loss."
+[input_semantics."/rms_height_m"]
+unit = "m"
+axes = []
+description = "RMS surface height; k*s < 1."
+[input_semantics."/correlation_length_m"]
+unit = "m"
+axes = []
+description = "Correlation length; s/L <= 0.25."
+[input_semantics."/observation_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Incidence angle from normal, 1..80 degrees."
+[input_semantics."/correlation_function"]
+unit = "1"
+axes = []
+description = "Isotropic covariance: exponential or gaussian."
+[output_semantics."/sigma0_vv"]
+unit = "1"
+axes = []
+description = "Normalized radar cross section in linear power; not an amplitude or reflectance."
+[output_semantics."/sigma0_hh"]
+unit = "1"
+axes = []
+description = "Normalized radar cross section in linear power; not an amplitude or reflectance."
+[output_semantics."/sigma0_vv_db"]
+unit = "dB"
+axes = []
+description = "Normalized radar cross section in dB (10 log10 linear power)."
+[output_semantics."/sigma0_hh_db"]
+unit = "dB"
+axes = []
+description = "Normalized radar cross section in dB (10 log10 linear power)."
+[output_semantics."/ks"]
+unit = "1"
+axes = []
+description = "Dimensionless roughness k*s."
+[output_semantics."/height_length_ratio"]
+unit = "1"
+axes = []
+description = "RMS height divided by correlation length."

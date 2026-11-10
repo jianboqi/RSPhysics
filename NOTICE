@@ -12,3 +12,7 @@ project maintainer. Scientific resources retain their source-specific terms.
 
 See LICENSES.md, the packaged THIRD_PARTY_NOTICES.md, and each component's
 source/license notices for the applicable scope.
+
+I2EM: Adrian Fung, IEEE-GRSS RSCL DOI 10.21982/M8BC7Z; Ulaby & Long (2014).
+Adapted implementation distributed with maintainer-confirmed authorization;
+see crates/models/microwave/i2em/LICENSE.component. Original MATLAB excluded.

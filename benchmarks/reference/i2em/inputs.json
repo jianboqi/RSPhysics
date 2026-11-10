@@ -1,0 +1,182 @@
+[
+  {
+    "frequency_ghz": 1.26,
+    "rms_height_m": 0.01,
+    "correlation_length_m": 0.1,
+    "permittivity_real": 15,
+    "permittivity_loss": 2,
+    "observation_zenith_deg": 40,
+    "correlation_function": "exponential"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.005,
+    "correlation_length_m": 0.06,
+    "permittivity_real": 10,
+    "permittivity_loss": 1,
+    "observation_zenith_deg": 30,
+    "correlation_function": "exponential"
+  },
+  {
+    "frequency_ghz": 9.6,
+    "rms_height_m": 0.003,
+    "correlation_length_m": 0.04,
+    "permittivity_real": 20,
+    "permittivity_loss": 3,
+    "observation_zenith_deg": 50,
+    "correlation_function": "exponential"
+  },
+  {
+    "frequency_ghz": 1.4,
+    "rms_height_m": 0.005,
+    "correlation_length_m": 0.1,
+    "permittivity_real": 3,
+    "permittivity_loss": 0,
+    "observation_zenith_deg": 10,
+    "correlation_function": "exponential"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.0001,
+    "correlation_length_m": 0.02,
+    "permittivity_real": 5,
+    "permittivity_loss": 0.2,
+    "observation_zenith_deg": 70,
+    "correlation_function": "exponential"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.008,
+    "correlation_length_m": 0.032,
+    "permittivity_real": 30,
+    "permittivity_loss": 10,
+    "observation_zenith_deg": 60,
+    "correlation_function": "exponential"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.0089,
+    "correlation_length_m": 0.06,
+    "permittivity_real": 12,
+    "permittivity_loss": 1,
+    "observation_zenith_deg": 40,
+    "correlation_function": "exponential"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.001,
+    "correlation_length_m": 0.01,
+    "permittivity_real": 7,
+    "permittivity_loss": 0.5,
+    "observation_zenith_deg": 1,
+    "correlation_function": "exponential"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.005,
+    "correlation_length_m": 0.06,
+    "permittivity_real": 10,
+    "permittivity_loss": 1,
+    "observation_zenith_deg": 80,
+    "correlation_function": "exponential"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.005,
+    "correlation_length_m": 0.06,
+    "permittivity_real": 10,
+    "permittivity_loss": 1,
+    "observation_zenith_deg": 55,
+    "correlation_function": "exponential"
+  },
+  {
+    "frequency_ghz": 1.26,
+    "rms_height_m": 0.01,
+    "correlation_length_m": 0.1,
+    "permittivity_real": 15,
+    "permittivity_loss": 2,
+    "observation_zenith_deg": 40,
+    "correlation_function": "gaussian"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.005,
+    "correlation_length_m": 0.06,
+    "permittivity_real": 10,
+    "permittivity_loss": 1,
+    "observation_zenith_deg": 30,
+    "correlation_function": "gaussian"
+  },
+  {
+    "frequency_ghz": 9.6,
+    "rms_height_m": 0.003,
+    "correlation_length_m": 0.04,
+    "permittivity_real": 20,
+    "permittivity_loss": 3,
+    "observation_zenith_deg": 50,
+    "correlation_function": "gaussian"
+  },
+  {
+    "frequency_ghz": 1.4,
+    "rms_height_m": 0.005,
+    "correlation_length_m": 0.1,
+    "permittivity_real": 3,
+    "permittivity_loss": 0,
+    "observation_zenith_deg": 10,
+    "correlation_function": "gaussian"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.0001,
+    "correlation_length_m": 0.02,
+    "permittivity_real": 5,
+    "permittivity_loss": 0.2,
+    "observation_zenith_deg": 70,
+    "correlation_function": "gaussian"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.008,
+    "correlation_length_m": 0.032,
+    "permittivity_real": 30,
+    "permittivity_loss": 10,
+    "observation_zenith_deg": 60,
+    "correlation_function": "gaussian"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.0089,
+    "correlation_length_m": 0.06,
+    "permittivity_real": 12,
+    "permittivity_loss": 1,
+    "observation_zenith_deg": 40,
+    "correlation_function": "gaussian"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.001,
+    "correlation_length_m": 0.01,
+    "permittivity_real": 7,
+    "permittivity_loss": 0.5,
+    "observation_zenith_deg": 1,
+    "correlation_function": "gaussian"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.005,
+    "correlation_length_m": 0.06,
+    "permittivity_real": 10,
+    "permittivity_loss": 1,
+    "observation_zenith_deg": 80,
+    "correlation_function": "gaussian"
+  },
+  {
+    "frequency_ghz": 5.3,
+    "rms_height_m": 0.005,
+    "correlation_length_m": 0.06,
+    "permittivity_real": 10,
+    "permittivity_loss": 1,
+    "observation_zenith_deg": 55,
+    "correlation_function": "gaussian"
+  }
+]

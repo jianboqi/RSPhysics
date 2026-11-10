@@ -112,3 +112,7 @@ as LicenseRef-User-Supplied-Research-Code, not relabeled Apache-2.0. See
 SUPPLIED_MODELS_ORIGIN.md for attribution, scientific references, and terms.
 The project maintainer confirmed publication permission on 2026-11-10. Original
 MATLAB source, papers, and station spreadsheets are not bundled.
+
+I2EM: Adrian Fung, IEEE-GRSS RSCL DOI 10.21982/M8BC7Z; Ulaby & Long (2014).
+Adapted implementation distributed with maintainer-confirmed authorization.
+Original MATLAB source is not included. See I2EM_COMPONENT_LICENSE.txt.

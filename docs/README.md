@@ -25,6 +25,7 @@
 
 - [Tau–omega — soil and vegetation brightness temperature](models/tau-omega.md)
 - [L-MEB — L-band dual-polarization emission](models/lmeb.md)
+- [I²EM — rough-surface HH/VV radar backscatter](models/i2em.md)
 - [Water-cloud model — vegetation radar backscatter](models/water-cloud.md)
 
 ### Atmosphere

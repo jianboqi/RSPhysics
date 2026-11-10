@@ -5,12 +5,13 @@ import pytest
 import rsphysics as rsp
 
 ROOT=Path(__file__).resolve().parents[3]
-MODELS=['vegetation.prospect-d','vegetation.prosail-d','surface.ross-li','microwave.tau-omega','microwave.water-cloud','microwave.lmeb','ecosystem.gort-gpp','soil.sort-l']
+MODELS=['microwave.i2em','vegetation.prospect-d','vegetation.prosail-d','surface.ross-li','microwave.tau-omega','microwave.water-cloud','microwave.lmeb','ecosystem.gort-gpp','soil.sort-l']
 
 @pytest.mark.parametrize('model',MODELS)
 def test_typed_buffers_match_all_existing_references_and_json_runtime(model):
     slug=model.split('.')[1];suite=json.loads((ROOT/f'benchmarks/reference/{slug}/inputs.json').read_text())
     columns=rsp.parameters_for(model);cases=suite if isinstance(suite,list) else suite['cases']
+    if model=='microwave.i2em':cases=[{'parameters':p} for p in cases if p['correlation_function']=='exponential']
     matrix=np.array([[c['parameters'][k] for k in columns] for c in cases])
     actual=rsp.run_array(model,matrix)
     for i,c in enumerate(cases):
@@ -27,7 +28,8 @@ def test_shared_axes_empty_chunks_and_strided_matrices(model):
     table=np.repeat(matrix,5,axis=0);view=np.zeros((5,matrix.shape[1]*2));view[:,::2]=table;view=view[:,::2]
     assert not view.flags.c_contiguous
     legacy=rsp.run_array(model,view);shared=rsp.run_array(model,view,shared_axes=True)
-    assert shared['coordinates']
+    if model=='microwave.i2em':assert shared['coordinates']=={}
+    else:assert shared['coordinates']
     for key,coordinate in shared['coordinates'].items():
         assert coordinate.ndim==1
         np.testing.assert_array_equal(coordinate,legacy['result'][key] if key=='wavelengths_nm' else legacy['result'][key][0])

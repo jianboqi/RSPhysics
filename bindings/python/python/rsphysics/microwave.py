@@ -56,3 +56,18 @@ def lmeb(*,
 def lmeb_batch(parameters, *, shared_axes=False)->dict:
     """Native NumPy batch in parameters_for('microwave.lmeb') column order."""
     return run_array('microwave.lmeb',parameters,shared_axes=shared_axes)
+
+
+I2EM_PARAMETERS=('frequency_ghz','permittivity_real','permittivity_loss','rms_height_m','correlation_length_m','observation_zenith_deg')
+
+def i2em(*,frequency_ghz:float=5.3,permittivity_real:float=10.,permittivity_loss:float=1.,rms_height_m:float=.005,correlation_length_m:float=.06,observation_zenith_deg:float=30.,correlation_function:str='exponential')->dict:
+    """Single-scale HH/VV sigma0 in linear power and dB. epsilon=real-i*loss.
+
+    Requires ks<1, s/L<=0.25; angle 1..80 deg. Covariance exponential/gaussian.
+    Retains original c=0.30 m/ns and 0.01 rad incidence offset. No HV or coupling.
+    """
+    return run('microwave.i2em',locals())
+
+def i2em_batch(parameters, *, correlation_function='exponential', shared_axes=False)->dict:
+    """Real (batch,6) in I2EM_PARAMETERS order; scalar arrays (batch,)."""
+    return run_array('microwave.i2em',parameters,shared_axes=shared_axes,fixed={'correlation_function':correlation_function})

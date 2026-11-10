@@ -44,6 +44,7 @@ reflectance = leaf["result"]["reflectance"]
 | Surface reflectance | [Ross–Li](docs/models/ross-li.md) | Directional reflectance and BRDF |
 | Passive microwave | [Tau–omega](docs/models/tau-omega.md) | Soil–vegetation brightness temperature |
 | Passive microwave | [L-MEB](docs/models/lmeb.md) | L-band dual-polarization emission |
+| Active microwave | [I²EM](docs/models/i2em.md) | Rough bare-surface HH/VV radar backscatter |
 | Active microwave | [Water-cloud model](docs/models/water-cloud.md) | Vegetation and soil radar backscatter |
 | Soil optics | [SORT](docs/models/sort.md) | Dry and wet soil directional reflectance |
 | Soil optics | [SORT-L](docs/models/sort-l.md) | Lambertian dry and wet soil reflectance |

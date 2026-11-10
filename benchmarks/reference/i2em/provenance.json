@@ -1,0 +1,14 @@
+{
+  "source_url": "https://tools.grss-ieee.org/rscl1/codes/I2EM_Backscatter_model.m",
+  "source_sha256": "348485b133dcc309d3d4a64727420c96775d686aada6f4b29a35877759d6d046",
+  "source_md5": "e22c72b6d96fddbdb6a59ba00a653f6c",
+  "reference_doi": "10.21982/M8BC7Z",
+  "runtime": "MATLAB R2026a, Windows x64",
+  "method": "Extract the complete I2EM_Bistat_model and its local co-pol helpers (before IEMX_model); invoke with ths=thi, phs=180. No arithmetic changes. Original unused Fresnel dblquad integrations retained.",
+  "columns": [
+    "sigma0_vv_db",
+    "sigma0_hh_db"
+  ],
+  "cases": 20,
+  "tolerance_db": 2e-09
+}

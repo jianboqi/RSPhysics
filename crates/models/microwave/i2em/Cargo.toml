@@ -1,0 +1,18 @@
+[package]
+name = "rsphysics-i2em"
+description = "I2EM single-scale rough-surface co-polarized backscatter"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license-file = "LICENSE.component"
+[dependencies]
+rsphysics-model-api.workspace = true
+num-complex.workspace = true
+serde.workspace = true
+schemars.workspace = true
+libm = "0.2"
+[dev-dependencies]
+serde_json.workspace = true
+[lints]
+workspace = true

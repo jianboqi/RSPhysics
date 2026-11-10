@@ -26,6 +26,9 @@ See [Documentation](https://github.com/jianboqi/RSPhysics/blob/main/docs/README.
 for basic usage, physical tools, and model guides, or
 [Build from source](https://github.com/jianboqi/RSPhysics/blob/main/docs/build-from-source.md).
 
+The [I²EM model guide](https://github.com/jianboqi/RSPhysics/blob/main/docs/models/i2em.md)
+covers rough-surface HH/VV backscatter and NumPy parameter sweeps.
+
 ## License
 
 Project-original code is Apache-2.0. Included models and resources retain

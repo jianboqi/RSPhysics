@@ -19,3 +19,15 @@ The project license does not replace third-party conditions. See
 
 SORT and SORT-L retain the author's academic/non-commercial usage terms and the
 confirmed public distribution authorization; see [component rights](crates/models/soil/sort/LICENSE-ORIGIN.md) and its [MIT roughness notice](crates/models/soil/sort/THIRD_PARTY_NOTICES.md).
+
+
+## I²EM rough-surface scattering
+
+Scientific implementation: Adrian Fung. Reference: IEEE-GRSS Remote Sensing
+Code Library, DOI 10.21982/M8BC7Z, and Ulaby & Long (2014), section 10-3.9.
+The maintainer confirmed authorization for public distribution of the adapted
+implementation. This component is identified as
+`LicenseRef-I2EM-Authorized-Adaptation`; it is not represented as an Apache-2.0
+relicensing of the original MATLAB program. See
+`crates/models/microwave/i2em/LICENSE.component`. Original MATLAB source is
+not bundled. RSPhysics-authored interfaces and packaging are Apache-2.0.

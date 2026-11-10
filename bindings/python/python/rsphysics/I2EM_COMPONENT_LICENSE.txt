@@ -1,0 +1,16 @@
+I2EM scientific component
+
+Original scientific implementation: Adrian Fung, IEEE-GRSS Remote Sensing
+Code Library, DOI 10.21982/M8BC7Z (2016).
+Book: Fawwaz T. Ulaby and David G. Long, Microwave Radar and Radiometric
+Remote Sensing (2014), section 10-3.9.
+
+The RSPhysics maintainer has confirmed authorization to publicly distribute
+the adapted implementation. This authorization is specific to this project;
+it does not relicense the original MATLAB program under Apache-2.0 or imply
+a general redistribution grant for that original program. Original source
+is obtained separately from IEEE-GRSS and is not included in this package.
+
+RSPhysics-authored interface, validation, and packaging code is Apache-2.0.
+For questions about the scientific component's permissions, contact the
+RSPhysics maintainer: https://github.com/jianboqi/RSPhysics/issues

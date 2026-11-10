@@ -9,6 +9,14 @@ use rsphysics_runtime::RunManifest;
 use serde_json::{Map, Value};
 use std::{collections::BTreeMap, sync::OnceLock};
 
+const I2EM: &[&str] = &[
+    "frequency_ghz",
+    "permittivity_real",
+    "permittivity_loss",
+    "rms_height_m",
+    "correlation_length_m",
+    "observation_zenith_deg",
+];
 const SORT: &[&str] = &[
     "solar_zenith_deg",
     "view_zenith_deg",
@@ -148,6 +156,7 @@ const GORT: &[&str] = &[
 ];
 fn columns(id: &str) -> Result<&'static [&'static str], ModelError> {
     match id {
+        "microwave.i2em" => Ok(I2EM),
         "soil.sort" => Ok(SORT),
         "soil.sort-l" => Ok(SORT_L),
         "ecosystem.gort-gpp" => Ok(GORT),
@@ -281,6 +290,7 @@ macro_rules! cache {
         }
     };
 }
+cache!(i2em, I2EM_MODEL, rsphysics_i2em::Model);
 cache!(sort, SORT_MODEL, rsphysics_sort::Model);
 cache!(sort_l, SORT_L_MODEL, rsphysics_sort::LambertModel);
 cache!(prosail, PROSAIL_MODEL, rsphysics_prosail_d::Model);
@@ -429,6 +439,19 @@ fn tau_row(o: rsphysics_tau_omega::Output) -> Row {
         ..Row::default()
     }
 }
+fn i2em_row(o: rsphysics_i2em::Output) -> Row {
+    Row {
+        scalars: vec![
+            ("sigma0_vv", o.sigma0_vv),
+            ("sigma0_hh", o.sigma0_hh),
+            ("sigma0_vv_db", o.sigma0_vv_db),
+            ("sigma0_hh_db", o.sigma0_hh_db),
+            ("ks", o.ks),
+            ("height_length_ratio", o.height_length_ratio),
+        ],
+        ..Row::default()
+    }
+}
 fn water_row(o: rsphysics_water_cloud::Output) -> Row {
     Row {
         scalars: vec![
@@ -553,11 +576,12 @@ pub fn model_batch_native<'py>(
     if fixed.keys().any(|k| !match id {
         "atmosphere.smac" => matches!(k.as_str(), "coefficient_id" | "direction"),
         "soil.sort" => k == "roughness_correction",
+        "microwave.i2em" => k == "correlation_function",
         _ => false,
     }) {
         return Err(super::error(ModelError::new(
             ErrorKind::InvalidParameter,
-            "fixed accepts only model string selectors: SMAC coefficient_id/direction or SORT roughness_correction",
+            "fixed accepts only model string selectors: SMAC coefficient_id/direction, SORT roughness_correction, or I2EM correlation_function",
         )));
     }
     if parameters.shape()[1] != names.len() {
@@ -574,6 +598,10 @@ pub fn model_batch_native<'py>(
     // Initialize cached models/runtime with the GIL, then release it for all rows.
     super::runtime()?;
     let (buffers, manifests) = match id {
+        "microwave.i2em" => {
+            let m = i2em()?;
+            py.detach(|| typed(m, id, &values, shared_axes, i2em_row, &fixed))
+        }
         "soil.sort" => {
             let m = sort()?;
             py.detach(|| typed(m, id, &values, shared_axes, sort_row, &fixed))
