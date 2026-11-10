@@ -1,0 +1,199 @@
+[model]
+id = "microwave.lmeb"
+name = "L-MEB"
+family = "lmeb"
+category = "microwave"
+scientific_version = "JPW 2001-2007 / 1.41 GHz / soil forward"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Adapted supplied tauw1i soil forward branch, fixed 1.41 GHz. Includes Dobson soil permittivity, frozen-soil/dry-sand branches, effective soil temperature, roughness/polarization mixing, directional vegetation opacity and prescribed L-band sky model. No water/ice-surface branch, higher-frequency Wang branch or inversion. The sky air temperature is supplied separately exactly as para(3) in the reference. No external model coupling. Publication of the supplied source and adaptations is authorized by the project maintainer; see LICENSE-ORIGIN.md for component terms."
+[source]
+crate = "rsphysics-lmeb"
+authors = ["Jean-Pierre Wigneron (supplied MATLAB source attribution)", "RSPhysics contributors (Rust adaptation)"]
+references = ["https://doi.org/10.1016/j.rse.2006.10.014", "Supplied MATLAB source; pinned file checksums in benchmarks/reference/lmeb/upstream-provenance.json"]
+license = "LicenseRef-User-Supplied-Research-Code"
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "lmeb-supplied-matlab-v1"
+implementation_version = "0.1.0"
+backend = "native"
+
+[[validation.evidence]]
+kind = "implementation"
+suite = "lmeb-supplied-matlab-v1"
+implementation_version = "0.1.0"
+backend = "python"
+[data.hashes]
+
+[input_semantics."/soil_moisture"]
+unit = "m^3 m^-3"
+axes = []
+description = "Volumetric soil moisture; positive to avoid original zero-moisture singularity."
+
+[input_semantics."/nadir_optical_depth"]
+unit = "1"
+axes = []
+description = "Vegetation optical depth at nadir."
+
+[input_semantics."/sky_air_temperature_k"]
+unit = "K"
+axes = []
+description = "Original para(3): air temperature for prescribed sky model, before forward-mode effective-temperature update."
+
+[input_semantics."/canopy_temperature_k"]
+unit = "K"
+axes = []
+description = "Effective canopy temperature."
+
+[input_semantics."/surface_temperature_k"]
+unit = "K"
+axes = []
+description = "Shallow soil temperature."
+
+[input_semantics."/deep_temperature_k"]
+unit = "K"
+axes = []
+description = "Deep soil temperature."
+
+[input_semantics."/bulk_density_g_cm3"]
+unit = "g cm^-3"
+axes = []
+description = "Soil bulk density."
+
+[input_semantics."/sand_fraction"]
+unit = "1"
+axes = []
+description = "Sand mass fraction."
+
+[input_semantics."/clay_fraction"]
+unit = "1"
+axes = []
+description = "Clay mass fraction; sand plus clay cannot exceed one."
+
+[input_semantics."/temperature_moisture_scale"]
+unit = "m^3 m^-3"
+axes = []
+description = "Moisture scale xa in effective soil-temperature parameterization."
+
+[input_semantics."/temperature_moisture_exponent"]
+unit = "1"
+axes = []
+description = "Exponent xb in effective soil-temperature parameterization."
+
+[input_semantics."/canopy_structure_h"]
+unit = "1"
+axes = []
+description = "Horizontal-polarization angular opacity factor tth."
+
+[input_semantics."/canopy_structure_v_ratio"]
+unit = "1"
+axes = []
+description = "Vertical/horizontal structure ratio rtt."
+
+[input_semantics."/scattering_albedo_h"]
+unit = "1"
+axes = []
+description = "Horizontal-polarization single-scattering albedo."
+
+[input_semantics."/scattering_albedo_v_difference"]
+unit = "1"
+axes = []
+description = "Vertical minus horizontal albedo; their sum must lie in [0,1]."
+
+[input_semantics."/roughness_height"]
+unit = "1"
+axes = []
+description = "Empirical dimensionless roughness height hsol."
+
+[input_semantics."/roughness_mixing"]
+unit = "1"
+axes = []
+description = "Empirical polarization mixing qsol."
+
+[input_semantics."/roughness_exponent_v"]
+unit = "1"
+axes = []
+description = "Vertical roughness angular exponent."
+
+[input_semantics."/roughness_exponent_h"]
+unit = "1"
+axes = []
+description = "Horizontal roughness angular exponent."
+
+[input_semantics."/observation_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Incidence angle from the surface normal."
+
+[output_semantics."/brightness_temperature_v_k"]
+unit = "K"
+axes = []
+description = "Vertical-polarization surface brightness temperature."
+
+[output_semantics."/brightness_temperature_h_k"]
+unit = "K"
+axes = []
+description = "Horizontal-polarization surface brightness temperature."
+
+[output_semantics."/effective_soil_temperature_k"]
+unit = "K"
+axes = []
+description = "Moisture-weighted effective soil temperature."
+
+[output_semantics."/soil_permittivity_real"]
+unit = "1"
+axes = []
+description = "Real soil relative permittivity."
+
+[output_semantics."/soil_permittivity_imaginary"]
+unit = "1"
+axes = []
+description = "Imaginary part in the original negative-loss convention; dry-sand branch sign retained."
+
+[output_semantics."/soil_reflectivity_v"]
+unit = "1"
+axes = []
+description = "Roughness-adjusted vertical power reflectivity."
+
+[output_semantics."/soil_reflectivity_h"]
+unit = "1"
+axes = []
+description = "Roughness-adjusted horizontal power reflectivity."
+
+[output_semantics."/sky_brightness_temperature_k"]
+unit = "K"
+axes = []
+description = "Prescribed downwelling sky-plus-atmosphere brightness."
+
+[output_semantics."/transmissivity_v"]
+unit = "1"
+axes = []
+description = "Vertical canopy transmission."
+
+[output_semantics."/transmissivity_h"]
+unit = "1"
+axes = []
+description = "Horizontal canopy transmission."
+
+[output_semantics."/sweep_zenith_deg"]
+unit = "deg"
+axes = ["zenith"]
+description = "Fixed incidence angles 0..80 degrees."
+
+[output_semantics."/sweep_brightness_temperature_v_k"]
+unit = "K"
+axes = ["zenith"]
+description = "Vertical response with other parameters fixed."
+
+[output_semantics."/sweep_brightness_temperature_h_k"]
+unit = "K"
+axes = ["zenith"]
+description = "Horizontal response with other parameters fixed."

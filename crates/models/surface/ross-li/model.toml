@@ -1,0 +1,110 @@
+[model]
+id = "surface.ross-li"
+name = "Ross–Li"
+family = "Ross–Li"
+category = "surface"
+scientific_version = "RossThick–LiSparseReciprocal / h-b=2,b-r=1"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Single-band algebraic forward model; fixed h/b=2 and b/r=1; no hotspot enhancement, spectral interpolation, inversion or coupling. Angles exclude the horizon. Nonnegative weights do not ensure physical validity: negative BRF samples are diagnosed and retained without clipping. BRF may exceed one. Principal plane and hemisphere grids have fixed documented sampling."
+
+[source]
+crate = "rsphysics-ross-li"
+authors = ["RSPhysics contributors (independent implementation of published equations)"]
+references = ["https://modis.gsfc.nasa.gov/data/atbd/atbd_mod09.pdf", "https://rami-benchmark.jrc.ec.europa.eu/_www/definition.php", "https://doi.org/10.1109/36.841980", "https://github.com/arthurelmes/ambrals_forward/tree/b43d9171ea9f6dc76854cac34037e2af7903d02e"]
+license = "Apache-2.0"
+
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "ross-li-ambrals-jrc-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "ross-li-ambrals-jrc-v1"
+implementation_version = "0.1.0"
+backend = "python"
+
+[data.hashes]
+
+[input_semantics."/f_iso"]
+unit = "1"
+axes = []
+description = "Isotropic kernel weight for one band, not a pigment content."
+[input_semantics."/f_vol"]
+unit = "1"
+axes = []
+description = "RossThick kernel weight for the same band."
+[input_semantics."/f_geo"]
+unit = "1"
+axes = []
+description = "LiSparseReciprocal kernel weight for the same band."
+[input_semantics."/solar_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Solar zenith, 0 is overhead sun."
+[input_semantics."/view_zenith_deg"]
+unit = "deg"
+axes = []
+description = "View zenith, 0 is nadir."
+[input_semantics."/relative_azimuth_deg"]
+unit = "deg"
+axes = []
+description = "Unsigned sun-view azimuth separation. Zero is same azimuth/backscatter; 180 is opposite azimuth/forward."
+[output_semantics."/brf"]
+unit = "1"
+quantity = "brf"
+axes = []
+description = "Selected-geometry BRF, algebraic response without clipping; negative means nonphysical weights at this geometry."
+[output_semantics."/brdf"]
+unit = "sr^-1"
+quantity = "brdf"
+axes = []
+description = "Selected-geometry BRDF = BRF/pi."
+[output_semantics."/k_iso"]
+unit = "1"
+axes = []
+description = "Isotropic kernel, one."
+[output_semantics."/k_vol"]
+unit = "1"
+axes = []
+description = "RossThick kernel; may be negative."
+[output_semantics."/k_geo"]
+unit = "1"
+axes = []
+description = "LiSparseReciprocal kernel; may be negative."
+[output_semantics."/principal_view_zenith_deg"]
+unit = "deg"
+axes = ["principal_view"]
+description = "171 signed view angles -85..85, step1; negative uses relative azimuth180, nonnegative uses0."
+[output_semantics."/principal_brf"]
+unit = "1"
+quantity = "brf"
+axes = ["principal_view"]
+description = "Principal-plane BRF under the input solar zenith and weights."
+[output_semantics."/hemisphere_view_zenith_deg"]
+unit = "deg"
+axes = ["hemisphere_sample"]
+description = "648 zenith-major samples: view zenith0..85 step5, each with36 azimuths."
+[output_semantics."/hemisphere_azimuth_deg"]
+unit = "deg"
+axes = ["hemisphere_sample"]
+description = "Relative viewing azimuth 0..350 step10; 0 is sun azimuth, plotted clockwise; values beyond180 use azimuthal symmetry."
+[output_semantics."/hemisphere_brf"]
+unit = "1"
+quantity = "brf"
+axes = ["hemisphere_sample"]
+description = "Flattened hemisphere BRF, paired with the two hemisphere angle arrays."
+[output_semantics."/negative_sample_count"]
+unit = "1"
+axes = []
+description = "Negative BRF count across selected point + principal + hemisphere samples (820 samples); not a count of negative kernels."

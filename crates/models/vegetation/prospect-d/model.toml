@@ -1,0 +1,85 @@
+[model]
+id = "vegetation.prospect-d"
+name = "PROSPECT-D"
+family = "PROSPECT"
+category = "vegetation"
+scientific_version = "D"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Leaf optics only; fixed 400-2500 nm / 1 nm coefficients from author prospect v1.7.0; supported parameter envelope is documented, not a universal biological validity domain. No inversion, canopy coupling or PROSPECT-PRO parameters."
+
+[source]
+crate = "rsphysics-prospect-d"
+authors = ["Jean-Baptiste Feret", "Florian de Boissieu", "RSPhysics contributors (Rust adaptation)"]
+references = ["https://doi.org/10.1016/j.rse.2017.03.004", "https://doi.org/10.21105/joss.06027", "https://github.com/jbferet/prospect/tree/4649d5006ddf6bce609951765a88ba2498fcd8ab"]
+license = "MIT"
+
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "prospect-d-author-r-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "prospect-d-author-r-v1"
+implementation_version = "0.1.0"
+backend = "python"
+
+[data.hashes]
+coefficients = "sha256:cb2da8cef652ef90e666aef302689936d4ddf817c7908484a3fd06e1467fd3a5"
+
+[input_semantics."/n"]
+unit = "1"
+axes = []
+description = "Dimensionless leaf structure parameter."
+[input_semantics."/chlorophyll"]
+unit = "ug cm^-2"
+axes = []
+description = "Chlorophyll a+b content."
+[input_semantics."/carotenoids"]
+unit = "ug cm^-2"
+axes = []
+description = "Carotenoid content."
+[input_semantics."/anthocyanins"]
+unit = "ug cm^-2"
+axes = []
+description = "Anthocyanin content."
+[input_semantics."/brown_pigments"]
+unit = "1"
+axes = []
+description = "Brown pigments in the original arbitrary units."
+[input_semantics."/water"]
+unit = "g cm^-2"
+axes = []
+description = "Equivalent water mass per unit leaf area."
+[input_semantics."/dry_matter"]
+unit = "g cm^-2"
+axes = []
+description = "Leaf dry mass per area (LMA)."
+[input_semantics."/incidence_angle_deg"]
+unit = "deg"
+axes = []
+description = "Maximum incidence angle of the illumination cone."
+[output_semantics."/wavelengths_nm"]
+unit = "nm"
+axes = ["wavelength"]
+description = "400 through 2500 nm, 1 nm sampling."
+[output_semantics."/reflectance"]
+unit = "1"
+quantity = "reflectance"
+axes = ["wavelength"]
+description = "Leaf conical-hemispherical reflectance under the specified illumination cone."
+[output_semantics."/transmittance"]
+unit = "1"
+quantity = "transmittance"
+axes = ["wavelength"]
+description = "Leaf conical-hemispherical transmittance under the specified illumination cone."

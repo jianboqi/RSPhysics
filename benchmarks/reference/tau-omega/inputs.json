@@ -1,0 +1,354 @@
+[
+  {
+    "name": "default",
+    "parameters": {
+      "soil_temperature_k": 300.0,
+      "vegetation_temperature_k": 295.0,
+      "soil_reflectivity": 0.3,
+      "vegetation_optical_depth": 0.3,
+      "single_scattering_albedo": 0.05,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "nadir",
+    "parameters": {
+      "soil_temperature_k": 300.0,
+      "vegetation_temperature_k": 295.0,
+      "soil_reflectivity": 0.3,
+      "vegetation_optical_depth": 0.3,
+      "single_scattering_albedo": 0.05,
+      "observation_zenith_deg": 0
+    }
+  },
+  {
+    "name": "angle-limit",
+    "parameters": {
+      "soil_temperature_k": 300.0,
+      "vegetation_temperature_k": 295.0,
+      "soil_reflectivity": 0.3,
+      "vegetation_optical_depth": 0.3,
+      "single_scattering_albedo": 0.05,
+      "observation_zenith_deg": 80
+    }
+  },
+  {
+    "name": "bare-soil",
+    "parameters": {
+      "soil_temperature_k": 300.0,
+      "vegetation_temperature_k": 295.0,
+      "soil_reflectivity": 0.3,
+      "vegetation_optical_depth": 0,
+      "single_scattering_albedo": 0.05,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "black-soil",
+    "parameters": {
+      "soil_temperature_k": 300.0,
+      "vegetation_temperature_k": 295.0,
+      "soil_reflectivity": 0,
+      "vegetation_optical_depth": 0.3,
+      "single_scattering_albedo": 0.05,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "reflecting-soil",
+    "parameters": {
+      "soil_temperature_k": 300.0,
+      "vegetation_temperature_k": 295.0,
+      "soil_reflectivity": 1,
+      "vegetation_optical_depth": 0.3,
+      "single_scattering_albedo": 0.05,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "no-scattering",
+    "parameters": {
+      "soil_temperature_k": 300.0,
+      "vegetation_temperature_k": 295.0,
+      "soil_reflectivity": 0.3,
+      "vegetation_optical_depth": 0.3,
+      "single_scattering_albedo": 0,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "no-canopy-emission",
+    "parameters": {
+      "soil_temperature_k": 300.0,
+      "vegetation_temperature_k": 295.0,
+      "soil_reflectivity": 0.3,
+      "vegetation_optical_depth": 0.3,
+      "single_scattering_albedo": 1,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "opaque-canopy",
+    "parameters": {
+      "soil_temperature_k": 300.0,
+      "vegetation_temperature_k": 295.0,
+      "soil_reflectivity": 0.3,
+      "vegetation_optical_depth": 5,
+      "single_scattering_albedo": 0.05,
+      "observation_zenith_deg": 80
+    }
+  },
+  {
+    "name": "isothermal-black",
+    "parameters": {
+      "soil_temperature_k": 300,
+      "vegetation_temperature_k": 300,
+      "soil_reflectivity": 0,
+      "vegetation_optical_depth": 0.3,
+      "single_scattering_albedo": 0,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "weak-canopy",
+    "parameters": {
+      "soil_temperature_k": 300.0,
+      "vegetation_temperature_k": 295.0,
+      "soil_reflectivity": 0.3,
+      "vegetation_optical_depth": 1e-15,
+      "single_scattering_albedo": 0.05,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "temperature-limits",
+    "parameters": {
+      "soil_temperature_k": 150,
+      "vegetation_temperature_k": 350,
+      "soil_reflectivity": 0.3,
+      "vegetation_optical_depth": 0.3,
+      "single_scattering_albedo": 0.05,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "seeded-00",
+    "parameters": {
+      "soil_temperature_k": 186.73431135357418,
+      "vegetation_temperature_k": 247.9620118292392,
+      "soil_reflectivity": 0.6190994094165755,
+      "vegetation_optical_depth": 2.1207774568854925,
+      "single_scattering_albedo": 0.18235526239993205,
+      "observation_zenith_deg": 69.62815789326783
+    }
+  },
+  {
+    "name": "seeded-01",
+    "parameters": {
+      "soil_temperature_k": 325.37593110705836,
+      "vegetation_temperature_k": 348.7516581147179,
+      "soil_reflectivity": 0.2050985358142684,
+      "vegetation_optical_depth": 1.0690453042373034,
+      "single_scattering_albedo": 0.9755416276900768,
+      "observation_zenith_deg": 12.906691025777883
+    }
+  },
+  {
+    "name": "seeded-02",
+    "parameters": {
+      "soil_temperature_k": 280.3109868574212,
+      "vegetation_temperature_k": 318.3916374006442,
+      "soil_reflectivity": 0.3025010511487968,
+      "vegetation_optical_depth": 4.597213795834941,
+      "single_scattering_albedo": 0.3705681295972113,
+      "observation_zenith_deg": 31.999054084742475
+    }
+  },
+  {
+    "name": "seeded-03",
+    "parameters": {
+      "soil_temperature_k": 265.7896229886999,
+      "vegetation_temperature_k": 233.83967259623103,
+      "soil_reflectivity": 0.7005658803530923,
+      "vegetation_optical_depth": 4.855930473164491,
+      "single_scattering_albedo": 0.18765100229381715,
+      "observation_zenith_deg": 55.78097477749466
+    }
+  },
+  {
+    "name": "seeded-04",
+    "parameters": {
+      "soil_temperature_k": 181.78822929881318,
+      "vegetation_temperature_k": 319.10939433298785,
+      "soil_reflectivity": 0.13303210807520638,
+      "vegetation_optical_depth": 1.5823463483380151,
+      "single_scattering_albedo": 0.633294459268695,
+      "observation_zenith_deg": 61.30206833975943
+    }
+  },
+  {
+    "name": "seeded-05",
+    "parameters": {
+      "soil_temperature_k": 242.2097446620748,
+      "vegetation_temperature_k": 260.4589758292768,
+      "soil_reflectivity": 0.1880195463629365,
+      "vegetation_optical_depth": 4.782707903377105,
+      "single_scattering_albedo": 0.07988434327683014,
+      "observation_zenith_deg": 11.582337613916946
+    }
+  },
+  {
+    "name": "seeded-06",
+    "parameters": {
+      "soil_temperature_k": 272.49188412103706,
+      "vegetation_temperature_k": 287.35478108841687,
+      "soil_reflectivity": 0.05922004871053754,
+      "vegetation_optical_depth": 1.287892991494276,
+      "single_scattering_albedo": 0.8209904156873803,
+      "observation_zenith_deg": 69.8100343634714
+    }
+  },
+  {
+    "name": "seeded-07",
+    "parameters": {
+      "soil_temperature_k": 340.8343343319463,
+      "vegetation_temperature_k": 273.132695483263,
+      "soil_reflectivity": 0.6557562910976008,
+      "vegetation_optical_depth": 3.4186214068766674,
+      "single_scattering_albedo": 0.6918304372543184,
+      "observation_zenith_deg": 58.60451006462408
+    }
+  },
+  {
+    "name": "seeded-08",
+    "parameters": {
+      "soil_temperature_k": 301.56579714431723,
+      "vegetation_temperature_k": 248.32789717861607,
+      "soil_reflectivity": 0.9086099864992933,
+      "vegetation_optical_depth": 2.247671280190012,
+      "single_scattering_albedo": 0.18423513400420277,
+      "observation_zenith_deg": 19.845142364933164
+    }
+  },
+  {
+    "name": "seeded-09",
+    "parameters": {
+      "soil_temperature_k": 317.73792634099107,
+      "vegetation_temperature_k": 159.05614077692027,
+      "soil_reflectivity": 0.9602016811841414,
+      "vegetation_optical_depth": 0.5847308058190948,
+      "single_scattering_albedo": 0.4029434854520503,
+      "observation_zenith_deg": 5.4333003952015435
+    }
+  },
+  {
+    "name": "seeded-10",
+    "parameters": {
+      "soil_temperature_k": 172.06786677477254,
+      "vegetation_temperature_k": 188.88363988168814,
+      "soil_reflectivity": 0.29770178198719466,
+      "vegetation_optical_depth": 3.9280895769328317,
+      "single_scattering_albedo": 0.48185796599803565,
+      "observation_zenith_deg": 28.767533105819332
+    }
+  },
+  {
+    "name": "seeded-11",
+    "parameters": {
+      "soil_temperature_k": 270.3443250450002,
+      "vegetation_temperature_k": 281.2274086691941,
+      "soil_reflectivity": 0.7629675106787208,
+      "vegetation_optical_depth": 4.341241777574365,
+      "single_scattering_albedo": 0.2518265834336857,
+      "observation_zenith_deg": 21.373155707379333
+    }
+  },
+  {
+    "name": "seeded-12",
+    "parameters": {
+      "soil_temperature_k": 250.30927241845228,
+      "vegetation_temperature_k": 271.2171827212088,
+      "soil_reflectivity": 0.9555565374912389,
+      "vegetation_optical_depth": 0.8110843892240038,
+      "single_scattering_albedo": 0.8498100554181705,
+      "observation_zenith_deg": 26.648969672823412
+    }
+  },
+  {
+    "name": "seeded-13",
+    "parameters": {
+      "soil_temperature_k": 156.76862826406307,
+      "vegetation_temperature_k": 286.92113409492504,
+      "soil_reflectivity": 0.7449184561483899,
+      "vegetation_optical_depth": 4.024402550068071,
+      "single_scattering_albedo": 0.28863019707824,
+      "observation_zenith_deg": 29.53370404464552
+    }
+  },
+  {
+    "name": "seeded-14",
+    "parameters": {
+      "soil_temperature_k": 279.66196811367496,
+      "vegetation_temperature_k": 224.64134761297998,
+      "soil_reflectivity": 0.7269251178317154,
+      "vegetation_optical_depth": 4.231301822209323,
+      "single_scattering_albedo": 0.08331681965713078,
+      "observation_zenith_deg": 28.448260083869272
+    }
+  },
+  {
+    "name": "seeded-15",
+    "parameters": {
+      "soil_temperature_k": 326.2452436573582,
+      "vegetation_temperature_k": 329.3865299523009,
+      "soil_reflectivity": 0.2040934376159872,
+      "vegetation_optical_depth": 0.26975230892887003,
+      "single_scattering_albedo": 0.47411173056990363,
+      "observation_zenith_deg": 77.23150147457946
+    }
+  },
+  {
+    "name": "seeded-16",
+    "parameters": {
+      "soil_temperature_k": 153.69942400661913,
+      "vegetation_temperature_k": 321.1101311266699,
+      "soil_reflectivity": 0.06932521574805262,
+      "vegetation_optical_depth": 2.767495451363715,
+      "single_scattering_albedo": 0.9388790308724305,
+      "observation_zenith_deg": 63.02554817719778
+    }
+  },
+  {
+    "name": "seeded-17",
+    "parameters": {
+      "soil_temperature_k": 338.65234822861294,
+      "vegetation_temperature_k": 264.3582191969635,
+      "soil_reflectivity": 0.1644790539122024,
+      "vegetation_optical_depth": 4.697010366888206,
+      "single_scattering_albedo": 0.38706302965571915,
+      "observation_zenith_deg": 76.77646372113993
+    }
+  },
+  {
+    "name": "seeded-18",
+    "parameters": {
+      "soil_temperature_k": 220.0454969972463,
+      "vegetation_temperature_k": 224.21221252433457,
+      "soil_reflectivity": 0.6832063859877966,
+      "vegetation_optical_depth": 4.960531834462959,
+      "single_scattering_albedo": 0.23736938522060458,
+      "observation_zenith_deg": 17.903571432766114
+    }
+  },
+  {
+    "name": "seeded-19",
+    "parameters": {
+      "soil_temperature_k": 260.06353020930396,
+      "vegetation_temperature_k": 198.45459158350417,
+      "soil_reflectivity": 0.6299541722888787,
+      "vegetation_optical_depth": 1.249939844974074,
+      "single_scattering_albedo": 0.492703285699428,
+      "observation_zenith_deg": 60.26798895686714
+    }
+  }
+]

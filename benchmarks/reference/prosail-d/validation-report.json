@@ -1,0 +1,171 @@
+{
+  "suite": "prosail-d-author-r-v1",
+  "upstream_commit": "46549958295b605ac1e211a693d4b2287c3a5a13",
+  "oracle_sha256": "4f9cf8ddfe663b3581140795b8fa20e93ed2cb7e756c175b60d38686874c17b7",
+  "model_implementation_version": "0.1.0",
+  "system": "Windows-11-10.0.26300-SP0",
+  "python": "3.13.0",
+  "numpy": "2.5.4",
+  "reference_interpreter": "R version 4.6.0 (2026-04-24)",
+  "reference_expint": "0.2.1",
+  "tolerance": {
+    "absolute": 2e-10,
+    "relative": 2e-08
+  },
+  "samples_compared": 105050,
+  "max_absolute_error": 2.6645352591003757e-15,
+  "max_normalized_error": 1.1637434831968135e-06,
+  "cases": [
+    {
+      "name": "default",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 5.551115123125783e-16,
+      "hemispherical_reflectance_max_absolute_error": 6.106226635438361e-16
+    },
+    {
+      "name": "sparse-canopy",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 2.220446049250313e-16,
+      "hemispherical_reflectance_max_absolute_error": 1.6653345369377348e-16
+    },
+    {
+      "name": "dense-canopy",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 8.326672684688674e-16,
+      "hemispherical_reflectance_max_absolute_error": 1.1102230246251565e-15
+    },
+    {
+      "name": "no-hotspot",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 4.996003610813204e-16,
+      "hemispherical_reflectance_max_absolute_error": 6.106226635438361e-16
+    },
+    {
+      "name": "pure-hotspot",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 6.938893903907228e-16,
+      "hemispherical_reflectance_max_absolute_error": 6.106226635438361e-16
+    },
+    {
+      "name": "oblique-view",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 7.771561172376096e-16,
+      "hemispherical_reflectance_max_absolute_error": 6.106226635438361e-16
+    },
+    {
+      "name": "low-sun",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 4.996003610813204e-16,
+      "hemispherical_reflectance_max_absolute_error": 5.551115123125783e-16
+    },
+    {
+      "name": "planophile",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 7.216449660063518e-16,
+      "hemispherical_reflectance_max_absolute_error": 6.661338147750939e-16
+    },
+    {
+      "name": "erectophile",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 2.7755575615628914e-16,
+      "hemispherical_reflectance_max_absolute_error": 4.440892098500626e-16
+    },
+    {
+      "name": "wet-soil",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 4.440892098500626e-16,
+      "hemispherical_reflectance_max_absolute_error": 5.551115123125783e-16
+    },
+    {
+      "name": "dry-soil",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 6.106226635438361e-16,
+      "hemispherical_reflectance_max_absolute_error": 6.661338147750939e-16
+    },
+    {
+      "name": "black-background",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 3.885780586188048e-16,
+      "hemispherical_reflectance_max_absolute_error": 4.996003610813204e-16
+    },
+    {
+      "name": "high-chlorophyll",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 6.106226635438361e-16,
+      "hemispherical_reflectance_max_absolute_error": 6.661338147750939e-16
+    },
+    {
+      "name": "dry-leaf",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 4.996003610813204e-16,
+      "hemispherical_reflectance_max_absolute_error": 4.996003610813204e-16
+    },
+    {
+      "name": "sample-00",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 7.771561172376096e-16,
+      "hemispherical_reflectance_max_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "sample-01",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 1.0547118733938987e-15,
+      "hemispherical_reflectance_max_absolute_error": 6.661338147750939e-16
+    },
+    {
+      "name": "sample-02",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 2.3592239273284576e-15,
+      "hemispherical_reflectance_max_absolute_error": 2.6645352591003757e-15
+    },
+    {
+      "name": "sample-03",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 9.992007221626409e-16,
+      "hemispherical_reflectance_max_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "sample-04",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 3.8163916471489756e-16,
+      "hemispherical_reflectance_max_absolute_error": 4.0245584642661925e-16
+    },
+    {
+      "name": "sample-05",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 6.661338147750939e-16,
+      "hemispherical_reflectance_max_absolute_error": 7.216449660063518e-16
+    },
+    {
+      "name": "sample-06",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 3.3306690738754696e-16,
+      "hemispherical_reflectance_max_absolute_error": 4.3021142204224816e-16
+    },
+    {
+      "name": "sample-07",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 4.996003610813204e-16,
+      "hemispherical_reflectance_max_absolute_error": 4.440892098500626e-16
+    },
+    {
+      "name": "sample-08",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 1.3322676295501878e-15,
+      "hemispherical_reflectance_max_absolute_error": 1.3322676295501878e-15
+    },
+    {
+      "name": "sample-09",
+      "expected_source": "author_r_fourSAIL",
+      "brf_max_absolute_error": 6.661338147750939e-16,
+      "hemispherical_reflectance_max_absolute_error": 4.996003610813204e-16
+    },
+    {
+      "name": "bare-soil-analytic-limit",
+      "expected_source": "analytic_bare_soil_limit_not_fourSAIL",
+      "brf_max_absolute_error": 0.0,
+      "hemispherical_reflectance_max_absolute_error": 0.0
+    }
+  ],
+  "status": "passed"
+}

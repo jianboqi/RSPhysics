@@ -1,0 +1,20 @@
+[package]
+name = "rsphysics-prosail-d"
+version = "0.1.0"
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license = "MIT"
+description = "PROSPECT-D plus author-referenced 4SAIL with 13-bin Campbell LIDF"
+
+[dependencies]
+rsphysics-core.workspace = true
+rsphysics-model-api.workspace = true
+rsphysics-prospect-d.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+schemars.workspace = true
+sha2.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,209 @@
+[model]
+id = "ecosystem.gort-gpp"
+name = "GORT-GPP"
+family = "gort-gpp"
+category = "ecosystem"
+scientific_version = "Supplied Main4PSN / mvp=1 / flagSeason=0 / pointwise"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Pointwise GORT radiation and sunlit/shaded Farquhar-Ball-Berry photosynthesis path from supplied Main4PSN. Explicit incident direct/diffuse PAR and solar zenith replace site/time/Excel preprocessing. Fixed MAXCROWNS=10, MAXORDER=5, original PI=3.1415926 and original angular lookup conventions retained. Output is net assimilation, not gross primary productivity or NEE. No annual station driver, ET, seasonal Vcmax tables, Beer/CI alternative modes or generic model coupling. Publication of the supplied source and adaptations is authorized by the project maintainer; see LICENSE-ORIGIN.md for component terms."
+[source]
+crate = "rsphysics-gort-gpp"
+authors = ["Authors of supplied GORT-GPP MATLAB research implementation", "RSPhysics contributors (Rust adaptation)"]
+references = ["https://doi.org/10.1016/j.agrformet.2021.108618", "Supplied MATLAB source; pinned file checksums in benchmarks/reference/gort-gpp/upstream-provenance.json"]
+license = "LicenseRef-User-Supplied-Research-Code"
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "gort-gpp-supplied-matlab-v1"
+implementation_version = "0.1.0"
+backend = "native"
+
+[[validation.evidence]]
+kind = "implementation"
+suite = "gort-gpp-supplied-matlab-v1"
+implementation_version = "0.1.0"
+backend = "python"
+[data.hashes]
+
+[input_semantics."/leaf_area_index"]
+unit = "m^2 m^-2"
+axes = []
+description = "Total one-sided leaf area per ground area."
+
+[input_semantics."/crown_radius_m"]
+unit = "m"
+axes = []
+description = "Horizontal crown radius."
+
+[input_semantics."/crown_density_m2"]
+unit = "m^-2"
+axes = []
+description = "Crown number density per ground area."
+
+[input_semantics."/crown_base_height_m"]
+unit = "m"
+axes = []
+description = "Lower crown-height boundary h1."
+
+[input_semantics."/crown_top_height_m"]
+unit = "m"
+axes = []
+description = "Upper crown-height boundary h2; must exceed h1."
+
+[input_semantics."/crown_axis_ratio"]
+unit = "1"
+axes = []
+description = "Crown vertical/horizontal axis ratio."
+
+[input_semantics."/solar_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Solar zenith; positive lower bound avoids original one-based zero-index failure."
+
+[input_semantics."/direct_par_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Direct incident PAR per ground area."
+
+[input_semantics."/diffuse_par_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Diffuse incident PAR per ground area."
+
+[input_semantics."/air_temperature_c"]
+unit = "degC"
+axes = []
+description = "Air/leaf temperature used by the selected photosynthetic path."
+
+[input_semantics."/vapour_pressure_deficit_pa"]
+unit = "Pa"
+axes = []
+description = "Vapour pressure deficit; cannot exceed saturation vapour pressure at the supplied air temperature."
+
+[input_semantics."/co2_ppm"]
+unit = "umol mol^-1"
+axes = []
+description = "Ambient atmospheric carbon dioxide concentration."
+
+[input_semantics."/young_leaf_fraction"]
+unit = "1"
+axes = []
+description = "Canopy-top weight w1 for young-leaf Vcmax, not whole-canopy leaf-age fraction."
+
+[input_semantics."/vcmax25_young"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Young-leaf Vcmax at 25 degrees C."
+
+[input_semantics."/vcmax25_mature"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Mature-leaf Vcmax at 25 degrees C."
+
+[input_semantics."/pressure_pa"]
+unit = "Pa"
+axes = []
+description = "Ambient pressure."
+
+[input_semantics."/stomatal_slope"]
+unit = "1"
+axes = []
+description = "Ball-Berry slope m."
+
+[input_semantics."/electron_photon_ratio"]
+unit = "1"
+axes = []
+description = "Photon/electron ratio ppe used in electron transport."
+
+[input_semantics."/leaf_angle_parameter"]
+unit = "1"
+axes = []
+description = "Campbell leaf-angle parameter x."
+
+[input_semantics."/leaf_single_scattering_albedo"]
+unit = "1"
+axes = []
+description = "PAR single-scattering albedo Omega."
+
+[input_semantics."/background_reflectance"]
+unit = "1"
+axes = []
+description = "Background PAR reflectance."
+
+[input_semantics."/minimum_stomatal_conductance"]
+unit = "mol m^-2 s^-1"
+axes = []
+description = "Minimum stomatal conductance g0."
+
+[output_semantics."/net_assimilation_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Canopy net assimilation per ground area; may be negative."
+
+[output_semantics."/sunlit_assimilation_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Sunlit net assimilation per sunlit leaf area."
+
+[output_semantics."/shaded_assimilation_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Shaded net assimilation per shaded leaf area."
+
+[output_semantics."/sunlit_leaf_area_index"]
+unit = "m^2 m^-2"
+axes = []
+description = "Sunlit leaf area per ground area."
+
+[output_semantics."/shaded_leaf_area_index"]
+unit = "m^2 m^-2"
+axes = []
+description = "Shaded leaf area per ground area."
+
+[output_semantics."/sunlit_absorbed_par"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Absorbed PAR per sunlit leaf area using original scaling."
+
+[output_semantics."/shaded_absorbed_par"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Absorbed PAR per shaded leaf area."
+
+[output_semantics."/between_crown_openness"]
+unit = "1"
+axes = []
+description = "Integrated between-crown openness using original quadrature."
+
+[output_semantics."/within_crown_openness"]
+unit = "1"
+axes = []
+description = "Integrated within-crown openness using original quadrature."
+
+[output_semantics."/floor_absorbed_par"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Absorbed PAR at the background per ground area."
+
+[output_semantics."/gap_zenith_deg"]
+unit = "deg"
+axes = ["zenith"]
+description = "Original gap sampling: 0..89 degrees."
+
+[output_semantics."/between_crown_gaps"]
+unit = "1"
+axes = ["zenith"]
+description = "Between-crown gap probability at gap angles."
+
+[output_semantics."/within_crown_gaps"]
+unit = "1"
+axes = ["zenith"]
+description = "Within-crown gap probability at gap angles."

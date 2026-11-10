@@ -1,0 +1,39 @@
+[model]
+id = "template.example"
+family = "Template"
+name = "Model starter template (no scientific solver)"
+scientific_version = "none"
+implementation_version = "0.1.0"
+category = "template"
+api_version = "0.1"
+status = "experimental"
+limitations = "Engineering scaffold only. Solver and coefficient resources must be supplied before scientific use."
+
+[source]
+crate = "rsphysics-model-template"
+authors = ["REPLACE_WITH_MODEL_AUTHORS"]
+references = ["REPLACE_WITH_VERIFIED_SCIENTIFIC_SOURCE"]
+license = "UNSET"
+
+[capabilities]
+native = true
+python = false
+wasm = false
+batch = true
+precision = "f64"
+
+[validation]
+evidence = []
+
+[data.hashes]
+
+[input_semantics."/wavelengths_nm"]
+unit = "nm"
+axes = ["wavelength"]
+description = "Positive, strictly increasing wavelength samples in nanometres."
+
+[output_semantics."/reflectance"]
+unit = "1"
+quantity = "reflectance"
+axes = ["wavelength"]
+description = "Reflectance sampled on the input wavelength axis; solver not implemented."

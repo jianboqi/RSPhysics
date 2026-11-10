@@ -1,0 +1,354 @@
+[
+  {
+    "name": "default",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 30.0,
+      "view_zenith_deg": 20.0,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "nadir",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 30.0,
+      "view_zenith_deg": 0,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "overhead-sun",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 0,
+      "view_zenith_deg": 20.0,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "both-nadir",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 0,
+      "view_zenith_deg": 0,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "hotspot",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 30.0,
+      "view_zenith_deg": 30,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "forward",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 30.0,
+      "view_zenith_deg": 20.0,
+      "relative_azimuth_deg": 180
+    }
+  },
+  {
+    "name": "orthogonal",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 30.0,
+      "view_zenith_deg": 20.0,
+      "relative_azimuth_deg": 90
+    }
+  },
+  {
+    "name": "max-view",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 30.0,
+      "view_zenith_deg": 85,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "max-sun",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 85,
+      "view_zenith_deg": 20.0,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "both85-backward",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 85,
+      "view_zenith_deg": 85,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "both85-forward",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 85,
+      "view_zenith_deg": 85,
+      "relative_azimuth_deg": 180
+    }
+  },
+  {
+    "name": "near-hotspot",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0.1,
+      "f_geo": 0.02,
+      "solar_zenith_deg": 30.0,
+      "view_zenith_deg": 30,
+      "relative_azimuth_deg": 1e-06
+    }
+  },
+  {
+    "name": "isotropic",
+    "parameters": {
+      "f_iso": 0.2,
+      "f_vol": 0,
+      "f_geo": 0,
+      "solar_zenith_deg": 30.0,
+      "view_zenith_deg": 20.0,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "black",
+    "parameters": {
+      "f_iso": 0,
+      "f_vol": 0,
+      "f_geo": 0,
+      "solar_zenith_deg": 30.0,
+      "view_zenith_deg": 20.0,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "nonphysical-weights",
+    "parameters": {
+      "f_iso": 0,
+      "f_vol": 0,
+      "f_geo": 1,
+      "solar_zenith_deg": 30.0,
+      "view_zenith_deg": 20.0,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "brf-above-one",
+    "parameters": {
+      "f_iso": 1,
+      "f_vol": 1,
+      "f_geo": 0,
+      "solar_zenith_deg": 85,
+      "view_zenith_deg": 85,
+      "relative_azimuth_deg": 0.0
+    }
+  },
+  {
+    "name": "sample-00",
+    "parameters": {
+      "f_iso": 0.16326381427893924,
+      "f_vol": 0.244905029573098,
+      "f_geo": 0.061909940941657554,
+      "solar_zenith_deg": 36.05321676705337,
+      "view_zenith_deg": 15.500197303994224,
+      "relative_azimuth_deg": 156.6633552598526
+    }
+  },
+  {
+    "name": "sample-01",
+    "parameters": {
+      "f_iso": 0.7039661313175276,
+      "f_vol": 0.4968791452867948,
+      "f_geo": 0.020509853581426842,
+      "solar_zenith_deg": 18.173770172034157,
+      "view_zenith_deg": 82.92103835365653,
+      "relative_azimuth_deg": 29.04005480800024
+    }
+  },
+  {
+    "name": "sample-02",
+    "parameters": {
+      "f_iso": 0.5282128487439428,
+      "f_vol": 0.42097909350161045,
+      "f_geo": 0.030250105114879678,
+      "solar_zenith_deg": 78.152634529194,
+      "view_zenith_deg": 31.498291015762963,
+      "relative_azimuth_deg": 71.99787169067056
+    }
+  },
+  {
+    "name": "sample-03",
+    "parameters": {
+      "f_iso": 0.4715795296559295,
+      "f_vol": 0.20959918149057755,
+      "f_geo": 0.07005658803530923,
+      "solar_zenith_deg": 82.55081804379634,
+      "view_zenith_deg": 15.950335194974457,
+      "relative_azimuth_deg": 125.50719324936298
+    }
+  },
+  {
+    "name": "sample-04",
+    "parameters": {
+      "f_iso": 0.1439740942653714,
+      "f_vol": 0.4227734858324696,
+      "f_geo": 0.013303210807520638,
+      "solar_zenith_deg": 26.899887921746256,
+      "view_zenith_deg": 53.830029037839076,
+      "relative_azimuth_deg": 137.92965376445872
+    }
+  },
+  {
+    "name": "sample-05",
+    "parameters": {
+      "f_iso": 0.3796180041820918,
+      "f_vol": 0.276147439573192,
+      "f_geo": 0.018801954636293652,
+      "solar_zenith_deg": 81.30603435741078,
+      "view_zenith_deg": 6.790169178530562,
+      "relative_azimuth_deg": 26.06025963131313
+    }
+  },
+  {
+    "name": "sample-06",
+    "parameters": {
+      "f_iso": 0.4977183480720447,
+      "f_vol": 0.3433869527210421,
+      "f_geo": 0.005922004871053755,
+      "solar_zenith_deg": 21.89418085540269,
+      "view_zenith_deg": 69.78418533342733,
+      "relative_azimuth_deg": 157.07257731781064
+    }
+  },
+  {
+    "name": "sample-07",
+    "parameters": {
+      "f_iso": 0.7642539038945906,
+      "f_vol": 0.3078317387081575,
+      "f_geo": 0.06557562910976009,
+      "solar_zenith_deg": 58.116563916903345,
+      "view_zenith_deg": 58.80558716661706,
+      "relative_azimuth_deg": 131.86014764540417
+    }
+  },
+  {
+    "name": "sample-08",
+    "parameters": {
+      "f_iso": 0.6111066088628373,
+      "f_vol": 0.2458197429465402,
+      "f_geo": 0.09086099864992933,
+      "solar_zenith_deg": 38.21041176323021,
+      "view_zenith_deg": 15.659986390357236,
+      "relative_azimuth_deg": 44.65157032109962
+    }
+  },
+  {
+    "name": "sample-09",
+    "parameters": {
+      "f_iso": 0.6741779127298652,
+      "f_vol": 0.022640351942300685,
+      "f_geo": 0.09602016811841414,
+      "solar_zenith_deg": 9.940423698924612,
+      "view_zenith_deg": 34.25019626342427,
+      "relative_azimuth_deg": 12.224925889203472
+    }
+  },
+  {
+    "name": "sample-10",
+    "parameters": {
+      "f_iso": 0.10606468042161286,
+      "f_vol": 0.09720909970422037,
+      "f_geo": 0.029770178198719466,
+      "solar_zenith_deg": 66.77752280785813,
+      "view_zenith_deg": 40.95792710983303,
+      "relative_azimuth_deg": 64.7269494880935
+    }
+  },
+  {
+    "name": "sample-11",
+    "parameters": {
+      "f_iso": 0.48934286767550067,
+      "f_vol": 0.3280685216729853,
+      "f_geo": 0.07629675106787209,
+      "solar_zenith_deg": 73.80111021876421,
+      "view_zenith_deg": 21.405259591863285,
+      "relative_azimuth_deg": 48.0896003416035
+    }
+  },
+  {
+    "name": "sample-12",
+    "parameters": {
+      "f_iso": 0.4112061624319639,
+      "f_vol": 0.30304295680302196,
+      "f_geo": 0.09555565374912389,
+      "solar_zenith_deg": 13.788434616808065,
+      "view_zenith_deg": 72.23385471054449,
+      "relative_azimuth_deg": 59.960181763852674
+    }
+  },
+  {
+    "name": "sample-13",
+    "parameters": {
+      "f_iso": 0.046397650229846016,
+      "f_vol": 0.3423028352373126,
+      "f_geo": 0.074491845614839,
+      "solar_zenith_deg": 68.41484335115722,
+      "view_zenith_deg": 24.5335667516504,
+      "relative_azimuth_deg": 66.45083410045243
+    }
+  },
+  {
+    "name": "sample-14",
+    "parameters": {
+      "f_iso": 0.5256816756433323,
+      "f_vol": 0.18660336903245,
+      "f_geo": 0.07269251178317154,
+      "solar_zenith_deg": 71.93213097755849,
+      "view_zenith_deg": 7.081929670856116,
+      "relative_azimuth_deg": 64.00858518870585
+    }
+  },
+  {
+    "name": "sample-15",
+    "parameters": {
+      "f_iso": 0.7073564502636968,
+      "f_vol": 0.4484663248807523,
+      "f_geo": 0.02040934376159872,
+      "solar_zenith_deg": 4.585789251790791,
+      "view_zenith_deg": 40.29949709844181,
+      "relative_azimuth_deg": 173.7708783178038
+    }
+  }
+]

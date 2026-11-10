@@ -1,0 +1,20 @@
+[package]
+name = "rsphysics-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "rsphysics"
+path = "src/main.rs"
+
+[dependencies]
+serde_json.workspace = true
+rsphysics-model-api.workspace = true
+rsphysics-catalog.workspace = true
+rsphysics-runtime.workspace = true
+
+[lints]
+workspace = true

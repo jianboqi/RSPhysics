@@ -1,0 +1,12 @@
+{
+  "model": "microwave.tau-omega",
+  "backend": "python",
+  "suite": "tau-omega-published-equations-v1",
+  "cases": 32,
+  "compared_values": 5344,
+  "max_absolute": 8.526512829121202e-14,
+  "max_normalized_error": 0.0004211893046248573,
+  "sense_canopy_max_absolute": null,
+  "reference_kind": "independent 80-digit NASA ATBD equations; not original NASA operational code",
+  "scientific_validation": "Implementation consistency only; not an observational accuracy assessment or a sensor calibration."
+}

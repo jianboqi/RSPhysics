@@ -1,0 +1,25 @@
+Upstream SMAC notices, retained verbatim from ESA Sen2Like commit
+6dd3f0da82a7461b03a2914df56d305070e50d6d.
+
+This is free software under the GPL v3 licence. See
+http://www.gnu.org/licenses/gpl-3.0.html for details.
+
+ ![drapeau_francais_petit](http://www.cesbio.ups-tlse.fr/data_all/images/logo_cesbio.png)
+
+SMAC
+----
+
+This code provides the SMAC atmospheric correction model in Python language. 
+A short documentation is provided [here](https://github.com/olivierhagolle/SMAC)
+
+Terms of Use
+----
+Any communication in which SMAC is used (including scientific articles, technical reports, websites, and GitHub repositories) must:
+
+Cite the following publication:
+
+Rahman, H., & Dedieu, G. "SMAC: a simplified method for the atmospheric correction of satellite measurements in the solar spectrum." REMOTE SENSING, 15(1), 123-143, 1994.
+
+Acknowledge the CNES for the computation of the SMAC coefficients of the sensors used.
+
+

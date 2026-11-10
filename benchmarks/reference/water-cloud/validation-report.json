@@ -1,0 +1,12 @@
+{
+  "model": "microwave.water-cloud",
+  "backend": "python",
+  "suite": "water-cloud-published-equations-v1",
+  "cases": 32,
+  "compared_values": 5312,
+  "max_absolute": 3.552713678800501e-15,
+  "max_normalized_error": 0.00027642856596954917,
+  "sense_canopy_max_absolute": 2.7755575615628914e-17,
+  "reference_kind": "independent 80-digit published equations plus SenSE canopy code; not original 1978 author code",
+  "scientific_validation": "Implementation consistency only; not an observational accuracy assessment or a sensor calibration."
+}

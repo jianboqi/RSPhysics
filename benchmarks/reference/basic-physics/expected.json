@@ -1,0 +1,1205 @@
+{
+  "reference": "Independent direct published equations at 80 decimal digits, not an original vendor program",
+  "mpmath_version": "1.3.0",
+  "precision_digits": 80,
+  "constants": {
+    "h": "6.62607015e-34",
+    "c": "299792458.0",
+    "k": "0.00000000000000000000001380649"
+  },
+  "sources": [
+    "https://www.nist.gov/pml/special-publication-330/sp-330-section-2",
+    "https://cie.co.at/eilvterm/17-24-005",
+    "https://arxiv.org/abs/1603.02720v5"
+  ],
+  "fresnel": [
+    {
+      "name": "normal-glass",
+      "parameters": {
+        "angle_deg": 0,
+        "n_incident": 1.0,
+        "n_real": 1.5,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.2,
+          0.0
+        ],
+        "amplitude_r_p": [
+          0.2,
+          0.0
+        ],
+        "reflectance_s": 0.04,
+        "reflectance_p": 0.04,
+        "reflectance_unpolarized": 0.04,
+        "interface_transmittance_s": 0.96,
+        "interface_transmittance_p": 0.96,
+        "interface_transmittance_unpolarized": 0.96
+      }
+    },
+    {
+      "name": "matched-grazing",
+      "parameters": {
+        "angle_deg": 89.999999,
+        "n_incident": 1.0,
+        "n_real": 1,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          1.464747272497235e-68,
+          0.0
+        ],
+        "amplitude_r_p": [
+          1.464747272497235e-68,
+          0.0
+        ],
+        "reflectance_s": 2.145484572288089e-136,
+        "reflectance_p": 2.145484572288089e-136,
+        "reflectance_unpolarized": 2.145484572288089e-136,
+        "interface_transmittance_s": 1.0,
+        "interface_transmittance_p": 1.0,
+        "interface_transmittance_unpolarized": 1.0
+      }
+    },
+    {
+      "name": "brewster",
+      "parameters": {
+        "angle_deg": 56.309932474020215,
+        "n_incident": 1.0,
+        "n_real": 1.5,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.38461538461538464,
+          0.0
+        ],
+        "amplitude_r_p": [
+          -2.010023900983332e-17,
+          0.0
+        ],
+        "reflectance_s": 0.14792899408284024,
+        "reflectance_p": 4.040196082524251e-34,
+        "reflectance_unpolarized": 0.07396449704142012,
+        "interface_transmittance_s": 0.8520710059171598,
+        "interface_transmittance_p": 1.0,
+        "interface_transmittance_unpolarized": 0.9260355029585798
+      }
+    },
+    {
+      "name": "total-internal-reflection",
+      "parameters": {
+        "angle_deg": 60,
+        "n_incident": 1.5,
+        "n_real": 1,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.1,
+          -0.99498743710662
+        ],
+        "amplitude_r_p": [
+          -0.7217391304347827,
+          -0.6921651736393878
+        ],
+        "reflectance_s": 1.0,
+        "reflectance_p": 1.0,
+        "reflectance_unpolarized": 1.0,
+        "interface_transmittance_s": 0.0,
+        "interface_transmittance_p": 0.0,
+        "interface_transmittance_unpolarized": 0.0
+      }
+    },
+    {
+      "name": "below-critical",
+      "parameters": {
+        "angle_deg": 41.81021489577859,
+        "n_incident": 1.5,
+        "n_real": 1,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          0.9964723234988837,
+          0.0
+        ],
+        "amplitude_r_p": [
+          0.9920801894534623,
+          0.0
+        ],
+        "reflectance_s": 0.9929570914992639,
+        "reflectance_p": 0.9842231023060176,
+        "reflectance_unpolarized": 0.9885900969026408,
+        "interface_transmittance_s": 0.0070429085007360365,
+        "interface_transmittance_p": 0.015776897693982328,
+        "interface_transmittance_unpolarized": 0.011409903097359182
+      }
+    },
+    {
+      "name": "above-critical",
+      "parameters": {
+        "angle_deg": 41.8104148957786,
+        "n_incident": 1.5,
+        "n_real": 1,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          0.9999937557190205,
+          -0.0035339104357582085
+        ],
+        "amplitude_r_p": [
+          0.999968388728489,
+          -0.007951197629884466
+        ],
+        "reflectance_s": 1.0,
+        "reflectance_p": 1.0,
+        "reflectance_unpolarized": 1.0,
+        "interface_transmittance_s": 0.0,
+        "interface_transmittance_p": 0.0,
+        "interface_transmittance_unpolarized": 0.0
+      }
+    },
+    {
+      "name": "weak-absorption-tir",
+      "parameters": {
+        "angle_deg": 60,
+        "n_incident": 1.5,
+        "n_real": 1,
+        "k": 1e-12
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.09999999999985527,
+          -0.99498743710518
+        ],
+        "amplitude_r_p": [
+          -0.7217391304330568,
+          -0.6921651736377328
+        ],
+        "reflectance_s": 0.9999999999971055,
+        "reflectance_p": 0.9999999999952177,
+        "reflectance_unpolarized": 0.9999999999961616,
+        "interface_transmittance_s": 2.8945089079423416e-12,
+        "interface_transmittance_p": 4.78223210876979e-12,
+        "interface_transmittance_unpolarized": 3.838370508356066e-12
+      }
+    },
+    {
+      "name": "absorbing-dielectric",
+      "parameters": {
+        "angle_deg": 40.0,
+        "n_incident": 1.0,
+        "n_real": 1.5,
+        "k": 0.3
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.2970893432660772,
+          -0.10908978749138694
+        ],
+        "amplitude_r_p": [
+          0.12306842658256843,
+          0.07743591134372367
+        ],
+        "reflectance_s": 0.10016265961718501,
+        "reflectance_p": 0.02114215798714207,
+        "reflectance_unpolarized": 0.06065240880216354,
+        "interface_transmittance_s": 0.899837340382815,
+        "interface_transmittance_p": 0.978857842012858,
+        "interface_transmittance_unpolarized": 0.9393475911978365
+      }
+    },
+    {
+      "name": "metal",
+      "parameters": {
+        "angle_deg": 70,
+        "n_incident": 1.0,
+        "n_real": 0.2,
+        "k": 3
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.964133021034572,
+          -0.211547029953088
+        ],
+        "amplitude_r_p": [
+          -0.017059095368037076,
+          0.9298812561731291
+        ],
+        "reflectance_s": 0.9743046281312232,
+        "reflectance_p": 0.8649701633168922,
+        "reflectance_unpolarized": 0.9196373957240577,
+        "interface_transmittance_s": 0.02569537186877683,
+        "interface_transmittance_p": 0.13502983668310775,
+        "interface_transmittance_unpolarized": 0.08036260427594229
+      }
+    },
+    {
+      "name": "evanescent-negative-permittivity",
+      "parameters": {
+        "angle_deg": 50,
+        "n_incident": 1.0,
+        "n_real": 0,
+        "k": 2
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.8347296355333861,
+          -0.5506599999657688
+        ],
+        "amplitude_r_p": [
+          0.18075154502938862,
+          0.983528789090329
+        ],
+        "reflectance_s": 1.0,
+        "reflectance_p": 1.0,
+        "reflectance_unpolarized": 1.0,
+        "interface_transmittance_s": 0.0,
+        "interface_transmittance_p": 0.0,
+        "interface_transmittance_unpolarized": 0.0
+      }
+    },
+    {
+      "name": "small-index",
+      "parameters": {
+        "angle_deg": 0,
+        "n_incident": 1.0,
+        "n_real": 1e-06,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          0.999998000002,
+          0.0
+        ],
+        "amplitude_r_p": [
+          -0.999998000002,
+          0.0
+        ],
+        "reflectance_s": 0.999996000008,
+        "reflectance_p": 0.999996000008,
+        "reflectance_unpolarized": 0.999996000008,
+        "interface_transmittance_s": 3.999992000012e-06,
+        "interface_transmittance_p": 3.999992000012e-06,
+        "interface_transmittance_unpolarized": 3.999992000012e-06
+      }
+    },
+    {
+      "name": "large-index",
+      "parameters": {
+        "angle_deg": 80,
+        "n_incident": 1.0,
+        "n_real": 1000000.0,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.9999996527037049,
+          0.0
+        ],
+        "amplitude_r_p": [
+          0.9999884825253602,
+          0.0
+        ],
+        "reflectance_s": 0.9999993054075306,
+        "reflectance_p": 0.9999769651833726,
+        "reflectance_unpolarized": 0.9999881352954516,
+        "interface_transmittance_s": 6.945924694386042e-07,
+        "interface_transmittance_p": 2.3034816627355293e-05,
+        "interface_transmittance_unpolarized": 1.186470454839695e-05
+      }
+    },
+    {
+      "name": "seeded-00",
+      "parameters": {
+        "angle_deg": 26.775568937469462,
+        "n_incident": 1.0089183559981374,
+        "n_real": 4.227058555524377,
+        "k": 2.8995345998572235
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.7338660666504839,
+          -0.15157100366123885
+        ],
+        "amplitude_r_p": [
+          0.6736607419029336,
+          0.17538531980750433
+        ],
+        "reflectance_s": 0.5615331729319278,
+        "reflectance_p": 0.4845788055851914,
+        "reflectance_unpolarized": 0.5230559892585596,
+        "interface_transmittance_s": 0.43846682706807216,
+        "interface_transmittance_p": 0.5154211944148086,
+        "interface_transmittance_unpolarized": 0.4769440107414404
+      }
+    },
+    {
+      "name": "seeded-01",
+      "parameters": {
+        "angle_deg": 28.56379116037127,
+        "n_incident": 1.4715989976572756,
+        "n_real": 4.844673713279075,
+        "k": 3.225015035631335
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.6699264084971488,
+          -0.1757392264290207
+        ],
+        "amplitude_r_p": [
+          0.5872314631565849,
+          0.2015501619773515
+        ],
+        "reflectance_s": 0.4796856685077593,
+        "reflectance_p": 0.38546325911412016,
+        "reflectance_unpolarized": 0.4325744638109397,
+        "interface_transmittance_s": 0.5203143314922407,
+        "interface_transmittance_p": 0.6145367408858798,
+        "interface_transmittance_unpolarized": 0.5674255361890603
+      }
+    },
+    {
+      "name": "seeded-02",
+      "parameters": {
+        "angle_deg": 47.72515461648728,
+        "n_incident": 1.936352064765922,
+        "n_real": 1.8892420661446172,
+        "k": 2.3776884639016314
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.5119371445845095,
+          -0.43104317792598723
+        ],
+        "amplitude_r_p": [
+          0.010938472790666919,
+          0.42132739304352435
+        ],
+        "reflectance_s": 0.44787786124187523,
+        "reflectance_p": 0.1776364223158446,
+        "reflectance_unpolarized": 0.3127571417788599,
+        "interface_transmittance_s": 0.5521221387581248,
+        "interface_transmittance_p": 0.8223635776841554,
+        "interface_transmittance_unpolarized": 0.6872428582211401
+      }
+    },
+    {
+      "name": "seeded-03",
+      "parameters": {
+        "angle_deg": 72.72106037453635,
+        "n_incident": 1.0673958823795286,
+        "n_real": 2.910620928451199,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.7916510412209857,
+          0.0
+        ],
+        "amplitude_r_p": [
+          -0.07256695049787457,
+          0.0
+        ],
+        "reflectance_s": 0.6267113710662708,
+        "reflectance_p": 0.005265962304560978,
+        "reflectance_unpolarized": 0.3159886666854159,
+        "interface_transmittance_s": 0.37328862893372916,
+        "interface_transmittance_p": 0.994734037695439,
+        "interface_transmittance_unpolarized": 0.6840113333145841
+      }
+    },
+    {
+      "name": "seeded-04",
+      "parameters": {
+        "angle_deg": 13.76441542455161,
+        "n_incident": 0.9947852838605915,
+        "n_real": 1.470017090137329,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.20050017622590036,
+          0.0
+        ],
+        "amplitude_r_p": [
+          0.18509057984411656,
+          0.0
+        ],
+        "reflectance_s": 0.04020032066661709,
+        "reflectance_p": 0.03425852274703129,
+        "reflectance_unpolarized": 0.037229421706824195,
+        "interface_transmittance_s": 0.959799679333383,
+        "interface_transmittance_p": 0.9657414772529687,
+        "interface_transmittance_unpolarized": 0.9627705782931758
+      }
+    },
+    {
+      "name": "seeded-05",
+      "parameters": {
+        "angle_deg": 89.1811028788504,
+        "n_incident": 1.9211595637983707,
+        "n_real": 0.4449948697728363,
+        "k": 0.7485775465104723
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.997433742595218,
+          -0.026943371372217965
+        ],
+        "amplitude_r_p": [
+          -0.9953476128274477,
+          0.003035371225553903
+        ],
+        "reflectance_s": 0.9956000161284048,
+        "reflectance_p": 0.9907260838397756,
+        "reflectance_unpolarized": 0.9931630499840902,
+        "interface_transmittance_s": 0.004399983871595186,
+        "interface_transmittance_p": 0.00927391616022446,
+        "interface_transmittance_unpolarized": 0.006836950015909823
+      }
+    },
+    {
+      "name": "seeded-06",
+      "parameters": {
+        "angle_deg": 58.40454253930985,
+        "n_incident": 1.3717413633496567,
+        "n_real": 4.524245757384002,
+        "k": 0.3628726674183534
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.7191678215900505,
+          -0.020716730922685268
+        ],
+        "amplitude_r_p": [
+          0.2843151911236561,
+          0.03420528105962485
+        ],
+        "reflectance_s": 0.5176315385507017,
+        "reflectance_p": 0.08200512915604903,
+        "reflectance_unpolarized": 0.29981833385337536,
+        "interface_transmittance_s": 0.48236846144929835,
+        "interface_transmittance_p": 0.9179948708439509,
+        "interface_transmittance_unpolarized": 0.7001816661466247
+      }
+    },
+    {
+      "name": "seeded-07",
+      "parameters": {
+        "angle_deg": 38.84424038614921,
+        "n_incident": 1.541164220367932,
+        "n_real": 0.8354738164904041,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          0.7181559531082012,
+          -0.6958821933454334
+        ],
+        "amplitude_r_p": [
+          -0.3101960213462603,
+          -0.950672618907766
+        ],
+        "reflectance_s": 1.0,
+        "reflectance_p": 1.0,
+        "reflectance_unpolarized": 1.0,
+        "interface_transmittance_s": 0.0,
+        "interface_transmittance_p": 0.0,
+        "interface_transmittance_unpolarized": 0.0
+      }
+    },
+    {
+      "name": "seeded-08",
+      "parameters": {
+        "angle_deg": 24.313020778316577,
+        "n_incident": 0.974593387977286,
+        "n_real": 1.2488761808756887,
+        "k": 3.2260772452502633
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.749241602528999,
+          -0.38258038074017015
+        ],
+        "amplitude_r_p": [
+          0.6826713992564268,
+          0.4370805494941665
+        ],
+        "reflectance_s": 0.707730726687516,
+        "reflectance_p": 0.6570796461088504,
+        "reflectance_unpolarized": 0.6824051863981832,
+        "interface_transmittance_s": 0.292269273312484,
+        "interface_transmittance_p": 0.34292035389114967,
+        "interface_transmittance_unpolarized": 0.31759481360181685
+      }
+    },
+    {
+      "name": "seeded-09",
+      "parameters": {
+        "angle_deg": 12.219850211535151,
+        "n_incident": 1.0584438656177597,
+        "n_real": 3.015683206025443,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.4881195738214934,
+          0.0
+        ],
+        "amplitude_r_p": [
+          0.4726194899901457,
+          0.0
+        ],
+        "reflectance_s": 0.23826071834767634,
+        "reflectance_p": 0.22336918231854544,
+        "reflectance_unpolarized": 0.2308149503331109,
+        "interface_transmittance_s": 0.7617392816523236,
+        "interface_transmittance_p": 0.7766308176814546,
+        "interface_transmittance_unpolarized": 0.7691850496668892
+      }
+    },
+    {
+      "name": "seeded-10",
+      "parameters": {
+        "angle_deg": 74.30517310387452,
+        "n_incident": 1.17715501213943,
+        "n_real": 4.414810566312221,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.8611060318491347,
+          0.0
+        ],
+        "amplitude_r_p": [
+          0.024251945420611674,
+          0.0
+        ],
+        "reflectance_s": 0.741503598086963,
+        "reflectance_p": 0.0005881568566843276,
+        "reflectance_unpolarized": 0.37104587747182366,
+        "interface_transmittance_s": 0.258496401913037,
+        "interface_transmittance_p": 0.9994118431433157,
+        "interface_transmittance_unpolarized": 0.6289541225281763
+      }
+    },
+    {
+      "name": "seeded-11",
+      "parameters": {
+        "angle_deg": 68.00879687642914,
+        "n_incident": 1.3533292536579973,
+        "n_real": 4.348967117215926,
+        "k": 3.172034339884809
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.85482057795637,
+          -0.09988952131237146
+        ],
+        "amplitude_r_p": [
+          0.21887147007320318,
+          0.29781149970608334
+        ],
+        "reflectance_s": 0.7406961369656773,
+        "reflectance_p": 0.13659640976919155,
+        "reflectance_unpolarized": 0.4386462733674344,
+        "interface_transmittance_s": 0.2593038630343228,
+        "interface_transmittance_p": 0.8634035902308085,
+        "interface_transmittance_unpolarized": 0.5613537266325657
+      }
+    },
+    {
+      "name": "seeded-12",
+      "parameters": {
+        "angle_deg": 17.193356692321363,
+        "n_incident": 0.8185749741455873,
+        "n_real": 1.529235911501079,
+        "k": 3.195188640429798
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.7683791312536048,
+          -0.3214487543152299
+        ],
+        "amplitude_r_p": [
+          0.7419868184471534,
+          0.3441851466292318
+        ],
+        "reflectance_s": 0.6937357909968573,
+        "reflectance_p": 0.6690078539095148,
+        "reflectance_unpolarized": 0.6813718224531861,
+        "interface_transmittance_s": 0.3062642090031426,
+        "interface_transmittance_p": 0.3309921460904853,
+        "interface_transmittance_unpolarized": 0.31862817754681394
+      }
+    },
+    {
+      "name": "seeded-13",
+      "parameters": {
+        "angle_deg": 36.9379428706453,
+        "n_incident": 1.8123171853571685,
+        "n_real": 4.962178586985227,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.5393894391189415,
+          0.0
+        ],
+        "amplitude_r_p": [
+          0.38331897806281534,
+          0.0
+        ],
+        "reflectance_s": 0.29094096703304634,
+        "reflectance_p": 0.14693343894312114,
+        "reflectance_unpolarized": 0.21893720298808375,
+        "interface_transmittance_s": 0.7090590329669536,
+        "interface_transmittance_p": 0.8530665610568788,
+        "interface_transmittance_unpolarized": 0.7810627970119163
+      }
+    },
+    {
+      "name": "seeded-14",
+      "parameters": {
+        "angle_deg": 0.9178142724054585,
+        "n_incident": 1.6098534588995954,
+        "n_real": 4.846840076687184,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.5013808531900171,
+          0.0
+        ],
+        "amplitude_r_p": [
+          0.5012953903242824,
+          0.0
+        ],
+        "reflectance_s": 0.25138275994554954,
+        "reflectance_p": 0.25129706836037463,
+        "reflectance_unpolarized": 0.2513399141529621,
+        "interface_transmittance_s": 0.7486172400544504,
+        "interface_transmittance_p": 0.7487029316396253,
+        "interface_transmittance_unpolarized": 0.7486600858470379
+      }
+    },
+    {
+      "name": "seeded-15",
+      "parameters": {
+        "angle_deg": 78.45868769022563,
+        "n_incident": 1.595194667747085,
+        "n_real": 1.3313627704615225,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.7361505119324343,
+          -0.6768178660331114
+        ],
+        "amplitude_r_p": [
+          -0.8626493070248626,
+          -0.5058025040364315
+        ],
+        "reflectance_s": 1.0,
+        "reflectance_p": 1.0,
+        "reflectance_unpolarized": 1.0,
+        "interface_transmittance_s": 0.0,
+        "interface_transmittance_p": 0.0,
+        "interface_transmittance_unpolarized": 0.0
+      }
+    },
+    {
+      "name": "seeded-16",
+      "parameters": {
+        "angle_deg": 76.95549750457951,
+        "n_incident": 1.9893788046166674,
+        "n_real": 3.556857289086413,
+        "k": 2.6631484679352373
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.8508105337114907,
+          -0.11909692143822068
+        ],
+        "amplitude_r_p": [
+          -0.3439873236836965,
+          0.2497140119346989
+        ],
+        "reflectance_s": 0.7380626409704933,
+        "reflectance_p": 0.18068436661159512,
+        "reflectance_unpolarized": 0.45937350379104425,
+        "interface_transmittance_s": 0.2619373590295066,
+        "interface_transmittance_p": 0.8193156333884049,
+        "interface_transmittance_unpolarized": 0.5406264962089558
+      }
+    },
+    {
+      "name": "seeded-17",
+      "parameters": {
+        "angle_deg": 49.99516533200471,
+        "n_incident": 1.0795094714880786,
+        "n_real": 1.2930884836878713,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.17782019940617727,
+          0.0
+        ],
+        "amplitude_r_p": [
+          0.000795978334301098,
+          0.0
+        ],
+        "reflectance_s": 0.031620023316852645,
+        "reflectance_p": 6.335815086767505e-07,
+        "reflectance_unpolarized": 0.015810328449180663,
+        "interface_transmittance_s": 0.9683799766831473,
+        "interface_transmittance_p": 0.9999993664184913,
+        "interface_transmittance_unpolarized": 0.9841896715508194
+      }
+    },
+    {
+      "name": "seeded-18",
+      "parameters": {
+        "angle_deg": 39.88418503996422,
+        "n_incident": 0.8389957526353929,
+        "n_real": 2.8641020441516165,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.627531142039789,
+          0.0
+        ],
+        "amplitude_r_p": [
+          0.4545905560918629,
+          0.0
+        ],
+        "reflectance_s": 0.3937953342297618,
+        "reflectance_p": 0.20665257368790912,
+        "reflectance_unpolarized": 0.3002239539588355,
+        "interface_transmittance_s": 0.6062046657702381,
+        "interface_transmittance_p": 0.7933474263120909,
+        "interface_transmittance_unpolarized": 0.6997760460411645
+      }
+    },
+    {
+      "name": "seeded-19",
+      "parameters": {
+        "angle_deg": 62.4469769577142,
+        "n_incident": 1.5527089892783663,
+        "n_real": 0.6829635290608586,
+        "k": 0.0
+      },
+      "expected": {
+        "amplitude_r_s": [
+          -0.4694047672731407,
+          -0.8829831054223227
+        ],
+        "amplitude_r_p": [
+          -0.9733282802089716,
+          -0.2294167799997326
+        ],
+        "reflectance_s": 1.0,
+        "reflectance_p": 1.0,
+        "reflectance_unpolarized": 1.0,
+        "interface_transmittance_s": 0.0,
+        "interface_transmittance_p": 0.0,
+        "interface_transmittance_unpolarized": 0.0
+      }
+    }
+  ],
+  "planck_wavelength": [
+    {
+      "wavelength_nm": 10000.0,
+      "temperature_k": 0.0,
+      "radiance_per_nm": 0.0,
+      "inverse_temperature_k": 0.0
+    },
+    {
+      "wavelength_nm": 1.0,
+      "temperature_k": 1.0,
+      "radiance_per_nm": 0.0,
+      "inverse_temperature_k": 0.0
+    },
+    {
+      "wavelength_nm": 500.0,
+      "temperature_k": 5778.0,
+      "radiance_per_nm": 26375.669866614797,
+      "inverse_temperature_k": 5778.0
+    },
+    {
+      "wavelength_nm": 10000.0,
+      "temperature_k": 300.0,
+      "radiance_per_nm": 0.009924033330070695,
+      "inverse_temperature_k": 300.0
+    },
+    {
+      "wavelength_nm": 1000000.0,
+      "temperature_k": 2.7,
+      "radiance_per_nm": 5.80455566682369e-13,
+      "inverse_temperature_k": 2.7
+    },
+    {
+      "wavelength_nm": 1000000000.0,
+      "temperature_k": 300.0,
+      "radiance_per_nm": 2.483389392398845e-21,
+      "inverse_temperature_k": 300.00000000000006
+    },
+    {
+      "wavelength_nm": 1e+100,
+      "temperature_k": 1e+200,
+      "radiance_per_nm": 8.27816314690484e-188,
+      "inverse_temperature_k": 1e+200
+    },
+    {
+      "wavelength_nm": 1e-100,
+      "temperature_k": 1.0,
+      "radiance_per_nm": 0.0,
+      "inverse_temperature_k": 0.0
+    },
+    {
+      "wavelength_nm": 92212.69343095891,
+      "temperature_k": 820.3260181617409,
+      "radiance_per_nm": 8.527097697333954e-05,
+      "inverse_temperature_k": 820.3260181617409
+    },
+    {
+      "wavelength_nm": 47288795.44852141,
+      "temperature_k": 8181.365171723648,
+      "radiance_per_nm": 1.3543118443644768e-14,
+      "inverse_temperature_k": 8181.365171723648
+    },
+    {
+      "wavelength_nm": 503722701.0455971,
+      "temperature_k": 2568.8957215332684,
+      "radiance_per_nm": 3.303025666839048e-19,
+      "inverse_temperature_k": 2568.8957215332684
+    },
+    {
+      "wavelength_nm": 283974378.0498903,
+      "temperature_k": 5056.922480655015,
+      "radiance_per_nm": 6.437266271948578e-18,
+      "inverse_temperature_k": 5056.922480655015
+    },
+    {
+      "wavelength_nm": 1806116.5589824026,
+      "temperature_k": 460.6192825432256,
+      "radiance_per_nm": 3.552484193222741e-10,
+      "inverse_temperature_k": 460.61928254322555
+    },
+    {
+      "wavelength_nm": 978111.1995945224,
+      "temperature_k": 14.458305420379306,
+      "radiance_per_nm": 7.533613277010337e-11,
+      "inverse_temperature_k": 14.458305420379306
+    },
+    {
+      "wavelength_nm": 106220.96800686642,
+      "temperature_k": 25341.60308066705,
+      "radiance_per_nm": 0.0016434854871250034,
+      "inverse_temperature_k": 25341.60308066705
+    },
+    {
+      "wavelength_nm": 2035.2637441589404,
+      "temperature_k": 317.6599377494608,
+      "radiance_per_nm": 7.378788672163009e-07,
+      "inverse_temperature_k": 317.6599377494608
+    },
+    {
+      "wavelength_nm": 4313.714422464861,
+      "temperature_k": 474.6822743835334,
+      "radiance_per_nm": 0.07087387579408053,
+      "inverse_temperature_k": 474.6822743835334
+    },
+    {
+      "wavelength_nm": 336.29539066162124,
+      "temperature_k": 38.07844555436372,
+      "radiance_per_nm": 0.0,
+      "inverse_temperature_k": 0.0
+    },
+    {
+      "wavelength_nm": 6500644.893220295,
+      "temperature_k": 852.7534174901303,
+      "radiance_per_nm": 3.9479165219287665e-12,
+      "inverse_temperature_k": 852.7534174901302
+    },
+    {
+      "wavelength_nm": 401165343.1540181,
+      "temperature_k": 1875.3336369060798,
+      "radiance_per_nm": 5.9939724641621575e-19,
+      "inverse_temperature_k": 1875.3336369060798
+    },
+    {
+      "wavelength_nm": 28457223.03830994,
+      "temperature_k": 18.37643190933812,
+      "radiance_per_nm": 2.2878998273086194e-16,
+      "inverse_temperature_k": 18.376431909338123
+    },
+    {
+      "wavelength_nm": 471275.5908567993,
+      "temperature_k": 14.583410321166408,
+      "radiance_per_nm": 7.203047330170806e-10,
+      "inverse_temperature_k": 14.583410321166408
+    },
+    {
+      "wavelength_nm": 48374946.58840369,
+      "temperature_k": 3659.6733404922434,
+      "radiance_per_nm": 5.5319298200617686e-15,
+      "inverse_temperature_k": 3659.6733404922434
+    },
+    {
+      "wavelength_nm": 3583.7420269058925,
+      "temperature_k": 1.4367935642576937,
+      "radiance_per_nm": 0.0,
+      "inverse_temperature_k": 0.0
+    },
+    {
+      "wavelength_nm": 15273.482136106886,
+      "temperature_k": 6389.2299798286485,
+      "radiance_per_nm": 0.9020308797892379,
+      "inverse_temperature_k": 6389.2299798286485
+    },
+    {
+      "wavelength_nm": 6979969.950428305,
+      "temperature_k": 4.280706752313108,
+      "radiance_per_nm": 1.162209143210487e-14,
+      "inverse_temperature_k": 4.280706752313108
+    },
+    {
+      "wavelength_nm": 4777777.671145653,
+      "temperature_k": 53.58826992143666,
+      "radiance_per_nm": 8.276376471746881e-13,
+      "inverse_temperature_k": 53.588269921436655
+    },
+    {
+      "wavelength_nm": 4746.581518130696,
+      "temperature_k": 85.6305163866069,
+      "radiance_per_nm": 2.0925793603674068e-14,
+      "inverse_temperature_k": 85.6305163866069
+    },
+    {
+      "wavelength_nm": 379395.4161204837,
+      "temperature_k": 265.4424170695159,
+      "radiance_per_nm": 9.866056315763839e-08,
+      "inverse_temperature_k": 265.4424170695159
+    },
+    {
+      "wavelength_nm": 16090179.373361185,
+      "temperature_k": 92.02011405308109,
+      "radiance_per_nm": 1.1309968411787545e-14,
+      "inverse_temperature_k": 92.02011405308109
+    },
+    {
+      "wavelength_nm": 323991.23379994265,
+      "temperature_k": 24442.236661799387,
+      "radiance_per_nm": 1.8346249839883387e-05,
+      "inverse_temperature_k": 24442.236661799387
+    },
+    {
+      "wavelength_nm": 160841.2639349586,
+      "temperature_k": 2.2656133376260437,
+      "radiance_per_nm": 7.882965008677609e-24,
+      "inverse_temperature_k": 2.2656133376260437
+    }
+  ],
+  "planck_frequency": [
+    {
+      "frequency_hz": 1.0,
+      "temperature_k": 0.0,
+      "radiance_per_hz": 0.0,
+      "inverse_temperature_k": 0.0
+    },
+    {
+      "frequency_hz": 1000000.0,
+      "temperature_k": 1000000.0,
+      "radiance_per_hz": 3.0723583744070197e-22,
+      "inverse_temperature_k": 1000000.0000000001
+    },
+    {
+      "frequency_hz": 1000000000.0,
+      "temperature_k": 2.7,
+      "radiance_per_hz": 8.221861046627775e-22,
+      "inverse_temperature_k": 2.7
+    },
+    {
+      "frequency_hz": 1000000000000.0,
+      "temperature_k": 300.0,
+      "radiance_per_hz": 8.499473904489865e-14,
+      "inverse_temperature_k": 299.99999999999994
+    },
+    {
+      "frequency_hz": 1e+16,
+      "temperature_k": 300.0,
+      "radiance_per_hz": 0.0,
+      "inverse_temperature_k": 0.0
+    },
+    {
+      "frequency_hz": 1e-100,
+      "temperature_k": 300.0,
+      "radiance_per_hz": 9.217075123442233e-238,
+      "inverse_temperature_k": 300.0
+    },
+    {
+      "frequency_hz": 1e+100,
+      "temperature_k": 1.0,
+      "radiance_per_hz": 0.0,
+      "inverse_temperature_k": 0.0
+    },
+    {
+      "frequency_hz": 1e-50,
+      "temperature_k": 1e+200,
+      "radiance_per_hz": 3.0723583744807445e+60,
+      "inverse_temperature_k": 1e+200
+    },
+    {
+      "frequency_hz": 1031.071556041321,
+      "temperature_k": 7143.61576348032,
+      "radiance_per_hz": 2.3332838329692364e-30,
+      "inverse_temperature_k": 7143.61576348032
+    },
+    {
+      "frequency_hz": 5045260986296.68,
+      "temperature_k": 7658.0200686630715,
+      "radiance_per_hz": 5.894835733656271e-11,
+      "inverse_temperature_k": 7658.0200686630715
+    },
+    {
+      "frequency_hz": 7792721458625.697,
+      "temperature_k": 71.29154589409148,
+      "radiance_per_hz": 3.6959039791700486e-14,
+      "inverse_temperature_k": 71.29154589409148
+    },
+    {
+      "frequency_hz": 3337931951858.94,
+      "temperature_k": 17852.051247712287,
+      "radiance_per_hz": 6.083659881110115e-11,
+      "inverse_temperature_k": 17852.051247712287
+    },
+    {
+      "frequency_hz": 4516917889788.666,
+      "temperature_k": 10856.294433965677,
+      "radiance_per_hz": 6.737436403275365e-11,
+      "inverse_temperature_k": 10856.294433965677
+    },
+    {
+      "frequency_hz": 31041867320628.836,
+      "temperature_k": 4.905790304504406,
+      "radiance_per_hz": 5.745563309844233e-142,
+      "inverse_temperature_k": 4.905790304504406
+    },
+    {
+      "frequency_hz": 90981094111.4433,
+      "temperature_k": 155.84732729874042,
+      "radiance_per_hz": 3.9081883188178906e-16,
+      "inverse_temperature_k": 155.84732729874042
+    },
+    {
+      "frequency_hz": 350630.944611887,
+      "temperature_k": 122.08353763905878,
+      "radiance_per_hz": 4.611364282565553e-27,
+      "inverse_temperature_k": 122.08353763905879
+    },
+    {
+      "frequency_hz": 10361357756.81536,
+      "temperature_k": 3.5124371332544104,
+      "radiance_per_hz": 1.0784721286428003e-19,
+      "inverse_temperature_k": 3.51243713325441
+    },
+    {
+      "frequency_hz": 48257.75641069627,
+      "temperature_k": 19498.87450448732,
+      "radiance_per_hz": 1.3951331893873695e-26,
+      "inverse_temperature_k": 19498.87450448732
+    },
+    {
+      "frequency_hz": 465236299.25411856,
+      "temperature_k": 2258.741443381594,
+      "radiance_per_hz": 1.502046685296745e-19,
+      "inverse_temperature_k": 2258.741443381594
+    },
+    {
+      "frequency_hz": 6411577664829.695,
+      "temperature_k": 6.273416964196356,
+      "radiance_per_hz": 1.9393908692784132e-33,
+      "inverse_temperature_k": 6.273416964196356
+    },
+    {
+      "frequency_hz": 1543528796528380.0,
+      "temperature_k": 15.789557328822154,
+      "radiance_per_hz": 0.0,
+      "inverse_temperature_k": 0.0
+    },
+    {
+      "frequency_hz": 74294554804.13924,
+      "temperature_k": 9.27185962810901,
+      "radiance_per_hz": 1.2893594100918186e-17,
+      "inverse_temperature_k": 9.271859628109011
+    },
+    {
+      "frequency_hz": 2672658922509350.0,
+      "temperature_k": 91.42511546908347,
+      "radiance_per_hz": 0.0,
+      "inverse_temperature_k": 0.0
+    },
+    {
+      "frequency_hz": 78250229892802.8,
+      "temperature_k": 57454.2246571983,
+      "radiance_per_hz": 1.0459098095784907e-07,
+      "inverse_temperature_k": 57454.224657198305
+    },
+    {
+      "frequency_hz": 36791.381052700104,
+      "temperature_k": 30966.901605843665,
+      "radiance_per_hz": 1.2878396959160455e-26,
+      "inverse_temperature_k": 30966.901605843665
+    },
+    {
+      "frequency_hz": 5283593161533.347,
+      "temperature_k": 14587.756460039956,
+      "radiance_per_hz": 1.2403352146957277e-10,
+      "inverse_temperature_k": 14587.756460039955
+    },
+    {
+      "frequency_hz": 32337.590539522644,
+      "temperature_k": 271.2357122735928,
+      "radiance_per_hz": 8.71433110181269e-29,
+      "inverse_temperature_k": 271.2357122735928
+    },
+    {
+      "frequency_hz": 41520407616530.23,
+      "temperature_k": 4194.918778620602,
+      "radiance_per_hz": 1.7357778040295308e-09,
+      "inverse_temperature_k": 4194.918778620602
+    },
+    {
+      "frequency_hz": 4546452.576736754,
+      "temperature_k": 16611.06766620947,
+      "radiance_per_hz": 1.054908393330028e-22,
+      "inverse_temperature_k": 16611.06766620947
+    },
+    {
+      "frequency_hz": 366863.35099712946,
+      "temperature_k": 6.312617105758376,
+      "radiance_per_hz": 2.610293680775108e-28,
+      "inverse_temperature_k": 6.312617105758376
+    },
+    {
+      "frequency_hz": 131804930585378.03,
+      "temperature_k": 430.17709870330725,
+      "radiance_per_hz": 1.387572708944771e-14,
+      "inverse_temperature_k": 430.17709870330725
+    },
+    {
+      "frequency_hz": 14604.603095939125,
+      "temperature_k": 202.09556915382566,
+      "radiance_per_hz": 1.324366483464549e-29,
+      "inverse_temperature_k": 202.0955691538257
+    }
+  ]
+}

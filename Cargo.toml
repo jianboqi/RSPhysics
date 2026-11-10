@@ -1,0 +1,67 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/models/microwave/lmeb",
+    "crates/models/ecosystem/gort-gpp",
+    "crates/rsphysics-core",
+    "crates/rsphysics-numerics",
+    "crates/rsphysics-model-api",
+    "crates/rsphysics-catalog",
+    "crates/rsphysics-runtime",
+    "apps/cli",
+    "templates/rust-model",
+    "crates/models/vegetation/prospect-d",
+    "bindings/python",
+    "crates/models/vegetation/prosail-d",
+    "crates/models/microwave/tau-omega",
+    "crates/models/microwave/water-cloud",
+    "crates/models/surface/ross-li",
+    "crates/models/atmosphere/smac",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97"
+publish = false
+license = "Apache-2.0"
+repository = "https://github.com/jianboqi/RSPhysics"
+homepage = "https://github.com/jianboqi/RSPhysics"
+
+[workspace.dependencies]
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.150"
+schemars = "1.2"
+jsonschema = { version = "0.61", default-features = false }
+toml = "1.2"
+semver = "1.0"
+sha2 = "0.10.9"
+pyo3 = "0.29"
+numpy = "0.29"
+num-complex = "0.4.6"
+rsphysics-prospect-d = { path = "crates/models/vegetation/prospect-d" }
+rsphysics-prosail-d = { path = "crates/models/vegetation/prosail-d" }
+rsphysics-tau-omega = { path = "crates/models/microwave/tau-omega" }
+rsphysics-water-cloud = { path = "crates/models/microwave/water-cloud" }
+rsphysics-ross-li = { path = "crates/models/surface/ross-li" }
+rsphysics-smac = { path = "crates/models/atmosphere/smac" }
+rsphysics-core = { path = "crates/rsphysics-core" }
+rsphysics-numerics = { path = "crates/rsphysics-numerics" }
+rsphysics-model-api = { path = "crates/rsphysics-model-api" }
+rsphysics-catalog = { path = "crates/rsphysics-catalog" }
+rsphysics-runtime = { path = "crates/rsphysics-runtime" }
+
+rsphysics-lmeb = { path = "crates/models/microwave/lmeb" }
+
+rsphysics-gort-gpp = { path = "crates/models/ecosystem/gort-gpp" }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+dbg_macro = "deny"
+todo = "deny"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1

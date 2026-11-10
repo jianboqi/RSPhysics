@@ -1,0 +1,91 @@
+[model]
+id = "microwave.tau-omega"
+name = "τ–ω"
+family = "tau-omega"
+category = "microwave"
+scientific_version = "Zero-order / SMAP ATBD Rev B Eq.1"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Single user-specified microwave channel; effective soil reflectivity is an input, not a soil moisture or dielectric solver. Zero-order plane-parallel canopy; no atmospheric or sky emission, multiple scattering, inversion or coupling. Angle sweep holds all non-angle inputs fixed, including reflectivity; it is a sensitivity experiment, not a Fresnel angular prediction. Defaults are illustrative, not a sensor or land cover calibration."
+[source]
+crate = "rsphysics-tau-omega"
+authors = ["RSPhysics contributors (independent published-equation implementation)"]
+references = ["https://smap.jpl.nasa.gov/system/internal_resources/details/original/316_L2_SM_P_ATBD_v7_Sep2015.pdf", "https://climatesciences.jpl.nasa.gov/soilmoisture/approach/"]
+license = "Apache-2.0"
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "tau-omega-published-equations-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "tau-omega-published-equations-v1"
+implementation_version = "0.1.0"
+backend = "python"
+[data.hashes]
+[input_semantics."/soil_temperature_k"]
+unit = "K"
+axes = []
+description = "Effective soil temperature, not brightness temperature."
+[input_semantics."/vegetation_temperature_k"]
+unit = "K"
+axes = []
+description = "Canopy physical temperature."
+[input_semantics."/soil_reflectivity"]
+unit = "1"
+axes = []
+description = "Effective soil power reflectivity at the selected frequency, polarization and angle; supplied directly."
+[input_semantics."/vegetation_optical_depth"]
+unit = "1"
+axes = []
+description = "Nadir vegetation optical depth tau, before division by cos(theta)."
+[input_semantics."/single_scattering_albedo"]
+unit = "1"
+axes = []
+description = "Vegetation single scattering albedo omega; zero-order loss parameter, no multiple scattering."
+[input_semantics."/observation_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Observation zenith angle; zero is nadir."
+[output_semantics."/brightness_temperature_k"]
+unit = "K"
+quantity = "brightness_temperature"
+axes = []
+description = "Total surface brightness temperature; no sky or atmosphere."
+[output_semantics."/soil_emission_k"]
+unit = "K"
+quantity = "brightness_temperature"
+axes = []
+description = "Soil emission attenuated by one canopy passage."
+[output_semantics."/vegetation_emission_k"]
+unit = "K"
+quantity = "brightness_temperature"
+axes = []
+description = "Direct upward canopy emission."
+[output_semantics."/reflected_vegetation_emission_k"]
+unit = "K"
+quantity = "brightness_temperature"
+axes = []
+description = "Downward canopy emission reflected by soil and attenuated upward."
+[output_semantics."/transmissivity"]
+unit = "1"
+quantity = "transmittance"
+axes = []
+description = "One-way canopy power transmissivity gamma."
+[output_semantics."/sweep_zenith_deg"]
+unit = "deg"
+axes = ["zenith"]
+description = "81 zenith samples, 0..80 step1."
+[output_semantics."/sweep_total"]
+unit = "K"
+quantity = "brightness_temperature"
+axes = ["zenith"]
+description = "Total response at sweep angles; all other inputs held fixed, including soil response."

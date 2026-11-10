@@ -1,0 +1,18 @@
+[package]
+name = "rsphysics-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+description = "Validated scientific quantities for RSPhysics"
+
+[dependencies]
+serde.workspace = true
+schemars.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true
+
+[lints]
+workspace = true

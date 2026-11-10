@@ -1,0 +1,31 @@
+[[models]]
+id = "atmosphere.smac"
+manifest = "crates/models/atmosphere/smac/model.toml"
+
+[[models]]
+id = "vegetation.prospect-d"
+manifest = "crates/models/vegetation/prospect-d/model.toml"
+
+[[models]]
+id = "vegetation.prosail-d"
+manifest = "crates/models/vegetation/prosail-d/model.toml"
+
+[[models]]
+id = "surface.ross-li"
+manifest = "crates/models/surface/ross-li/model.toml"
+
+[[models]]
+id = "microwave.tau-omega"
+manifest = "crates/models/microwave/tau-omega/model.toml"
+
+[[models]]
+id = "microwave.water-cloud"
+manifest = "crates/models/microwave/water-cloud/model.toml"
+
+[[models]]
+id = "microwave.lmeb"
+manifest = "crates/models/microwave/lmeb/model.toml"
+
+[[models]]
+id = "ecosystem.gort-gpp"
+manifest = "crates/models/ecosystem/gort-gpp/model.toml"

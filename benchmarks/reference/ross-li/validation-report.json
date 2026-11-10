@@ -1,0 +1,24 @@
+{
+  "suite": "ross-li-ambrals-jrc-v1",
+  "oracle_sha256": "a627f340990fd9735c5859cdfc14a2d64848dcf7b96395c0c65e81270da7a2ff",
+  "original_commit": "b43d9171ea9f6dc76854cac34037e2af7903d02e",
+  "original_precision": "original AMBRALS float inputs/intermediates/return; unchanged C scientific functions",
+  "tolerance": {
+    "absolute": 2e-12,
+    "relative": 2e-12
+  },
+  "original_tolerance": {
+    "absolute": 0.0001,
+    "relative": 2e-05
+  },
+  "system": "Windows-11-10.0.26300-SP0",
+  "python": "3.13.0",
+  "numpy": "2.5.4",
+  "cases": 32,
+  "samples": 26368,
+  "original_samples": 26304,
+  "max_absolute_error": 1.2789769243681803e-13,
+  "max_normalized_error": 0.0005449558266466518,
+  "max_original_absolute_error": 0.00017933422530802545,
+  "status": "passed"
+}

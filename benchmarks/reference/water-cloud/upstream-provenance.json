@@ -1,0 +1,8 @@
+{
+  "url": "https://raw.githubusercontent.com/mcwhity/sense/f9bde397c32f8759f7a410cf3d55febac9034aef/sense/model.py",
+  "sha256": "1131ace6d3d0c1ec8776fe2fb03bb226de3d956ae00c3cc5b0d095d449fc6fa3",
+  "bytes": 16732,
+  "reference_kind": "SenSE developer implementation; not Attema/Ulaby 1978 original code",
+  "commit": "f9bde397c32f8759f7a410cf3d55febac9034aef",
+  "license_note": "Test-only cache; not redistributed or linked. SenSE documentation declares GPL; scientific Rust solver independently implements published equations."
+}

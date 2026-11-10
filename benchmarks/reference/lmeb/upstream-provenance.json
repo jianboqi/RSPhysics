@@ -1,0 +1,107 @@
+{
+  "source": "User-provided local source archive",
+  "source_label": "LMEB.rar",
+  "license_status": "Publication of supplied source and adaptations authorized by the project maintainer on 2026-11-10; no explicit license file in supplied source; component terms retained",
+  "files": [
+    {
+      "path": "angone.m",
+      "size_bytes": 248,
+      "sha256": "3da00ace18fa063bc328441fe2d279defcfc7946bddf83e9b28f81d06d2f6b62"
+    },
+    {
+      "path": "compfilt.m",
+      "size_bytes": 151,
+      "sha256": "93abd15dc7fb33b52b150e224a81b97f564dc48d5de6082aa9e0927e17ff5a41"
+    },
+    {
+      "path": "corn01.eps",
+      "size_bytes": 8964,
+      "sha256": "8d97b0e4d7728f39a6f5c3c26f3e78f562d0abec13755d906fbf326311e1f23a"
+    },
+    {
+      "path": "dobeaus.m",
+      "size_bytes": 1064,
+      "sha256": "b2666bdab796ab440c3a7a2d103cde68900eb783ae651499586dd08681c02804"
+    },
+    {
+      "path": "dobsol.m",
+      "size_bytes": 1631,
+      "sha256": "da1b08520afec92400968a184cf28ba146ae65eaae2b052f2c1b679d60ab3b1c"
+    },
+    {
+      "path": "eps_ice.m",
+      "size_bytes": 584,
+      "sha256": "725ec145663d306fb4669c2ed000af2ca7a2cd91e19beaa9c0d41d608b3e6292"
+    },
+    {
+      "path": "filt.m",
+      "size_bytes": 57,
+      "sha256": "444eaf082fd720ae6d5c268efec82076dc1c8d990365414bd5f4f0205864dc6a"
+    },
+    {
+      "path": "l-meb-matlab.txt",
+      "size_bytes": 1353,
+      "sha256": "3a36f5e8070e93b7e8ae94f459e95fb7bb5c659c0ab6ef3f1f77f6a90414c553"
+    },
+    {
+      "path": "lmeb-f77.txt",
+      "size_bytes": 14312,
+      "sha256": "865d1f5f2b2a36a9b27177ed24669b505b076e7e90769bb4ed65ddf0ac6c221e"
+    },
+    {
+      "path": "lmeb-itt-2002.doc",
+      "size_bytes": 630784,
+      "sha256": "a8ef49c3b64d0fbc8f017a044916df8b2f8ed1ff82cbe937206cf000403737ed"
+    },
+    {
+      "path": "lmeb-param-07_sept.doc",
+      "size_bytes": 144896,
+      "sha256": "92433955fe14348363d0654551e43cc94ba4f4e4b18de135927550e60fc4ef71"
+    },
+    {
+      "path": "lmeb_call.m",
+      "size_bytes": 3593,
+      "sha256": "6fca3a04b181b2dd631f9623885a95a58fe0b442d9f866b768d6c92bb70bd18e"
+    },
+    {
+      "path": "mironovt.m",
+      "size_bytes": 4558,
+      "sha256": "a38247c5d05d2c0ddbad30bf59abc3077012d4130e2cc7d4f4720bb02f0c39c2"
+    },
+    {
+      "path": "normtxt.m",
+      "size_bytes": 40,
+      "sha256": "7c614c5f10c0c17c3d339797d96b6ccce3a07bc470f726811892cd3b366541f8"
+    },
+    {
+      "path": "pr.m",
+      "size_bytes": 49,
+      "sha256": "7028355e7a38d35cecf1caffdd4060045179c983f534de31c82715d1bda47591"
+    },
+    {
+      "path": "private/reflect.m",
+      "size_bytes": 1046,
+      "sha256": "faa74075e84720c7b7ef6141b5ba46d6064ce3f4b457fba20a95e11d33028360"
+    },
+    {
+      "path": "references.doc",
+      "size_bytes": 59392,
+      "sha256": "16e2cb969aa55c7ab13096d522193d52d3cb54bb8b2f1a2e006e9c4ea1c2abdf"
+    },
+    {
+      "path": "skytl.m",
+      "size_bytes": 837,
+      "sha256": "b11f13554b45cf09a567f00bee23c0b5d3e7e87e8ed9378a68463e817ac81204"
+    },
+    {
+      "path": "tauw1i.m",
+      "size_bytes": 5607,
+      "sha256": "b29e213378002be7d1a5cefb554e316b8893c3e4e66a05e6db57ba99d5987ec3"
+    },
+    {
+      "path": "wang.m",
+      "size_bytes": 1590,
+      "sha256": "fa427e5a433f931798cd8d71fc55786cd81d6bb8ccaec6f1d52db2ec581e4929"
+    }
+  ]
+}

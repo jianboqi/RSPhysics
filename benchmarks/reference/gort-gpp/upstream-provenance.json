@@ -1,0 +1,182 @@
+{
+  "source": "User-provided local source archive",
+  "source_label": "GORT-GPP/GPP-WQL-matlab/GPP",
+  "license_status": "Publication of supplied source and adaptations authorized by the project maintainer on 2026-11-10; no explicit license file in supplied source; component terms retained",
+  "files": [
+    {
+      "path": "An2Vcmax25.m",
+      "size_bytes": 2337,
+      "sha256": "e693c7cabd83b35c530e743f3ce73a9b4ca2fa56f1fdb15ee7be448416a06e40"
+    },
+    {
+      "path": "canopy_aerodynamic_resistance.m",
+      "size_bytes": 1362,
+      "sha256": "9b0d9af9d0b0b8808c5e3b3b2357dcd832b0dc6aa0501a91550c921f7d42bc0b"
+    },
+    {
+      "path": "canopy_bwb_stomatal_conductance.m",
+      "size_bytes": 366,
+      "sha256": "1414d36e6939e94a49018e3b72a28ce2b798c4be8410708488ebf8f01d296814"
+    },
+    {
+      "path": "Clumping_index.m",
+      "size_bytes": 6818,
+      "sha256": "d86baffbc184cd99a7779b65d464f28b6cf15bf473d580f07dce957f611040ef"
+    },
+    {
+      "path": "compute_absorbed_shortwave_rad.m",
+      "size_bytes": 3925,
+      "sha256": "244be5b086e5f22a45f8c179f940e2cf823694886cca97e847e247d4997e5c07"
+    },
+    {
+      "path": "compute_bwb_farq_psn.m",
+      "size_bytes": 2410,
+      "sha256": "3a8c544791355d9daa63ded1fa3117ce9a5707d87926bfe64a5d19e73b5cc87f"
+    },
+    {
+      "path": "compute_bwb_farq_psn1.m",
+      "size_bytes": 2390,
+      "sha256": "d0794dfbe4255d4d2a8962be670b283f254eb4452510c5f7ca2a6bcfc0c91d0c"
+    },
+    {
+      "path": "compute_bwb_farq_psn2.m",
+      "size_bytes": 1557,
+      "sha256": "e5f9ec6a921467e6494ad31c3aa908e0fb97dff4411d2bb85c391b38f46b3af9"
+    },
+    {
+      "path": "compute_farq_psn.m",
+      "size_bytes": 2988,
+      "sha256": "9f191f4d261ff732492386a6bc6f6763ac8853ae7084695b14d84cbd5106a98d"
+    },
+    {
+      "path": "compute_farq_psn0922.m",
+      "size_bytes": 5073,
+      "sha256": "9fac5c1721690fb93caa2883751aefc6f2ec7c42d67a66bc52b01288660450c9"
+    },
+    {
+      "path": "compute_gap_fractions.m",
+      "size_bytes": 2464,
+      "sha256": "2c8558d6f491649c9232a99cc944fc0895af7a6e2c1775a969e049147d39ea10"
+    },
+    {
+      "path": "compute_hourly_diffuse_nir_fluxes.m",
+      "size_bytes": 2698,
+      "sha256": "179a5d49636dc3a337edfa4f204939293d59fe0ad70e5e661c28df5d0cc354e0"
+    },
+    {
+      "path": "compute_hourly_diffuse_par_fluxes.m",
+      "size_bytes": 2655,
+      "sha256": "221cfa9eca071d324c6b3f0143bb6dbb3f02b34fd53a56a03b40b7463406e6ed"
+    },
+    {
+      "path": "compute_hourly_direct_nir_fluxes.m",
+      "size_bytes": 865,
+      "sha256": "6654143439065abe45796a77e42961c4a5c6a6837c69a96b29f7c9e316e901ab"
+    },
+    {
+      "path": "compute_hourly_direct_par_fluxes.m",
+      "size_bytes": 835,
+      "sha256": "e9646647325a949fb3a39b6f0b2e1e762a67ef3749b99e83b180ff96735e3299"
+    },
+    {
+      "path": "compute_leaf_temperature.m",
+      "size_bytes": 1379,
+      "sha256": "d7c6726f8f537f77930d193fc6f3f01cc4d6365ae4c8ac88b6761704afff9e95"
+    },
+    {
+      "path": "compute_longwave_rad.m",
+      "size_bytes": 960,
+      "sha256": "a939ac6abdf9943bed51b3512b3795212cf0f2a3e3cbebc84ef3f8afba8bb3d6"
+    },
+    {
+      "path": "compute_potential_exfiltration.m",
+      "size_bytes": 968,
+      "sha256": "4962c43f61fdce1fd6cfc5e91d7209731451ed9a36f504a0c86f29ef50d02121"
+    },
+    {
+      "path": "compute_psn_parameters.m",
+      "size_bytes": 5014,
+      "sha256": "4599a45646b9106ed08389686690016beaf083e76a5282ca020fa8d5c61ac4c9"
+    },
+    {
+      "path": "compute_psn_parameters1.m",
+      "size_bytes": 4831,
+      "sha256": "f0560ed74ed36631e277b504032838d175679fbadfe664b694162cdf0ed17a8a"
+    },
+    {
+      "path": "compute_psn_parameters2.m",
+      "size_bytes": 3834,
+      "sha256": "34528e81f2bb8fe03c201f6a4e7bf013f2cdce8db0a3cdb5c20b085b85acfa2a"
+    },
+    {
+      "path": "compute_soil_surface_resistance.m",
+      "size_bytes": 166,
+      "sha256": "e16f0d4df27f01a3108fbd820d8bdbf6490bd469caea466f4fb97d89eb4b9232"
+    },
+    {
+      "path": "compute_sun_angles.m",
+      "size_bytes": 1174,
+      "sha256": "7f1a056907e5195b6bde79bf17f23a913010e92cec61d63651ecd531ed989fd6"
+    },
+    {
+      "path": "compute_toc_down_shortwave_radiation.m",
+      "size_bytes": 3558,
+      "sha256": "f54feb3682bc3e0669592a95ac29d9156d9112d8cdf97172e6541abd9cf4f511"
+    },
+    {
+      "path": "compute_toc_wind.m",
+      "size_bytes": 1330,
+      "sha256": "04c770e5afe1ec0f3be28df6316c5824a7f324ac543fac4cc71d0aeb6821f2a3"
+    },
+    {
+      "path": "CreatPara.m",
+      "size_bytes": 268,
+      "sha256": "92ee1c323b5a8bb9d8e8c8c21e861ebaaef54e7e0da33e87d0300e2afa605925"
+    },
+    {
+      "path": "InitialDefaultPara.m",
+      "size_bytes": 4021,
+      "sha256": "a20cac68c51b6b9d6f15a777ab54f33f3ded7b8a8228f60982533845b54e8e2a"
+    },
+    {
+      "path": "Main4PSN.m",
+      "size_bytes": 31191,
+      "sha256": "1910fb09701c5f6fded69ee83bd2eab0e8aa2b267ea94cefd718feb87bceeb7e"
+    },
+    {
+      "path": "penman_monteith.m",
+      "size_bytes": 2291,
+      "sha256": "30ddb6cf3559d5d0e6829b5fea8e711cac81b8defb54f3076be40062f96b3ccc"
+    },
+    {
+      "path": "POST_sumDaily.m",
+      "size_bytes": 3767,
+      "sha256": "a360cc5c45e80b4c118084270981956add3128eea992d5d686b5f7e3641fc195"
+    },
+    {
+      "path": "ReadFluxTowerData.m",
+      "size_bytes": 2378,
+      "sha256": "bacf46eb287f7eef230eaa9180a05c5b901f804a51058d78fd5b4e63098c52e8"
+    },
+    {
+      "path": "readstandstruct.m",
+      "size_bytes": 1468,
+      "sha256": "3b3bdce9c78fe8183b2e518cc7ccd6e73e808e6fed50048f5559b1848dc13ee1"
+    },
+    {
+      "path": "readstandstruct0.m",
+      "size_bytes": 2367,
+      "sha256": "0ad2bb4e2a6899f43e3c9a4d09c1cf9a1a4dc46d95f65d0b29e97c035f00ff9d"
+    },
+    {
+      "path": "Validation2FluxTowerData.m",
+      "size_bytes": 3476,
+      "sha256": "a66efc9c85a2b7fb43f539566cc3d6490589de3cd9f85b71496805333d7c578f"
+    },
+    {
+      "path": "VcmaxT2Ac.m",
+      "size_bytes": 1410,
+      "sha256": "db6eeec8d3b48f44bb6e236dd141143430505eb2bf55cb2316d63e0b352bb61f"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# Keep source checkouts consistent on Windows, Linux, and macOS.
+* text=auto eol=lf
+
+# Scientific resources and golden fixtures are hashed as exact bytes.
+*.json -text
+*.tsv -text
+*.csv -text
+*.txt -text
+*.zlib binary

@@ -1,0 +1,118 @@
+[model]
+id = "vegetation.prosail-d"
+name = "PROSAIL-D"
+family = "PROSAIL"
+category = "vegetation"
+scientific_version = "PROSPECT-D + 4SAIL / Campbell-13"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Homogeneous canopy, direct illumination, 13-bin Campbell distribution, original dry/wet soil blend. BRF may exceed one. LAI=0 uses an analytical bare-soil limit because the pinned R routine produces undefined arithmetic there. Conservative leaf scattering with both water and dry matter zero is excluded. No inversion or generic model coupling."
+
+[source]
+crate = "rsphysics-prosail-d"
+authors = ["Jean-Baptiste Feret", "Wout Verhoef", "RSPhysics contributors (Rust adaptation)"]
+references = ["https://github.com/jbferet/prosail/tree/46549958295b605ac1e211a693d4b2287c3a5a13", "https://doi.org/10.1016/j.rse.2017.03.004"]
+license = "MIT"
+
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "prosail-d-author-r-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "prosail-d-author-r-v1"
+implementation_version = "0.1.0"
+backend = "python"
+
+[data.hashes]
+leaf_coefficients = "sha256:cb2da8cef652ef90e666aef302689936d4ddf817c7908484a3fd06e1467fd3a5"
+soil_coefficients = "sha256:7754d3ddb5d3b1f6c3c23cfd0a7c09d7a75be83a1da75c10ba04e71461c30b74"
+
+[input_semantics."/n"]
+unit = "1"
+axes = []
+description = "Dimensionless leaf structure parameter."
+[input_semantics."/chlorophyll"]
+unit = "ug cm^-2"
+axes = []
+description = "Chlorophyll a+b content."
+[input_semantics."/carotenoids"]
+unit = "ug cm^-2"
+axes = []
+description = "Carotenoid content."
+[input_semantics."/anthocyanins"]
+unit = "ug cm^-2"
+axes = []
+description = "Anthocyanin content."
+[input_semantics."/brown_pigments"]
+unit = "1"
+axes = []
+description = "Brown pigments in the original arbitrary units."
+[input_semantics."/water"]
+unit = "g cm^-2"
+axes = []
+description = "Equivalent water mass per unit leaf area."
+[input_semantics."/dry_matter"]
+unit = "g cm^-2"
+axes = []
+description = "Leaf dry mass per area (LMA)."
+[input_semantics."/incidence_angle_deg"]
+unit = "deg"
+axes = []
+description = "Maximum incidence angle of the illumination cone."
+[input_semantics."/leaf_area_index"]
+unit = "1"
+axes = []
+description = "One-sided leaf area per ground area."
+[input_semantics."/mean_leaf_angle_deg"]
+unit = "deg"
+axes = []
+description = "Mean inclination, author Campbell 13-bin LIDF."
+[input_semantics."/hotspot"]
+unit = "1"
+axes = []
+description = "4SAIL hotspot parameter."
+[input_semantics."/solar_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Solar zenith in the upper hemisphere."
+[input_semantics."/view_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Viewing zenith in the upper hemisphere."
+[input_semantics."/relative_azimuth_deg"]
+unit = "deg"
+axes = []
+description = "Unsigned sun-view azimuth separation; zero is the same azimuth."
+[input_semantics."/soil_brightness"]
+unit = "1"
+axes = []
+description = "Multiplier of the original dry/wet soil mixture."
+[input_semantics."/soil_dry_fraction"]
+unit = "1"
+axes = []
+description = "Dry endmember weight, not a soil water content."
+[output_semantics."/wavelengths_nm"]
+unit = "nm"
+axes = ["wavelength"]
+description = "400 through 2500 nm, 1 nm sampling."
+[output_semantics."/brf"]
+unit = "1"
+quantity = "brf"
+axes = ["wavelength"]
+description = "Direct-beam bidirectional reflectance factor (original rsot); may exceed one."
+[output_semantics."/hemispherical_reflectance"]
+unit = "1"
+quantity = "reflectance"
+axes = ["wavelength"]
+description = "Directional-hemispherical reflectance for direct solar illumination (original rsdt). Not transmittance."

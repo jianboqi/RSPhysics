@@ -1,0 +1,4 @@
+asset,asset_type,source,version,rights_holder,license,redistribution_basis,sha256,reviewer,status
+PROSPECT-original,source,https://github.com/jbferet/prospect,4649d5006ddf6bce609951765a88ba2498fcd8ab,Jean-Baptiste-Feret-and-credited-contributors,MIT-in-v1.7.0-DESCRIPTION,package-declaration-original-notices-retained,0a7b1b031574a56d7708f4648825318cf5b513828caae89b87ff9681875a8511,UNASSIGNED,declaration_verified_third_party_review_pending
+PROSPECT-coefficients,data,data-raw/dataSpec_PRO.txt,v1.7.0,upstream-authors,package-MIT-declaration-no-separate-data-license-found,needs-data-rights-review,cb2da8cef652ef90e666aef302689936d4ddf817c7908484a3fd06e1467fd3a5,UNASSIGNED,not_fully_reviewed
+RSPhysics-core,source,RSPhysics,0.1.0,PENDING,PENDING,PENDING,PENDING,UNASSIGNED,owner_decision_pending

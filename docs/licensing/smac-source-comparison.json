@@ -1,0 +1,55 @@
+{
+  "purpose": "Technical source comparison only; not a determination of copyright ownership or license authority.",
+  "sources": {
+    "author": {
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/smac.py",
+      "sha256": "ef8aa00beb7ca701a7ef0642049744698bb27934d6fc31aa6ccaec314993e7b0",
+      "bytes": 15615
+    },
+    "sen2like": {
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/smac.py",
+      "sha256": "7d09fc2bfa7f348f8b3539e69cd703faffd59b3e372ff5f15f42a1f5a571f548",
+      "bytes": 18721
+    }
+  },
+  "functions": {
+    "smac_inv": {
+      "author_statement_count": 120,
+      "sen2like_statement_count": 119,
+      "identical_normalized_statements": 119,
+      "normalization": "Ignore comments, whitespace, docstrings, print calls and integer-vs-float literal spelling; retain names, expressions and statement order.",
+      "difference_blocks": [
+        {
+          "kind": "delete",
+          "author_statements": [
+            28,
+            29
+          ],
+          "sen2like_statements": [
+            28,
+            28
+          ]
+        }
+      ]
+    },
+    "smac_dir": {
+      "author_statement_count": 119,
+      "sen2like_statement_count": 118,
+      "identical_normalized_statements": 118,
+      "normalization": "Ignore comments, whitespace, docstrings, print calls and integer-vs-float literal spelling; retain names, expressions and statement order.",
+      "difference_blocks": [
+        {
+          "kind": "delete",
+          "author_statements": [
+            28,
+            29
+          ],
+          "sen2like_statements": [
+            28,
+            28
+          ]
+        }
+      ]
+    }
+  }
+}

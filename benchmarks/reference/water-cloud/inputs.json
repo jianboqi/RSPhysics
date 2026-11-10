@@ -1,0 +1,322 @@
+[
+  {
+    "name": "default",
+    "parameters": {
+      "vegetation_water_content": 1.0,
+      "scattering_coefficient": 0.1,
+      "attenuation_coefficient": 0.2,
+      "soil_backscatter": 0.1,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "nadir",
+    "parameters": {
+      "vegetation_water_content": 1.0,
+      "scattering_coefficient": 0.1,
+      "attenuation_coefficient": 0.2,
+      "soil_backscatter": 0.1,
+      "observation_zenith_deg": 0
+    }
+  },
+  {
+    "name": "angle-limit",
+    "parameters": {
+      "vegetation_water_content": 1.0,
+      "scattering_coefficient": 0.1,
+      "attenuation_coefficient": 0.2,
+      "soil_backscatter": 0.1,
+      "observation_zenith_deg": 80
+    }
+  },
+  {
+    "name": "bare-soil",
+    "parameters": {
+      "vegetation_water_content": 0,
+      "scattering_coefficient": 0.1,
+      "attenuation_coefficient": 0.2,
+      "soil_backscatter": 0.1,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "transparent-canopy",
+    "parameters": {
+      "vegetation_water_content": 1.0,
+      "scattering_coefficient": 0.1,
+      "attenuation_coefficient": 0,
+      "soil_backscatter": 0.1,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "no-vegetation-scattering",
+    "parameters": {
+      "vegetation_water_content": 1.0,
+      "scattering_coefficient": 0,
+      "attenuation_coefficient": 0.2,
+      "soil_backscatter": 0.1,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "no-soil",
+    "parameters": {
+      "vegetation_water_content": 1.0,
+      "scattering_coefficient": 0.1,
+      "attenuation_coefficient": 0.2,
+      "soil_backscatter": 0,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "zero-signal",
+    "parameters": {
+      "vegetation_water_content": 1.0,
+      "scattering_coefficient": 0,
+      "attenuation_coefficient": 0.2,
+      "soil_backscatter": 0,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "large-signal",
+    "parameters": {
+      "vegetation_water_content": 10,
+      "scattering_coefficient": 2,
+      "attenuation_coefficient": 2,
+      "soil_backscatter": 10,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "weak-canopy",
+    "parameters": {
+      "vegetation_water_content": 1.0,
+      "scattering_coefficient": 0.1,
+      "attenuation_coefficient": 1e-15,
+      "soil_backscatter": 0.1,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "very-small-water",
+    "parameters": {
+      "vegetation_water_content": 1e-14,
+      "scattering_coefficient": 0.1,
+      "attenuation_coefficient": 0.2,
+      "soil_backscatter": 0.1,
+      "observation_zenith_deg": 40.0
+    }
+  },
+  {
+    "name": "maximum-angle-opacity",
+    "parameters": {
+      "vegetation_water_content": 10,
+      "scattering_coefficient": 0.1,
+      "attenuation_coefficient": 2,
+      "soil_backscatter": 0.1,
+      "observation_zenith_deg": 80
+    }
+  },
+  {
+    "name": "seeded-00",
+    "parameters": {
+      "vegetation_water_content": 1.8367155676787084,
+      "scattering_coefficient": 0.979620118292392,
+      "attenuation_coefficient": 1.238198818833151,
+      "soil_backscatter": 4.241554913770985,
+      "observation_zenith_deg": 14.588420991994564
+    }
+  },
+  {
+    "name": "seeded-01",
+    "parameters": {
+      "vegetation_water_content": 8.703519736658478,
+      "scattering_coefficient": 1.7537593110705836,
+      "attenuation_coefficient": 1.987516581147179,
+      "soil_backscatter": 2.0509853581426842,
+      "observation_zenith_deg": 17.104724867796854
+    }
+  },
+  {
+    "name": "seeded-02",
+    "parameters": {
+      "vegetation_water_content": 9.755416276900768,
+      "scattering_coefficient": 0.3226672756444471,
+      "attenuation_coefficient": 1.3031098685742122,
+      "soil_backscatter": 8.419581870032209,
+      "observation_zenith_deg": 24.20008409190374
+    }
+  },
+  {
+    "name": "seeded-03",
+    "parameters": {
+      "vegetation_water_content": 9.194427591669882,
+      "scattering_coefficient": 0.7411362591944226,
+      "attenuation_coefficient": 0.7999763521185619,
+      "soil_backscatter": 5.789481149434993,
+      "observation_zenith_deg": 33.53586903849241
+    }
+  },
+  {
+    "name": "seeded-04",
+    "parameters": {
+      "vegetation_water_content": 7.005658803530923,
+      "scattering_coefficient": 1.9423721892657964,
+      "attenuation_coefficient": 0.3753020045876343,
+      "soil_backscatter": 6.972621847186833,
+      "observation_zenith_deg": 12.71529171952527
+    }
+  },
+  {
+    "name": "seeded-05",
+    "parameters": {
+      "vegetation_water_content": 8.455469716649391,
+      "scattering_coefficient": 0.26606421615041276,
+      "attenuation_coefficient": 0.632938539335206,
+      "soil_backscatter": 6.33294459268695,
+      "observation_zenith_deg": 61.30206833975943
+    }
+  },
+  {
+    "name": "seeded-06",
+    "parameters": {
+      "vegetation_water_content": 4.610487233103741,
+      "scattering_coefficient": 1.104589758292768,
+      "attenuation_coefficient": 0.376039092725873,
+      "soil_backscatter": 9.56541580675421,
+      "observation_zenith_deg": 6.390747462146411
+    }
+  },
+  {
+    "name": "seeded-07",
+    "parameters": {
+      "vegetation_water_content": 1.4477922017396183,
+      "scattering_coefficient": 1.2249188412103709,
+      "attenuation_coefficient": 1.3735478108841683,
+      "soil_backscatter": 0.5922004871053754,
+      "observation_zenith_deg": 20.606287863908417
+    }
+  },
+  {
+    "name": "seeded-08",
+    "parameters": {
+      "vegetation_water_content": 8.209904156873803,
+      "scattering_coefficient": 1.745250859086785,
+      "attenuation_coefficient": 1.908343343319463,
+      "soil_backscatter": 6.15663477416315,
+      "observation_zenith_deg": 52.460503287808066
+    }
+  },
+  {
+    "name": "seeded-09",
+    "parameters": {
+      "vegetation_water_content": 6.837242813753335,
+      "scattering_coefficient": 1.3836608745086367,
+      "attenuation_coefficient": 1.465112751615602,
+      "soil_backscatter": 7.578289857215862,
+      "observation_zenith_deg": 39.33115887144643
+    }
+  },
+  {
+    "name": "seeded-10",
+    "parameters": {
+      "vegetation_water_content": 9.086099864992933,
+      "scattering_coefficient": 0.8990685120760049,
+      "attenuation_coefficient": 0.36847026800840554,
+      "soil_backscatter": 2.4806427956166455,
+      "observation_zenith_deg": 67.09517053639642
+    }
+  },
+  {
+    "name": "seeded-11",
+    "parameters": {
+      "vegetation_water_content": 0.4528070388460137,
+      "scattering_coefficient": 1.9204033623682828,
+      "attenuation_coefficient": 0.2338923223276379,
+      "soil_backscatter": 4.0294348545205025,
+      "observation_zenith_deg": 5.4333003952015435
+    }
+  },
+  {
+    "name": "seeded-12",
+    "parameters": {
+      "vegetation_water_content": 1.1033933387386263,
+      "scattering_coefficient": 0.3888363988168815,
+      "attenuation_coefficient": 0.5954035639743893,
+      "soil_backscatter": 7.856179153865663,
+      "observation_zenith_deg": 38.54863727984285
+    }
+  },
+  {
+    "name": "seeded-13",
+    "parameters": {
+      "vegetation_water_content": 3.5959416382274165,
+      "scattering_coefficient": 1.2034432504500017,
+      "attenuation_coefficient": 1.3122740866919411,
+      "soil_backscatter": 7.629675106787208,
+      "observation_zenith_deg": 69.45986844118984
+    }
+  },
+  {
+    "name": "seeded-14",
+    "parameters": {
+      "vegetation_water_content": 2.518265834336857,
+      "scattering_coefficient": 0.5343288926844834,
+      "attenuation_coefficient": 1.0030927241845227,
+      "soil_backscatter": 6.060859136060439,
+      "observation_zenith_deg": 76.44452299929911
+    }
+  },
+  {
+    "name": "seeded-15",
+    "parameters": {
+      "vegetation_water_content": 1.6221687784480077,
+      "scattering_coefficient": 1.699620110836341,
+      "attenuation_coefficient": 0.6662242418205853,
+      "soil_backscatter": 0.33843141320315406,
+      "observation_zenith_deg": 54.76845363797001
+    }
+  },
+  {
+    "name": "seeded-16",
+    "parameters": {
+      "vegetation_water_content": 7.449184561483899,
+      "scattering_coefficient": 1.6097610200272285,
+      "attenuation_coefficient": 0.57726039415648,
+      "soil_backscatter": 3.69171300558069,
+      "observation_zenith_deg": 51.864787245469984
+    }
+  },
+  {
+    "name": "seeded-17",
+    "parameters": {
+      "vegetation_water_content": 3.732067380649,
+      "scattering_coefficient": 1.4538502356634309,
+      "attenuation_coefficient": 1.6925207288837292,
+      "soil_backscatter": 0.8331681965713078,
+      "observation_zenith_deg": 28.448260083869272
+    }
+  },
+  {
+    "name": "seeded-18",
+    "parameters": {
+      "vegetation_water_content": 8.812262182867908,
+      "scattering_coefficient": 1.793865299523009,
+      "attenuation_coefficient": 0.4081868752319744,
+      "soil_backscatter": 0.5395046178577401,
+      "observation_zenith_deg": 37.928938445592294
+    }
+  },
+  {
+    "name": "seeded-19",
+    "parameters": {
+      "vegetation_water_content": 9.653937684322432,
+      "scattering_coefficient": 0.03699424006619134,
+      "attenuation_coefficient": 1.711101311266699,
+      "soil_backscatter": 0.6932521574805262,
+      "observation_zenith_deg": 44.27992722181944
+    }
+  }
+]

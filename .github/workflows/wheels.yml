@@ -1,0 +1,113 @@
+name: Wheels
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wheels-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  RSP_GIT_REVISION: ${{ github.sha }}
+  RSP_BUILD_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
+  MACOSX_DEPLOYMENT_TARGET: '11.0'
+
+jobs:
+  build:
+    name: ${{ matrix.platform.name }} / CPython ${{ matrix.python.version }}
+    runs-on: ${{ matrix.platform.runner }}
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        python:
+          - {version: '3.11', abi: cp311-cp311}
+          - {version: '3.12', abi: cp312-cp312}
+          - {version: '3.13', abi: cp313-cp313}
+          - {version: '3.14', abi: cp314-cp314}
+          - {version: '3.15', abi: cp315-cp315}
+        platform:
+          - name: Linux x86_64
+            runner: ubuntu-24.04
+            target: x86_64-unknown-linux-gnu
+            architecture: x64
+          - name: Linux ARM64
+            runner: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-gnu
+            architecture: arm64
+          - name: Windows x86_64
+            runner: windows-2022
+            target: x86_64-pc-windows-msvc
+            architecture: x64
+          - name: macOS Intel
+            runner: macos-15-intel
+            target: x86_64-apple-darwin
+            architecture: x64
+          - name: macOS Apple Silicon
+            runner: macos-15
+            target: aarch64-apple-darwin
+            architecture: arm64
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: ${{ matrix.python.version }}
+          architecture: ${{ matrix.platform.architecture }}
+      - name: Install pinned Rust
+        run: rustup toolchain install 1.97.0 --profile minimal --no-self-update
+      - name: Build portable wheel
+        uses: PyO3/maturin-action@e83996d129638aa358a18fbd1dfb82f0b0fb5d3b # v1
+        with:
+          maturin-version: v1.16.0
+          rust-toolchain: 1.97.0
+          target: ${{ matrix.platform.target }}
+          manylinux: '2014'
+          args: >-
+            --manifest-path bindings/python/Cargo.toml
+            --release --locked --strip --auditwheel repair
+            --out dist --interpreter ${{ runner.os == 'Linux' && format('/opt/python/{0}/bin/python', matrix.python.abi) || 'python' }}
+      - name: Install runtime and test dependencies
+        run: python -m pip install "numpy>=1.26" "pytest>=8,<10"
+      - name: Install the built wheel
+        run: python -m pip install --no-index --no-deps --find-links dist rsphysics
+      - name: Verify the installed wheel
+        run: python -m pytest bindings/python/tests -q
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: wheel-${{ matrix.platform.target }}-cp${{ matrix.python.version }}
+          path: dist/*.whl
+          if-no-files-found: error
+          retention-days: 30
+
+  collect:
+    name: Verified wheel bundle
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          pattern: wheel-*
+          path: wheelhouse
+          merge-multiple: true
+      - name: Record wheel checksums
+        shell: bash
+        run: |
+          cd wheelhouse
+          sha256sum *.whl > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: rsphysics-wheels
+          path: wheelhouse/
+          if-no-files-found: error
+          retention-days: 30

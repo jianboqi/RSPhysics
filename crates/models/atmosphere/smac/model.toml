@@ -1,0 +1,118 @@
+[model]
+id = "atmosphere.smac"
+name = "SMAC"
+family = "smac"
+category = "atmosphere"
+scientific_version = "Rahman-Dedieu 1994 / Hagolle-CNES analytic SMAC / pinned coefficients"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Independent band-wise Lambertian atmospheric conversion with externally supplied atmosphere. Not 6SV, aerosol retrieval, cloud detection, adjacency/terrain correction, thermal correction, or model coupling. Engineering domain: zeniths 0..70 deg, AOT550 0..1, local pressure 300..1100 hPa, ozone 0..1 atm-cm, water vapour 0..10 g/cm2. Fit accuracy depends on band/coefficient vintage and aerosol type; strong absorption and large angles can be unreliable. Legacy MODIS sets do not distinguish Terra/Aqua. No Landsat-9 coefficient substitution. Outputs outside [0,1] are retained and flagged."
+[source]
+crate = "rsphysics-smac"
+authors = ["H. Rahman", "G. Dedieu", "Olivier Hagolle / CNES", "RSPhysics contributors (Rust implementation)"]
+references = ["https://doi.org/10.1080/01431169408954055", "https://github.com/olivierhagolle/SMAC", "https://github.com/senbox-org/sen2like/tree/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac"]
+license = "GPL-3.0-only"
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "smac-author-reference-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "smac-author-reference-v1"
+implementation_version = "0.1.0"
+backend = "python"
+[data.hashes]
+"coefficients.json.zlib" = "sha256:6902f7518fbe12790b5f39bde35b6abd62ed5a939a3f960c5c3c43962e43d51b"
+[input_semantics."/coefficient_id"]
+unit = "1"
+axes = []
+description = "Exact sensor-band-aerosol identity from pinned coefficient archive."
+[input_semantics."/direction"]
+unit = "1"
+axes = []
+description = "toa_to_surface correction or surface_to_toa simulation."
+[input_semantics."/reflectance"]
+unit = "1"
+axes = []
+description = "Input TOA reflectance (correction) or Lambertian surface reflectance (simulation)."
+[input_semantics."/solar_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Solar zenith angle from local vertical."
+[input_semantics."/view_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Viewing zenith angle from local vertical."
+[input_semantics."/relative_azimuth_deg"]
+unit = "deg"
+axes = []
+description = "Absolute solar/view azimuth difference as in original SMAC; scattering cosine is negative dot product."
+[input_semantics."/pressure_hpa"]
+unit = "hPa"
+axes = []
+description = "Local surface pressure, not sea-level pressure."
+[input_semantics."/aot550"]
+unit = "1"
+axes = []
+description = "Aerosol optical depth at 550 nm."
+[input_semantics."/ozone_atm_cm"]
+unit = "atm cm"
+axes = []
+description = "Ozone vertical column; 0.3 atm-cm = 300 DU."
+[input_semantics."/water_vapour_g_cm2"]
+unit = "g cm^-2"
+axes = []
+description = "Water-vapour vertical column; 1 g/cm2 = 10 kg/m2."
+[output_semantics."/reflectance"]
+unit = "1"
+axes = []
+description = "Converted reflectance; input/output side depends on direction. No clipping."
+[output_semantics."/gas_transmittance"]
+unit = "1"
+axes = []
+description = "Joint downward/upward gas transmission."
+[output_semantics."/downward_scattering_transmittance"]
+unit = "1"
+axes = []
+description = "Downward total scattering transmission."
+[output_semantics."/upward_scattering_transmittance"]
+unit = "1"
+axes = []
+description = "Upward total scattering transmission."
+[output_semantics."/spherical_albedo"]
+unit = "1"
+axes = []
+description = "Atmospheric spherical albedo in the original parameterization."
+[output_semantics."/atmospheric_reflectance"]
+unit = "1"
+axes = []
+description = "Atmospheric path reflectance before gas multiplier."
+[output_semantics."/rayleigh_reflectance"]
+unit = "1"
+axes = []
+description = "Raw Rayleigh contribution, before fitted residual corrections."
+[output_semantics."/aerosol_reflectance"]
+unit = "1"
+axes = []
+description = "Raw aerosol contribution, before fitted residual corrections."
+[output_semantics."/outside_unit_interval"]
+unit = "1"
+axes = []
+description = "One if converted reflectance is outside [0,1]; diagnostic, not clipping."
+[output_semantics."/sweep_aot550"]
+unit = "1"
+axes = ["aot550"]
+description = "AOT550 grid 0..1 step 0.05, other inputs fixed."
+[output_semantics."/sweep_reflectance"]
+unit = "1"
+axes = ["aot550"]
+description = "Converted reflectance on fixed-input AOT grid; sensitivity experiment only."

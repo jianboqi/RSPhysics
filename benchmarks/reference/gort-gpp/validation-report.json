@@ -1,0 +1,14 @@
+{
+  "model_id": "ecosystem.gort-gpp",
+  "reference_runtime": "26.1.0.3203278 (R2026a)",
+  "backend": "installed Python Wheel",
+  "cases": 32,
+  "samples": 6080,
+  "max_absolute_error": 4.547473508864641e-13,
+  "max_tolerance_fraction": 3.8197378741909517e-07,
+  "tolerance": {
+    "absolute": 2e-09,
+    "relative": 2e-09
+  },
+  "scope": "Implementation agreement with supplied original, not validation against observations"
+}

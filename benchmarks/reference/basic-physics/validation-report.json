@@ -1,0 +1,26 @@
+{
+  "package_version": "0.1.0",
+  "reference": "Independent direct published equations at 80 decimal digits, not an original vendor program",
+  "precision_digits": 80,
+  "results": {
+    "fresnel": {
+      "cases": 32,
+      "compared_fields": 256,
+      "max_absolute_error": 2.1407135463799668e-13,
+      "max_normalized_error": 0.07079923138337517
+    },
+    "planck_wavelength": {
+      "cases": 32,
+      "max_relative_forward_error": 1.290079154614432e-13,
+      "max_relative_inverse_error": 1.3589129821411916e-13,
+      "zero_or_underflow_cases": 5
+    },
+    "planck_frequency": {
+      "cases": 32,
+      "max_relative_forward_error": 1.66644475996236e-13,
+      "max_relative_inverse_error": 9.237055564881302e-14,
+      "zero_or_underflow_cases": 5
+    }
+  },
+  "limits": "Single passive nonmagnetic interface with lossless incident medium; vacuum blackbody radiance, not sensor-band or surface-temperature validation. No model coupling."
+}

@@ -1,0 +1,14 @@
+{
+  "model_id": "microwave.lmeb",
+  "reference_runtime": "26.1.0.3203278 (R2026a)",
+  "backend": "installed Python Wheel",
+  "cases": 32,
+  "samples": 5248,
+  "max_absolute_error": 1.7053025658242404e-13,
+  "max_tolerance_fraction": 5.437948190992607e-07,
+  "tolerance": {
+    "absolute": 2e-09,
+    "relative": 2e-09
+  },
+  "scope": "Implementation agreement with supplied original, not validation against observations"
+}

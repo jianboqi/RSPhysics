@@ -1,0 +1,24 @@
+RSPhysics
+Copyright 2026 RSPhysics contributors.
+
+Project-original code is licensed under the Apache License, Version 2.0,
+except where a file or component explicitly states otherwise.
+
+The build still includes the SMAC adaptation whose
+reference copy in ESA Sen2Like carries a GPLv3 notice. Apache-2.0 permission
+for that material is pending confirmation from the relevant rights holders.
+The existing SMAC notice is retained; this project-level notice does not
+relicense third-party code or scientific data. MIT notices for the pinned
+PROSPECT/PROSAIL adaptations are also retained.
+
+See THIRD_PARTY_NOTICES.md in the Python package, docs/licensing.md,
+and the component-specific source/license records.
+
+Rights concerns: please contact the maintainer through the Issues section
+of the project's public source repository once published, identifying the
+affected material, the claimed rights, and supporting source information.
+
+The L-MEB and GORT-GPP adaptations use supplied research code with no explicit
+redistribution license in the provided source sets. These components are recorded
+as LicenseRef-User-Supplied-Research-Code. The project maintainer confirmed publication permission on 2026-11-10; see the
+component records and SUPPLIED_MODELS_ORIGIN.md for attribution and scope.

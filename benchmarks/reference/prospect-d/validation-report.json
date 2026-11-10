@@ -1,0 +1,181 @@
+{
+  "suite": "prospect-d-author-r-v1",
+  "upstream_commit": "4649d5006ddf6bce609951765a88ba2498fcd8ab",
+  "oracle_sha256": "764032dbc7181d8064230844ff4ae1093b9bd3e8303b8adde233cf24de6a72ef",
+  "model_implementation_version": "0.1.0",
+  "system": "Windows-11-10.0.26300-SP0",
+  "python": "3.13.0",
+  "numpy": "2.5.4",
+  "reference_interpreter": "R version 4.6.0 (2026-04-24)",
+  "reference_expint": "0.2.1",
+  "tolerance": {
+    "absolute": 2e-10,
+    "relative": 2e-08
+  },
+  "samples_compared": 134464,
+  "max_absolute_error": 3.8441472227646045e-15,
+  "max_normalized_error": 4.224565051315868e-06,
+  "cases": [
+    {
+      "name": "default",
+      "reflectance_max_absolute_error": 1.0269562977782698e-15,
+      "transmittance_max_absolute_error": 6.661338147750939e-16
+    },
+    {
+      "name": "single-layer",
+      "reflectance_max_absolute_error": 1.061650767297806e-15,
+      "transmittance_max_absolute_error": 1.4155343563970746e-15
+    },
+    {
+      "name": "thick-leaf",
+      "reflectance_max_absolute_error": 7.771561172376096e-16,
+      "transmittance_max_absolute_error": 5.551115123125783e-16
+    },
+    {
+      "name": "senescent",
+      "reflectance_max_absolute_error": 8.881784197001252e-16,
+      "transmittance_max_absolute_error": 7.771561172376096e-16
+    },
+    {
+      "name": "wet-leaf",
+      "reflectance_max_absolute_error": 1.0824674490095276e-15,
+      "transmittance_max_absolute_error": 8.326672684688674e-16
+    },
+    {
+      "name": "dry-leaf",
+      "reflectance_max_absolute_error": 8.326672684688674e-16,
+      "transmittance_max_absolute_error": 6.661338147750939e-16
+    },
+    {
+      "name": "pigment-free",
+      "reflectance_max_absolute_error": 1.0269562977782698e-15,
+      "transmittance_max_absolute_error": 6.661338147750939e-16
+    },
+    {
+      "name": "zero-absorption",
+      "reflectance_max_absolute_error": 7.216449660063518e-16,
+      "transmittance_max_absolute_error": 6.661338147750939e-16
+    },
+    {
+      "name": "near-zero-absorption",
+      "reflectance_max_absolute_error": 7.216449660063518e-16,
+      "transmittance_max_absolute_error": 5.551115123125783e-16
+    },
+    {
+      "name": "grazing-cone",
+      "reflectance_max_absolute_error": 1.609823385706477e-15,
+      "transmittance_max_absolute_error": 1.4988010832439613e-15
+    },
+    {
+      "name": "narrow-cone",
+      "reflectance_max_absolute_error": 1.734723475976807e-15,
+      "transmittance_max_absolute_error": 7.216449660063518e-16
+    },
+    {
+      "name": "minimum-cone",
+      "reflectance_max_absolute_error": 4.996003610813204e-16,
+      "transmittance_max_absolute_error": 7.771561172376096e-16
+    },
+    {
+      "name": "intermediate-cone",
+      "reflectance_max_absolute_error": 4.996003610813204e-16,
+      "transmittance_max_absolute_error": 7.771561172376096e-16
+    },
+    {
+      "name": "high-absorption",
+      "reflectance_max_absolute_error": 1.1102230246251565e-15,
+      "transmittance_max_absolute_error": 5.273559366969494e-16
+    },
+    {
+      "name": "sample-00",
+      "reflectance_max_absolute_error": 3.622102617839573e-15,
+      "transmittance_max_absolute_error": 6.869504964868156e-16
+    },
+    {
+      "name": "sample-01",
+      "reflectance_max_absolute_error": 1.2212453270876722e-15,
+      "transmittance_max_absolute_error": 7.771561172376096e-16
+    },
+    {
+      "name": "sample-02",
+      "reflectance_max_absolute_error": 6.661338147750939e-16,
+      "transmittance_max_absolute_error": 8.326672684688674e-16
+    },
+    {
+      "name": "sample-03",
+      "reflectance_max_absolute_error": 2.9073965457371287e-15,
+      "transmittance_max_absolute_error": 8.326672684688674e-16
+    },
+    {
+      "name": "sample-04",
+      "reflectance_max_absolute_error": 1.0547118733938987e-15,
+      "transmittance_max_absolute_error": 8.326672684688674e-16
+    },
+    {
+      "name": "sample-05",
+      "reflectance_max_absolute_error": 3.8441472227646045e-15,
+      "transmittance_max_absolute_error": 8.326672684688674e-16
+    },
+    {
+      "name": "sample-06",
+      "reflectance_max_absolute_error": 2.0261570199409107e-15,
+      "transmittance_max_absolute_error": 1.0824674490095276e-15
+    },
+    {
+      "name": "sample-07",
+      "reflectance_max_absolute_error": 7.771561172376096e-16,
+      "transmittance_max_absolute_error": 9.992007221626409e-16
+    },
+    {
+      "name": "sample-08",
+      "reflectance_max_absolute_error": 1.9637069748057456e-15,
+      "transmittance_max_absolute_error": 9.43689570931383e-16
+    },
+    {
+      "name": "sample-09",
+      "reflectance_max_absolute_error": 1.4988010832439613e-15,
+      "transmittance_max_absolute_error": 9.43689570931383e-16
+    },
+    {
+      "name": "sample-10",
+      "reflectance_max_absolute_error": 5.551115123125783e-16,
+      "transmittance_max_absolute_error": 9.71445146547012e-16
+    },
+    {
+      "name": "sample-11",
+      "reflectance_max_absolute_error": 1.2212453270876722e-15,
+      "transmittance_max_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "sample-12",
+      "reflectance_max_absolute_error": 1.3530843112619095e-15,
+      "transmittance_max_absolute_error": 1.1657341758564144e-15
+    },
+    {
+      "name": "sample-13",
+      "reflectance_max_absolute_error": 2.7755575615628914e-16,
+      "transmittance_max_absolute_error": 7.216449660063518e-16
+    },
+    {
+      "name": "sample-14",
+      "reflectance_max_absolute_error": 4.440892098500626e-16,
+      "transmittance_max_absolute_error": 9.992007221626409e-16
+    },
+    {
+      "name": "sample-15",
+      "reflectance_max_absolute_error": 1.915134717478395e-15,
+      "transmittance_max_absolute_error": 9.159339953157541e-16
+    },
+    {
+      "name": "sample-16",
+      "reflectance_max_absolute_error": 1.9984014443252818e-15,
+      "transmittance_max_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "sample-17",
+      "reflectance_max_absolute_error": 1.0269562977782698e-15,
+      "transmittance_max_absolute_error": 9.43689570931383e-16
+    }
+  ],
+  "status": "passed"
+}

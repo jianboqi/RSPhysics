@@ -1,0 +1,93 @@
+{
+  "repository": "https://github.com/jbferet/prosail",
+  "version": "3.1.1",
+  "commit": "46549958295b605ac1e211a693d4b2287c3a5a13",
+  "license_declaration": "MIT + file LICENSE (fixed DESCRIPTION; forward-model subset only)",
+  "files": {
+    "DESCRIPTION": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/DESCRIPTION",
+      "sha256": "c1d2cd27bc65aee00cff21b15fc8d34402e32cf13ed28908f59899419879af91",
+      "bytes": 1586
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/LICENSE",
+      "sha256": "4692c903d45cafb1c782fefb0f3c5bbd556d8d673e3bb392f08b80d1cb66353b",
+      "bytes": 50
+    },
+    "R/prosail.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/prosail.R",
+      "sha256": "4a28eff96d8e931b9ef699c6f630784fb91ff75a22053347da0468b7b9d41d4d",
+      "bytes": 6391
+    },
+    "R/fourSAIL.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/fourSAIL.R",
+      "sha256": "84fb152287b9c6eff17ab7ef607cc875827749b54b584f946c739f283daccceb",
+      "bytes": 9514
+    },
+    "R/campbell.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/campbell.R",
+      "sha256": "afef35edaa629c127b5a2a33c551cf420b707e7ecba87bbbdeb4a7aef4ca0c54",
+      "bytes": 1579
+    },
+    "R/volscatt.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/volscatt.R",
+      "sha256": "2f450b4619ac3ab26b2a795a2ba1a1e575b7db1e8b431f4f8c848a6a04483115",
+      "bytes": 2992
+    },
+    "R/dcum.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/dcum.R",
+      "sha256": "7578db76c0908ff34249d9e3695781d6ff66f6428a6f3ec622841743b8c4b40e",
+      "bytes": 492
+    },
+    "R/dladgen.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/dladgen.R",
+      "sha256": "13c65000d24399b206367cee19d1a27adc8a009532560857e377be1e5e3c52df",
+      "bytes": 1181
+    },
+    "R/jfunc1.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/jfunc1.R",
+      "sha256": "a0e7ad6373b05738b82825e6f9c33f9d7e2317d4a5e6c385c82bee854033bd55",
+      "bytes": 808
+    },
+    "R/jfunc2.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/jfunc2.R",
+      "sha256": "aeba3278adc20196ff52bca63fce96baa6fa6fc480a30453a44dfb323efb9f60",
+      "bytes": 439
+    },
+    "R/jfunc3.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/jfunc3.R",
+      "sha256": "7ebb9ac44c203a2d2579f36877b29940d189521dc1d3de68650e2e2e8fc407e9",
+      "bytes": 421
+    },
+    "R/jfunc4.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/jfunc4.R",
+      "sha256": "1bafaf701da63daf64b46784848c92a1ca85eeed1e24eeed9184bccfa1023a30",
+      "bytes": 491
+    },
+    "R/conservative_scattering.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/conservative_scattering.R",
+      "sha256": "acb93a5fd47625b47493e0c3312ab6adbc75f1e9d977a3b7f63cdc801187bd40",
+      "bytes": 1633
+    },
+    "R/non_conservative_scattering.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/non_conservative_scattering.R",
+      "sha256": "bd05de0413fa095372847c35c4e27eb11021bf6f6a1a92947ad86ff6fb6cb2bb",
+      "bytes": 1762
+    },
+    "R/spec_soil-data.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/spec_soil-data.R",
+      "sha256": "8ae22d58a6b6035b5b4634ead09344d47006f579954b651c9eb5d6e99852cb20",
+      "bytes": 348
+    },
+    "R/adjust_prospect_to_sail.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/R/adjust_prospect_to_sail.R",
+      "sha256": "ea54b32f75e5c79a70f6f259653c7ae1424cbcb53f00bdad96eb43d3d61eb15b",
+      "bytes": 5872
+    },
+    "data-raw/dataSpec_SOIL_ATM.txt": {
+      "url": "https://raw.githubusercontent.com/jbferet/prosail/46549958295b605ac1e211a693d4b2287c3a5a13/data-raw/dataSpec_SOIL_ATM.txt",
+      "sha256": "7754d3ddb5d3b1f6c3c23cfd0a7c09d7a75be83a1da75c10ba04e71461c30b74",
+      "bytes": 77189
+    }
+  }
+}

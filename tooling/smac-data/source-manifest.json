@@ -1,0 +1,1337 @@
+{
+  "author_commit": "77bf73dd1f2a2b6a33a97b8997da469210f9ce3e",
+  "sen2like_commit": "6dd3f0da82a7461b03a2914df56d305070e50d6d",
+  "pack_sha256": "6902f7518fbe12790b5f39bde35b6abd62ed5a939a3f960c5c3c43962e43d51b",
+  "payload_sha256": "e3ad93288e29922b2a53f716edb6100818b426c8e9b8eb50cc9ef73126497b07",
+  "records": 367,
+  "source_files": 331,
+  "original_bytes": 219290,
+  "json_bytes": 375567,
+  "compressed_bytes": 82152,
+  "sources": {
+    "author/Coef_DEIMOS1_Green_1.dat": {
+      "sha256": "2fdd02bf0bdb1b01cdc8c9f09b5a2e9bc8b496bf5f6d0ec34e6e7f28af00ecce",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_DEIMOS1_Green_1.dat"
+    },
+    "author/Coef_DEIMOS1_NIR_1.dat": {
+      "sha256": "23cec4edf80245db1efb24861da2886558e443f453c144afd62eb1962310e7d9",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_DEIMOS1_NIR_1.dat"
+    },
+    "author/Coef_DEIMOS1_Red_1.dat": {
+      "sha256": "d8fd8f06c52bf710080f4310d723107058157312244d79b112ec7e7ec5e6e946",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_DEIMOS1_Red_1.dat"
+    },
+    "author/Coef_IKONOS_Blue_1.dat": {
+      "sha256": "b572ead010fa87ff998f160e8153e76fb0a40b0b435fc4ddab59c865cb12646e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_IKONOS_Blue_1.dat"
+    },
+    "author/Coef_IKONOS_Green_1.dat": {
+      "sha256": "7e2cd29a186c19050ed02375221f5abc2f0d043f89840fd51a288502ecc3c1dd",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_IKONOS_Green_1.dat"
+    },
+    "author/Coef_IKONOS_NIR_1.dat": {
+      "sha256": "abd8f26ac982d20d1d6a385fd177ad062907208bd0c81e77336fe816a781f8f4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_IKONOS_NIR_1.dat"
+    },
+    "author/Coef_IKONOS_PAN_1.dat": {
+      "sha256": "7675009a6e2ed78dbc19f8cf98caee506e0460fe601be716101bd9d292fb4395",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_IKONOS_PAN_1.dat"
+    },
+    "author/Coef_IKONOS_Red_1.dat": {
+      "sha256": "fa0d26e18b7bc19d2acad7aaa938f8a0c199d0664f251bf0118901131a72458e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_IKONOS_Red_1.dat"
+    },
+    "author/Coef_NOAA14NIR_CONT.dat": {
+      "sha256": "68b7195f6a0d69b11857e556b959052aa304cd695105841c73211054103fdda6",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_NOAA14NIR_CONT.dat"
+    },
+    "author/Coef_NOAA14VIS_CONT.dat": {
+      "sha256": "3a678b58c3a777805e13143560ed952d27c5c525cf220b1561d5a54507e5a546",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_NOAA14VIS_CONT.dat"
+    },
+    "author/Coef_PHR1A_Blue_1.dat": {
+      "sha256": "944080bafa27a2a426ca7173454e5a89bbfe44abe74dfedbac5bcbd6d0e3d734",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_PHR1A_Blue_1.dat"
+    },
+    "author/Coef_PHR1A_Green_1.dat": {
+      "sha256": "23b38ef6d97bb4d832c6fc0977ce1ff12b3e651ad8c2243b2737fa58332c07ce",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_PHR1A_Green_1.dat"
+    },
+    "author/Coef_PHR1A_NIR_1.dat": {
+      "sha256": "4b9847bb8e359c64cc9ba1df30b309d6d4314e962682812e905a4514d5de854d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_PHR1A_NIR_1.dat"
+    },
+    "author/Coef_PHR1A_PAN_1.dat": {
+      "sha256": "c520cb6032d3a2718db6982bc9706d2ed9122a3c2c17c4d1814bf55d8a763ef8",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_PHR1A_PAN_1.dat"
+    },
+    "author/Coef_PHR1A_Red_1.dat": {
+      "sha256": "a95d098065e510ec4cdb1c1d4ccc55b6fd1ad40004889c3799d201185e8ea322",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_PHR1A_Red_1.dat"
+    },
+    "author/Coef_QUICKBIRD_Blue_1.dat": {
+      "sha256": "b8a9e21a3a1caa4f4d913c96ea4c56a1de65bbb8d7760469abb63eeffa579a1a",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_QUICKBIRD_Blue_1.dat"
+    },
+    "author/Coef_QUICKBIRD_Green_1.dat": {
+      "sha256": "4827a38ac84105e34f0e4fedc28be4768c12fffa55f3027724104628a6af3ee1",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_QUICKBIRD_Green_1.dat"
+    },
+    "author/Coef_QUICKBIRD_NIR_1.dat": {
+      "sha256": "f2358ae210bcdf21afd952366660ba3a66989eaa3eb04c2c29a5e5a8734ae821",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_QUICKBIRD_NIR_1.dat"
+    },
+    "author/Coef_QUICKBIRD_PAN_1.dat": {
+      "sha256": "dd05f90175e1e320da87bcfbd1e5569e23211c3d0ad087821c343184c55242c6",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_QUICKBIRD_PAN_1.dat"
+    },
+    "author/Coef_QUICKBIRD_Red_1.dat": {
+      "sha256": "21a6cbf0ff3e2150f30bc64ce391b0197b892d8ef245cf63162ca42a856c1ecb",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_QUICKBIRD_Red_1.dat"
+    },
+    "author/Coef_RAPIDEYE_Blue_1.dat": {
+      "sha256": "8b6a9f8bc679fbd62e406514e4861e16c1010f45dd7f24603107aebc41741b12",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_RAPIDEYE_Blue_1.dat"
+    },
+    "author/Coef_RAPIDEYE_Green_1.dat": {
+      "sha256": "8b3cb374512f8e2676963d42d2f33cf6c9f2f5a07b97ac0a27146a34530b5f4b",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_RAPIDEYE_Green_1.dat"
+    },
+    "author/Coef_RAPIDEYE_NIR_1.dat": {
+      "sha256": "553d4d974ced05cfaff8d15de588a7143de1456b034c0b09e4c6c61c2f59adda",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_RAPIDEYE_NIR_1.dat"
+    },
+    "author/Coef_RAPIDEYE_RedEdge_1.dat": {
+      "sha256": "6d19d7c7f9f469f2cfacfe8dbb5a209905a2dadcd655ba436bbf1df9a28babd4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_RAPIDEYE_RedEdge_1.dat"
+    },
+    "author/Coef_RAPIDEYE_Red_1.dat": {
+      "sha256": "adadfb2777248585f62cc943a92ad62805557c38f0214e4e7fc0917050ea0c5d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_RAPIDEYE_Red_1.dat"
+    },
+    "author/Coef_Worldview2_Blue_1.dat": {
+      "sha256": "9a7ac04267869fbb7e6944b530774aacfe9e5b960285576899815a9ef9fae158",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_Worldview2_Blue_1.dat"
+    },
+    "author/Coef_Worldview2_Coastal_1.dat": {
+      "sha256": "e905fe878f09bc52efe2677e719f62659388652faa8e9d9a86bf635d14debdcb",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_Worldview2_Coastal_1.dat"
+    },
+    "author/Coef_Worldview2_Green_1.dat": {
+      "sha256": "456c1a3f1f0238891237c8f3918dc437a223db52ff27898bdef3113fda981976",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_Worldview2_Green_1.dat"
+    },
+    "author/Coef_Worldview2_NIR1_1.dat": {
+      "sha256": "ca053220bd13391cb38f5734aaf39457a2fc1c20318d0629766371bc9041cdb8",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_Worldview2_NIR1_1.dat"
+    },
+    "author/Coef_Worldview2_NIR2_1.dat": {
+      "sha256": "55f8a6caca74a47dc750ccfb07bb05a77169cf01767eed8dd35a7afbd4d3044c",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_Worldview2_NIR2_1.dat"
+    },
+    "author/Coef_Worldview2_PAN_1.dat": {
+      "sha256": "56c7d1574e47ffc346fc4aa3532c360645903608b766d2a632f1008d9fcc0158",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_Worldview2_PAN_1.dat"
+    },
+    "author/Coef_Worldview2_RedEdge_1.dat": {
+      "sha256": "10a3fcc4cc71bb7194e737ced150afd9de1b29bdcbd1cbcb0369e827f3523644",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_Worldview2_RedEdge_1.dat"
+    },
+    "author/Coef_Worldview2_Red_1.dat": {
+      "sha256": "8eeaa796211874543c9715cab6a5adf0ab2e29149d03d3f399c12c57a8497643",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_Worldview2_Red_1.dat"
+    },
+    "author/Coef_Worldview2_Yellow_1.dat": {
+      "sha256": "9519755f033e640c8e3b10f96aae387948d08d2901cdf1093c3bd6b216c22f22",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/Coef_Worldview2_Yellow_1.dat"
+    },
+    "author/coef_AATSR_1600_CONT.dat": {
+      "sha256": "6c4ea8a559298ca1484b0d79fa1ab61ab0fbe8add2984f556bc2a4d2fab89590",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_AATSR_1600_CONT.dat"
+    },
+    "author/coef_AATSR_1600_DES.dat": {
+      "sha256": "f0eb6d641a2a4680d55541143f8a38af8c6c0502dc1159f54d4c500b36c17296",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_AATSR_1600_DES.dat"
+    },
+    "author/coef_AATSR_550_CONT.dat": {
+      "sha256": "699f1a75155d86b21a5bcbfbf9762cb7e9b661120bccdf3cd33be90066f1a6eb",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_AATSR_550_CONT.dat"
+    },
+    "author/coef_AATSR_550_DES.dat": {
+      "sha256": "0b32246bf5ee8c2c44e3ceddcccbaf9daa5bb9df7f05778f82af5c0030657ac1",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_AATSR_550_DES.dat"
+    },
+    "author/coef_AATSR_670_CONT.dat": {
+      "sha256": "dba5a5136694b358de13168fd98a2cdf4c655cd167068e1b520aefdb5100afe9",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_AATSR_670_CONT.dat"
+    },
+    "author/coef_AATSR_670_DES.dat": {
+      "sha256": "f34af5e14dfb148ac530b43a354d58c238f029bd0135573ee9d94e466a85fa50",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_AATSR_670_DES.dat"
+    },
+    "author/coef_AATSR_865_CONT.dat": {
+      "sha256": "6178aeacfabd7b183ff0625f439cf0175a3459af8645c5927f8357f78d4f0e98",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_AATSR_865_CONT.dat"
+    },
+    "author/coef_AATSR_865_DES.dat": {
+      "sha256": "d8cba95f4583c21b2ee95f52a325e293e95a9b3da7d4b1933e7786e1459cf346",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_AATSR_865_DES.dat"
+    },
+    "author/coef_ASTER1_CONT.dat": {
+      "sha256": "e0384b59b88e85f87b41241e44ea0ea2b20deb7533854db0676b621f42fce297",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER1_CONT.dat"
+    },
+    "author/coef_ASTER1_DES.dat": {
+      "sha256": "a7d134291114e57ab5ce3b517d315ea9fd4f21bd50ecd847545463b6c9fcceb4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER1_DES.dat"
+    },
+    "author/coef_ASTER2_CONT.dat": {
+      "sha256": "7c6a5fdcc104e61c3c12df607f669775703317d7f3fc3c7ae23edda5c4f364de",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER2_CONT.dat"
+    },
+    "author/coef_ASTER2_DES.dat": {
+      "sha256": "02294be6bf30a8a62b2a0d9a73edd3195a9782020db54260b8f576e9df9d223b",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER2_DES.dat"
+    },
+    "author/coef_ASTER3B_CONT.dat": {
+      "sha256": "60c86b77708804694d4911d0bf75ab0bfe6120de540a75a21e96d3d070e9d075",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER3B_CONT.dat"
+    },
+    "author/coef_ASTER3B_DES.dat": {
+      "sha256": "3c4ef4cb127bc24201cf9e0ffff0f4855b34ec648acdcdf921f781aba3a68faa",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER3B_DES.dat"
+    },
+    "author/coef_ASTER3N_CONT.dat": {
+      "sha256": "8d26f063a35b2f5338dc00d79773d30184be4c8afcbbf6356373a649acdd4fef",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER3N_CONT.dat"
+    },
+    "author/coef_ASTER3N_DES.dat": {
+      "sha256": "17817b6a62b8686966e13daa8adcfeda3ac757db74f279a32c7e0659c58e68e4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER3N_DES.dat"
+    },
+    "author/coef_ASTER4_CONT.dat": {
+      "sha256": "5e37ec39f0b8ef3ac765b3911c4ea24f0ae93655afe0ab28ba9423c6dbf6631b",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER4_CONT.dat"
+    },
+    "author/coef_ASTER4_DES.dat": {
+      "sha256": "086b72fad2d249faa296752fa39679633e1d697ac281ba4e386c3031dcdfb867",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER4_DES.dat"
+    },
+    "author/coef_ASTER5_CONT.dat": {
+      "sha256": "00aafcef339d5de57892418723d259fa43cfde34a346a52d84765ad5d2e1d9f8",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER5_CONT.dat"
+    },
+    "author/coef_ASTER5_DES.dat": {
+      "sha256": "b52cc490a73963d5df2a1ab693d82d4a3ec4ae7d7db9e0f5345131242706e74d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER5_DES.dat"
+    },
+    "author/coef_ASTER6_CONT.dat": {
+      "sha256": "5f9268cad828ab985776215532ee9c237c3e56b00acfe82cc0ce80f75895db33",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER6_CONT.dat"
+    },
+    "author/coef_ASTER6_DES.dat": {
+      "sha256": "bcca12392cbccb80d488a009da12a7f451df5d42ba63fe80360ec5d322c984cf",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER6_DES.dat"
+    },
+    "author/coef_ASTER7_CONT.dat": {
+      "sha256": "083c442479ec37dc469cbd91b2a9fbed426ffbe5cfcfbff641c08a9ff6c0007e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER7_CONT.dat"
+    },
+    "author/coef_ASTER7_DES.dat": {
+      "sha256": "426fb0584bc9a95e4375fb982f168ba9e057935eaf119befa2f1960db3dd99a6",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER7_DES.dat"
+    },
+    "author/coef_ASTER8_CONT.dat": {
+      "sha256": "608bb6a0c12345b589b3590411099c7cc6b51de7b4a1646cf9016367166bdedf",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER8_CONT.dat"
+    },
+    "author/coef_ASTER8_DES.dat": {
+      "sha256": "d4fbe35779927d09cfe9901ea9d2803a670fd7b5ad4f8333125a6d43f6f55ffd",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER8_DES.dat"
+    },
+    "author/coef_ASTER9_CONT.dat": {
+      "sha256": "3759f139ff3d4d09fed57e528d56e558a4c6639bda0680e64ed97b029438dfb9",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER9_CONT.dat"
+    },
+    "author/coef_ASTER9_DES.dat": {
+      "sha256": "2c5936c7041f907c6198a8a808ffde0880ece44008afddbaf8e91628c790475a",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ASTER9_DES.dat"
+    },
+    "author/coef_ATSR2_1600_CONT.dat": {
+      "sha256": "40a461795423743045fee708be14c62cc3ca2d48ac78524fde02a0d6e32accfa",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ATSR2_1600_CONT.dat"
+    },
+    "author/coef_ATSR2_1600_DES.dat": {
+      "sha256": "5f96d61203a315ae27fc7b709f7e5d21e0b7169046344d621c6be5dc12c738f9",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ATSR2_1600_DES.dat"
+    },
+    "author/coef_ATSR2_550_CONT.dat": {
+      "sha256": "a9b3d9b7f2de8523346a7128b696d59cf7306c44949d270228a997e62097ac3b",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ATSR2_550_CONT.dat"
+    },
+    "author/coef_ATSR2_550_DES.dat": {
+      "sha256": "431dd5394a932c50a7a2878f62e886a3fb8324a7adfd2c94097fdd4505045853",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ATSR2_550_DES.dat"
+    },
+    "author/coef_ATSR2_670_CONT.dat": {
+      "sha256": "ad3e1cd10fc003e66ebf4728031a05c97a391d7fce9233624f00586f72d3149a",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ATSR2_670_CONT.dat"
+    },
+    "author/coef_ATSR2_670_DES.dat": {
+      "sha256": "d6955184cdb52b2cc9c49312d7688c442133d91e75e4570a2dfc5bf6777f47ab",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ATSR2_670_DES.dat"
+    },
+    "author/coef_ATSR2_865_CONT.dat": {
+      "sha256": "9b406ecaf6a06c7e0939330384f77fc4a26b0ce6f752dd39d39c2ecdf3c210a6",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ATSR2_865_CONT.dat"
+    },
+    "author/coef_ATSR2_865_DES.dat": {
+      "sha256": "47b41d3c25092b9feae0b7c863604c69793371fad872d18a4dfb8a92e50239ad",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_ATSR2_865_DES.dat"
+    },
+    "author/coef_FORMOSAT2_B1_CONT.dat": {
+      "sha256": "1b64a37aeaa865ef04e5906b33fcb554a32eebc8acd2359cf04df52884ce2fc1",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_FORMOSAT2_B1_CONT.dat"
+    },
+    "author/coef_FORMOSAT2_B2_CONT.dat": {
+      "sha256": "533d5bfd305fdb7716c6635263fc7ba308a70e042329708362049fbd5ec9b1a3",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_FORMOSAT2_B2_CONT.dat"
+    },
+    "author/coef_FORMOSAT2_B3_CONT.dat": {
+      "sha256": "9bb127f3397e092b3650c1a1d9a646f74342b5c314da1dc7ae109e542fb21a1f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_FORMOSAT2_B3_CONT.dat"
+    },
+    "author/coef_FORMOSAT2_B4_CONT.dat": {
+      "sha256": "6bfcf07dccac20c97eb295264f5c8b9b0f8002d6cc90876f3ddef15e9c4fd7b4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_FORMOSAT2_B4_CONT.dat"
+    },
+    "author/coef_FORMOSAT2_PAN_CONT.dat": {
+      "sha256": "053dbbe43a00567f247c278475ad4954dc9165a8a01ea811c250f17f72218e0c",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_FORMOSAT2_PAN_CONT.dat"
+    },
+    "author/coef_IRSP6_AWIFS_B2_CONT.dat": {
+      "sha256": "c022ef2b196c6a8f02ced3279bfaa80700db293e10ddaaa868ff525700f15671",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_AWIFS_B2_CONT.dat"
+    },
+    "author/coef_IRSP6_AWIFS_B2_DESE.dat": {
+      "sha256": "7a5f452a0cbc1b80d898bfd3a3a38852cee79e3a5249a0f0c3e653143b633601",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_AWIFS_B2_DESE.dat"
+    },
+    "author/coef_IRSP6_AWIFS_B3_CONT.dat": {
+      "sha256": "261d9ae0c4c1eb295984784238afb3da8d765b1463b018155ca8100042a63521",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_AWIFS_B3_CONT.dat"
+    },
+    "author/coef_IRSP6_AWIFS_B3_DESE.dat": {
+      "sha256": "712fbdbd32b68a84cf10d625a0b7efaacc19b7b10eabd1c38d5a3cca44afb564",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_AWIFS_B3_DESE.dat"
+    },
+    "author/coef_IRSP6_AWIFS_B4_CONT.dat": {
+      "sha256": "d1ad69498a2dd87afe624d86f2bc8da245e77d63ce923335c404ba81e684ac6e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_AWIFS_B4_CONT.dat"
+    },
+    "author/coef_IRSP6_AWIFS_B4_DESE.dat": {
+      "sha256": "61f6db98b75b80c43c616889456d582400d1a635e0e4ae5fe9fe403cd2640356",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_AWIFS_B4_DESE.dat"
+    },
+    "author/coef_IRSP6_AWIFS_B5_CONT.dat": {
+      "sha256": "adeda20b8d5944de56703e040bd493f75e57e3c90794cac533718fa7fc4f0cd9",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_AWIFS_B5_CONT.dat"
+    },
+    "author/coef_IRSP6_AWIFS_B5_DESE.dat": {
+      "sha256": "f954c6ce5235f51c566ffcdf5b118bcd4eedf67cf16b863dbc270cb30bf4875e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_AWIFS_B5_DESE.dat"
+    },
+    "author/coef_IRSP6_LISS3_B2_CONT.dat": {
+      "sha256": "34e4f3378d3198707701e4b7974e5c616bf12681e66d5ffbcbff47ee267fce8f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_LISS3_B2_CONT.dat"
+    },
+    "author/coef_IRSP6_LISS3_B2_DESE.dat": {
+      "sha256": "6d8190178e8ed4be4fc5ac14cada75a1a776ea85a267ad602f7fed9d908b8008",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_LISS3_B2_DESE.dat"
+    },
+    "author/coef_IRSP6_LISS3_B3_CONT.dat": {
+      "sha256": "f9624435ff16102fe198a12011261ae1c81c1aa767a1ee808bdc9cf610da1774",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_LISS3_B3_CONT.dat"
+    },
+    "author/coef_IRSP6_LISS3_B3_DESE.dat": {
+      "sha256": "eedad88c37e5006554eaca6e2de7f7079ecb8da7c6d7121bf7e6cb06c3be6d6d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_LISS3_B3_DESE.dat"
+    },
+    "author/coef_IRSP6_LISS3_B4_CONT.dat": {
+      "sha256": "15b50cb36764a89af1b35f7aea490fd714bbb3973a59e0039149b495f43fb433",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_LISS3_B4_CONT.dat"
+    },
+    "author/coef_IRSP6_LISS3_B4_DESE.dat": {
+      "sha256": "b5d2524a98e32bc5c3b42ea686e901639a0d294cb5f61b8a7554113e0bfec824",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_LISS3_B4_DESE.dat"
+    },
+    "author/coef_IRSP6_LISS3_B5_CONT.dat": {
+      "sha256": "cc3a743fb041c2faf262381501b0384a5726383b920ba34897582c18d3b5fc70",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_LISS3_B5_CONT.dat"
+    },
+    "author/coef_IRSP6_LISS3_B5_DESE.dat": {
+      "sha256": "621262696b7c46573f69940d90e0839096fc28de22234025c36adba5dcbb02fb",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_IRSP6_LISS3_B5_DESE.dat"
+    },
+    "author/coef_LANDSAT4_b1_CONT.dat": {
+      "sha256": "f3a625efb14e6727c0bdf2a61af91b69ca114d5d490b06551b57738f36449515",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT4_b1_CONT.dat"
+    },
+    "author/coef_LANDSAT4_b2_CONT.dat": {
+      "sha256": "0fd69435d380ca254aa7535d38b2b7cb188e9c333e3d8efd103fd232cb261d5e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT4_b2_CONT.dat"
+    },
+    "author/coef_LANDSAT4_b3_CONT.dat": {
+      "sha256": "6118fc7d750a45e4d1c58da2859094f2172fbfe635a6aa190c23e2b28f2a3c8d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT4_b3_CONT.dat"
+    },
+    "author/coef_LANDSAT4_b4_CONT.dat": {
+      "sha256": "dc48b2d6dcd68dae08884f63da2f6c075994ffab5eb2e9338d8dde9e77ea7bd2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT4_b4_CONT.dat"
+    },
+    "author/coef_LANDSAT4_b5_CONT.dat": {
+      "sha256": "077de3090e467d3daf32fe99df14cda9a1ed1b12d0ec7de8626d2d2f51c46289",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT4_b5_CONT.dat"
+    },
+    "author/coef_LANDSAT4_b7_CONT.dat": {
+      "sha256": "bf43b8ea63ca276622be45183e6a1f349cc68f5722853c4e246d3196494a951b",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT4_b7_CONT.dat"
+    },
+    "author/coef_LANDSAT5_b1_CONT.dat": {
+      "sha256": "49f5eeb3f0c3af111cf4045b32d8d3a65804057b8b87f683d94d61c0746f033f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT5_b1_CONT.dat"
+    },
+    "author/coef_LANDSAT5_b2_CONT.dat": {
+      "sha256": "91b17ce13f1de5de45b95a541aeaeeb38b76075e254018f832cc9a8dd5145987",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT5_b2_CONT.dat"
+    },
+    "author/coef_LANDSAT5_b3_CONT.dat": {
+      "sha256": "bfe711b7fe264cafe4524bb3d6453d360c68798348cd45eafd409d807f1211e5",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT5_b3_CONT.dat"
+    },
+    "author/coef_LANDSAT5_b4_CONT.dat": {
+      "sha256": "cb69cb5b8c61892a0d004f49a71d73d9cc250953ad17533b89badeba709c9b44",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT5_b4_CONT.dat"
+    },
+    "author/coef_LANDSAT5_b5_CONT.dat": {
+      "sha256": "f3c141767d59a05ff1369bc56bce7b0fce9da2b9e745f1e7bae6b6679c8ef779",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT5_b5_CONT.dat"
+    },
+    "author/coef_LANDSAT5_b7_CONT.dat": {
+      "sha256": "68c0455949f5db4ecfcd75e3e03a035c426dcc0fc48f05f7f57ebe48b85f3503",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT5_b7_CONT.dat"
+    },
+    "author/coef_LANDSAT7_b1_CONT.dat": {
+      "sha256": "998ee56944e71d197fe1b94280c50407f46f0f33a93d86bad93ef2e5505cd21d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT7_b1_CONT.dat"
+    },
+    "author/coef_LANDSAT7_b2_CONT.dat": {
+      "sha256": "a017895a4c9ab3a1db4f7648a1f0aa28381dd9a5f8a503ea76c60f5b9f8eaef2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT7_b2_CONT.dat"
+    },
+    "author/coef_LANDSAT7_b3_CONT.dat": {
+      "sha256": "670bbf4f411bd6caa75fc89a27764c96438884797d242ddd790e0bc5b1383892",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT7_b3_CONT.dat"
+    },
+    "author/coef_LANDSAT7_b4_CONT.dat": {
+      "sha256": "2e37b98fc993588e0e5cc4d99eacaee25a3045924102a8f4aeb3fb45aff4b123",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT7_b4_CONT.dat"
+    },
+    "author/coef_LANDSAT7_b5_CONT.dat": {
+      "sha256": "8747843d2a76716971af291527ce1f116affd641aa6985aaf01a4ff96a4386de",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT7_b5_CONT.dat"
+    },
+    "author/coef_LANDSAT7_b7_CONT.dat": {
+      "sha256": "9f8aa0cbe01825f90a06edcc1cdb3354e9381014985dcb6ea5c5121bdf978ab6",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_LANDSAT7_b7_CONT.dat"
+    },
+    "author/coef_MERIS10_CONT.dat": {
+      "sha256": "5e820309548c614976012b4fcd65612305c2996ac18a6aa36f28411dbba43467",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS10_CONT.dat"
+    },
+    "author/coef_MERIS10_DES.dat": {
+      "sha256": "293f705f7044443c7d4f8761f3b17b200a14f0aa467dc00256db1439a3fd0da2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS10_DES.dat"
+    },
+    "author/coef_MERIS11_CONT.dat": {
+      "sha256": "dc4f0550054528059e5ae2063482f1bdcb942925a5e85c13e0a1a52b2a6ac7a1",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS11_CONT.dat"
+    },
+    "author/coef_MERIS11_DES.dat": {
+      "sha256": "c6737d0cbc55af72990e9471777f8ebac3e8b8cb6bec5932e1398c45df0d9800",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS11_DES.dat"
+    },
+    "author/coef_MERIS12_CONT.dat": {
+      "sha256": "86077f7d508acc71c16201a9eda85b4a5d5d20e6685a2e00762bbae450f87d60",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS12_CONT.dat"
+    },
+    "author/coef_MERIS12_DES.dat": {
+      "sha256": "f46083c2c30348a39455604100ed4e99e8b2b7ddfc44ebebc298523a4070be9e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS12_DES.dat"
+    },
+    "author/coef_MERIS13_CONT.dat": {
+      "sha256": "4eb003442bb1d585a30251ca66ff1ff3fbde5648eed9239351ee12542d8b9d21",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS13_CONT.dat"
+    },
+    "author/coef_MERIS13_DES.dat": {
+      "sha256": "b9c7374beade7bf36c92625189bb94b82ce1318867af597d1bddfd884e442247",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS13_DES.dat"
+    },
+    "author/coef_MERIS14_CONT.dat": {
+      "sha256": "aaa3b1a868f1080a8f3e1efe02aa2d425709000666f020477553c6cfbd1588dc",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS14_CONT.dat"
+    },
+    "author/coef_MERIS14_DES.dat": {
+      "sha256": "70eb7d35ef2f026d77709a067b12a0a8dffe1f4c2128e4718f9db5d71928e35e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS14_DES.dat"
+    },
+    "author/coef_MERIS15_CONT.dat": {
+      "sha256": "adfd886a36ce51523b005508e2e9138bea257cfd626652839d70bdffc3176f37",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS15_CONT.dat"
+    },
+    "author/coef_MERIS15_DES.dat": {
+      "sha256": "fa6b5a7658ec2d66e419dc892ce038f874db89eb336e51562f9e6d8c23be7e39",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS15_DES.dat"
+    },
+    "author/coef_MERIS1_CONT.dat": {
+      "sha256": "04e0b0a41d75d2d8434ee0402f1b0fd76ab3da53b9facde16e936b3c4c0a8b01",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS1_CONT.dat"
+    },
+    "author/coef_MERIS1_DES.dat": {
+      "sha256": "8e53b08cb53bf7a76a44e9ee0a37b0a2de5f8b45997a1da792aaf502d92dd740",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS1_DES.dat"
+    },
+    "author/coef_MERIS2_CONT.dat": {
+      "sha256": "a9e182255003a93587a91eb09e41ef81e78fc5efd273bdf6ef18eff1ff5e6bf0",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS2_CONT.dat"
+    },
+    "author/coef_MERIS2_DES.dat": {
+      "sha256": "ec3d32b34edddcc8b87e2199397d0bf250d6352f8dffd5839fa14b0f691868c2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS2_DES.dat"
+    },
+    "author/coef_MERIS3_CONT.dat": {
+      "sha256": "482b23bec61466e780f96ed1238c0302cfe1e23d4af507b89511ba7cb4c4a2f8",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS3_CONT.dat"
+    },
+    "author/coef_MERIS3_DES.dat": {
+      "sha256": "0b3bd6e1378fbc70c1f27bbcfccd39e601d20d2f5b2de12f910ac363bf335112",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS3_DES.dat"
+    },
+    "author/coef_MERIS4_CONT.dat": {
+      "sha256": "34a00fce6aac2ea65155a7f84425cd119dadf6b529de502ee60c937d619dabed",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS4_CONT.dat"
+    },
+    "author/coef_MERIS4_DES.dat": {
+      "sha256": "a37e950f477c2f78a5a958ecc6df3ba1dec7ea211c69218821d1679f305d5a3c",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS4_DES.dat"
+    },
+    "author/coef_MERIS5_CONT.dat": {
+      "sha256": "1d1a0427817e361bf288179c614675aa6b93d2ec92d275e354dd62549f52638d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS5_CONT.dat"
+    },
+    "author/coef_MERIS5_DES.dat": {
+      "sha256": "97a9ca6c40938d90b101beb7b04b1045ebba86b78438d261638b7fb5cb74d328",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS5_DES.dat"
+    },
+    "author/coef_MERIS6_CONT.dat": {
+      "sha256": "9244ca453b84d945a1155735e86d2f8ea0834b0f9defe331468e87b7549f348f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS6_CONT.dat"
+    },
+    "author/coef_MERIS6_DES.dat": {
+      "sha256": "cadfad7a6fa2729c131c08bc8c3e1bb483e1b0b6db1eb00428019cebafd7a56f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS6_DES.dat"
+    },
+    "author/coef_MERIS7_CONT.dat": {
+      "sha256": "685b01ea8357dda585b4304c4e0d53ccf9dbd34e9f200630dee23fc4065faafb",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS7_CONT.dat"
+    },
+    "author/coef_MERIS7_DES.dat": {
+      "sha256": "ea615f966e66dbe8e2cacb034a24c1113a99633c9f899ac90cd8e6331b7148f4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS7_DES.dat"
+    },
+    "author/coef_MERIS8_CONT.dat": {
+      "sha256": "9d3b7da7c8c0a8019197195c8503fbe0c246105ed6b0f73716c1595d72fad224",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS8_CONT.dat"
+    },
+    "author/coef_MERIS8_DES.dat": {
+      "sha256": "4919cb5fe207a5a14f59e72ed57d4caa87d4cdc280e59d22b5f58621c6bbd641",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS8_DES.dat"
+    },
+    "author/coef_MERIS9_CONT.dat": {
+      "sha256": "a732856e6caf8dbadf2af975c9bc679470314e1dd6c9e65ae2622406ba3c93ee",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS9_CONT.dat"
+    },
+    "author/coef_MERIS9_DES.dat": {
+      "sha256": "d8a1bc63ee338cc1ea69211ba190deb61025b62126d849f34e29d9e1feb5213f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MERIS9_DES.dat"
+    },
+    "author/coef_METEOSAT7_VIS_CONT.dat": {
+      "sha256": "485e6c90262954e670258b83d9ac5715c329a822d01439ae07044e7c75205ed5",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_METEOSAT7_VIS_CONT.dat"
+    },
+    "author/coef_METEOSAT7_VIS_DES.dat": {
+      "sha256": "076900bbc78c803a8d9d2ae713e049d7619c800eaea62095ebc3759866028151",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_METEOSAT7_VIS_DES.dat"
+    },
+    "author/coef_METOP_MIR_CONT.dat": {
+      "sha256": "bed8bd678bed7c058a87b91c69f98585a592d953b145d249770627ba6675a357",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_METOP_MIR_CONT.dat"
+    },
+    "author/coef_METOP_MIR_DESE.dat": {
+      "sha256": "92371cecd0321754f4d750ccfe0c40200020508cffd901430fb6199d586279f2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_METOP_MIR_DESE.dat"
+    },
+    "author/coef_METOP_NIR_CONT.dat": {
+      "sha256": "35af76e40dd51d12c745737e76a587acbc120a1a05a2c302e31d9f5fbce5af0a",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_METOP_NIR_CONT.dat"
+    },
+    "author/coef_METOP_NIR_DESE.dat": {
+      "sha256": "8bf83ac2e80a9934d5ec02957c822ed1e8d219bfd2da04afec8878c443d5e8bf",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_METOP_NIR_DESE.dat"
+    },
+    "author/coef_METOP_VIS_CONT.dat": {
+      "sha256": "cb32c78bf5bf2bd7fe35390db8df794a54e36eb932f8b7edc64b552c67a4302e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_METOP_VIS_CONT.dat"
+    },
+    "author/coef_METOP_VIS_DESE.dat": {
+      "sha256": "6c5c6b0231d845c15a032c512c73ca2ad0332601c024ebee9bccaa3f1f1980af",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_METOP_VIS_DESE.dat"
+    },
+    "author/coef_MISR1_CONT.dat": {
+      "sha256": "bb7a3efc4b1083e79b84fee02834bf835e57656fdb4f589c4916dd32524eaf85",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MISR1_CONT.dat"
+    },
+    "author/coef_MISR1_DES.dat": {
+      "sha256": "36f3cdaa66dbd1a6b36a665bade0666f88086d1a9da6293993a5ce66d471575f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MISR1_DES.dat"
+    },
+    "author/coef_MISR2_CONT.dat": {
+      "sha256": "2ee0c0af32fc4af861894c81dae57f171ea7b39a128535763e95dcad1ff662b6",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MISR2_CONT.dat"
+    },
+    "author/coef_MISR2_DES.dat": {
+      "sha256": "549215aae6bcebaf7a168ab1494ecefc5830fa2bbe65053c8a255a4ae98e62f3",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MISR2_DES.dat"
+    },
+    "author/coef_MISR3_CONT.dat": {
+      "sha256": "a8c833a97eaa5b676db7dc1e775f8b34ad99e33cec32ceb2711fad0d8d9c5efd",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MISR3_CONT.dat"
+    },
+    "author/coef_MISR3_DES.dat": {
+      "sha256": "979c9d2f8b2839150d2ea3f4d1668031de773c3ee86528e3b3139724af820163",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MISR3_DES.dat"
+    },
+    "author/coef_MISR4_CONT.dat": {
+      "sha256": "1cd2026b225bc845e6cb8ddd97ae8bc0665a5c0586d6fdd266393a2f8c13645a",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MISR4_CONT.dat"
+    },
+    "author/coef_MISR4_DES.dat": {
+      "sha256": "b3a589ac65dc1e9840026cc960402d59fa25699ae0d7e5e2e814467e33963dc4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MISR4_DES.dat"
+    },
+    "author/coef_MODIS10_CONT.dat": {
+      "sha256": "b7939fb9baf5024a0c22239d1be51b2c1fa5882f8e2c0f48bb38e16e941b27af",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS10_CONT.dat"
+    },
+    "author/coef_MODIS10_DES.dat": {
+      "sha256": "22ed44ac7a2ecc900ebbb9789dd8dcea80000455697061e66805ec47a773a761",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS10_DES.dat"
+    },
+    "author/coef_MODIS11_CONT.dat": {
+      "sha256": "8cc73fa18bc57a089acc923d6387021373cbc710207757489252c745c8564c76",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS11_CONT.dat"
+    },
+    "author/coef_MODIS11_DES.dat": {
+      "sha256": "f71aade90dd6e47da54446c44bf36fbe5aa34907b270c3440ee1f12ada630a9b",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS11_DES.dat"
+    },
+    "author/coef_MODIS12_CONT.dat": {
+      "sha256": "180a15861aac7da917acba6c54eb5e9073754ec52febbb743692f54d16090dbf",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS12_CONT.dat"
+    },
+    "author/coef_MODIS12_DES.dat": {
+      "sha256": "8c89246c799bb14bd97797f007f4068721d80034eda188d8b123e5a5b5da0e1e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS12_DES.dat"
+    },
+    "author/coef_MODIS13_CONT.dat": {
+      "sha256": "a5b4a0aade0bd5433638b14dbbb172c6526b4009195bdc794a398ab2e6f114e6",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS13_CONT.dat"
+    },
+    "author/coef_MODIS13_DES.dat": {
+      "sha256": "3245c2cfaa1c65700e88bfb7ab4f3ab857027732a38c6a37940fb16e9479646e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS13_DES.dat"
+    },
+    "author/coef_MODIS14_CONT.dat": {
+      "sha256": "89c12e23e9dff0b6f9c758c632080feba900a97468810fbf4d06a6455cc0f101",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS14_CONT.dat"
+    },
+    "author/coef_MODIS14_DES.dat": {
+      "sha256": "ff4cd5adae83a1ae95972265fd7f14dd5af370f4652f72e5e1d5afac920fc85d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS14_DES.dat"
+    },
+    "author/coef_MODIS15_CONT.dat": {
+      "sha256": "b15fa8b46d28bb05e61d0f1c2b0ab48278c07bc0b3a8b5380eff4d36c9692031",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS15_CONT.dat"
+    },
+    "author/coef_MODIS15_DES.dat": {
+      "sha256": "f584ea25cb958cd1f42c48f1a6b2be39074d74c8bf2c69f31645b6da20af1447",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS15_DES.dat"
+    },
+    "author/coef_MODIS16_CONT.dat": {
+      "sha256": "2528aa8e6f419ab859df3596b17157b7fb48c2a99dbc97b22332921407ad600b",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS16_CONT.dat"
+    },
+    "author/coef_MODIS16_DES.dat": {
+      "sha256": "072a7533a7d7d859d40d7100643d30314a7fed2bd34c8df8315d9967a8181aa5",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS16_DES.dat"
+    },
+    "author/coef_MODIS17_CONT.dat": {
+      "sha256": "5a9675cffbef5deaf0486d10abc81d19e89ff1d9c8e94265d0aec360df227435",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS17_CONT.dat"
+    },
+    "author/coef_MODIS17_DES.dat": {
+      "sha256": "0c55382e9fbde23537ddd5d01022221a8b5f55ce5c21203420bcad1f1f81f599",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS17_DES.dat"
+    },
+    "author/coef_MODIS18_CONT.dat": {
+      "sha256": "20140343f1cc2d0ab6d6d52b258b76d584803fcd352b9c0209c950164a8ec8fb",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS18_CONT.dat"
+    },
+    "author/coef_MODIS18_DES.dat": {
+      "sha256": "c9e95395b338cf0571d36a3d8da530f5b75b1eab15c024cb69bbdfe1c1d9e2cd",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS18_DES.dat"
+    },
+    "author/coef_MODIS19_CONT.dat": {
+      "sha256": "003a580936fed8a7dd38ccacad1812682aea5e73491634bc18b1f35ad10e7948",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS19_CONT.dat"
+    },
+    "author/coef_MODIS19_DES.dat": {
+      "sha256": "b421f1c222a232a44820e12be7afd01485245b4d5af3b9e868730da2d339d1f3",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS19_DES.dat"
+    },
+    "author/coef_MODIS1_CONT.dat": {
+      "sha256": "7f5adce5d943016a595cc0c45e4301f607a48c648dddc74eb8c57e3fe26373e5",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS1_CONT.dat"
+    },
+    "author/coef_MODIS1_DES.dat": {
+      "sha256": "d6a681039c4983944d63dc28881e4b3695b36d60e96921b84a4c321efeeef969",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS1_DES.dat"
+    },
+    "author/coef_MODIS26_CONT.dat": {
+      "sha256": "e417e78ea037dadcb04392cf9b683fd8e3f43a4dce055df3595ab3d6806f50f0",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS26_CONT.dat"
+    },
+    "author/coef_MODIS26_DES.dat": {
+      "sha256": "7fa2f66c924804dc4c98efc2b79ea148a9bcba83bdc6b729c6c6657a4396673b",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS26_DES.dat"
+    },
+    "author/coef_MODIS2_CONT.dat": {
+      "sha256": "07f272085970cee62174bbe862ea8cad4f080f92e9f1fdd6767eb3636509de8d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS2_CONT.dat"
+    },
+    "author/coef_MODIS2_DES.dat": {
+      "sha256": "d57d3f60ccbc345c02490d851cc69b8d9270cd932ff875433548b9b4a6f0332f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS2_DES.dat"
+    },
+    "author/coef_MODIS3_CONT.dat": {
+      "sha256": "e0a06155f617c11392667218c808d0a2546cd87dc8d401e12412a73af17e1763",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS3_CONT.dat"
+    },
+    "author/coef_MODIS3_DES.dat": {
+      "sha256": "f5db10a34622bb99f33d06afb27e6340e729abdb0e3e60cb189b28b55d6ae42f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS3_DES.dat"
+    },
+    "author/coef_MODIS4_CONT.dat": {
+      "sha256": "6d1938cecc724b40eafac2b98c99cfa0e49958b6d6eccd318b18322da9b5ae5f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS4_CONT.dat"
+    },
+    "author/coef_MODIS4_DES.dat": {
+      "sha256": "692bd51dc87a79f0d23e175b7adb218c73ff3f24e7ab0a4c7ed1563c045c08d2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS4_DES.dat"
+    },
+    "author/coef_MODIS5_CONT.dat": {
+      "sha256": "bee08507cab0f901943c82068fe11452eb1fb903dfae7539ed9b0b747003a1eb",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS5_CONT.dat"
+    },
+    "author/coef_MODIS5_DES.dat": {
+      "sha256": "39d48585262a4a0414a6f9a97ecbc019a0e6171f105ddb2721eceb57ede2ed78",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS5_DES.dat"
+    },
+    "author/coef_MODIS6_CONT.dat": {
+      "sha256": "0f20d4d73974d80174704881fe84b1b5935d958878dad4db46fb76c0853235a7",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS6_CONT.dat"
+    },
+    "author/coef_MODIS6_DES.dat": {
+      "sha256": "3dc237fd60b460de7977fe49acaaf4b76dcd7c4bea5aa6d28c8345c9975f604c",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS6_DES.dat"
+    },
+    "author/coef_MODIS7_CONT.dat": {
+      "sha256": "ad668d8d17c868c9e14ab8ed60b1afa76ca67185ee6bf960e52f3e894bfd8c0c",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS7_CONT.dat"
+    },
+    "author/coef_MODIS7_DES.dat": {
+      "sha256": "a41dced7ff3b216c8028b0657b6faf4b6ac0114d8ee9a7b4470aef6c502712eb",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS7_DES.dat"
+    },
+    "author/coef_MODIS8_CONT.dat": {
+      "sha256": "8558f9078fd92f9d5160de091bb70abbd6b48ab0f6a1dc64d2cd483c7e4995c5",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS8_CONT.dat"
+    },
+    "author/coef_MODIS8_DES.dat": {
+      "sha256": "97968f03c057e23a252bc825c82e2f1455b512dcfda5e662563386b208a6a91e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS8_DES.dat"
+    },
+    "author/coef_MODIS9_CONT.dat": {
+      "sha256": "4cbac65285027f9865a99470aac394e84927811617ee948eda648524fcf4f2a4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS9_CONT.dat"
+    },
+    "author/coef_MODIS9_DES.dat": {
+      "sha256": "ebf9b7507543406ac1b6f01028a480f05e5e1af91a265c5fd4513104f5b99bc2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MODIS9_DES.dat"
+    },
+    "author/coef_MSG_IR1.6_CONT.dat": {
+      "sha256": "e1134b4dcb4c7ae1898775da1ef6428085e6a9b085932d02040cc91f4a2aef82",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MSG_IR1.6_CONT.dat"
+    },
+    "author/coef_MSG_IR1.6_DES.dat": {
+      "sha256": "31742b3d6c71fa3b40cdad24a4193e4697b924f5b1d6904bd964b56c39360759",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MSG_IR1.6_DES.dat"
+    },
+    "author/coef_MSG_VIS0.6_CONT.dat": {
+      "sha256": "c8f653414b2f093d619531b04ccacfc78de17d865e725ca923ddac52d53e0bc2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MSG_VIS0.6_CONT.dat"
+    },
+    "author/coef_MSG_VIS0.6_DES.dat": {
+      "sha256": "ed254b97e8cce9252911e743d64473e83718d15e50f2d682a17c44f60ab160b2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MSG_VIS0.6_DES.dat"
+    },
+    "author/coef_MSG_VIS0.8_CONT.dat": {
+      "sha256": "e1915e8d5e6103d5ed9b921e38ca83a206e5fb6667c6582fcf6e87474b0c4b55",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MSG_VIS0.8_CONT.dat"
+    },
+    "author/coef_MSG_VIS0.8_DES.dat": {
+      "sha256": "01802b742d5643ed16de6d4294b8c114d7f1fe36f530ac4eb9abf6db79eb3426",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_MSG_VIS0.8_DES.dat"
+    },
+    "author/coef_NOAA07_NIR_CONT.dat": {
+      "sha256": "f6eef01325cdb33b42ed98fe264c79e88184efb8fa37254405ffb528e2fb3670",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA07_NIR_CONT.dat"
+    },
+    "author/coef_NOAA07_NIR_DES.dat": {
+      "sha256": "74fb506a62f2ca8576bcf7180f521b1b959622022bc4e5bd0c06c4ff8e7fc6d4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA07_NIR_DES.dat"
+    },
+    "author/coef_NOAA07_VIS_CONT.dat": {
+      "sha256": "ded7aa7470a4f36269bbaaa08b36f5a4e8f0531eecc8f0ecb73c96e5d9154915",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA07_VIS_CONT.dat"
+    },
+    "author/coef_NOAA07_VIS_DES.dat": {
+      "sha256": "b1893c20cd8fce2add876a64f13554ff7b63352d2218cfbd1016582a85212eba",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA07_VIS_DES.dat"
+    },
+    "author/coef_NOAA09NIR_CONT.dat": {
+      "sha256": "0b0eab0089e2fae91862ab916a505c0e9cc346a5e344e67c751774d9cf21e5e3",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA09NIR_CONT.dat"
+    },
+    "author/coef_NOAA09NIR_DES.dat": {
+      "sha256": "b4c966c6f48a43678209adeada50815cddd85059b3939fcabac8d84d76cc9fba",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA09NIR_DES.dat"
+    },
+    "author/coef_NOAA09VIS_CONT.dat": {
+      "sha256": "2b11c6e4fbb0031fe3292f89f1bc375988aa16369073157fd910b20e7e083a33",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA09VIS_CONT.dat"
+    },
+    "author/coef_NOAA09VIS_DES.dat": {
+      "sha256": "9688fcaed0e26e01c52c85e1009bd51d8843517417b08882491cf66d66296eef",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA09VIS_DES.dat"
+    },
+    "author/coef_NOAA11NIR_CONT.dat": {
+      "sha256": "084038c893b781a710af72bec3d3ed34239c8c4877718d1efe9730d3e44292a0",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA11NIR_CONT.dat"
+    },
+    "author/coef_NOAA11NIR_DES.dat": {
+      "sha256": "6c53a288982a3a5a6545e07baa2d2c7316926c18de5b87c7011a0a8e37649675",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA11NIR_DES.dat"
+    },
+    "author/coef_NOAA11VIS_CONT.dat": {
+      "sha256": "501c76c233af9e6db666e4dc93748f40bfb764751cb4d73e5bc3f9801b20e82d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA11VIS_CONT.dat"
+    },
+    "author/coef_NOAA11VIS_DES.dat": {
+      "sha256": "84eba0efa71fdc259a91b8c7c9388a4d5f90f432a6bc435a769d4ef83ac51401",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA11VIS_DES.dat"
+    },
+    "author/coef_NOAA14NIR_CONT.dat": {
+      "sha256": "68b7195f6a0d69b11857e556b959052aa304cd695105841c73211054103fdda6",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA14NIR_CONT.dat"
+    },
+    "author/coef_NOAA14NIR_DES.dat": {
+      "sha256": "8f4f6c7c213f08e1d124a46da9ec767e8a18f96afe68bde4ee88c7193a923c6a",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA14NIR_DES.dat"
+    },
+    "author/coef_NOAA14VIS_CONT.dat": {
+      "sha256": "3a678b58c3a777805e13143560ed952d27c5c525cf220b1561d5a54507e5a546",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA14VIS_CONT.dat"
+    },
+    "author/coef_NOAA14VIS_DES.dat": {
+      "sha256": "45f73f48c894d0eb9abdec22f85e04936c4f553f4c160c33cef04355919a299f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA14VIS_DES.dat"
+    },
+    "author/coef_NOAA16MIR_CONT.dat": {
+      "sha256": "b621ee324722500b07b1e3d9695275835a15536d43767f1ee7dae5528f793a42",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA16MIR_CONT.dat"
+    },
+    "author/coef_NOAA16MIR_DES.dat": {
+      "sha256": "6b9f4ea5c0b847efb4979f1e5f53259e966baea01f4f829ae4e22879a6ddede0",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA16MIR_DES.dat"
+    },
+    "author/coef_NOAA16NIR_CONT.dat": {
+      "sha256": "b538337e5780ba93189781eadb7b072dbd57605475408a13ef23885a488c9bf0",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA16NIR_CONT.dat"
+    },
+    "author/coef_NOAA16NIR_DES.dat": {
+      "sha256": "685fa5ef70b0142eff00fc397ab55fc16dfb5f5d214dd9e7a8e70d654534bb69",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA16NIR_DES.dat"
+    },
+    "author/coef_NOAA16VIS_CONT.dat": {
+      "sha256": "e2d44f5ff4f024dbc82df0542a788b0bd8ea00dc392677aa276d84304c18d77f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA16VIS_CONT.dat"
+    },
+    "author/coef_NOAA16VIS_DES.dat": {
+      "sha256": "aad3a7ccb168a24e3416d60e96c81301946a5eff6664acbb41bba75162af1880",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA16VIS_DES.dat"
+    },
+    "author/coef_NOAA17_MIR_CONT.dat": {
+      "sha256": "45ce5ae432968665dc7b83716a419b2b866740e4a0a66a725157f7f312edd6a8",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA17_MIR_CONT.dat"
+    },
+    "author/coef_NOAA17_MIR_DES.dat": {
+      "sha256": "0c48d88926e3a8a3ba6409e4c9ae260515b93669cb6df4ad536b75682547141f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA17_MIR_DES.dat"
+    },
+    "author/coef_NOAA17_NIR_CONT.dat": {
+      "sha256": "fa1af66a326ecb46533b479f0812ad39e0cd3f003dc8426a4ac9f537a309463f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA17_NIR_CONT.dat"
+    },
+    "author/coef_NOAA17_NIR_DES.dat": {
+      "sha256": "e481f869666c9f0be1afbfc1d0268d61463bd80301e0c35d9bb5a1409ddb5bf0",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA17_NIR_DES.dat"
+    },
+    "author/coef_NOAA17_VIS_CONT.dat": {
+      "sha256": "dad6875626f7cfe550c0b36411936be9310ec3cacaca066a01b525ea19543554",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA17_VIS_CONT.dat"
+    },
+    "author/coef_NOAA17_VIS_DES.dat": {
+      "sha256": "72d80e2f1c779171a55213ff03ddf3152fa4058ca26fe6c2743820456b6ceaa5",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA17_VIS_DES.dat"
+    },
+    "author/coef_NOAA18_MIR_CONT.dat": {
+      "sha256": "53ad69c2446d689449c97b068dd378cdccf300b867c28807a470baa2a7f55756",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA18_MIR_CONT.dat"
+    },
+    "author/coef_NOAA18_MIR_DES.dat": {
+      "sha256": "ea9b7424c0ddd860d193895fc153e06dd6da8b8ec9543d2135502aaeff061031",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA18_MIR_DES.dat"
+    },
+    "author/coef_NOAA18_NIR_CONT.dat": {
+      "sha256": "5d55b047b96298331c6e2a8e24171686be7e6707d278d3e2d874d37ee4668fb4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA18_NIR_CONT.dat"
+    },
+    "author/coef_NOAA18_NIR_DES.dat": {
+      "sha256": "8163b8419fa8d959046db6da2b2684c303b314c98df1fa4f4d1191f9692102ef",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA18_NIR_DES.dat"
+    },
+    "author/coef_NOAA18_VIS_CONT.dat": {
+      "sha256": "4cfba9747073b816a616f2d1cdebd69a73aeb6438b9e3b65dde5ef1af109a416",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA18_VIS_CONT.dat"
+    },
+    "author/coef_NOAA18_VIS_DES.dat": {
+      "sha256": "5b16dd5093df09d6b02350bf5f88ba781c033f2f12c04269de6387dbf5fc356e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_NOAA18_VIS_DES.dat"
+    },
+    "author/coef_SPOT1xs1hrv1_CONT.dat": {
+      "sha256": "f4bd8b576a8d66a240d9d19ececcc961ee29cc069a1bb6ee31fbdcebc02d5d8d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT1xs1hrv1_CONT.dat"
+    },
+    "author/coef_SPOT1xs1hrv1_DES.dat": {
+      "sha256": "b4dd1d9b450d8aaab92301e9b340b74e51a7da0f8871658e6f270178e6fc3a7d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT1xs1hrv1_DES.dat"
+    },
+    "author/coef_SPOT1xs2hrv1_CONT.dat": {
+      "sha256": "94bd263640ce7df2dc9f01bf702ca739fee6ba7c678733597751ab82f8e2d77e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT1xs2hrv1_CONT.dat"
+    },
+    "author/coef_SPOT1xs2hrv1_DES.dat": {
+      "sha256": "884571862faabec1498e6959bd4c1729459923c7fe83424b7611704c854fa170",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT1xs2hrv1_DES.dat"
+    },
+    "author/coef_SPOT1xs3hrv1_CONT.dat": {
+      "sha256": "ec3d5c3457cf701636a08eaa7aebdebb7ea9a785019fad48a626492ba5e0f746",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT1xs3hrv1_CONT.dat"
+    },
+    "author/coef_SPOT1xs3hrv1_DES.dat": {
+      "sha256": "0dfb9e543d47668b6d4aab4eca2abe4c06dc2b4077db8c392bd274a2ee939d48",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT1xs3hrv1_DES.dat"
+    },
+    "author/coef_SPOT2xs1hrv2_CONT.dat": {
+      "sha256": "32a0903597a74b195b1bc2930319d49e8703c62ee2570bc3be792eab9b766f17",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT2xs1hrv2_CONT.dat"
+    },
+    "author/coef_SPOT2xs1hrv2_DES.dat": {
+      "sha256": "c8151e21c68c7b10e8e170f1306513dbcf76c2f11f552170c39a3227c8bb2243",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT2xs1hrv2_DES.dat"
+    },
+    "author/coef_SPOT2xs2hrv2_CONT.dat": {
+      "sha256": "3a8ccd88da32b30ba76e06966240ad6674db164b0f987b230f391421f075d6f1",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT2xs2hrv2_CONT.dat"
+    },
+    "author/coef_SPOT2xs2hrv2_DES.dat": {
+      "sha256": "c17e680370aae96849d0326db4074a915995dadfcf2a7567c744afff6beeb159",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT2xs2hrv2_DES.dat"
+    },
+    "author/coef_SPOT2xs3hrv2_CONT.dat": {
+      "sha256": "711e1b182d635e402eb3dad75954122e4f2a3e301b63cc28c03404865e537024",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT2xs3hrv2_CONT.dat"
+    },
+    "author/coef_SPOT2xs3hrv2_DES.dat": {
+      "sha256": "6404457f4884955f285db265a9fceea8bdd79f958d37ca25a6de53b197e9a896",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT2xs3hrv2_DES.dat"
+    },
+    "author/coef_SPOT4VGT1BLUE_CONT.dat": {
+      "sha256": "be9fb6cfbc0e0ce7d0589dca34e432c20d5a1a879d70d49e59a1f9cd26eb0d5b",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4VGT1BLUE_CONT.dat"
+    },
+    "author/coef_SPOT4VGT1NIR_CONT.dat": {
+      "sha256": "42e61c245d5bb7409912990c2cac907439fd3dad516c61ab543fb397ed89609e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4VGT1NIR_CONT.dat"
+    },
+    "author/coef_SPOT4VGT1RED_CONT.dat": {
+      "sha256": "6daf28fb027efcc17f986886fdaba8a5f4ec4a0a7a5816e07b8636357aead12a",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4VGT1RED_CONT.dat"
+    },
+    "author/coef_SPOT4VGT1SWIR_CONT.dat": {
+      "sha256": "551e37297e25b103af81531b4e1aeb06031642808409e53b0b4bb08a2bf9b9a7",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4VGT1SWIR_CONT.dat"
+    },
+    "author/coef_SPOT4xs1hrv1_CONT.dat": {
+      "sha256": "e28c878b75867a9cd4e10168c543d19bf815e73e64efdf7bb28dbe25da145e1c",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs1hrv1_CONT.dat"
+    },
+    "author/coef_SPOT4xs1hrv1_DES.dat": {
+      "sha256": "c1dc22fe942a1d9563fc4f5e53f621c3f447dccb1190081b9bcefdf7aa8d144d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs1hrv1_DES.dat"
+    },
+    "author/coef_SPOT4xs1hrv2_CONT.dat": {
+      "sha256": "d5b7a199f240b4d1c61b2e02ab3884553df50a2f546064db2a4cfaa638d3ee7b",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs1hrv2_CONT.dat"
+    },
+    "author/coef_SPOT4xs1hrv2_DES.dat": {
+      "sha256": "ebcfd4856b5a435450e19808dc4658bdd45c33c1049f79f9dd89968fee058094",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs1hrv2_DES.dat"
+    },
+    "author/coef_SPOT4xs2hrv1_CONT.dat": {
+      "sha256": "d53071499062782762d92e82eb8fa809e83fbd002c0d01bd929de03b640bd49c",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs2hrv1_CONT.dat"
+    },
+    "author/coef_SPOT4xs2hrv1_DES.dat": {
+      "sha256": "b9277ff02ce779d59440b8bdea33053955756b4ffb984e0b6c5e6f54d7d677cf",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs2hrv1_DES.dat"
+    },
+    "author/coef_SPOT4xs2hrv2_CONT.dat": {
+      "sha256": "3a891b5d98cc9fa31d87419b765800233021b41b08ac0679e8e66c6b82fdfa4f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs2hrv2_CONT.dat"
+    },
+    "author/coef_SPOT4xs2hrv2_DES.dat": {
+      "sha256": "58b601c16ad82e738f40f669aa656cf56a59b80088c9f1a5a057b0c172af1131",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs2hrv2_DES.dat"
+    },
+    "author/coef_SPOT4xs3hrv1_CONT.dat": {
+      "sha256": "9eb9d3661e2d5c5ec61aca7c145d0ca2e8d482037090721aaf7bf2727294a9d4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs3hrv1_CONT.dat"
+    },
+    "author/coef_SPOT4xs3hrv1_DES.dat": {
+      "sha256": "2e8d7f84509351d663762efe63d7791abfb70748574fafc798c5870e76a969a5",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs3hrv1_DES.dat"
+    },
+    "author/coef_SPOT4xs3hrv2_CONT.dat": {
+      "sha256": "21febf0c4323123f55984de73705fe78a53abe177dc7df2c9974da0b96da34d2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs3hrv2_CONT.dat"
+    },
+    "author/coef_SPOT4xs3hrv2_DES.dat": {
+      "sha256": "fe2641159e0f57a47dab64c077b77f0bb4e3be1218983dfe9c91f128b3cfa707",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs3hrv2_DES.dat"
+    },
+    "author/coef_SPOT4xs4hrv1_CONT.dat": {
+      "sha256": "e7ec75ca2e34774b109681bb6a99d6ef7c3fa90fa3f4f7b36ffc7b9263a72a3c",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs4hrv1_CONT.dat"
+    },
+    "author/coef_SPOT4xs4hrv1_DES.dat": {
+      "sha256": "2828e313be12314d3445a085b9d513f57dea50fcc0de514f717e8bca25f6dd43",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs4hrv1_DES.dat"
+    },
+    "author/coef_SPOT4xs4hrv2_CONT.dat": {
+      "sha256": "086ce275b8ca1942b7a0399dc378b98387bd29eb6773c7574449e7623ee06554",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs4hrv2_CONT.dat"
+    },
+    "author/coef_SPOT4xs4hrv2_DES.dat": {
+      "sha256": "3688754169a25a79b96756f0031fa55d36f8618d31c71e7244702b77b8260e2d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT4xs4hrv2_DES.dat"
+    },
+    "author/coef_SPOT5_PAN_HMA1_CONT.dat": {
+      "sha256": "c26c5f93f66c595a8920daddd54e0db4f3ad3f8ccc8ceff1e400c077e273b175",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HMA1_CONT.dat"
+    },
+    "author/coef_SPOT5_PAN_HMA1_DES.dat": {
+      "sha256": "af2e3e000969fab1726f711a3e571b7d18bd542d5c4c23ece5f573a6e207da22",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HMA1_DES.dat"
+    },
+    "author/coef_SPOT5_PAN_HMA2_CONT.dat": {
+      "sha256": "4a7afcfd792ce7f572c70fda4620b27aa12dcd4b34135b9f900c6d2657f84304",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HMA2_CONT.dat"
+    },
+    "author/coef_SPOT5_PAN_HMA2_DES.dat": {
+      "sha256": "26ade41fee3596de177d63eef7716ca12a5f9a09dd79707ab637a80743449b75",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HMA2_DES.dat"
+    },
+    "author/coef_SPOT5_PAN_HMB1_CONT.dat": {
+      "sha256": "c26c5f93f66c595a8920daddd54e0db4f3ad3f8ccc8ceff1e400c077e273b175",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HMB1_CONT.dat"
+    },
+    "author/coef_SPOT5_PAN_HMB1_DES.dat": {
+      "sha256": "af2e3e000969fab1726f711a3e571b7d18bd542d5c4c23ece5f573a6e207da22",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HMB1_DES.dat"
+    },
+    "author/coef_SPOT5_PAN_HMB2_CONT.dat": {
+      "sha256": "4a7afcfd792ce7f572c70fda4620b27aa12dcd4b34135b9f900c6d2657f84304",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HMB2_CONT.dat"
+    },
+    "author/coef_SPOT5_PAN_HMB2_DES.dat": {
+      "sha256": "26ade41fee3596de177d63eef7716ca12a5f9a09dd79707ab637a80743449b75",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HMB2_DES.dat"
+    },
+    "author/coef_SPOT5_PAN_HRS1_CONT.dat": {
+      "sha256": "f67bd451bf3ee21c163a783e03c9237bd5195a8564fedee25a5a3cb1e0923c92",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HRS1_CONT.dat"
+    },
+    "author/coef_SPOT5_PAN_HRS1_DES.dat": {
+      "sha256": "fb1645ae03bf308bda22df6b7494d7bf2005d79be19883d0f6d1eb08a25bc783",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HRS1_DES.dat"
+    },
+    "author/coef_SPOT5_PAN_HRS2_CONT.dat": {
+      "sha256": "f67bd451bf3ee21c163a783e03c9237bd5195a8564fedee25a5a3cb1e0923c92",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HRS2_CONT.dat"
+    },
+    "author/coef_SPOT5_PAN_HRS2_DES.dat": {
+      "sha256": "fb1645ae03bf308bda22df6b7494d7bf2005d79be19883d0f6d1eb08a25bc783",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_PAN_HRS2_DES.dat"
+    },
+    "author/coef_SPOT5_XS1_HRG1_CONT.dat": {
+      "sha256": "5c5f6c2e23197e49bb6f96f17cbbae4bee3a6d22049bb1c37c511e8ec42b53b2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS1_HRG1_CONT.dat"
+    },
+    "author/coef_SPOT5_XS1_HRG1_DES.dat": {
+      "sha256": "5789d8919d0e2ed17d45dd063d7659ee620c3c3694232cde79f599a211126ce2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS1_HRG1_DES.dat"
+    },
+    "author/coef_SPOT5_XS1_HRG2_CONT.dat": {
+      "sha256": "7845d1f6ea9c61b92b304a120d00fe6f84901b4d2c4a20201a03069363fe37df",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS1_HRG2_CONT.dat"
+    },
+    "author/coef_SPOT5_XS1_HRG2_DES.dat": {
+      "sha256": "1176a9486736dff3f32ed4e0618927e9e5f94e0dd9e35f8c6049e42a2185b3a4",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS1_HRG2_DES.dat"
+    },
+    "author/coef_SPOT5_XS2_HRG1_CONT.dat": {
+      "sha256": "696b4eba6869d3ce1e141afc19fc4f71edcf12766f7cc9511519f416e78fe2a9",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS2_HRG1_CONT.dat"
+    },
+    "author/coef_SPOT5_XS2_HRG1_DES.dat": {
+      "sha256": "8000914724357f1f8fbcc0b408e596f3b9a7a07145b50b0fad0e5e574201c202",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS2_HRG1_DES.dat"
+    },
+    "author/coef_SPOT5_XS2_HRG2_CONT.dat": {
+      "sha256": "40cee8c74883113974664f781408a13cb4b52c03dfaa8c1fb0b129c16abb6d55",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS2_HRG2_CONT.dat"
+    },
+    "author/coef_SPOT5_XS2_HRG2_DES.dat": {
+      "sha256": "ebe2d1d67594ddb6b5cdf42d3aa426ff533669b68b0261f3827dda8bb46a2b81",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS2_HRG2_DES.dat"
+    },
+    "author/coef_SPOT5_XS3_HRG1_CONT.dat": {
+      "sha256": "950d9a4c006773578f22b15c5a50c8d230d2aa9e9ea8d01f2b9f48254521cdd0",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS3_HRG1_CONT.dat"
+    },
+    "author/coef_SPOT5_XS3_HRG1_DES.dat": {
+      "sha256": "2205d80c4e499e124580e4a7a367ce45779135c5ad3de5010cbee0e73be844e7",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS3_HRG1_DES.dat"
+    },
+    "author/coef_SPOT5_XS3_HRG2_CONT.dat": {
+      "sha256": "430379aa9b68de76519db30a49d74e2818c1c398fa1854fdd1e2b13f1176fa21",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS3_HRG2_CONT.dat"
+    },
+    "author/coef_SPOT5_XS3_HRG2_DES.dat": {
+      "sha256": "e8da9e79a373a33dea67cdcf136ec0cbbb07304689c6a811ea4d5a9ecf746fd9",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS3_HRG2_DES.dat"
+    },
+    "author/coef_SPOT5_XS4_HRG1_CONT.dat": {
+      "sha256": "65405e916105650288167eeda918582e192f4b44ed24423288a0a2e213906f57",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS4_HRG1_CONT.dat"
+    },
+    "author/coef_SPOT5_XS4_HRG1_DES.dat": {
+      "sha256": "36b79a4e7a117ede00b9505a3897f521fcbc8c5df098bbed72337c74e2d4d4f8",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS4_HRG1_DES.dat"
+    },
+    "author/coef_SPOT5_XS4_HRG2_CONT.dat": {
+      "sha256": "426c451d634e0eb2de0ce4de6ad4c09962e001b358cf0c8c6d011e07ab7a7785",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS4_HRG2_CONT.dat"
+    },
+    "author/coef_SPOT5_XS4_HRG2_DES.dat": {
+      "sha256": "d6df22ca9672c10571ff013c8d9db3a895e4bda57a95019148c599bfd44c00b1",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SPOT5_XS4_HRG2_DES.dat"
+    },
+    "author/coef_SeaWifs_412_CONT.dat": {
+      "sha256": "4402351a6b100f4dac7c266b3c992b85fde6a55d9432f3330815ea0261bb1c83",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_412_CONT.dat"
+    },
+    "author/coef_SeaWifs_412_DES.dat": {
+      "sha256": "bf153f529cf20bf456e795a7ced7cee8f959acf1b428f9822b43a647c9f4baf8",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_412_DES.dat"
+    },
+    "author/coef_SeaWifs_443_CONT.dat": {
+      "sha256": "6d17be8e188416beaee5c36ad07537f2cc2ac61b766ebd952bf56e43be4bc13a",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_443_CONT.dat"
+    },
+    "author/coef_SeaWifs_443_DES.dat": {
+      "sha256": "55e9c398d5a1a7a89e0cf74b59faef8ef9e29b4fac54008933a25a77b9d4680f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_443_DES.dat"
+    },
+    "author/coef_SeaWifs_490_CONT.dat": {
+      "sha256": "e007344f306806363ea3d6b96c918568cfb962cf4cc2c66c9ec432c91b01673f",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_490_CONT.dat"
+    },
+    "author/coef_SeaWifs_490_DES.dat": {
+      "sha256": "7f2af1ef7001e84e4cd74dcf5e15abdffeb8a812f67aa7e4ae98d7cdf9e98eaa",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_490_DES.dat"
+    },
+    "author/coef_SeaWifs_510_CONT.dat": {
+      "sha256": "1fa4f831631bf41be50c2023d20e26335f9b02d5f4fb76db890a3116c90d6637",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_510_CONT.dat"
+    },
+    "author/coef_SeaWifs_510_DES.dat": {
+      "sha256": "dc94e78ac928547147355d3acf5e19266b11c317f48cc830e5280de19a7223a7",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_510_DES.dat"
+    },
+    "author/coef_SeaWifs_555_CONT.dat": {
+      "sha256": "1f73d1e2f48e8fb3a3877120164a8ef524e5b407e4f281b70bf64b1d533a66da",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_555_CONT.dat"
+    },
+    "author/coef_SeaWifs_555_DES.dat": {
+      "sha256": "9d7f1924211454c789791271062fe47e25f8d93ec2d1b2ce7b27b5468407baed",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_555_DES.dat"
+    },
+    "author/coef_SeaWifs_670_CONT.dat": {
+      "sha256": "3ded6b0f202fa0c8ae44c480ccb9cf23ab7116f34863fd22d711620ea2461eba",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_670_CONT.dat"
+    },
+    "author/coef_SeaWifs_670_DES.dat": {
+      "sha256": "ea03df84da13c11b296d39d30852e0d80299e2cb865cf0258418320ea61f7e6c",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_670_DES.dat"
+    },
+    "author/coef_SeaWifs_765_CONT.dat": {
+      "sha256": "19b2ec385ad60f2c33108745ac6e7223712175135b080d8e04a057a547aaf613",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_765_CONT.dat"
+    },
+    "author/coef_SeaWifs_765_DES.dat": {
+      "sha256": "3521e4201d7dd6171417cabd325197ac5e8692c3f536bc8eac151ea9c784b876",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_765_DES.dat"
+    },
+    "author/coef_SeaWifs_865_CONT.dat": {
+      "sha256": "426cfe1df9a5eb692cdf1ec236ddf2f03d4b0d41f98de06b78cac1859248c9ad",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_865_CONT.dat"
+    },
+    "author/coef_SeaWifs_865_DES.dat": {
+      "sha256": "86aefd74aa28c9f6473348c6252feda7edd31c09aac27d7dae718ac40cd0f64e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_SeaWifs_865_DES.dat"
+    },
+    "author/coef_VGT2_B0_CONT.dat": {
+      "sha256": "80fb30206e8ff5322a8c558c23b08430361be5446d2ec5b2280d24c9ca761b4d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_VGT2_B0_CONT.dat"
+    },
+    "author/coef_VGT2_B0_DES.dat": {
+      "sha256": "c5601c69fa5ba02cfc83f456758f97e837ed2efe04b2a6099ad758b3e9b8ac04",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_VGT2_B0_DES.dat"
+    },
+    "author/coef_VGT2_B2_CONT.dat": {
+      "sha256": "c9a9414328a8dfb2ce518d1b2e7d1a5459a1505d09c56ec8eb280ab33570900d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_VGT2_B2_CONT.dat"
+    },
+    "author/coef_VGT2_B2_DES.dat": {
+      "sha256": "620b60a9e51bde620428a94c490ed4a57d6da3d0669bafb3e17cff34ea1315cc",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_VGT2_B2_DES.dat"
+    },
+    "author/coef_VGT2_B3_CONT.dat": {
+      "sha256": "8aee46fb73fb6ddb43b62296b27b1e4f03ba0e40c7cf8db878fe9e791488f50e",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_VGT2_B3_CONT.dat"
+    },
+    "author/coef_VGT2_B3_DES.dat": {
+      "sha256": "2298609f93b6303804c2ba929d214239ca0c1b3b0c783069370452c420250ba2",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_VGT2_B3_DES.dat"
+    },
+    "author/coef_VGT2_MIR_CONT.dat": {
+      "sha256": "3f2a1715078ece4171c02e62e9b8ae08900bdd5b7b7250360f89862df338738d",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_VGT2_MIR_CONT.dat"
+    },
+    "author/coef_VGT2_MIR_DES.dat": {
+      "sha256": "4b8b47ee5136388a127747886445d651112cdf7539c7495a3f9ed4c18b4789c9",
+      "url": "https://raw.githubusercontent.com/olivierhagolle/SMAC/77bf73dd1f2a2b6a33a97b8997da469210f9ce3e/COEFS/coef_VGT2_MIR_DES.dat"
+    },
+    "sen2like/Coef_LANDSAT8_1370_1.dat": {
+      "sha256": "9e970dc50fa81e7def38b35613766d84ff1b142b4ffea322b6228b3296f81b7f",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_LANDSAT8_1370_1.dat"
+    },
+    "sen2like/Coef_LANDSAT8_1630_1.dat": {
+      "sha256": "f91d13b0c80f3e7a45715364a0f0a922add202b10733508ef1ed3062cc1a1416",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_LANDSAT8_1630_1.dat"
+    },
+    "sen2like/Coef_LANDSAT8_2250_1.dat": {
+      "sha256": "89e9df5d47f0552a920828daf23c9d382b5576244338bdf4f39ff5becd567a63",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_LANDSAT8_2250_1.dat"
+    },
+    "sen2like/Coef_LANDSAT8_440_1.dat": {
+      "sha256": "585f59ce1651781d9d728641c8da20443d959af6c9be051344718cf732f528ed",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_LANDSAT8_440_1.dat"
+    },
+    "sen2like/Coef_LANDSAT8_490_1.dat": {
+      "sha256": "6a199cc5a0e0d5be78d3c11a82d9c207949b6ec74aac4e960e320e7d6af1dfd9",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_LANDSAT8_490_1.dat"
+    },
+    "sen2like/Coef_LANDSAT8_560_1.dat": {
+      "sha256": "28a12f0dac32edae95a1aa584c6e94a5c43fa30bc694483c9940a8e33695742e",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_LANDSAT8_560_1.dat"
+    },
+    "sen2like/Coef_LANDSAT8_660_1.dat": {
+      "sha256": "51fdbb05f2e8166cfa1b43a42d414c415d733289fbb6db7b0bdd86d32a51b2f7",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_LANDSAT8_660_1.dat"
+    },
+    "sen2like/Coef_LANDSAT8_860_1.dat": {
+      "sha256": "215b27942fa23787107d0082179169830c54df68516f76a0c0f23d3fb9fad120",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_LANDSAT8_860_1.dat"
+    },
+    "sen2like/Coef_LANDSAT8_PAN_1.dat": {
+      "sha256": "9e004169c6cc44d772aee8009b302927e122904f7d00a7ab403c864ce82ada94",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_LANDSAT8_PAN_1.dat"
+    },
+    "sen2like/Coef_S2A_CONTINENTAL.dat": {
+      "sha256": "a6b9454908c065aa3c50373da648ad4e294a2435cdd76649b32139d14d172917",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_S2A_CONTINENTAL.dat"
+    },
+    "sen2like/Coef_S2B_CONTINENTAL.dat": {
+      "sha256": "6078047222bca33b28f5c6b566a2fc78746bcc1988621432a6a800677144c208",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_S2B_CONTINENTAL.dat"
+    },
+    "sen2like/Coef_S2C_CONTINENTAL.dat": {
+      "sha256": "cc0fa19bb043edaca35cec270ea6ded4bb5855145797bae22ea4bc5098f3221d",
+      "url": "https://raw.githubusercontent.com/senbox-org/sen2like/6dd3f0da82a7461b03a2914df56d305070e50d6d/sen2like/sen2like/atmcor/smac/COEFS/Coef_S2C_CONTINENTAL.dat"
+    }
+  }
+}

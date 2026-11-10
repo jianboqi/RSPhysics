@@ -1,0 +1,12 @@
+{
+  "tau-omega": {
+    "expected.json": "3a0cc15b4bf575318de2e23df48cbcbaf0c606743dcfd4a219d2ea95978d9e90",
+    "inputs.json": "af6bdfeee3f4b0669cb204a5f22e559632d518c1b242e6a76c4fb2b6f32c1a4f",
+    "upstream-provenance.json": "5089c3a6ad16d9a9310e48e78d175ad72b15f2a6edcf0c0fa29c2e3b186ac8c1"
+  },
+  "water-cloud": {
+    "expected.json": "8171b08785c56318ef170fc5f59179e25e219bb14da209a7bdc0817f21860ea0",
+    "inputs.json": "fdc5d2280ae56c0efdb4c3e89560e26d757ee1260209d9e3643fa4fa22535239",
+    "upstream-provenance.json": "8da72877c7a319fb4d7c19f625c109a8e811692a64580a26890d9f2431a46b28"
+  }
+}

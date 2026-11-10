@@ -1,0 +1,82 @@
+[model]
+id = "microwave.water-cloud"
+name = "WCM 水云模型"
+family = "water-cloud"
+category = "microwave"
+scientific_version = "Attema-Ulaby / V1=V2=VWC / linear power"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Independent single-channel VWC water-cloud forward parameterization, V1=V2=VWC. A and B depend on frequency, polarization, canopy and descriptor; illustrative defaults are not universal calibration. Bare-soil sigma0 is supplied in linear power; no soil moisture conversion, empirical C/D fit, soil scattering solver, double bounce, inversion or coupling. Sweep holds A, B and bare-soil sigma0 fixed with angle."
+[source]
+crate = "rsphysics-water-cloud"
+authors = ["RSPhysics contributors (independent published-equation implementation)"]
+references = ["https://doi.org/10.1029/RS013i002p00357", "https://www.cesbio.cnrs.fr/multitemp/wp-content/uploads/sites/11/2014/11/08_Take5_nov14_ElHajj_Baghdadi.pdf", "https://sense-community-sar-scattering-model.readthedocs.io/en/dev/_modules/sense/model.html"]
+license = "Apache-2.0"
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "water-cloud-published-equations-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "water-cloud-published-equations-v1"
+implementation_version = "0.1.0"
+backend = "python"
+[data.hashes]
+[input_semantics."/vegetation_water_content"]
+unit = "kg m^-2"
+axes = []
+description = "Canopy water mass per ground area; V1=V2=VWC in this parameterization."
+[input_semantics."/scattering_coefficient"]
+unit = "m^2 kg^-1"
+axes = []
+description = "A for the chosen channel and VWC descriptor; requires external calibration."
+[input_semantics."/attenuation_coefficient"]
+unit = "m^2 kg^-1"
+axes = []
+description = "B for the chosen channel and VWC descriptor; B*VWC is nadir optical depth."
+[input_semantics."/soil_backscatter"]
+unit = "1"
+axes = []
+description = "Bare-soil normalized radar cross section sigma0 in LINEAR POWER, never dB; supplied directly."
+[input_semantics."/observation_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Radar incidence angle from the surface normal."
+[output_semantics."/sigma0"]
+unit = "1"
+quantity = "radar_backscatter"
+axes = []
+description = "Total normalized radar cross section in linear power; may exceed one."
+[output_semantics."/vegetation_backscatter"]
+unit = "1"
+quantity = "radar_backscatter"
+axes = []
+description = "Canopy backscatter in linear power."
+[output_semantics."/attenuated_soil_backscatter"]
+unit = "1"
+quantity = "radar_backscatter"
+axes = []
+description = "Soil backscatter after two canopy passages, linear power."
+[output_semantics."/two_way_transmissivity"]
+unit = "1"
+quantity = "transmittance"
+axes = []
+description = "Two-way power transmissivity exp(-2*B*VWC/cos(theta))."
+[output_semantics."/sweep_zenith_deg"]
+unit = "deg"
+axes = ["zenith"]
+description = "81 zenith samples, 0..80 step1."
+[output_semantics."/sweep_total"]
+unit = "1"
+quantity = "radar_backscatter"
+axes = ["zenith"]
+description = "Total response at sweep angles; all other inputs held fixed, including soil response."

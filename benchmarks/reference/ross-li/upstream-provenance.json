@@ -1,0 +1,26 @@
+{
+  "repository": "https://github.com/arthurelmes/ambrals_forward",
+  "commit": "b43d9171ea9f6dc76854cac34037e2af7903d02e",
+  "reference_identity": "Original AMBRALS forward C routines in a public mirror; comments trace to ambmodels.c.reciprocal. Not asserted to be a NASA operational checkout.",
+  "original_download": "ftp://rsftp.eeos.umb.edu/data01/Website/brdf_forward.tar.gz",
+  "official_tools_page": "https://www.umb.edu/spectralmass/terra-aqua-modis/modis-user-tools/",
+  "original_download_status": "FTP/HTTP/HTTPS timed out at intake",
+  "license_status": "No explicit redistribution license found; original C stays in disposable test-only cache and is not distributed in packages.",
+  "files": {
+    "ambralsfor.c": {
+      "url": "https://raw.githubusercontent.com/arthurelmes/ambrals_forward/b43d9171ea9f6dc76854cac34037e2af7903d02e/ambralsfor.c",
+      "sha256": "96ee82999c66a7e7e64e9c6167ddb7b34e46ac62fcaad0844aab56462f155f28",
+      "bytes": 3773
+    },
+    "ambralsfor.h": {
+      "url": "https://raw.githubusercontent.com/arthurelmes/ambrals_forward/b43d9171ea9f6dc76854cac34037e2af7903d02e/ambralsfor.h",
+      "sha256": "f562ddb308a82c748f497d81f31c10696143b5a18deb91cbf0fbd22fad0a0e92",
+      "bytes": 536
+    },
+    "readme.txt": {
+      "url": "https://raw.githubusercontent.com/arthurelmes/ambrals_forward/b43d9171ea9f6dc76854cac34037e2af7903d02e/readme.txt",
+      "sha256": "d7c2507264c7f2f8e80b02568a948973d7139dd8fcee9d7e5398b6372ccfeed8",
+      "bytes": 1818
+    }
+  }
+}

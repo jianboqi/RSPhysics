@@ -1,0 +1,9 @@
+{
+  "backend": "installed Python wheel / shared Rust",
+  "cases": 839,
+  "samples": 6754,
+  "max_absolute": 1.7763568394002505e-15,
+  "max_normalized": 3.5265058285666124e-05,
+  "coefficient_sets": 367,
+  "pack_sha256": "6902f7518fbe12790b5f39bde35b6abd62ed5a939a3f960c5c3c43962e43d51b"
+}

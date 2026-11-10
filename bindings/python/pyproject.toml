@@ -1,0 +1,40 @@
+[build-system]
+requires = ["maturin>=1.9,<2"]
+build-backend = "maturin"
+
+[project]
+name = "rsphysics"
+version = "0.1.0"
+description = "A scientific computing library for remote sensing physics"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26"]
+keywords = ["remote-sensing", "physics", "radiative-transfer", "scientific-computing", "earth-observation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Programming Language :: Rust",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+license = "Apache-2.0 AND MIT AND GPL-3.0-only AND LicenseRef-User-Supplied-Research-Code"
+license-files = ["python/rsphysics/APACHE-2.0.txt", "python/rsphysics/THIRD_PARTY_NOTICES.md", "python/rsphysics/SMAC_GPL-3.0.txt", "python/rsphysics/NOTICE", "python/rsphysics/RIGHTS-STATEMENT.md", "python/rsphysics/SUPPLIED_MODELS_ORIGIN.md"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.urls]
+Homepage = "https://github.com/jianboqi/RSPhysics"
+Documentation = "https://github.com/jianboqi/RSPhysics/tree/main/docs"
+Repository = "https://github.com/jianboqi/RSPhysics"
+Issues = "https://github.com/jianboqi/RSPhysics/issues"
+
+[tool.maturin]
+python-source = "python"
+module-name = "rsphysics._native"
+features = ["extension-module"]

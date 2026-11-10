@@ -1,0 +1,38 @@
+{
+  "repository": "https://github.com/jbferet/prospect",
+  "tag": "v1.7.0",
+  "commit": "4649d5006ddf6bce609951765a88ba2498fcd8ab",
+  "license_declaration": "MIT (DESCRIPTION at the pinned commit)",
+  "files": {
+    "DESCRIPTION": {
+      "url": "https://raw.githubusercontent.com/jbferet/prospect/4649d5006ddf6bce609951765a88ba2498fcd8ab/DESCRIPTION",
+      "sha256": "9c39220f6e8ca0b754b0cdfddd217085b52ee8de6dbfc58211b442fb64a9abde",
+      "bytes": 1228
+    },
+    "R/Lib_PROSPECT.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prospect/4649d5006ddf6bce609951765a88ba2498fcd8ab/R/Lib_PROSPECT.R",
+      "sha256": "0a7b1b031574a56d7708f4648825318cf5b513828caae89b87ff9681875a8511",
+      "bytes": 19242
+    },
+    "data-raw/dataSpec_PRO.txt": {
+      "url": "https://raw.githubusercontent.com/jbferet/prospect/4649d5006ddf6bce609951765a88ba2498fcd8ab/data-raw/dataSpec_PRO.txt",
+      "sha256": "cb2da8cef652ef90e666aef302689936d4ddf817c7908484a3fd06e1467fd3a5",
+      "bytes": 226390
+    },
+    "data-raw/create_sysdata.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prospect/4649d5006ddf6bce609951765a88ba2498fcd8ab/data-raw/create_sysdata.R",
+      "sha256": "0cea12f005e163b59b39b348a8ddcdcbc4c3160ab0f1595a5c4f41c46a631600",
+      "bytes": 2126
+    },
+    "R/SpecPROSPECT_FullRange-data.R": {
+      "url": "https://raw.githubusercontent.com/jbferet/prospect/4649d5006ddf6bce609951765a88ba2498fcd8ab/R/SpecPROSPECT_FullRange-data.R",
+      "sha256": "66b0b9b1b6218a04b9188573aafc0f29dd27afbb03bcff27b5cb1d793c98936f",
+      "bytes": 1595
+    },
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/jbferet/prospect/4649d5006ddf6bce609951765a88ba2498fcd8ab/README.md",
+      "sha256": "aded35489559833420e9e2dec8ae1cd1d187fe756b4bff93768505f5768fdbf8",
+      "bytes": 2757
+    }
+  }
+}

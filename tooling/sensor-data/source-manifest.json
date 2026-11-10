@@ -1,0 +1,345 @@
+[
+  {
+    "id": "sentinel-2a.msi",
+    "name": "Sentinel-2A MSI",
+    "version": "5.0",
+    "parser": "s2",
+    "band_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "B8",
+      "B8A",
+      "B9",
+      "B10",
+      "B11",
+      "B12"
+    ],
+    "scope": "Official instrument band-average SRF v5; 13 bands; not detector-specific. ESA SentiWiki restricts redistribution, so obtain/import into local cache; not bundled.",
+    "distribution": "local-cache",
+    "source": {
+      "url": "https://sentiwiki.copernicus.eu/__attachments/a_ad595cc9fa0018a4e9eb28e1e234124a751149b5933b0b8b1f6b80612eaab586/sentinel-2-spectral-response-functions-v5.xlsx?cb=0735bcc384fde7424ba8d58a19c4a9dd",
+      "sha256": "42be3ebd8bfcbde11c37caeb2e2fdda65fefa8d2b6f8329559b7806d02cdc9e2",
+      "bytes": 1330493,
+      "filename": "sentinel-2-srf-v5.xlsx",
+      "snapshot_date": "2026-11-09",
+      "agency": "ESA / European Union, Copernicus",
+      "landing_page": "https://sentiwiki.copernicus.eu/web/s2-documents"
+    },
+    "platform_code": "S2A"
+  },
+  {
+    "id": "sentinel-2b.msi",
+    "name": "Sentinel-2B MSI",
+    "version": "5.0",
+    "parser": "s2",
+    "band_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "B8",
+      "B8A",
+      "B9",
+      "B10",
+      "B11",
+      "B12"
+    ],
+    "scope": "Official instrument band-average SRF v5; 13 bands; not detector-specific. ESA SentiWiki restricts redistribution, so obtain/import into local cache; not bundled.",
+    "distribution": "local-cache",
+    "source": {
+      "url": "https://sentiwiki.copernicus.eu/__attachments/a_ad595cc9fa0018a4e9eb28e1e234124a751149b5933b0b8b1f6b80612eaab586/sentinel-2-spectral-response-functions-v5.xlsx?cb=0735bcc384fde7424ba8d58a19c4a9dd",
+      "sha256": "42be3ebd8bfcbde11c37caeb2e2fdda65fefa8d2b6f8329559b7806d02cdc9e2",
+      "bytes": 1330493,
+      "filename": "sentinel-2-srf-v5.xlsx",
+      "snapshot_date": "2026-11-09",
+      "agency": "ESA / European Union, Copernicus",
+      "landing_page": "https://sentiwiki.copernicus.eu/web/s2-documents"
+    },
+    "platform_code": "S2B"
+  },
+  {
+    "id": "sentinel-2c.msi",
+    "name": "Sentinel-2C MSI",
+    "version": "5.0",
+    "parser": "s2",
+    "band_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "B8",
+      "B8A",
+      "B9",
+      "B10",
+      "B11",
+      "B12"
+    ],
+    "scope": "Official instrument band-average SRF v5; 13 bands; not detector-specific. ESA SentiWiki restricts redistribution, so obtain/import into local cache; not bundled.",
+    "distribution": "local-cache",
+    "source": {
+      "url": "https://sentiwiki.copernicus.eu/__attachments/a_ad595cc9fa0018a4e9eb28e1e234124a751149b5933b0b8b1f6b80612eaab586/sentinel-2-spectral-response-functions-v5.xlsx?cb=0735bcc384fde7424ba8d58a19c4a9dd",
+      "sha256": "42be3ebd8bfcbde11c37caeb2e2fdda65fefa8d2b6f8329559b7806d02cdc9e2",
+      "bytes": 1330493,
+      "filename": "sentinel-2-srf-v5.xlsx",
+      "snapshot_date": "2026-11-09",
+      "agency": "ESA / European Union, Copernicus",
+      "landing_page": "https://sentiwiki.copernicus.eu/web/s2-documents"
+    },
+    "platform_code": "S2C"
+  },
+  {
+    "id": "landsat-4.tm",
+    "name": "Landsat 4 TM",
+    "version": "USGS snapshot 2026-11-09",
+    "parser": "landsat",
+    "band_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B7"
+    ],
+    "scope": "USGS tabulated reflective bands only; not thermal. Instrument band-average where supplied; source standard deviations are not used as response.",
+    "distribution": "bundled",
+    "source": {
+      "url": "https://landsat.usgs.gov/landsat/spectral_viewer/bands/L4_TM_RSR.xlsx",
+      "sha256": "db3079622f1a7702181a16f0f0a6c7bf02a7db292c81d08ff495419fce9a8a38",
+      "bytes": 82807,
+      "filename": "L4_TM_RSR.xlsx",
+      "snapshot_date": "2026-11-09",
+      "agency": "USGS",
+      "landing_page": "https://landsat.usgs.gov/spectral-characteristics-viewer"
+    }
+  },
+  {
+    "id": "landsat-5.tm",
+    "name": "Landsat 5 TM",
+    "version": "USGS snapshot 2026-11-09",
+    "parser": "landsat",
+    "band_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B7"
+    ],
+    "scope": "USGS tabulated reflective bands only; not thermal. Instrument band-average where supplied; source standard deviations are not used as response.",
+    "distribution": "bundled",
+    "source": {
+      "url": "https://landsat.usgs.gov/landsat/spectral_viewer/bands/L5_TM_RSR.xlsx",
+      "sha256": "1d7e0bd16bf5723acee1958c0e3ae852b6452298dabfd049865d227fb34bb57c",
+      "bytes": 82152,
+      "filename": "L5_TM_RSR.xlsx",
+      "snapshot_date": "2026-11-09",
+      "agency": "USGS",
+      "landing_page": "https://landsat.usgs.gov/spectral-characteristics-viewer"
+    }
+  },
+  {
+    "id": "landsat-7.etm-plus",
+    "name": "Landsat 7 ETM-PLUS",
+    "version": "USGS snapshot 2026-11-09",
+    "parser": "landsat",
+    "band_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B7",
+      "B8"
+    ],
+    "scope": "USGS tabulated reflective bands only; not thermal. Instrument band-average where supplied; source standard deviations are not used as response.",
+    "distribution": "bundled",
+    "source": {
+      "url": "https://landsat.usgs.gov/landsat/spectral_viewer/bands/L7_ETM_RSR.xlsx",
+      "sha256": "b075f8ff6ff8fb894d45c0a2979486a77878e453e7788dc671457d3f9bc0ceee",
+      "bytes": 88479,
+      "filename": "L7_ETM_RSR.xlsx",
+      "snapshot_date": "2026-11-09",
+      "agency": "USGS",
+      "landing_page": "https://landsat.usgs.gov/spectral-characteristics-viewer"
+    }
+  },
+  {
+    "id": "landsat-8.oli",
+    "name": "Landsat 8 OLI",
+    "version": "USGS snapshot 2026-11-09",
+    "parser": "landsat",
+    "band_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "B8",
+      "B9"
+    ],
+    "scope": "USGS tabulated reflective bands only; not thermal. Instrument band-average where supplied; source standard deviations are not used as response.",
+    "distribution": "bundled",
+    "source": {
+      "url": "https://landsat.usgs.gov/landsat/spectral_viewer/bands/L8_OLI_RSR.xlsx",
+      "sha256": "6b8bb8bf0c6f1a3cef56eb497096283f6cd66f1af163989eb03c59aa6588cfe0",
+      "bytes": 145567,
+      "filename": "L8_OLI_RSR.xlsx",
+      "snapshot_date": "2026-11-09",
+      "agency": "USGS",
+      "landing_page": "https://landsat.usgs.gov/spectral-characteristics-viewer"
+    }
+  },
+  {
+    "id": "landsat-9.oli-2",
+    "name": "Landsat 9 OLI-2",
+    "version": "USGS snapshot 2026-11-09",
+    "parser": "landsat",
+    "band_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6",
+      "B7",
+      "B8",
+      "B9"
+    ],
+    "scope": "USGS tabulated reflective bands only; not thermal. Instrument band-average where supplied; source standard deviations are not used as response.",
+    "distribution": "bundled",
+    "source": {
+      "url": "https://landsat.usgs.gov/landsat/spectral_viewer/bands/L9_OLI2_RSR.xlsx",
+      "sha256": "31b6c3c618716419d2c2a650b77ae8c4604abde36af84c7bd38031e58c174812",
+      "bytes": 155806,
+      "filename": "L9_OLI2_RSR.xlsx",
+      "snapshot_date": "2026-11-09",
+      "agency": "USGS",
+      "landing_page": "https://landsat.usgs.gov/spectral-characteristics-viewer"
+    }
+  },
+  {
+    "id": "landsat-8.tirs",
+    "name": "Landsat 8 TIRS",
+    "version": "USGS snapshot 2026-11-09",
+    "parser": "tirs8",
+    "band_ids": [
+      "B10",
+      "B11"
+    ],
+    "scope": "Thermal band-average response, nm converted from source um. Optical PROSPECT/PROSAIL spectra do not cover these bands.",
+    "distribution": "bundled",
+    "source": {
+      "url": "https://landsat.usgs.gov/landsat/spectral_viewer/bands/L8_TIRS_RSR.xlsx",
+      "sha256": "0c89110a5a3bf6583cd85a2836156cbf6a9f04753be83f3e5202f3afbdcfa64e",
+      "bytes": 30530,
+      "filename": "L8_TIRS_RSR.xlsx",
+      "snapshot_date": "2026-11-09",
+      "agency": "USGS",
+      "landing_page": "https://landsat.usgs.gov/spectral-characteristics-viewer"
+    }
+  },
+  {
+    "id": "landsat-9.tirs-2",
+    "name": "Landsat 9 TIRS-2",
+    "version": "USGS snapshot 2026-11-09",
+    "parser": "tirs9",
+    "band_ids": [
+      "B10",
+      "B11"
+    ],
+    "scope": "Thermal band-average response, nm converted from source um. Optical PROSPECT/PROSAIL spectra do not cover these bands.",
+    "distribution": "bundled",
+    "source": {
+      "url": "https://landsat.usgs.gov/landsat/spectral_viewer/bands/L9_TIRS2_RSR.xlsx",
+      "sha256": "72af7625caf52688db077a5014ea93d98fa9eaeb68b65059bf1d7316d20c1bb1",
+      "bytes": 34274,
+      "filename": "L9_TIRS2_RSR.xlsx",
+      "snapshot_date": "2026-11-09",
+      "agency": "USGS",
+      "landing_page": "https://landsat.usgs.gov/spectral-characteristics-viewer"
+    }
+  },
+  {
+    "id": "terra.modis",
+    "name": "Terra MODIS (OBPG)",
+    "version": "NASA OBPG snapshot 2026-11-09",
+    "parser": "obpg",
+    "band_ids": [
+      "RSR_412",
+      "RSR_443",
+      "RSR_469",
+      "RSR_488",
+      "RSR_531",
+      "RSR_551",
+      "RSR_555",
+      "RSR_645",
+      "RSR_667",
+      "RSR_678",
+      "RSR_748",
+      "RSR_859",
+      "RSR_869",
+      "RSR_1240",
+      "RSR_1640",
+      "RSR_2130"
+    ],
+    "scope": "16 reflective band-average responses as used by NASA OBPG. Labels are provider wavelengths, not MODIS band numbers. This is not all 36 MODIS bands or detector-specific MCST data. The provider tabulation includes weak out-of-band tails; full coverage is required unless partial integration is explicit.",
+    "distribution": "bundled",
+    "source": {
+      "url": "https://oceandata.sci.gsfc.nasa.gov/rsr_tables/images/rsr/hmodist_rsrs.txt",
+      "sha256": "a582e4e6cb5ea41cef749bd104a19181b982f08e158a6f8167d5812858b3d446",
+      "bytes": 393564,
+      "filename": "hmodist_rsrs.txt",
+      "snapshot_date": "2026-11-09",
+      "agency": "NASA OBPG",
+      "landing_page": "https://oceandata.sci.gsfc.nasa.gov/rsr_tables/"
+    }
+  },
+  {
+    "id": "aqua.modis",
+    "name": "Aqua MODIS (OBPG)",
+    "version": "NASA OBPG snapshot 2026-11-09",
+    "parser": "obpg",
+    "band_ids": [
+      "RSR_412",
+      "RSR_443",
+      "RSR_469",
+      "RSR_488",
+      "RSR_531",
+      "RSR_551",
+      "RSR_555",
+      "RSR_645",
+      "RSR_667",
+      "RSR_678",
+      "RSR_748",
+      "RSR_859",
+      "RSR_869",
+      "RSR_1240",
+      "RSR_1640",
+      "RSR_2130"
+    ],
+    "scope": "16 reflective band-average responses as used by NASA OBPG. Labels are provider wavelengths, not MODIS band numbers. This is not all 36 MODIS bands or detector-specific MCST data. The provider tabulation includes weak out-of-band tails; full coverage is required unless partial integration is explicit.",
+    "distribution": "bundled",
+    "source": {
+      "url": "https://oceandata.sci.gsfc.nasa.gov/rsr_tables/images/rsr/hmodisa_rsrs.txt",
+      "sha256": "257d4dc37f098a3302931e3bdb7db79a020ed079859d310a4605d2cc8a88f309",
+      "bytes": 393564,
+      "filename": "hmodisa_rsrs.txt",
+      "snapshot_date": "2026-11-09",
+      "agency": "NASA OBPG",
+      "landing_page": "https://oceandata.sci.gsfc.nasa.gov/rsr_tables/"
+    }
+  }
+]

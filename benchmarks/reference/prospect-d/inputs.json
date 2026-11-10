@@ -1,0 +1,418 @@
+[
+  {
+    "name": "default",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 40.0,
+      "carotenoids": 8.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.01,
+      "dry_matter": 0.008,
+      "incidence_angle_deg": 40.0
+    }
+  },
+  {
+    "name": "single-layer",
+    "parameters": {
+      "n": 1.0,
+      "chlorophyll": 40.0,
+      "carotenoids": 8.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.01,
+      "dry_matter": 0.008,
+      "incidence_angle_deg": 40.0
+    }
+  },
+  {
+    "name": "thick-leaf",
+    "parameters": {
+      "n": 5.0,
+      "chlorophyll": 40.0,
+      "carotenoids": 8.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.01,
+      "dry_matter": 0.008,
+      "incidence_angle_deg": 40.0
+    }
+  },
+  {
+    "name": "senescent",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 3.0,
+      "carotenoids": 1.5,
+      "anthocyanins": 4.0,
+      "brown_pigments": 1.0,
+      "water": 0.003,
+      "dry_matter": 0.008,
+      "incidence_angle_deg": 40.0
+    }
+  },
+  {
+    "name": "wet-leaf",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 40.0,
+      "carotenoids": 8.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.05,
+      "dry_matter": 0.02,
+      "incidence_angle_deg": 40.0
+    }
+  },
+  {
+    "name": "dry-leaf",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 40.0,
+      "carotenoids": 8.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.0,
+      "dry_matter": 0.012,
+      "incidence_angle_deg": 40.0
+    }
+  },
+  {
+    "name": "pigment-free",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 0.0,
+      "carotenoids": 0.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.01,
+      "dry_matter": 0.008,
+      "incidence_angle_deg": 40.0
+    }
+  },
+  {
+    "name": "zero-absorption",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 0.0,
+      "carotenoids": 0.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.0,
+      "dry_matter": 0.0,
+      "incidence_angle_deg": 40.0
+    }
+  },
+  {
+    "name": "near-zero-absorption",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 1e-07,
+      "carotenoids": 1e-08,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 1e-10,
+      "dry_matter": 1e-10,
+      "incidence_angle_deg": 40.0
+    }
+  },
+  {
+    "name": "grazing-cone",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 40.0,
+      "carotenoids": 8.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.01,
+      "dry_matter": 0.008,
+      "incidence_angle_deg": 90.0
+    }
+  },
+  {
+    "name": "narrow-cone",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 40.0,
+      "carotenoids": 8.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.01,
+      "dry_matter": 0.008,
+      "incidence_angle_deg": 5.0
+    }
+  },
+  {
+    "name": "minimum-cone",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 40.0,
+      "carotenoids": 8.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.01,
+      "dry_matter": 0.008,
+      "incidence_angle_deg": 1.0
+    }
+  },
+  {
+    "name": "intermediate-cone",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 40.0,
+      "carotenoids": 8.0,
+      "anthocyanins": 0.0,
+      "brown_pigments": 0.0,
+      "water": 0.01,
+      "dry_matter": 0.008,
+      "incidence_angle_deg": 60.0
+    }
+  },
+  {
+    "name": "high-absorption",
+    "parameters": {
+      "n": 1.5,
+      "chlorophyll": 200.0,
+      "carotenoids": 100.0,
+      "anthocyanins": 100.0,
+      "brown_pigments": 5.0,
+      "water": 0.1,
+      "dry_matter": 0.05,
+      "incidence_angle_deg": 40.0
+    }
+  },
+  {
+    "name": "sample-00",
+    "parameters": {
+      "n": 1.5510146703036125,
+      "chlorophyll": 48.9810059146196,
+      "carotenoids": 18.572982282497264,
+      "anthocyanins": 8.48310982754197,
+      "brown_pigments": 0.18235526239993205,
+      "water": 0.04353056348592581,
+      "dry_matter": 0.021934303422828767,
+      "incidence_angle_deg": 89.46945469875511
+    }
+  },
+  {
+    "name": "sample-01",
+    "parameters": {
+      "n": 1.615295607442805,
+      "chlorophyll": 21.380906084746066,
+      "carotenoids": 29.266248830702303,
+      "anthocyanins": 3.226672756444471,
+      "brown_pigments": 0.6515549342871061,
+      "water": 0.04211371353146073,
+      "dry_matter": 0.00763227617360504,
+      "incidence_angle_deg": 83.152634529194
+    }
+  },
+  {
+    "name": "sample-02",
+    "parameters": {
+      "n": 2.111704388791634,
+      "chlorophyll": 39.998817605928096,
+      "carotenoids": 17.36844344830498,
+      "anthocyanins": 8.383967259623102,
+      "brown_pigments": 0.7005658803530923,
+      "water": 0.04856218612218162,
+      "dry_matter": 0.004772509957116047,
+      "incidence_angle_deg": 64.26728570108807
+    }
+  },
+  {
+    "name": "sample-03",
+    "parameters": {
+      "n": 1.4768234394821977,
+      "chlorophyll": 84.55469716649392,
+      "carotenoids": 3.9909632422561914,
+      "anthocyanins": 6.3293853933520605,
+      "brown_pigments": 0.633294459268695,
+      "water": 0.03833716512692495,
+      "dry_matter": 0.011580113210428315,
+      "incidence_angle_deg": 51.94506472744264
+    }
+  },
+  {
+    "name": "sample-04",
+    "parameters": {
+      "n": 1.5640586390888096,
+      "chlorophyll": 95.6541580675421,
+      "carotenoids": 2.396530298304904,
+      "anthocyanins": 2.8955844034792366,
+      "brown_pigments": 0.6124594206051854,
+      "water": 0.03437001788156,
+      "dry_matter": 0.001574579212892385,
+      "incidence_angle_deg": 26.89418085540269
+    }
+  },
+  {
+    "name": "sample-05",
+    "parameters": {
+      "n": 3.462971247062141,
+      "chlorophyll": 87.26254295433925,
+      "carotenoids": 28.625150149791946,
+      "anthocyanins": 12.3132695483263,
+      "brown_pigments": 0.6557562910976008,
+      "water": 0.034217841640629146,
+      "dry_matter": 0.01732657788763253,
+      "incidence_angle_deg": 67.26729194366308
+    }
+  },
+  {
+    "name": "sample-06",
+    "parameters": {
+      "n": 3.2734869571647587,
+      "chlorophyll": 49.163948589308035,
+      "carotenoids": 27.258299594978798,
+      "anthocyanins": 8.990685120760048,
+      "brown_pigments": 0.18423513400420277,
+      "water": 0.01247840755012706,
+      "dry_matter": 0.020983371829453385,
+      "incidence_angle_deg": 8.848859830191117
+    }
+  },
+  {
+    "name": "sample-07",
+    "parameters": {
+      "n": 3.880605043552424,
+      "chlorophyll": 11.694616116381894,
+      "carotenoids": 12.088304563561508,
+      "anthocyanins": 1.3583250988003859,
+      "brown_pigments": 0.11033933387386263,
+      "water": 0.009801468150481192,
+      "dry_matter": 0.007512774371481148,
+      "incidence_angle_deg": 71.77752280785813
+    }
+  },
+  {
+    "name": "sample-08",
+    "parameters": {
+      "n": 2.445573897994107,
+      "chlorophyll": 35.95941638227417,
+      "carotenoids": 18.051648756750026,
+      "anthocyanins": 13.122740866919411,
+      "brown_pigments": 0.7629675106787208,
+      "water": 0.043425592940192166,
+      "dry_matter": 0.006370481927498775,
+      "incidence_angle_deg": 27.70897793909054
+    }
+  },
+  {
+    "name": "sample-09",
+    "parameters": {
+      "n": 2.504639086276784,
+      "chlorophyll": 60.60859136060439,
+      "carotenoids": 28.666696124737168,
+      "anthocyanins": 3.2443375568960153,
+      "brown_pigments": 0.8498100554181705,
+      "water": 0.016722294833423603,
+      "dry_matter": 0.0009426942188758537,
+      "incidence_angle_deg": 63.19148199034314
+    }
+  },
+  {
+    "name": "sample-10",
+    "parameters": {
+      "n": 3.2347553684451698,
+      "chlorophyll": 80.48805100136143,
+      "carotenoids": 8.6589059123472,
+      "anthocyanins": 7.38342601116138,
+      "brown_pigments": 0.6483098405683748,
+      "water": 0.01872301622943851,
+      "dry_matter": 0.018200435434009715,
+      "incidence_angle_deg": 76.93213097755849
+    }
+  },
+  {
+    "name": "sample-11",
+    "parameters": {
+      "n": 1.2499504589713923,
+      "chlorophyll": 35.560325104836586,
+      "carotenoids": 26.43678654860372,
+      "anthocyanins": 17.93865299523009,
+      "brown_pigments": 0.2040934376159872,
+      "water": 0.0027921280431101227,
+      "dry_matter": 0.011905382091190601,
+      "incidence_angle_deg": 87.05847031674068
+    }
+  },
+  {
+    "name": "sample-12",
+    "parameters": {
+      "n": 1.055491360099287,
+      "chlorophyll": 85.55506556333495,
+      "carotenoids": 2.0797564724415785,
+      "anthocyanins": 11.06998180545486,
+      "brown_pigments": 0.9388790308724305,
+      "water": 0.039412185675527116,
+      "dry_matter": 0.02358721735446231,
+      "incidence_angle_deg": 53.60224315870948
+    }
+  },
+  {
+    "name": "sample-13",
+    "parameters": {
+      "n": 1.4934371617366073,
+      "chlorophyll": 93.94020733776412,
+      "carotenoids": 11.611890889671574,
+      "anthocyanins": 19.194115930284983,
+      "brown_pigments": 0.35022748498623135,
+      "water": 0.01861594702482148,
+      "dry_matter": 0.017111839011096135,
+      "incidence_angle_deg": 89.3290411858703
+    }
+  },
+  {
+    "name": "sample-14",
+    "parameters": {
+      "n": 1.7121081556618138,
+      "chlorophyll": 22.37946429095764,
+      "carotenoids": 16.509529531395597,
+      "anthocyanins": 4.845459158350418,
+      "brown_pigments": 0.6299541722888787,
+      "water": 0.012574399652841257,
+      "dry_matter": 0.012368311813915758,
+      "incidence_angle_deg": 69.03473826667134
+    }
+  },
+  {
+    "name": "sample-15",
+    "parameters": {
+      "n": 3.9592679928554166,
+      "chlorophyll": 50.846924922423234,
+      "carotenoids": 16.558286546120744,
+      "anthocyanins": 8.929887864787238,
+      "brown_pigments": 0.6127034931866078,
+      "water": 0.01605495371436953,
+      "dry_matter": 0.01374303378603606,
+      "incidence_angle_deg": 57.59996931398381
+    }
+  },
+  {
+    "name": "sample-16",
+    "parameters": {
+      "n": 3.381821895692507,
+      "chlorophyll": 85.37212274644233,
+      "carotenoids": 18.92401365458955,
+      "anthocyanins": 14.07285712228234,
+      "brown_pigments": 0.8713118530068172,
+      "water": 0.004785564672189541,
+      "dry_matter": 0.015933091719393718,
+      "incidence_angle_deg": 61.734143762218736
+    }
+  },
+  {
+    "name": "sample-17",
+    "parameters": {
+      "n": 1.9550942393497812,
+      "chlorophyll": 20.97276377619427,
+      "carotenoids": 27.731511422171174,
+      "anthocyanins": 2.5432254743907956,
+      "brown_pigments": 0.8647884913539413,
+      "water": 0.028877114632029785,
+      "dry_matter": 0.010035796915882906,
+      "incidence_angle_deg": 62.965717566569225
+    }
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "url": "https://smap.jpl.nasa.gov/system/internal_resources/details/original/316_L2_SM_P_ATBD_v7_Sep2015.pdf",
+  "sha256": "56f7a568e6efd0e92b7e3e939ea1fb4e31bbaa8dcc4c9cfeda4901e3a78ec207",
+  "bytes": 6373294,
+  "reference_kind": "official published equations, not operational code",
+  "commit": null,
+  "license_note": "Test-only cache; not redistributed or linked. SenSE documentation declares GPL; scientific Rust solver independently implements published equations."
+}

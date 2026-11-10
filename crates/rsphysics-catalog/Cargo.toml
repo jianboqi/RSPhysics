@@ -1,0 +1,21 @@
+[package]
+name = "rsphysics-catalog"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dependencies]
+rsphysics-lmeb.workspace = true
+rsphysics-gort-gpp.workspace = true
+rsphysics-model-api.workspace = true
+rsphysics-prospect-d.workspace = true
+rsphysics-prosail-d.workspace = true
+rsphysics-tau-omega.workspace = true
+rsphysics-water-cloud.workspace = true
+rsphysics-ross-li.workspace = true
+rsphysics-smac.workspace = true
+
+[lints]
+workspace = true
