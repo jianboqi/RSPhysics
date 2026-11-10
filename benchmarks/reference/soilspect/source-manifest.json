@@ -1,0 +1,10 @@
+{
+  "fixture_sha256": "05c88c08f6278ad9766a654a2fbbe7a0e2929f247ba18e05ea5b8b64979dfa67",
+  "reference": "Independent published-equation evaluation, SciPy96x192 quadrature",
+  "generator_sha256": "bed67a3ca2cd091ebb6b9dfb2d6e54d09989bfa6a18ec544e0cca1b255690386",
+  "r_equation_reference_sha256": "7d5acfcfde21e5ef4a154fd4a16e73749de9b3e9faf68dc99504d7358231ebf5",
+  "evidence_sha256": {
+    "generate.py": "bed67a3ca2cd091ebb6b9dfb2d6e54d09989bfa6a18ec544e0cca1b255690386",
+    "reference.json": "05c88c08f6278ad9766a654a2fbbe7a0e2929f247ba18e05ea5b8b64979dfa67"
+  }
+}

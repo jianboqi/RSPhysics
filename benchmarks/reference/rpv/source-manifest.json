@@ -1,0 +1,12 @@
+{
+  "fixture_sha256": "e46e20b6eb7bf7f9310276b3f7658ca9e907b52d65036399a8a629a0a00f8793",
+  "reference": "JRC RAMI original output table (six decimals)",
+  "original_archive_sha256": "afe961a90d28c13c271badf5f24dc5c6d7722c709256f3e27beece51a41c6824",
+  "evidence_sha256": {
+    "generate_precision.py": "91a00275b0c218609448c1d0e461edbba2717f110e8cb83b2627e45a62d65eeb",
+    "precision.json": "84fcfac1c10b6054cbbe5bc521a51f9b0578b08241200485d57dd1d53503eff6",
+    "reference.json": "e46e20b6eb7bf7f9310276b3f7658ca9e907b52d65036399a8a629a0a00f8793"
+  },
+  "original_real_precision": "JRC Fortran REAL variables (single precision) and six-decimal output; maximum observed double-precision difference1.0272e-6. Original benchmark tolerance1.1e-6; independent80-digit reference tolerance2e-12.",
+  "original_fortran_sha256": "4f08c5ce3bd4f93ba234144599c52882a20a6b4afac9e95f72ac0ea042d3f0b7"
+}

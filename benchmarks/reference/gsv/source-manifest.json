@@ -1,0 +1,13 @@
+{
+  "source": "LESS pyLessSDK GSVSoil.py supplied by the maintainer",
+  "reference": "https://doi.org/10.1016/j.jag.2019.101932",
+  "sha256": {
+    "GSVSoil.py": "3f4af34a1676c560dfc562c6e13ae248673895e75050eb42d224f530e384be67",
+    "data/DryVec.txt": "944a696f45a6b02875f96ec28adedbed1c5cfdad1df82b288f03b4c5f5a50aac",
+    "data/SMVec.txt": "22958083eff17eab35416bfee19b55e63904549912efeb411f71e6bd9957d65f"
+  },
+  "fixture_sha256": "929bc85aaae6d84da98888b0768849f90884a65bcfbc3fd77388e4a39f0d68bb",
+  "evidence_sha256": {
+    "reference.json": "929bc85aaae6d84da98888b0768849f90884a65bcfbc3fd77388e4a39f0d68bb"
+  }
+}

@@ -1,0 +1,78 @@
+[model]
+id="soil.gsv"
+name="GSV"
+family="GSV"
+category="soil"
+scientific_version="Jiang–Fang 2019 / GSV1 and GSV3"
+implementation_version="0.1.0"
+api_version="0.1"
+status="reference-validated"
+limitations="Empirical spectral vector model, no directionality or explicit soil-water transport. Interpolation within400..2500nm only; csm is not volumetric moisture. Coefficients do not guarantee physical reflectance; out-of-range values are diagnosed and retained."
+[source]
+crate="rsphysics-gsv"
+authors=["RSPhysics contributors"]
+references=["https://doi.org/10.1016/j.jag.2019.101932"]
+license="Apache-2.0 AND GPL-3.0-only"
+[capabilities]
+native=true
+python=true
+wasm=false
+batch=true
+precision="f64"
+[[validation.evidence]]
+kind="implementation"
+suite="gsv-less-reference-v1"
+implementation_version="0.1.0"
+backend="native"
+[[validation.evidence]]
+kind="implementation"
+suite="gsv-less-reference-v1"
+implementation_version="0.1.0"
+backend="python"
+[data.hashes]
+dry_vectors="sha256:944a696f45a6b02875f96ec28adedbed1c5cfdad1df82b288f03b4c5f5a50aac"
+moisture_vector="sha256:22958083eff17eab35416bfee19b55e63904549912efeb411f71e6bd9957d65f"
+[input_semantics."/variant"]
+unit="1"
+axes=[]
+description="GSV1 uses c1 and csm; GSV3 uses all four coefficients. c2/c3 have no effect in GSV1."
+[input_semantics."/c1"]
+unit="1"
+axes=[]
+description="First dry vector coefficient, controls brightness empirically."
+[input_semantics."/c2"]
+unit="1"
+axes=[]
+description="Second dry vector shape coefficient, used in GSV3 only."
+[input_semantics."/c3"]
+unit="1"
+axes=[]
+description="Third dry vector shape coefficient, used in GSV3 only."
+[input_semantics."/csm"]
+unit="1"
+axes=[]
+description="Moisture vector coefficient [-0.6,0]; zero dry, not a volumetric moisture fraction."
+[input_semantics."/wavelengths_nm"]
+unit="nm"
+axes=["requested_wavelength"]
+description="Empty means 211 native wavelengths 400..2500 nm, step10; explicit arbitrary ordered requests stay in [400,2500]."
+[output_semantics."/dry_reflectance"]
+unit="1"
+axes=["wavelength"]
+description="Dry basis linear combination, algebraic and unclipped."
+[output_semantics."/moisture_contribution"]
+unit="1"
+axes=["wavelength"]
+description="Additive csm times moisture vector."
+[output_semantics."/reflectance"]
+unit="1"
+axes=["wavelength"]
+description="Dry reflectance plus moisture contribution, unclipped."
+[output_semantics."/wavelengths_nm"]
+unit="nm"
+axes=["wavelength"]
+description="Native axis or requested wavelength order."
+[output_semantics."/outside_unit_interval_count"]
+unit="1"
+axes=[]
+description="Number of selected reflectance samples outside [0,1]; diagnostic, not clipping."

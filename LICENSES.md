@@ -10,6 +10,9 @@ Included model implementations and scientific resources retain their own terms.
 | 4SAIL-TIR thermal extension | Apache-2.0; shared MIT optical transport attribution retained |
 | Ross–Li, tau–omega, and water-cloud implementations | Apache-2.0 |
 | FvCB leaf and single-big-leaf implementations | Apache-2.0 |
+| Independent RPV and SOILSPECT implementations | Apache-2.0 |
+| GSV numerical implementation / supplied LESS spectral vectors | Apache-2.0 / GPL-3.0 terms; see component attribution |
+| BSM implementation and coefficient table | GPL-3.0-only; Wout Verhoef / Peiqi Yang attribution retained |
 | SMAC component | GPL-3.0-only |
 | Supplied L-MEB and GORT-GPP components | LicenseRef-User-Supplied-Research-Code; publication authorized by the project maintainer |
 | Coefficients, spectra, and sensor response data | Resource-specific terms and attribution |

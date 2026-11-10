@@ -1,6 +1,10 @@
 [workspace]
 resolver = "3"
 members = [
+    "crates/models/surface/rpv",
+    "crates/models/soil/soilspect",
+    "crates/models/soil/bsm",
+    "crates/models/soil/gsv",
     "crates/models/ecosystem/fvcb",
     "crates/models/thermal/foursail",
     "crates/models/vegetation/goms",
@@ -35,6 +39,10 @@ repository = "https://github.com/jianboqi/RSPhysics"
 homepage = "https://github.com/jianboqi/RSPhysics"
 
 [workspace.dependencies]
+rsphysics-rpv = { path = "crates/models/surface/rpv" }
+rsphysics-soilspect = { path = "crates/models/soil/soilspect" }
+rsphysics-bsm = { path = "crates/models/soil/bsm" }
+rsphysics-gsv = { path = "crates/models/soil/gsv" }
 rsphysics-fvcb = { path = "crates/models/ecosystem/fvcb" }
 rsphysics-foursail-tir = { path = "crates/models/thermal/foursail" }
 rsphysics-goms = { path = "crates/models/vegetation/goms" }

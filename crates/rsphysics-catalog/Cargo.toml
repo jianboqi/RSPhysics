@@ -7,6 +7,10 @@ publish.workspace = true
 license.workspace = true
 
 [dependencies]
+rsphysics-rpv.workspace=true
+rsphysics-soilspect.workspace=true
+rsphysics-bsm.workspace=true
+rsphysics-gsv.workspace=true
 rsphysics-fvcb.workspace = true
 rsphysics-foursail-tir.workspace = true
 rsphysics-goms.workspace = true

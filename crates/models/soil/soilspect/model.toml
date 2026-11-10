@@ -1,0 +1,132 @@
+[model]
+id="soil.soilspect"
+name="SOILSPECT"
+family="SOILSPECT"
+category="soil"
+scientific_version="Jacquemoud–Baret–Hanocq1992 / four-term phase function"
+implementation_version="0.1.0"
+api_version="0.1"
+status="reference-validated"
+limitations="Optical single-band soil forward model; provide single scattering albedo externally (batches support spectra). Not a soil composition or moisture retrieval. BRF may exceed1; phase coefficients can produce nonphysical negative values, which are diagnosed without clipping. Hemispherical outputs are numerical full-equation integrals with order comparison, especially relevant near narrow hotspots. No inversion or coupling."
+[source]
+crate="rsphysics-soilspect"
+authors=["RSPhysics contributors"]
+references=["https://doi.org/10.1016/0034-4257(92)90072-R", "https://doi.org/10.1016/0273-1177(93)90560-X", "https://jbferet.gitlab.io/prosail/reference/soilspect.html"]
+license="Apache-2.0"
+[capabilities]
+native=true
+python=true
+wasm=false
+batch=true
+precision="f64"
+[[validation.evidence]]
+kind="implementation"
+suite="soil-optical-reference-v1"
+implementation_version="0.1.0"
+backend="native"
+[[validation.evidence]]
+kind="implementation"
+suite="soil-optical-reference-v1"
+implementation_version="0.1.0"
+backend="python"
+[data.hashes]
+[input_semantics."/single_scattering_albedo"]
+unit="1"
+axes=[]
+description="Single-scattering albedo for one band; run batches for an input albedo spectrum."
+[input_semantics."/roughness_h"]
+unit="1"
+axes=[]
+description="Hapke shadow-hiding width h, not rms surface slope. h=0 is zero-width hotspot limit."
+[input_semantics."/phase_b"]
+unit="1"
+axes=[]
+description="Coefficient b times cos(g)."
+[input_semantics."/phase_c"]
+unit="1"
+axes=[]
+description="Coefficient c times P2(cos(g))."
+[input_semantics."/phase_b_prime"]
+unit="1"
+axes=[]
+description="Coefficient b-prime times cos(g-prime)."
+[input_semantics."/phase_c_prime"]
+unit="1"
+axes=[]
+description="Coefficient c-prime times P2(cos(g-prime))."
+[input_semantics."/quadrature"]
+unit="1"
+axes=[]
+description="Standard32mu x64azimuth; refined64mu x128azimuth, both include all terms. Difference is reported as convergence estimate."
+[input_semantics."/solar_zenith_deg"]
+unit="deg"
+axes=[]
+description="Sun/view geometry, azimuth0 backward/hotspot and180 forward; zenith0..85deg."
+[input_semantics."/view_zenith_deg"]
+unit="deg"
+axes=[]
+description="Sun/view geometry, azimuth0 backward/hotspot and180 forward; zenith0..85deg."
+[input_semantics."/relative_azimuth_deg"]
+unit="deg"
+axes=[]
+description="Sun/view geometry, azimuth0 backward/hotspot and180 forward; zenith0..85deg."
+[output_semantics."/brf"]
+unit="1"
+axes=[]
+description="Selected BRF, single+multiple scattering."
+[output_semantics."/single_scattering_brf"]
+unit="1"
+axes=[]
+description="w/(4(mu_s+mu_v)) times(1+B)P."
+[output_semantics."/multiple_scattering_brf"]
+unit="1"
+axes=[]
+description="w/(4(mu_s+mu_v)) times(H_s H_v-1)."
+[output_semantics."/phase_function"]
+unit="1"
+axes=[]
+description="Four-term phase function, negative values are nonphysical."
+[output_semantics."/hotspot_factor"]
+unit="1"
+axes=[]
+description="1+B(g,h)."
+[output_semantics."/directional_hemispherical_reflectance"]
+unit="1"
+axes=[]
+description="Full hemispherical flux integral of BRF/pi at selected solar zenith."
+[output_semantics."/bihemispherical_reflectance"]
+unit="1"
+axes=[]
+description="Full double-hemisphere flux integral under isotropic diffuse illumination."
+[output_semantics."/integration_error_estimate"]
+unit="1"
+axes=[]
+description="Maximum absolute standard/refined difference of both hemispherical integrals; diagnostic, not a rigorous error bound."
+[output_semantics."/negative_sample_count"]
+unit="1"
+axes=[]
+description="Count of negative selected/grid BRF samples; outputs are retained without clipping."
+[output_semantics."/brdf"]
+unit="sr^-1"
+axes=[]
+description="Selected BRDF=BRF/pi."
+[output_semantics."/principal_view_zenith_deg"]
+unit="deg"
+axes=["principal_view"]
+description="Principal signed zenith-85..85step1, positivebackward; hemisphere zenith0..85step5, azimuth0..350step10,zenith-major."
+[output_semantics."/principal_brf"]
+unit="1"
+axes=["principal_view"]
+description="Principal signed zenith-85..85step1, positivebackward; hemisphere zenith0..85step5, azimuth0..350step10,zenith-major."
+[output_semantics."/hemisphere_view_zenith_deg"]
+unit="deg"
+axes=["hemisphere_sample"]
+description="Principal signed zenith-85..85step1, positivebackward; hemisphere zenith0..85step5, azimuth0..350step10,zenith-major."
+[output_semantics."/hemisphere_azimuth_deg"]
+unit="deg"
+axes=["hemisphere_sample"]
+description="Principal signed zenith-85..85step1, positivebackward; hemisphere zenith0..85step5, azimuth0..350step10,zenith-major."
+[output_semantics."/hemisphere_brf"]
+unit="1"
+axes=["hemisphere_sample"]
+description="Principal signed zenith-85..85step1, positivebackward; hemisphere zenith0..85step5, azimuth0..350step10,zenith-major."

@@ -43,18 +43,22 @@ reflectance = leaf["result"]["reflectance"]
 | Vegetation optics | [GOMS](docs/models/goms.md) | Discrete-crown reflectance and mutual shadowing |
 | Thermal infrared | [4SAIL-TIR](docs/models/foursail-tir.md) | Four-component canopy thermal radiance and brightness temperature |
 | Surface reflectance | [Ross–Li](docs/models/ross-li.md) | Directional reflectance and BRDF |
+| Surface reflectance | [RPV](docs/models/rpv.md) | Semi-empirical directional reflectance and hotspot |
 | Passive microwave | [Tau–omega](docs/models/tau-omega.md) | Soil–vegetation brightness temperature |
 | Passive microwave | [L-MEB](docs/models/lmeb.md) | L-band dual-polarization emission |
 | Active microwave | [I²EM](docs/models/i2em.md) | Rough bare-surface HH/VV radar backscatter |
 | Active microwave | [Water-cloud model](docs/models/water-cloud.md) | Vegetation and soil radar backscatter |
 | Soil optics | [SORT](docs/models/sort.md) | Dry and wet soil directional reflectance |
 | Soil optics | [SORT-L](docs/models/sort-l.md) | Lambertian dry and wet soil reflectance |
+| Soil optics | [SOILSPECT](docs/models/soilspect.md) | Single/multiple scattering and hemispherical reflectance |
+| Soil optics | [BSM](docs/models/bsm.md) | Brightness, shape and water-film moisture effects |
+| Soil optics | [GSV](docs/models/gsv.md) | GSV1/GSV3 hyperspectral soil spectra |
 | Atmosphere | [SMAC](docs/models/smac.md) | Band-wise atmospheric correction |
 | Ecosystem processes | [GORT-GPP](docs/models/gort-gpp.md) | Canopy photosynthesis and net carbon assimilation |
 | Ecosystem processes | [FvCB Leaf](docs/models/fvcb.md) | C₃ leaf biochemistry and alternative stomatal formulations |
 | Ecosystem processes | [FvCB Big Leaf](docs/models/fvcb-big-leaf.md) | Homogeneous canopy carbon and water-vapour fluxes |
 
-The FvCB models currently require a source installation and are not included in
+FvCB, RPV, SOILSPECT, BSM and GSV currently require a source installation and are not included in
 the published PyPI 0.1.0 wheels.
 
 ## Documentation

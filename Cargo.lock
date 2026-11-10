@@ -692,21 +692,37 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
 
 [[package]]
+name = "rsphysics-bsm"
+version = "0.1.0"
+dependencies = [
+ "rsphysics-model-api",
+ "rsphysics-numerics",
+ "schemars",
+ "serde",
+ "serde_json",
+ "sha2",
+]
+
+[[package]]
 name = "rsphysics-catalog"
 version = "0.1.0"
 dependencies = [
+ "rsphysics-bsm",
  "rsphysics-fluspect-cx",
  "rsphysics-foursail-tir",
  "rsphysics-fvcb",
  "rsphysics-goms",
  "rsphysics-gort-gpp",
+ "rsphysics-gsv",
  "rsphysics-i2em",
  "rsphysics-lmeb",
  "rsphysics-model-api",
  "rsphysics-prosail-d",
  "rsphysics-prospect-d",
  "rsphysics-ross-li",
+ "rsphysics-rpv",
  "rsphysics-smac",
+ "rsphysics-soilspect",
  "rsphysics-sort",
  "rsphysics-tau-omega",
  "rsphysics-water-cloud",
@@ -783,6 +799,17 @@ dependencies = [
  "schemars",
  "serde",
  "serde_json",
+]
+
+[[package]]
+name = "rsphysics-gsv"
+version = "0.1.0"
+dependencies = [
+ "rsphysics-model-api",
+ "schemars",
+ "serde",
+ "serde_json",
+ "sha2",
 ]
 
 [[package]]
@@ -873,6 +900,7 @@ dependencies = [
  "num-complex",
  "numpy",
  "pyo3",
+ "rsphysics-bsm",
  "rsphysics-catalog",
  "rsphysics-core",
  "rsphysics-fluspect-cx",
@@ -880,6 +908,7 @@ dependencies = [
  "rsphysics-fvcb",
  "rsphysics-goms",
  "rsphysics-gort-gpp",
+ "rsphysics-gsv",
  "rsphysics-i2em",
  "rsphysics-lmeb",
  "rsphysics-model-api",
@@ -887,8 +916,10 @@ dependencies = [
  "rsphysics-prosail-d",
  "rsphysics-prospect-d",
  "rsphysics-ross-li",
+ "rsphysics-rpv",
  "rsphysics-runtime",
  "rsphysics-smac",
+ "rsphysics-soilspect",
  "rsphysics-sort",
  "rsphysics-tau-omega",
  "rsphysics-water-cloud",
@@ -897,6 +928,16 @@ dependencies = [
 
 [[package]]
 name = "rsphysics-ross-li"
+version = "0.1.0"
+dependencies = [
+ "rsphysics-model-api",
+ "schemars",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "rsphysics-rpv"
 version = "0.1.0"
 dependencies = [
  "rsphysics-model-api",
@@ -926,6 +967,17 @@ dependencies = [
  "serde",
  "serde_json",
  "sha2",
+]
+
+[[package]]
+name = "rsphysics-soilspect"
+version = "0.1.0"
+dependencies = [
+ "rsphysics-model-api",
+ "rsphysics-numerics",
+ "schemars",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

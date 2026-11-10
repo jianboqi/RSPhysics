@@ -113,6 +113,38 @@ pub fn fresnel_permittivity(
         epsilon_transmitted.sqrt(),
     )
 }
+/// Flux-weighted dielectric transmittance over an incident cone in air.
+/// Real relative index >=1, half angle in (0,90]. 64-point integration in
+/// cos(theta) avoids endpoint singularities of sin(theta)^2 integration.
+pub fn dielectric_cone_transmittance(half_angle_deg: f64, index: f64) -> Result<f64, DomainError> {
+    if !half_angle_deg.is_finite()
+        || half_angle_deg <= 0.
+        || half_angle_deg > 90.
+        || !index.is_finite()
+        || index < 1.
+    {
+        return Err(DomainError(
+            "dielectric cone requires angle in (0,90] and real index>=1",
+        ));
+    }
+    if index == 1. {
+        return Ok(1.);
+    }
+    static Q: std::sync::OnceLock<Vec<(f64, f64)>> = std::sync::OnceLock::new();
+    let low = half_angle_deg.to_radians().cos();
+    let result = Q
+        .get_or_init(|| super::angular::gauss_unit(64))
+        .iter()
+        .map(|&(x, w)| {
+            let mu = low + (1. - low) * x;
+            let ct = (1. - (1. - mu * mu) / (index * index)).sqrt();
+            let rs = ((mu - index * ct) / (mu + index * ct)).powi(2);
+            let rp = ((index * mu - ct) / (index * mu + ct)).powi(2);
+            w * mu * (2. - rs - rp) / (1. + low)
+        })
+        .sum();
+    Ok(result)
+}
 #[cfg(test)]
 mod tests {
     use super::*;

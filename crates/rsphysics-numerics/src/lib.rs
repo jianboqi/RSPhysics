@@ -2,6 +2,7 @@
 
 use rsphysics_core::{DomainError, SpectralAxis};
 
+pub mod angular;
 pub mod optics;
 pub mod radiometry;
 pub mod spectral;

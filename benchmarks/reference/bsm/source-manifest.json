@@ -1,0 +1,16 @@
+{
+  "source": "https://github.com/peiqiyang/BSM/tree/ff6d8b5fb4ae0093ffdf25f91353176a11dc394a",
+  "runtime": "MATLAB R2026a",
+  "files": {
+    "BSM.m": "55220559058a3c7420fddbaddf35e260249345467060a82a4ce81e4db19b0324",
+    "BSM_coef.dat": "941339c0f80ae256cff6b200022253eba88a71820fad4b736243eeefeb8f419f",
+    "run_bsm_reference.m": "875a1d63280f9670bb77e8eb196cad537aaf1da4ffd289acd1742ae77662e7c5"
+  },
+  "fixture_sha256": "a170ca31a0cc9589d44327ab182aa12f9a34c01e71cca8595ec035fb35b8e87a",
+  "evidence_sha256": {
+    "complete.json": "95f48ad42939dfb132fae556f622ad291fdbca59c98324053944f49d2270d6e9",
+    "generate_complete.py": "959239c6b2081ec772b1cda08c20883783e019c32ca5e09c5aca1766a994cb0e",
+    "reference.json": "a170ca31a0cc9589d44327ab182aa12f9a34c01e71cca8595ec035fb35b8e87a"
+  },
+  "poisson_pmf_shim_sha256": "7768c9cbb62812045c2dc5f4790cf053ba24ce7376cd50ea96a355a442232d29"
+}

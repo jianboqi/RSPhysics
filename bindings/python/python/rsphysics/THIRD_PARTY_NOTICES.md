@@ -135,3 +135,13 @@ MIT attribution to Jean-Baptiste Féret (2026), pinned prosail commit
 The new thermal source implementation follows Verhoef, Jia, Xiao and Su (2007)
 and is RSPhysics-original Apache-2.0 code. No external optical coefficient
 table or third-party thermal source implementation is bundled for this model.
+
+
+## GSV and BSM soil spectra
+
+GSV: Jiang & Fang(2019), DOI10.1016/j.jag.2019.101932. New numerical code is
+Apache-2.0; supplied LESS basis resources retain GPL v3. See GSV_ORIGIN.md.
+BSM: Wout Verhoef / Peiqi Yang, DOI10.1016/j.rse.2020.111870. Adapted solver
+and coefficients retain GPL-3.0-only; see BSM_ORIGIN.md. Full GPL v3 terms
+are included in SMAC_GPL-3.0.txt. RPV and SOILSPECT are newly written
+implementations of published equations, licensed Apache-2.0.

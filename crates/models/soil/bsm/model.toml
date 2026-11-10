@@ -1,0 +1,89 @@
+[model]
+id="soil.bsm"
+name="BSM"
+family="BSM"
+category="soil"
+scientific_version="Verhoef / Yang et al.2020, BSMv2"
+implementation_version="0.1.0"
+api_version="0.1"
+status="reference-validated"
+limitations="Isotropic optical soil model400..2400nm; no angular response or generic model coupling. Dry reflectance must lie in[0,1]. Moisture in percentage points; SMC default25. Complete Poisson mode corrects truncation of author reference; legacy six-film mode is explicit."
+[source]
+crate="rsphysics-bsm"
+authors=["RSPhysics contributors"]
+references=["https://doi.org/10.1016/j.rse.2020.111870", "https://doi.org/10.1016/j.rse.2017.08.016", "https://github.com/peiqiyang/BSM/tree/ff6d8b5fb4ae0093ffdf25f91353176a11dc394a"]
+license="GPL-3.0-only"
+[capabilities]
+native=true
+python=true
+wasm=false
+batch=true
+precision="f64"
+[[validation.evidence]]
+kind="implementation"
+suite="soil-optical-reference-v1"
+implementation_version="0.1.0"
+backend="native"
+[[validation.evidence]]
+kind="implementation"
+suite="soil-optical-reference-v1"
+implementation_version="0.1.0"
+backend="python"
+[data.hashes]
+bsm_coefficients="sha256:941339c0f80ae256cff6b200022253eba88a71820fad4b736243eeefeb8f419f"
+[input_semantics."/soil_brightness"]
+unit="1"
+axes=[]
+description="BSM intensity B, does not specify soil composition."
+[input_semantics."/poisson_mode"]
+unit="1"
+axes=[]
+description="Complete sums until omitted probability<1e-14; legacy_six_films reproduces author k=0..6 truncation without renormalization."
+[input_semantics."/shape_latitude_deg"]
+unit="deg"
+axes=[]
+description="Intensity-shape latitude phi; published author example -10deg, common -30..30deg."
+[input_semantics."/shape_longitude_deg"]
+unit="deg"
+axes=[]
+description="Intensity-shape longitude lambda; published author example100deg, common80..120deg."
+[input_semantics."/soil_moisture_percent"]
+unit="percent"
+axes=[]
+description="Volumetric moisture in percentage points, not a 0..1 fraction. mu=max(0,(SMp-5)/SMC)."
+[input_semantics."/moisture_capacity_percent"]
+unit="percent"
+axes=[]
+description="SMC in percentage points, published default25; not0.25."
+[input_semantics."/water_film_thickness_cm"]
+unit="cm"
+axes=[]
+description="Elementary film thickness Delta; default0.015cm, consistent with Kw in cm^-1."
+[output_semantics."/dry_reflectance"]
+unit="1"
+axes=["wavelength"]
+description="Dry spectrum from intensity-shape transformed basis coefficients."
+[output_semantics."/wet_reflectance"]
+unit="1"
+axes=["wavelength"]
+description="Dry+water-film Poisson ensemble reflectance."
+[output_semantics."/wavelengths_nm"]
+unit="nm"
+axes=["wavelength"]
+description="2001 points400..2400nm,1nm step from author table."
+[output_semantics."/mean_film_count"]
+unit="1"
+axes=[]
+description="Poisson mean mu."
+[output_semantics."/dry_area_fraction"]
+unit="1"
+axes=[]
+description="P(k=0)=exp(-mu)."
+[output_semantics."/poisson_probability_sum"]
+unit="1"
+axes=[]
+description="Included Poisson probability, deliberately not renormalized."
+[output_semantics."/omitted_probability"]
+unit="1"
+axes=[]
+description="Nonnegative omitted Poisson mass; legacy six-film truncation can have material missing mass."

@@ -1,0 +1,108 @@
+[model]
+id="surface.rpv"
+name="RPV"
+family="RPV"
+category="surface"
+scientific_version="Rahman–Pinty–Verstraete 1993 / JRC RAMI three- and four-parameter"
+implementation_version="0.1.0"
+api_version="0.1"
+status="reference-validated"
+limitations="Single-band semi-empirical BRDF, not restricted to soil. No spectral synthesis, inversion or coupling. Horizon excluded. BRF may exceed1 and parameters do not enforce energy conservation. Three-parameter mode uses rho_c=rho0; four-parameter mode is explicit."
+[source]
+crate="rsphysics-rpv"
+authors=["RSPhysics contributors"]
+references=["https://doi.org/10.1029/93JD02023", "https://rami-benchmark.jrc.ec.europa.eu/_www/definition.php"]
+license="Apache-2.0"
+[capabilities]
+native=true
+python=true
+wasm=false
+batch=true
+precision="f64"
+[[validation.evidence]]
+kind="implementation"
+suite="soil-optical-reference-v1"
+implementation_version="0.1.0"
+backend="native"
+[[validation.evidence]]
+kind="implementation"
+suite="soil-optical-reference-v1"
+implementation_version="0.1.0"
+backend="python"
+[data.hashes]
+[input_semantics."/rho0"]
+unit="1"
+axes=[]
+description="Spectral amplitude for one user-selected band, not hemispherical albedo."
+[input_semantics."/minnaert_k"]
+unit="1"
+axes=[]
+description="Modified Minnaert exponent; k<1 bowl, k>1 bell."
+[input_semantics."/phase_asymmetry"]
+unit="1"
+axes=[]
+description="Henyey-Greenstein asymmetry; negative backward, positive forward."
+[input_semantics."/hotspot_mode"]
+unit="1"
+axes=[]
+description="Original three-parameter sets hotspot rho=rho0; four-parameter uses independent hotspot_rho."
+[input_semantics."/hotspot_rho"]
+unit="1"
+axes=[]
+description="Hotspot shape parameter, active only in independent four-parameter mode."
+[input_semantics."/solar_zenith_deg"]
+unit="deg"
+axes=[]
+description="Sun/view direction; relative azimuth0 backward/hotspot,180 forward. Zenith excludes horizon."
+[input_semantics."/view_zenith_deg"]
+unit="deg"
+axes=[]
+description="Sun/view direction; relative azimuth0 backward/hotspot,180 forward. Zenith excludes horizon."
+[input_semantics."/relative_azimuth_deg"]
+unit="deg"
+axes=[]
+description="Sun/view direction; relative azimuth0 backward/hotspot,180 forward. Zenith excludes horizon."
+[output_semantics."/brf"]
+unit="1"
+axes=[]
+description="Selected bidirectional reflectance factor; may exceed1."
+[output_semantics."/minnaert_factor"]
+unit="1"
+axes=[]
+description="Minnaert angular factor."
+[output_semantics."/phase_function"]
+unit="1"
+axes=[]
+description="Henyey-Greenstein angular factor."
+[output_semantics."/hotspot_factor"]
+unit="1"
+axes=[]
+description="Shadow hotspot factor."
+[output_semantics."/negative_sample_count"]
+unit="1"
+axes=[]
+description="Count of negative BRF samples."
+[output_semantics."/brdf"]
+unit="sr^-1"
+axes=[]
+description="Selected BRDF=BRF/pi."
+[output_semantics."/principal_view_zenith_deg"]
+unit="deg"
+axes=["principal_view"]
+description="Angular samples: principal signed zenith -85..85 step1 (positive backward); hemisphere zenith0..85 step5 and azimuth0..350 step10, zenith-major."
+[output_semantics."/principal_brf"]
+unit="1"
+axes=["principal_view"]
+description="Angular samples: principal signed zenith -85..85 step1 (positive backward); hemisphere zenith0..85 step5 and azimuth0..350 step10, zenith-major."
+[output_semantics."/hemisphere_view_zenith_deg"]
+unit="deg"
+axes=["hemisphere_sample"]
+description="Angular samples: principal signed zenith -85..85 step1 (positive backward); hemisphere zenith0..85 step5 and azimuth0..350 step10, zenith-major."
+[output_semantics."/hemisphere_azimuth_deg"]
+unit="deg"
+axes=["hemisphere_sample"]
+description="Angular samples: principal signed zenith -85..85 step1 (positive backward); hemisphere zenith0..85 step5 and azimuth0..350 step10, zenith-major."
+[output_semantics."/hemisphere_brf"]
+unit="1"
+axes=["hemisphere_sample"]
+description="Angular samples: principal signed zenith -85..85 step1 (positive backward); hemisphere zenith0..85 step5 and azimuth0..350 step10, zenith-major."

@@ -1,0 +1,6724 @@
+{
+  "cases": [
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-0",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.123157
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-1",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.11821
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-2",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.111384
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-3",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.105659
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-4",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.101402
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-5",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.098781
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-6",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.097896
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-7",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.118091
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-8",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.112978
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-9",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.104704
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-10",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.09742
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-11",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.091929
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-12",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.088535
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-13",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.087389
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-14",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.103244
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-15",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.100454
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-16",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.094227
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-17",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.087598
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-18",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.082199
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-19",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.078762
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-20",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.07759
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-21",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.089181
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-22",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.08733
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-23",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.08274
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-24",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.077321
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-25",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.072628
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-26",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.069552
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-27",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.068491
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-28",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.075665
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-29",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.074395
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-30",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.071113
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-31",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.067024
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-32",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.063331
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-33",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.060845
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-34",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.059977
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-35",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.095004
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-36",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.093402
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-37",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.089443
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-38",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.084767
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-39",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.080697
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-40",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.078008
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-41",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.077076
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-42",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.106417
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-43",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.101465
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-44",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.09182
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-45",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.082571
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-46",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.075467
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-47",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.071097
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-48",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.069631
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-49",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.124869
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-50",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.107911
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-51",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.091471
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-52",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.078965
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-53",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.070131
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-54",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.064918
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-55",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.063203
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-56",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.114772
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-57",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.102739
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-58",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.08676
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-59",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.073913
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-60",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.064807
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-61",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.059469
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-62",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.057722
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-63",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.091498
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-64",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.087195
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-65",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.077468
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-66",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.067274
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-67",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.059342
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-68",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.054536
+      }
+    },
+    {
+      "name": "rpv-out-0.05_0.95_-0.10_0.05-69",
+      "parameters": {
+        "rho0": 0.05,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": -0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.05,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.052946
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-0",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.238955
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-1",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.226901
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-2",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.207608
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-3",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.18943
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-4",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.175157
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-5",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.166212
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-6",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.163182
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-7",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.242088
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-8",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.226823
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-9",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.198965
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-10",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.17263
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-11",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.152754
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-12",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.140795
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-13",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.13684
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-14",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.222208
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-15",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.210356
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-16",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.183882
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-17",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.15668
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-18",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.135978
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-19",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.123659
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-20",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.119622
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-21",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.208149
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-22",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.197961
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-23",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.174089
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-24",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.148545
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-25",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.128736
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-26",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.116874
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-27",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.112981
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-28",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.21718
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-29",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.207765
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-30",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.185199
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-31",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.160293
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-32",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.140461
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-33",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.128371
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-34",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.124369
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-35",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.197456
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-36",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.190153
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-37",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.172542
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-38",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.15278
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-39",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.136667
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-40",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.126633
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-41",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.123271
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-42",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.262208
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-43",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.239133
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-44",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.193762
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-45",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.153115
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-46",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.125403
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-47",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.110106
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-48",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.105278
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-49",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.366943
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-50",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.297161
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-51",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.215276
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-52",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.156292
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-53",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.120813
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-54",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.102657
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-55",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.097128
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-56",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.410321
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-57",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.339466
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-58",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.238566
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-59",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.167278
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-60",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.126121
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-61",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.105675
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-62",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.099539
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-63",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.437835
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-64",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.384559
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-65",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.283388
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-66",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.202424
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-67",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.153741
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-68",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.129203
+      }
+    },
+    {
+      "name": "rpv-out-0.075_0.55_-0.25_0.075-69",
+      "parameters": {
+        "rho0": 0.075,
+        "minnaert_k": 0.55,
+        "phase_asymmetry": -0.25,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.075,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.121802
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-0",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.273284
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-1",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.260843
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-2",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.24178
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-3",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.224256
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-4",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.210548
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-5",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.201915
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-6",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.198978
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-7",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.276032
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-8",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.261035
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-9",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.23436
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-10",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.209172
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-11",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.189795
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-12",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.177883
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-13",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.173892
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-14",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.257423
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-15",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.24644
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-16",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.221564
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-17",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.195205
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-18",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.17437
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-19",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.161572
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-20",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.157304
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-21",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.24655
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-22",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.237123
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-23",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.214437
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-24",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.189089
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-25",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.16853
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-26",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.155786
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-27",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.151525
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-28",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.259775
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-29",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.25097
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-30",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.229273
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-31",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.204272
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-32",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.183479
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-33",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.17038
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-34",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.165968
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-35",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.234487
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-36",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.227659
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-37",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.210923
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-38",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.1916
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-39",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.175334
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-40",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.164935
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-41",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.161399
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-42",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.296229
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-43",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.275182
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-44",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.232977
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-45",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.193253
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-46",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.164566
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-47",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.148004
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-48",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.142652
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-49",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.398691
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-50",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.33237
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-51",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.256475
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-52",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.198508
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-53",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.160944
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-54",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.140631
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-55",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.134271
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-56",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.437202
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-57",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.374067
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-58",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.282563
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-59",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.21247
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-60",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.168407
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-61",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.145181
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-62",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.138005
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-63",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.461179
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-64",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.41834
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-65",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.330595
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-66",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.252554
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-67",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.201168
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-68",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.173673
+      }
+    },
+    {
+      "name": "rpv-out-0.10_0.60_-0.20_0.10-69",
+      "parameters": {
+        "rho0": 0.1,
+        "minnaert_k": 0.6,
+        "phase_asymmetry": -0.2,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.1,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.16514
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-0",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.187051
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-1",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.180368
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-2",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.171581
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-3",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.164595
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-4",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.159611
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-5",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.15662
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-6",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.155621
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-7",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.207743
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-8",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.200122
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-9",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.188452
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-10",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.178785
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-11",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.171788
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-12",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.167555
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-13",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.166137
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-14",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.240347
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-15",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.235601
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-16",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.225314
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-17",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.214704
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-18",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.206213
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-19",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.200835
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-20",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.199
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-21",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.327005
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-22",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.322779
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-23",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.312332
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-24",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.299967
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-25",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.289147
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-26",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.281956
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-27",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.279453
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-28",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.604678
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-29",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.599269
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-30",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.585045
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-31",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.566787
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-32",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.549714
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-33",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.53788
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-34",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.533678
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-35",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.244508
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-36",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.24174
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-37",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.234978
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-38",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.227091
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-39",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.220267
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-40",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.215761
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-41",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.214196
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-42",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.30967
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-43",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.298883
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-44",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.278846
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-45",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.26041
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-46",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.246411
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-47",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.237745
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-48",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.234816
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-49",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.468329
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-50",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.413879
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-51",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.366932
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-52",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.333791
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-53",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.31061
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-54",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.296696
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-55",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.292048
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-56",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.678863
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-57",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.622002
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-58",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.553404
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-59",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.501145
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-60",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.463674
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-61",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.440986
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-62",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.433389
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-63",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 1.220576
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-64",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 1.187066
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-65",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 1.110487
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-66",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 1.026892
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-67",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.957716
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-68",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.913359
+      }
+    },
+    {
+      "name": "rpv-out-0.15_0.08_-0.05_0.15-69",
+      "parameters": {
+        "rho0": 0.15,
+        "minnaert_k": 0.08,
+        "phase_asymmetry": -0.05,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.15,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.898194
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-0",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.645862
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-1",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.636987
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-2",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.628618
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-3",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.625524
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-4",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.625751
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-5",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.62702
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-6",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.62765
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-7",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.63942
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-8",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.63286
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-9",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.628118
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-10",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.630695
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-11",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.637268
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-12",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.643512
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-13",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.646025
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-14",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.627896
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-15",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.62889
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-16",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.634649
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-17",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.6467
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-18",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.661719
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-19",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.674128
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-20",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.678934
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-21",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.634655
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-22",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.639413
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-23",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.653552
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-24",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.675222
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-25",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.699365
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-26",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.71856
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-27",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.72591
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-28",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.660368
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-29",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.667721
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-30",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.688664
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-31",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.719411
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-32",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.75284
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-33",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.779171
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-34",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.78923
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-35",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.629921
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-36",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.632258
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-37",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.639565
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-38",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.651253
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-39",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.664493
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-40",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.675027
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-41",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.679048
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-42",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.632253
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-43",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.632712
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-44",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.642446
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-45",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.664724
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-46",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.692851
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-47",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.716384
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-48",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.725584
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-49",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.668472
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-50",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.64597
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-51",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.653436
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-52",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.68694
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-53",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.731693
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-54",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.77027
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-55",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.785622
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-56",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.656487
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-57",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.649656
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-58",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.668879
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-59",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.71762
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-60",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.780906
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-61",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.836129
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-62",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.858386
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-63",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.635688
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-64",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.648856
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-65",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.690196
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-66",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.758663
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-67",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.842423
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-68",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.91541
+      }
+    },
+    {
+      "name": "rpv-out-0.70_0.95_0.10_0.70-69",
+      "parameters": {
+        "rho0": 0.7,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.1,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.7,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.945024
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-0",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.576742
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-1",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.570751
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-2",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.566635
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-3",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.567504
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-4",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.571025
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-5",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.574519
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-6",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.57594
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-7",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.573239
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-8",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.56984
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-9",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.570813
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-10",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.579435
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-11",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.591569
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-12",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.601862
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-13",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.605876
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-14",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.571322
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-15",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.574567
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-16",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.586077
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-17",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.60583
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-18",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.628948
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-19",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.647737
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-20",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.654997
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-21",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.589772
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-22",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.596861
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-23",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.617688
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-24",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.649489
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-25",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.685256
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-26",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.714133
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-27",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.725312
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-28",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.631391
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-29",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.641645
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-30",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.671257
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-31",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.715859
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-32",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.765955
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-33",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.806643
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-34",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 20.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.822482
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-35",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.58004
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-36",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.584004
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-37",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.595777
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-38",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.613768
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-39",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.63372
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-40",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.649512
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-41",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 15.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.655542
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-42",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.57329
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-43",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.577545
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-44",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.596453
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-45",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.631375
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-46",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.673902
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-47",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.709695
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-48",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 30.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.723833
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-49",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.598355
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-50",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.586474
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-51",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.608501
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-52",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.661108
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-53",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.729462
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-54",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.789921
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-55",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 45.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.814546
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-56",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.592112
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-57",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.593713
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-58",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.629614
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-59",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.703701
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-60",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.801661
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-61",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 0.89163
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-62",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 60.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 0.929279
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-63",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 0.0
+      },
+      "expected": {
+        "brf": 0.586015
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-64",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 30.0
+      },
+      "expected": {
+        "brf": 0.604419
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-65",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 60.0
+      },
+      "expected": {
+        "brf": 0.662537
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-66",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 90.0
+      },
+      "expected": {
+        "brf": 0.762725
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-67",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 120.0
+      },
+      "expected": {
+        "brf": 0.894306
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-68",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 150.0
+      },
+      "expected": {
+        "brf": 1.018239
+      }
+    },
+    {
+      "name": "rpv-out-0.75_0.95_0.15_0.75-69",
+      "parameters": {
+        "rho0": 0.75,
+        "minnaert_k": 0.95,
+        "phase_asymmetry": 0.15,
+        "hotspot_mode": "independent_four_parameter",
+        "hotspot_rho": 0.75,
+        "solar_zenith_deg": 50.0,
+        "view_zenith_deg": 75.0,
+        "relative_azimuth_deg": 180.0
+      },
+      "expected": {
+        "brf": 1.0712
+      }
+    }
+  ]
+}

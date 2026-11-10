@@ -24,7 +24,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Physics",
 ]
 license = "Apache-2.0 AND MIT AND GPL-3.0-only AND LicenseRef-User-Supplied-Research-Code AND LicenseRef-SORT-Author-Authorized AND LicenseRef-I2EM-Authorized-Adaptation AND LicenseRef-GOMS-Authorized-Adaptation"
-license-files = ["python/rsphysics/GOMS_COMPONENT_LICENSE.txt", "python/rsphysics/FLUSPECT_ORIGIN.md", "python/rsphysics/FLUSPECT_GPL-3.0.txt", "python/rsphysics/I2EM_COMPONENT_LICENSE.txt", "python/rsphysics/APACHE-2.0.txt", "python/rsphysics/SORT_ORIGIN.md", "python/rsphysics/SORT_THIRD_PARTY_NOTICES.md", "python/rsphysics/THIRD_PARTY_NOTICES.md", "python/rsphysics/SMAC_GPL-3.0.txt", "python/rsphysics/NOTICE", "python/rsphysics/RIGHTS-STATEMENT.md", "python/rsphysics/SUPPLIED_MODELS_ORIGIN.md"]
+license-files = ["python/rsphysics/GSV_ORIGIN.md", "python/rsphysics/BSM_ORIGIN.md", "python/rsphysics/GOMS_COMPONENT_LICENSE.txt", "python/rsphysics/FLUSPECT_ORIGIN.md", "python/rsphysics/FLUSPECT_GPL-3.0.txt", "python/rsphysics/I2EM_COMPONENT_LICENSE.txt", "python/rsphysics/APACHE-2.0.txt", "python/rsphysics/SORT_ORIGIN.md", "python/rsphysics/SORT_THIRD_PARTY_NOTICES.md", "python/rsphysics/THIRD_PARTY_NOTICES.md", "python/rsphysics/SMAC_GPL-3.0.txt", "python/rsphysics/NOTICE", "python/rsphysics/RIGHTS-STATEMENT.md", "python/rsphysics/SUPPLIED_MODELS_ORIGIN.md"]
 
 [project.optional-dependencies]
 test = ["pytest>=8,<10"]

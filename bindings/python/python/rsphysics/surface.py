@@ -24,3 +24,20 @@ def ross_li_batch(parameters:np.ndarray, *, shared_axes=False)->dict:
     hemisphere fields (batch,648). Native NumPy transport; no Python scientific loop.
     """
     return run_array('surface.ross-li',parameters,shared_axes=shared_axes)
+
+
+
+def rpv(*, rho0=0.2, minnaert_k=0.7, phase_asymmetry=-0.2,
+        hotspot_mode="original_three_parameter", hotspot_rho=0.2,
+        solar_zenith_deg=30.0, view_zenith_deg=20.0, relative_azimuth_deg=0.0):
+    """RPV three- or four-parameter BRDF. Relative azimuth0 is backward.
+
+    The original three-parameter mode uses rho_c=rho0. The independent
+    four-parameter mode exposes hotspot_rho. BRF is not hemispherical albedo.
+    """
+    return run("surface.rpv",locals())
+
+
+def rpv_batch(parameters, *, hotspot_mode="original_three_parameter", shared_axes=False):
+    """RPV NumPy batch in parameters_for('surface.rpv') order."""
+    return run_array("surface.rpv",parameters,shared_axes=shared_axes,fixed={"hotspot_mode":hotspot_mode})

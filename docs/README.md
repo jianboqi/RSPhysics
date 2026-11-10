@@ -26,6 +26,7 @@
 ### Surface reflectance
 
 - [Ross–Li — directional reflectance](models/ross-li.md)
+- [RPV — semi-empirical surface BRDF](models/rpv.md)
 
 ### Microwave
 
@@ -48,3 +49,6 @@
 
 - [SORT: directional soil reflectance](models/sort.md)
 - [SORT-L: Lambertian soil reflectance](models/sort-l.md)
+- [SOILSPECT — scattering and hemispherical reflectance](models/soilspect.md)
+- [BSM — brightness, shape and moisture](models/bsm.md)
+- [GSV — hyperspectral soil vectors](models/gsv.md)

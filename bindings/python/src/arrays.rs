@@ -9,6 +9,35 @@ use rsphysics_runtime::RunManifest;
 use serde_json::{Map, Value};
 use std::{collections::BTreeMap, sync::OnceLock};
 
+const GSV: &[&str] = &["c1", "c2", "c3", "csm"];
+const BSM: &[&str] = &[
+    "soil_brightness",
+    "shape_latitude_deg",
+    "shape_longitude_deg",
+    "soil_moisture_percent",
+    "moisture_capacity_percent",
+    "water_film_thickness_cm",
+];
+const RPV: &[&str] = &[
+    "rho0",
+    "minnaert_k",
+    "phase_asymmetry",
+    "hotspot_rho",
+    "solar_zenith_deg",
+    "view_zenith_deg",
+    "relative_azimuth_deg",
+];
+const SOILSPECT: &[&str] = &[
+    "single_scattering_albedo",
+    "roughness_h",
+    "phase_b",
+    "phase_c",
+    "phase_b_prime",
+    "phase_c_prime",
+    "solar_zenith_deg",
+    "view_zenith_deg",
+    "relative_azimuth_deg",
+];
 const FVCB: &[&str] = &[
     "leaf_temperature_c",
     "co2_surface_umol_mol",
@@ -269,6 +298,10 @@ const GORT: &[&str] = &[
 ];
 fn columns(id: &str) -> Result<&'static [&'static str], ModelError> {
     match id {
+        "soil.gsv" => Ok(GSV),
+        "soil.bsm" => Ok(BSM),
+        "surface.rpv" => Ok(RPV),
+        "soil.soilspect" => Ok(SOILSPECT),
         "ecosystem.fvcb" => Ok(FVCB),
         "ecosystem.fvcb-big-leaf" => Ok(FVCB_BIG_LEAF),
         "thermal.foursail" => Ok(FOURSAIL),
@@ -432,6 +465,10 @@ macro_rules! cache {
         }
     };
 }
+cache!(gsv, GSV_MODEL, rsphysics_gsv::Model);
+cache!(bsm, BSM_MODEL, rsphysics_bsm::Model);
+cache!(rpv, RPV_MODEL, rsphysics_rpv::Model);
+cache!(soilspect, SOILSPECT_MODEL, rsphysics_soilspect::Model);
 cache!(fvcb, FVCB_MODEL, rsphysics_fvcb::Model);
 cache!(
     fvcb_big_leaf,
@@ -523,6 +560,84 @@ where
         manifests.push(manifest);
     }
     Ok((buffers, manifests))
+}
+fn gsv_row(o: rsphysics_gsv::Output) -> Row {
+    Row {
+        arrays: vec![
+            ("wavelengths_nm", o.wavelengths_nm),
+            ("dry_reflectance", o.dry_reflectance),
+            ("moisture_contribution", o.moisture_contribution),
+            ("reflectance", o.reflectance),
+        ],
+        integers: vec![(
+            "outside_unit_interval_count",
+            o.outside_unit_interval_count as i64,
+        )],
+        ..Row::default()
+    }
+}
+fn bsm_row(o: rsphysics_bsm::Output) -> Row {
+    Row {
+        arrays: vec![
+            ("wavelengths_nm", o.wavelengths_nm),
+            ("dry_reflectance", o.dry_reflectance),
+            ("wet_reflectance", o.wet_reflectance),
+        ],
+        scalars: vec![
+            ("mean_film_count", o.mean_film_count),
+            ("dry_area_fraction", o.dry_area_fraction),
+            ("poisson_probability_sum", o.poisson_probability_sum),
+            ("omitted_probability", o.omitted_probability),
+        ],
+        ..Row::default()
+    }
+}
+fn rpv_row(o: rsphysics_rpv::Output) -> Row {
+    Row {
+        scalars: vec![
+            ("brf", o.point.brf),
+            ("brdf", o.point.brdf),
+            ("minnaert_factor", o.point.minnaert_factor),
+            ("phase_function", o.point.phase_function),
+            ("hotspot_factor", o.point.hotspot_factor),
+        ],
+        integers: vec![("negative_sample_count", o.negative_sample_count as i64)],
+        arrays: vec![
+            ("principal_view_zenith_deg", o.principal_view_zenith_deg),
+            ("principal_brf", o.principal_brf),
+            ("hemisphere_view_zenith_deg", o.hemisphere_view_zenith_deg),
+            ("hemisphere_azimuth_deg", o.hemisphere_azimuth_deg),
+            ("hemisphere_brf", o.hemisphere_brf),
+        ],
+        ..Row::default()
+    }
+}
+fn soilspect_row(o: rsphysics_soilspect::Output) -> Row {
+    Row {
+        scalars: vec![
+            ("brf", o.point.brf),
+            ("brdf", o.point.brdf),
+            ("single_scattering_brf", o.point.single_scattering_brf),
+            ("multiple_scattering_brf", o.point.multiple_scattering_brf),
+            ("phase_function", o.point.phase_function),
+            ("hotspot_factor", o.point.hotspot_factor),
+            (
+                "directional_hemispherical_reflectance",
+                o.directional_hemispherical_reflectance,
+            ),
+            ("bihemispherical_reflectance", o.bihemispherical_reflectance),
+            ("integration_error_estimate", o.integration_error_estimate),
+        ],
+        integers: vec![("negative_sample_count", o.negative_sample_count as i64)],
+        arrays: vec![
+            ("principal_view_zenith_deg", o.principal_view_zenith_deg),
+            ("principal_brf", o.principal_brf),
+            ("hemisphere_view_zenith_deg", o.hemisphere_view_zenith_deg),
+            ("hemisphere_azimuth_deg", o.hemisphere_azimuth_deg),
+            ("hemisphere_brf", o.hemisphere_brf),
+        ],
+        ..Row::default()
+    }
 }
 fn fvcb_row(o: rsphysics_fvcb::Output) -> Row {
     let p = o.point;
@@ -982,6 +1097,10 @@ pub fn model_batch_native<'py>(
     let fixed: Map<String, Value> = serde_json::from_str(fixed_parameters)
         .map_err(|e| pyo3::exceptions::PyValueError::new_err(e.to_string()))?;
     if fixed.keys().any(|k| !match id {
+        "soil.gsv" => matches!(k.as_str(), "variant" | "wavelengths_nm"),
+        "soil.bsm" => k == "poisson_mode",
+        "surface.rpv" => k == "hotspot_mode",
+        "soil.soilspect" => k == "quadrature",
         "vegetation.prosail-d" | "thermal.foursail" => k == "leaf_angle_distribution",
         "vegetation.goms" => k == "geometry_convention",
         "atmosphere.smac" => matches!(k.as_str(), "coefficient_id" | "direction"),
@@ -1008,7 +1127,7 @@ pub fn model_batch_native<'py>(
     }) {
         return Err(super::error(ModelError::new(
             ErrorKind::InvalidParameter,
-            "fixed accepts only model-specific string selectors",
+            "fixed accepts only model-specific selectors and supported shared spectral requests",
         )));
     }
     if parameters.shape()[1] != names.len() {
@@ -1025,6 +1144,22 @@ pub fn model_batch_native<'py>(
     // Initialize cached models/runtime with the GIL, then release it for all rows.
     super::runtime()?;
     let (buffers, manifests) = match id {
+        "soil.gsv" => {
+            let m = gsv()?;
+            py.detach(|| typed(m, id, &values, shared_axes, gsv_row, &fixed))
+        }
+        "soil.bsm" => {
+            let m = bsm()?;
+            py.detach(|| typed(m, id, &values, shared_axes, bsm_row, &fixed))
+        }
+        "surface.rpv" => {
+            let m = rpv()?;
+            py.detach(|| typed(m, id, &values, shared_axes, rpv_row, &fixed))
+        }
+        "soil.soilspect" => {
+            let m = soilspect()?;
+            py.detach(|| typed(m, id, &values, shared_axes, soilspect_row, &fixed))
+        }
         "ecosystem.fvcb" => {
             let m = fvcb()?;
             py.detach(|| typed(m, id, &values, shared_axes, fvcb_row, &fixed))
