@@ -1,10 +1,7 @@
 # Rights-contact statement
 
-Project-original code in RSPhysics and RSPhysics-app is licensed under Apache
-License 2.0. Third-party code, model implementations, and scientific data retain
-the terms and source records applicable to each component. Additional Apache permission for SMAC remains pending. Publication permission
-for the supplied L-MEB/GORT-GPP sources and adaptations was confirmed by the
-project maintainer; see docs/licensing.md for the component-specific scope.
+Project-original RSPhysics code is licensed under Apache-2.0. Third-party
+code and data retain their applicable terms and attribution; see LICENSES.md.
 
 If you believe that code, model implementations, coefficients, data, or other
 materials in this project affect your rights, contact the maintainer through

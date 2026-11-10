@@ -1,9 +1,6 @@
 # SMAC
 
-Shared Rust implementation of independent band-wise SMAC atmospheric conversion.
-See [scope, examples, coefficient packing and source notices](../../../../docs/smac.md).
-Original reference fixture: `benchmarks/reference/smac`.
+SMAC provides band-wise analytical atmospheric correction and forward conversion between top-of-atmosphere and surface reflectance.
 
-GPL-3.0-only; preserve CNES acknowledgement and the original paper citation.
-Public catalog exposes native/Python only. Private products own WASM capability
-and browser verification. No generic model coupling.
+See the [model guide](../../../../docs/models/smac.md) for usage, parameters,
+authors, and references.

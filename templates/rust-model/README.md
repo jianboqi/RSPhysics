@@ -11,7 +11,5 @@ not enter the official scientific catalog.
 6. Record the permissions for source, data, and dependencies in `LICENSE-ORIGIN.md`.
 7. Run `python tooling/check-models/check_models.py` and `cargo test --workspace`.
 
-The template only supplies a native engineering entry point. Integrate and test
-Python before declaring support. WASM belongs to product validation and is not a
-public model merge requirement. Catalog generation and optional model features
-remain future M2 work.
+See existing model crates for Python interfaces and numerical reference tests.
+Declare only the capabilities that the contribution implements and validates.

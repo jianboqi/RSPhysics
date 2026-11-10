@@ -1,68 +1,69 @@
 # GORT-GPP
 
-GORT-GPP combines canopy geometry/radiation with sunlit and shaded leaf
-photosynthesis. The supplied study examines leaf age and canopy structure in
-a subtropical evergreen Chinese fir forest.[^wu] This adaptation selects the
-provided `Main4PSN` path with **mvp=1, flagSeason=0**, evaluated at one time step.
+GORT-GPP uses crown geometry and radiation interception to describe sunlit/shaded leaf photosynthesis and canopy carbon assimilation.
 
-## Implemented formulation
+## How it works
 
-Ellipsoidal crown geometry and leaf area define between-/within-crown gaps and
-openness. The original finite crown-count approximation and five-order
-background-scattering treatment partition direct/diffuse PAR. The selected
-two-leaf photosynthetic path allocates Vcmax using a canopy-top young-leaf weight,
-then solves the provided Farquhar/Ball–Berry quadratics for each leaf class.
+Between- and within-crown gap probabilities determine light interception. Direct/diffuse PAR is partitioned between leaf classes; leaf-age-dependent Vcmax and Farquhar–Ball–Berry photosynthesis determine canopy net assimilation.
 
-```text
-An,canopy = An,sunlit × LAIsunlit + An,shaded × LAIshaded
-```
-
-**The exposed carbon flux is net assimilation**, including the selected source
-path's respiration treatment. It is not directly GPP, GEP, or NEE. Negative
-values are retained. Canopy flux uses ground area; individual leaf-class fluxes
-use that class's leaf area. PAR uses μmol photons m⁻² s⁻¹, VPD uses Pa, and the
-temperature input uses °C.
-
-## Python example
+## Usage
 
 ```python
 import rsphysics as rsp
 
-result = rsp.ecosystem.gort_gpp(
-    leaf_area_index=4.31, solar_zenith_deg=40,
-    direct_par_umol_m2_s=1200, diffuse_par_umol_m2_s=200,
-)
-net_assimilation = result['result']['net_assimilation_umol_m2_s']
-
-table = rsp.parameter_grid('ecosystem.gort-gpp', {'young_leaf_fraction': [0., 0.4, 0.8]})
-batch = rsp.run_array('ecosystem.gort-gpp', table, shared_axes=True)
+canopy = rsp.ecosystem.gort_gpp(
+    leaf_area_index=4.31, solar_zenith_deg=40.,
+    direct_par_umol_m2_s=1200., diffuse_par_umol_m2_s=200.,
+    young_leaf_fraction=0.4, air_temperature_c=25., co2_ppm=400.)
+net_assimilation = canopy['result']['net_assimilation_umol_m2_s']
 ```
 
-Use `describe` for the input contract and `parameters_for` for matrix columns.
-Outputs include leaf-class areas/assimilation/PAR, background absorption,
-openness, and both gap curves at the original 0–89° sampling.
+Model ID: `ecosystem.gort-gpp`. Use the same ID with `rsp.run`, `rsp.run_array`, or
+`rsp.parameter_grid`; see [Basic usage](../usage.md).
 
-## Scope and verification
+## Parameters
 
-Explicit solar zenith and incident direct/diffuse PAR replace site/calendar/Excel
-preprocessing. The library does not require or distribute station observations.
-Annual drivers, evapotranspiration, daily aggregation, seasonal Vcmax tables,
-Beer/CI alternatives, and generic model coupling are outside this adaptation.
+| Parameter | Default | Unit | Supported range |
+|---|---|---|---|
+| `air_temperature_c` | `25` | degC | 5.0–40.0 |
+| `background_reflectance` | `0.1` | 1 | 0.0–0.9 |
+| `co2_ppm` | `400` | umol mol^-1 | 200.0–1200.0 |
+| `crown_axis_ratio` | `1.17` | 1 | 0.1–5.0 |
+| `crown_base_height_m` | `7.8` | m | 0.0–60.0 |
+| `crown_density_m2` | `0.1905` | m^-2 | 0.001–2.0 |
+| `crown_radius_m` | `1.7` | m | 0.1–10.0 |
+| `crown_top_height_m` | `14.1` | m | 0.1–80.0 |
+| `diffuse_par_umol_m2_s` | `200` | umol m^-2 s^-1 | 0.0–2500.0 |
+| `direct_par_umol_m2_s` | `1200` | umol m^-2 s^-1 | 0.0–2500.0 |
+| `electron_photon_ratio` | `2.6` | 1 | 1.0–5.0 |
+| `leaf_angle_parameter` | `0.5` | 1 | 0.1–5.0 |
+| `leaf_area_index` | `4.31` | m^2 m^-2 | 0.5–10.0 |
+| `leaf_single_scattering_albedo` | `0.1` | 1 | 0.0–0.9 |
+| `minimum_stomatal_conductance` | `0.01` | mol m^-2 s^-1 | 0.001–0.1 |
+| `pressure_pa` | `101325` | Pa | 50000.0–110000.0 |
+| `solar_zenith_deg` | `40` | deg | 1.0–80.0 |
+| `stomatal_slope` | `8` | 1 | 1.0–20.0 |
+| `vapour_pressure_deficit_pa` | `1000` | Pa | 0.0–8000.0 |
+| `vcmax25_mature` | `34.17` | umol m^-2 s^-1 | 1.0–200.0 |
+| `vcmax25_young` | `52.1` | umol m^-2 s^-1 | 1.0–200.0 |
+| `young_leaf_fraction` | `0.4` | 1 | 0.0–1.0 |
 
-Original `PI=3.1415926`, MAXCROWNS=10, MAXORDER=5, openness quadrature, and
-the two distinct angular lookup conventions are retained. The main photosynthetic
-path rounds degrees into a one-based array without the radiation routine's +1.
-Its failure at index zero is avoided by the supported 1–80° input domain.
-Original unused/empty fields are not promoted to scientific outputs.
+## Outputs
 
-32 original MATLAB R2026a cases cover ordinary inputs, leaf-age weights,
-direct/diffuse-only illumination, and zero PAR. Source functions are unchanged;
-the runner extracts the selected pointwise path without Excel/plotting I/O.
-See the [reference directory](../../benchmarks/reference/gort-gpp). Matching that
-implementation does not constitute independent validation of the model physics.
+| Field | Meaning |
+|---|---|
+| `net_assimilation_umol_m2_s` | Canopy net assimilation per ground area, µmol CO₂ m⁻² s⁻¹ |
+| `sunlit_assimilation_umol_m2_s / shaded_assimilation_umol_m2_s` | Net assimilation per leaf-class area |
+| `sunlit_leaf_area_index / shaded_leaf_area_index` | Sunlit/shaded LAI; their sum is total LAI |
+| `sunlit_absorbed_par / shaded_absorbed_par` | Absorbed PAR per leaf-class area |
+| `between_crown_gaps / within_crown_gaps` | 0–89° crown-gap probability curves |
 
-The project maintainer has confirmed permission to publish the supplied source
-and adaptations. See the
-[source record](../../crates/models/ecosystem/gort-gpp/LICENSE-ORIGIN.md).
+## Scope
 
-[^wu]: Wu et al. (2021), [Effects of leaf age and canopy structure on gross ecosystem production in a subtropical evergreen Chinese fir forest](https://doi.org/10.1016/j.agrformet.2021.108618), Agricultural and Forest Meteorology 310, 108618. The supplied paper documents the scientific context; reference fixtures pin the supplied code separately.
+The output is net assimilation, including respiration; it is not directly GPP, GEP, or NEE. Inputs represent one time step. Supply direct/diffuse PAR and solar zenith explicitly. Young-leaf fraction is the canopy-top weight for Vcmax. Annual station processing, evapotranspiration, and seasonal Vcmax tables are outside this interface.
+
+## Authors and references
+
+Qiaoli Wu, Conghe Song, Jinling Song, Jindi Wang, Shaoyuan Chen, Lei Yang, Wenhua Xiang, Zhonghui Zhao, and Jie Jiang.
+
+- [Wu et al. (2021). Effects of leaf age and canopy structure on gross ecosystem production in a subtropical evergreen Chinese fir forest. Agricultural and Forest Meteorology 310, 108618.](https://doi.org/10.1016/j.agrformet.2021.108618)

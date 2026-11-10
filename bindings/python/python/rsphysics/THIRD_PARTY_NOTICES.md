@@ -95,20 +95,14 @@ Legacy coefficients are from Olivier Hagolle's author repository, commit
 license file. Original-file text, source URLs, SHA-256 and band column indices
 are retained losslessly in one compressed resource. No public-domain status
 is inferred, no precision is reduced, and no missing sensor is substituted.
-The project remains a local verification build; license compatibility and
-corresponding-source arrangements for a combined public/private distribution
-must be settled before formal distribution.
+The component source and full license notices accompany the distribution.
 
-## Project-original code and pending SMAC permission
+## Project-original code
 
-Project-original infrastructure, independent Ross-Li/tau-omega/water-cloud models,
-Python bindings and tooling are Apache-2.0. MIT adaptation notices remain as
-stated above. The owner intends to retain the original six models and seek Apache-2.0
-permission for SMAC; that permission has not yet been obtained. The GPLv3
-notice attached to the Sen2Like reference copy is retained, and the current
-combined distribution must not be described as Apache-only. The model name
-SMAC and the mathematical method are not themselves declared GPL by this notice.
-See NOTICE, RIGHTS-STATEMENT.md and the project docs/licensing.md.
+Project-original numerical tools, independent Ross-Li/tau-omega/water-cloud
+implementations, interfaces, and tooling are Apache-2.0. The MIT and GPLv3 terms
+above retain their component-specific scope. The root project license does not
+relicense third-party code or data. See NOTICE and LICENSES.md.
 
 ## Supplied L-MEB and GORT-GPP adaptations
 
