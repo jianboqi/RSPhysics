@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/assets/rsphysics-logo.png" alt="RSPhysics" width="460">
+</p>
+
 # RSPhysics
 
 **A scientific computing library for remote sensing physics.**
