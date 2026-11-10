@@ -6,5 +6,7 @@
 *.tsv -text
 *.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 *.txt -text
+# Preserve the exact author vector tables, including original whitespace.
+crates/models/soil/gsv/data/*.txt -text -whitespace
 *.dat -text
 *.zlib binary
