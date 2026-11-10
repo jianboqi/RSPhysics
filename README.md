@@ -51,6 +51,11 @@ reflectance = leaf["result"]["reflectance"]
 | Soil optics | [SORT-L](docs/models/sort-l.md) | Lambertian dry and wet soil reflectance |
 | Atmosphere | [SMAC](docs/models/smac.md) | Band-wise atmospheric correction |
 | Ecosystem processes | [GORT-GPP](docs/models/gort-gpp.md) | Canopy photosynthesis and net carbon assimilation |
+| Ecosystem processes | [FvCB Leaf](docs/models/fvcb.md) | C₃ leaf biochemistry and alternative stomatal formulations |
+| Ecosystem processes | [FvCB Big Leaf](docs/models/fvcb-big-leaf.md) | Homogeneous canopy carbon and water-vapour fluxes |
+
+The FvCB models currently require a source installation and are not included in
+the published PyPI 0.1.0 wheels.
 
 ## Documentation
 

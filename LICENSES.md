@@ -9,6 +9,7 @@ Included model implementations and scientific resources retain their own terms.
 | PROSPECT-D, PROSAIL-D and shared optical 4SAIL transport | MIT notices retained |
 | 4SAIL-TIR thermal extension | Apache-2.0; shared MIT optical transport attribution retained |
 | Ross–Li, tau–omega, and water-cloud implementations | Apache-2.0 |
+| FvCB leaf and single-big-leaf implementations | Apache-2.0 |
 | SMAC component | GPL-3.0-only |
 | Supplied L-MEB and GORT-GPP components | LicenseRef-User-Supplied-Research-Code; publication authorized by the project maintainer |
 | Coefficients, spectra, and sensor response data | Resource-specific terms and attribution |

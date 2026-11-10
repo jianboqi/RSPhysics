@@ -1,0 +1,343 @@
+[model]
+id = "ecosystem.fvcb"
+name = "FvCB Leaf"
+family = "FvCB"
+category = "ecosystem"
+scientific_version = "FvCB carboxylation limitation / Bernacchi 2001 standard-atmosphere convention / explicit variants"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Steady-state C3 biochemistry with imposed leaf temperature and leaf-surface CO2/humidity. Infinite mesophyll and boundary-layer conductance; no leaf energy balance, drought hydraulics, C4 pathway or inversion. Optional simple TPU excludes photorespiratory carbon export. Temperature kinetics use Bernacchi 2001 over 10\u201340 degC; capacity-response defaults illustrate the interface and are not a species calibration."
+[source]
+crate = "rsphysics-fvcb"
+authors = ["Graham D. Farquhar", "Susanne von Caemmerer", "Joseph A. Berry", "RSPhysics contributors"]
+references = ["https://doi.org/10.1007/BF00386231", "https://doi.org/10.1007/s00425-025-04834-7", "https://doi.org/10.1029/2010JG001593", "https://doi.org/10.1111/j.1365-3040.2001.00668.x", "https://doi.org/10.1046/j.1365-3040.2002.00891.x", "https://doi.org/10.1007/978-94-017-0519-6_48", "https://doi.org/10.1111/j.1365-3040.1995.tb00370.x", "https://doi.org/10.1111/j.1365-2486.2012.02790.x", "https://www.fao.org/4/x0490e/x0490e07.htm"]
+license = "Apache-2.0"
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+
+[input_semantics."/leaf_temperature_c"]
+unit = "degC"
+axes = []
+description = "Prescribed leaf temperature; biochemical temperature functions are calibrated over 10–40 degC."
+
+[input_semantics."/co2_surface_umol_mol"]
+unit = "umol mol^-1"
+axes = []
+description = "CO2 mole fraction at the leaf surface, not atmospheric partial pressure."
+
+[input_semantics."/intercellular_co2_umol_mol"]
+unit = "umol mol^-1"
+axes = []
+description = "Prescribed Ci, used only in prescribed_ci mode."
+
+[input_semantics."/pressure_pa"]
+unit = "Pa"
+axes = []
+description = "Total pressure; kinetic partial-pressure constants are converted to mole fractions."
+
+[input_semantics."/oxygen_mmol_mol"]
+unit = "mmol mol^-1"
+axes = []
+description = "Intercellular oxygen mole fraction."
+
+[input_semantics."/vcmax25_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Rubisco capacity at 25 degC per leaf area, or per top-canopy leaf area in the big-leaf model."
+
+[input_semantics."/jmax25_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Maximum electron transport at 25 degC per leaf area, or top-canopy leaf area."
+
+[input_semantics."/respiration25_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Day respiration at 25 degC on the same leaf-area basis as Vcmax25."
+
+[input_semantics."/electron_quantum_yield"]
+unit = "mol electron mol^-1 photon"
+axes = []
+description = "Electron transport quantum yield per absorbed PAR photon; not a CO2 quantum yield."
+
+[input_semantics."/light_response_curvature"]
+unit = "1"
+axes = []
+description = "Non-rectangular hyperbola curvature; zero and one use their continuous limits."
+
+[input_semantics."/tpu_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Triose phosphate utilization at the prescribed temperature; used only in simple TPU mode."
+
+[input_semantics."/vapour_pressure_deficit_kpa"]
+unit = "kPa"
+axes = []
+description = "Leaf-to-leaf-surface water-vapour deficit; the leaf surface is the imposed humidity boundary."
+
+[input_semantics."/minimum_stomatal_conductance_water_mol_m2_s"]
+unit = "mol m^-2 s^-1"
+axes = []
+description = "Residual stomatal conductance to water vapour per leaf area."
+
+[input_semantics."/ball_berry_slope"]
+unit = "1"
+axes = []
+description = "Ball–Berry slope on a water-vapour conductance basis."
+
+[input_semantics."/leuning_slope_co2"]
+unit = "1"
+axes = []
+description = "Leuning slope on a CO2 conductance basis; water conductance includes the factor 1.6."
+
+[input_semantics."/leuning_d0_kpa"]
+unit = "kPa"
+axes = []
+description = "Leuning humidity-deficit scale."
+
+[input_semantics."/medlyn_slope_kpa_sqrt"]
+unit = "kPa^0.5"
+axes = []
+description = "Medlyn slope, distinct in definition and units from the other stomatal slopes."
+
+[input_semantics."/medlyn_vpd_floor_kpa"]
+unit = "kPa"
+axes = []
+description = "Explicit VPD regularization for the Medlyn square root; actual transpiration uses the actual VPD."
+
+[input_semantics."/vcmax_activation_j_mol"]
+unit = "J mol^-1"
+axes = []
+description = "Vcmax activation energy; demonstration default, not a species calibration."
+
+[input_semantics."/jmax_activation_j_mol"]
+unit = "J mol^-1"
+axes = []
+description = "Jmax activation energy; demonstration default, not a species calibration."
+
+[input_semantics."/respiration_activation_j_mol"]
+unit = "J mol^-1"
+axes = []
+description = "Day-respiration activation energy."
+
+[input_semantics."/vcmax_deactivation_j_mol"]
+unit = "J mol^-1"
+axes = []
+description = "Vcmax deactivation energy, used by peaked Arrhenius only."
+
+[input_semantics."/jmax_deactivation_j_mol"]
+unit = "J mol^-1"
+axes = []
+description = "Jmax deactivation energy, used by peaked Arrhenius only."
+
+[input_semantics."/vcmax_entropy_j_mol_k"]
+unit = "J mol^-1 K^-1"
+axes = []
+description = "Vcmax entropy factor, used by peaked Arrhenius only."
+
+[input_semantics."/jmax_entropy_j_mol_k"]
+unit = "J mol^-1 K^-1"
+axes = []
+description = "Jmax entropy factor, used by peaked Arrhenius only."
+
+[input_semantics."/gas_exchange_mode"]
+unit = "1"
+axes = []
+description = "Explicit formulation selector; choices are recorded in the run manifest."
+
+[input_semantics."/stomatal_model"]
+unit = "1"
+axes = []
+description = "Explicit formulation selector; choices are recorded in the run manifest."
+
+[input_semantics."/temperature_response"]
+unit = "1"
+axes = []
+description = "Explicit formulation selector; choices are recorded in the run manifest."
+
+[input_semantics."/tpu_limitation"]
+unit = "1"
+axes = []
+description = "Explicit formulation selector; choices are recorded in the run manifest."
+
+[input_semantics."/leuning_compensation"]
+unit = "1"
+axes = []
+description = "Explicit formulation selector; choices are recorded in the run manifest."
+
+[input_semantics."/absorbed_par_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Absorbed PAR per leaf area, not incident PAR or energy irradiance."
+
+[output_semantics."/net_assimilation_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Net CO2 assimilation, including day respiration; not GPP or NEE. Area basis: leaf area."
+
+[output_semantics."/assimilation_before_day_respiration_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Net photorespiratory assimilation before subtraction of mitochondrial day respiration; not gross carboxylation. Area basis: leaf area."
+
+[output_semantics."/rubisco_limited_assimilation_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Rubisco-limited net assimilation branch. Area basis: leaf area."
+
+[output_semantics."/electron_limited_assimilation_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Electron-transport-limited net assimilation branch. Area basis: leaf area."
+
+[output_semantics."/tpu_limited_assimilation_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Potential simple TPU branch 3*TPU-Rd; active only when tpu_limitation_enabled is true. Area basis: leaf area."
+
+[output_semantics."/day_respiration_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Mitochondrial respiration in the light at the prescribed temperature. Area basis: leaf area."
+
+[output_semantics."/vcmax_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Temperature-adjusted Rubisco capacity. Area basis: leaf area."
+
+[output_semantics."/jmax_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Temperature-adjusted electron transport capacity. Area basis: leaf area."
+
+[output_semantics."/electron_transport_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "Electron transport at the prescribed absorbed PAR. Area basis: leaf area."
+
+[output_semantics."/kc_umol_mol"]
+unit = "umol mol^-1"
+axes = []
+description = "Rubisco CO2 Michaelis constant converted from reference partial pressure to the supplied total pressure."
+
+[output_semantics."/ko_mmol_mol"]
+unit = "mmol mol^-1"
+axes = []
+description = "Rubisco oxygen Michaelis constant converted to the supplied total pressure."
+
+[output_semantics."/gamma_star_umol_mol"]
+unit = "umol mol^-1"
+axes = []
+description = "CO2 compensation point without mitochondrial respiration, scaled to the supplied oxygen fraction."
+
+[output_semantics."/michaelis_menten_co2_umol_mol"]
+unit = "umol mol^-1"
+axes = []
+description = "Kc*(1+O2/Ko)."
+
+[output_semantics."/intercellular_co2_umol_mol"]
+unit = "umol mol^-1"
+axes = []
+description = "Prescribed or solved Ci; null for a zero-LAI canopy."
+
+[output_semantics."/stomatal_conductance_water_mol_m2_s"]
+unit = "mol m^-2 s^-1"
+axes = []
+description = "Stomatal conductance to water vapour; null in prescribed-Ci mode. Area basis: leaf area."
+
+[output_semantics."/stomatal_conductance_co2_mol_m2_s"]
+unit = "mol m^-2 s^-1"
+axes = []
+description = "Water conductance divided by 1.6; null in prescribed-Ci mode. Area basis: leaf area."
+
+[output_semantics."/transpiration_mmol_m2_s"]
+unit = "mmol m^-2 s^-1"
+axes = []
+description = "Water-vapour flux from leaf interior to the imposed leaf surface; no energy balance or aerodynamic resistance. Area basis: leaf area."
+
+[output_semantics."/co2_flux_residual_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = []
+description = "A - gsc*(Cs-Ci); null when gas exchange was not solved. Area basis: leaf area."
+
+[output_semantics."/solver_iterations"]
+unit = "1"
+axes = []
+description = "Bisection iterations; zero when Ci was prescribed or there is no canopy."
+
+[output_semantics."/limitation_code"]
+unit = "1"
+axes = []
+description = "0 Rubisco, 1 electron transport, 2 TPU, 3 co-limitation, 4 zero-LAI canopy."
+
+[output_semantics."/gas_exchange_computed"]
+unit = "1"
+axes = []
+description = "Whether a stomatal CO2 gas-exchange solution was computed."
+
+[output_semantics."/tpu_limitation_enabled"]
+unit = "1"
+axes = []
+description = "Whether the simple TPU branch participates in the minimum."
+
+[output_semantics."/capacity_area_factor"]
+unit = "1"
+axes = []
+description = "Integrated capacity multiplier; integral exp(-kn*l) dl in the canopy, one for a leaf."
+
+[output_semantics."/leaf_area_factor"]
+unit = "m^2 m^-2"
+axes = []
+description = "Leaf area per ground area for the canopy, one for a leaf."
+
+[output_semantics."/ci_axis_umol_mol"]
+unit = "umol mol^-1"
+axes = ["ci"]
+description = "Diagnostic Ci 0–1500 umol/mol, step 25."
+
+[output_semantics."/ci_net_assimilation"]
+unit = "umol m^-2 s^-1"
+axes = ["ci"]
+description = "Biochemical A-Ci curve at the selected absorbed PAR; stomatal feedback is not applied."
+
+[output_semantics."/ci_rubisco_limited_assimilation"]
+unit = "umol m^-2 s^-1"
+axes = ["ci"]
+description = "Rubisco-limited net branch along the diagnostic Ci coordinate."
+
+[output_semantics."/ci_electron_limited_assimilation"]
+unit = "umol m^-2 s^-1"
+axes = ["ci"]
+description = "Electron-limited net branch along the diagnostic Ci coordinate."
+
+[output_semantics."/light_axis_umol_m2_s"]
+unit = "umol m^-2 s^-1"
+axes = ["light"]
+description = "Diagnostic absorbed PAR 0–4000, step 80, on the model area basis."
+
+[output_semantics."/light_net_assimilation"]
+unit = "umol m^-2 s^-1"
+axes = ["light"]
+description = "Biochemical light response holding the selected prescribed or solved Ci fixed; no stomatal re-solution."
+
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "fvcb-independent-equations-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "fvcb-independent-equations-v1"
+implementation_version = "0.1.0"
+backend = "python"
+
+[output_semantics."/intercellular_co2_defined"]
+unit="1"
+axes=[]
+description="Whether Ci is defined; false for a zero-LAI canopy."

@@ -61,7 +61,7 @@ def test_generic_and_typed_interfaces_share_solver_defaults_and_provenance():
     assert descriptor["metadata"]["status"] == "reference-validated"
     assert {e["backend"] for e in descriptor["metadata"]["validation"]} == {"native", "python"}
     assert descriptor["input_schema"]["properties"]["water"]["x-unit"] == "g cm^-2"
-    assert {item["metadata"]["id"] for item in rsp.list_models()} == {ID, "thermal.foursail", "vegetation.prosail-d", "vegetation.goms", "surface.ross-li", "microwave.tau-omega", "microwave.water-cloud", "atmosphere.smac", "microwave.lmeb", "ecosystem.gort-gpp", "soil.sort", "soil.sort-l", "microwave.i2em", "vegetation.fluspect-cx"}
+    assert {item["metadata"]["id"] for item in rsp.list_models()} == {ID, "ecosystem.fvcb", "ecosystem.fvcb-big-leaf", "thermal.foursail", "vegetation.prosail-d", "vegetation.goms", "surface.ross-li", "microwave.tau-omega", "microwave.water-cloud", "atmosphere.smac", "microwave.lmeb", "ecosystem.gort-gpp", "soil.sort", "soil.sort-l", "microwave.i2em", "vegetation.fluspect-cx"}
 
 
 def test_invalid_inputs_and_failed_batch_row_are_explicit():

@@ -142,6 +142,7 @@ jobs:
         run: |
           python tooling/ci/verify_documentation.py
           python bindings/python/examples/quickstart.py --plot --output-dir target/quickstart
+          python bindings/python/examples/fvcb_workflow.py --plot --output-dir target/fvcb
           python bindings/python/examples/all_models.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

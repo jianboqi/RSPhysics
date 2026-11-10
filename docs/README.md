@@ -40,6 +40,8 @@
 
 ### Ecosystem processes
 
+- [FvCB — leaf C₃ photosynthesis and stomatal gas exchange](models/fvcb.md)
+- [FvCB single big leaf — canopy photosynthesis](models/fvcb-big-leaf.md)
 - [GORT-GPP — canopy photosynthesis](models/gort-gpp.md)
 
 ### Soil optics

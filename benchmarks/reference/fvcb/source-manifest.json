@@ -1,0 +1,8 @@
+{
+  "suite": "fvcb-independent-equations-v1",
+  "method": "Independent literature equations with SciPy Brent roots; no upstream program source imported.",
+  "sha256": {
+    "generate.py": "bb0c73f81c062751354aebdcb57335fd725d98b4e9ff44d93308629a6abc9e60",
+    "reference.json": "8f78f7308790be71548d521563b875b62811fb39ca19e64aeda5f3b69d063c9e"
+  }
+}

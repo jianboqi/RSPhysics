@@ -53,3 +53,11 @@ manifest = "crates/models/vegetation/goms/model.toml"
 [[models]]
 id = "thermal.foursail"
 manifest = "crates/models/thermal/foursail/model.toml"
+
+[[models]]
+id="ecosystem.fvcb"
+manifest="crates/models/ecosystem/fvcb/model.toml"
+
+[[models]]
+id="ecosystem.fvcb-big-leaf"
+manifest="crates/models/ecosystem/fvcb/model-big-leaf.toml"

@@ -1,6 +1,7 @@
 [workspace]
 resolver = "3"
 members = [
+    "crates/models/ecosystem/fvcb",
     "crates/models/thermal/foursail",
     "crates/models/vegetation/goms",
     "crates/models/vegetation/fluspect-cx",
@@ -34,6 +35,7 @@ repository = "https://github.com/jianboqi/RSPhysics"
 homepage = "https://github.com/jianboqi/RSPhysics"
 
 [workspace.dependencies]
+rsphysics-fvcb = { path = "crates/models/ecosystem/fvcb" }
 rsphysics-foursail-tir = { path = "crates/models/thermal/foursail" }
 rsphysics-goms = { path = "crates/models/vegetation/goms" }
 rsphysics-fluspect-cx = { path = "crates/models/vegetation/fluspect-cx" }

@@ -697,6 +697,7 @@ version = "0.1.0"
 dependencies = [
  "rsphysics-fluspect-cx",
  "rsphysics-foursail-tir",
+ "rsphysics-fvcb",
  "rsphysics-goms",
  "rsphysics-gort-gpp",
  "rsphysics-i2em",
@@ -748,6 +749,16 @@ version = "0.1.0"
 dependencies = [
  "rsphysics-model-api",
  "rsphysics-numerics",
+ "schemars",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "rsphysics-fvcb"
+version = "0.1.0"
+dependencies = [
+ "rsphysics-model-api",
  "schemars",
  "serde",
  "serde_json",
@@ -866,6 +877,7 @@ dependencies = [
  "rsphysics-core",
  "rsphysics-fluspect-cx",
  "rsphysics-foursail-tir",
+ "rsphysics-fvcb",
  "rsphysics-goms",
  "rsphysics-gort-gpp",
  "rsphysics-i2em",

@@ -9,6 +9,64 @@ use rsphysics_runtime::RunManifest;
 use serde_json::{Map, Value};
 use std::{collections::BTreeMap, sync::OnceLock};
 
+const FVCB: &[&str] = &[
+    "leaf_temperature_c",
+    "co2_surface_umol_mol",
+    "intercellular_co2_umol_mol",
+    "pressure_pa",
+    "oxygen_mmol_mol",
+    "vcmax25_umol_m2_s",
+    "jmax25_umol_m2_s",
+    "respiration25_umol_m2_s",
+    "electron_quantum_yield",
+    "light_response_curvature",
+    "tpu_umol_m2_s",
+    "vapour_pressure_deficit_kpa",
+    "minimum_stomatal_conductance_water_mol_m2_s",
+    "ball_berry_slope",
+    "leuning_slope_co2",
+    "leuning_d0_kpa",
+    "medlyn_slope_kpa_sqrt",
+    "medlyn_vpd_floor_kpa",
+    "vcmax_activation_j_mol",
+    "jmax_activation_j_mol",
+    "respiration_activation_j_mol",
+    "vcmax_deactivation_j_mol",
+    "jmax_deactivation_j_mol",
+    "vcmax_entropy_j_mol_k",
+    "jmax_entropy_j_mol_k",
+    "absorbed_par_umol_m2_s",
+];
+const FVCB_BIG_LEAF: &[&str] = &[
+    "leaf_temperature_c",
+    "co2_surface_umol_mol",
+    "intercellular_co2_umol_mol",
+    "pressure_pa",
+    "oxygen_mmol_mol",
+    "vcmax25_umol_m2_s",
+    "jmax25_umol_m2_s",
+    "respiration25_umol_m2_s",
+    "electron_quantum_yield",
+    "light_response_curvature",
+    "tpu_umol_m2_s",
+    "vapour_pressure_deficit_kpa",
+    "minimum_stomatal_conductance_water_mol_m2_s",
+    "ball_berry_slope",
+    "leuning_slope_co2",
+    "leuning_d0_kpa",
+    "medlyn_slope_kpa_sqrt",
+    "medlyn_vpd_floor_kpa",
+    "vcmax_activation_j_mol",
+    "jmax_activation_j_mol",
+    "respiration_activation_j_mol",
+    "vcmax_deactivation_j_mol",
+    "jmax_deactivation_j_mol",
+    "vcmax_entropy_j_mol_k",
+    "jmax_entropy_j_mol_k",
+    "absorbed_par_ground_umol_m2_s",
+    "leaf_area_index",
+    "nitrogen_extinction_coefficient",
+];
 const FOURSAIL: &[&str] = &[
     "wavelength_nm",
     "leaf_area_index",
@@ -211,6 +269,8 @@ const GORT: &[&str] = &[
 ];
 fn columns(id: &str) -> Result<&'static [&'static str], ModelError> {
     match id {
+        "ecosystem.fvcb" => Ok(FVCB),
+        "ecosystem.fvcb-big-leaf" => Ok(FVCB_BIG_LEAF),
         "thermal.foursail" => Ok(FOURSAIL),
         "vegetation.goms" => Ok(GOMS),
         "vegetation.fluspect-cx" => Ok(FLUSPECT),
@@ -268,6 +328,8 @@ fn shared(key: &str, enabled: bool) -> bool {
                     | "gap_zenith_deg"
                     | "excitation_wavelengths_nm"
                     | "emission_wavelengths_nm"
+                    | "ci_axis_umol_mol"
+                    | "light_axis_umol_m2_s"
             )
 }
 impl Buffers {
@@ -370,6 +432,12 @@ macro_rules! cache {
         }
     };
 }
+cache!(fvcb, FVCB_MODEL, rsphysics_fvcb::Model);
+cache!(
+    fvcb_big_leaf,
+    FVCB_BIG_LEAF_MODEL,
+    rsphysics_fvcb::BigLeafModel
+);
 cache!(foursail, FOURSAIL_MODEL, rsphysics_foursail_tir::Model);
 cache!(goms, GOMS_MODEL, rsphysics_goms::Model);
 cache!(fluspect, FLUSPECT_MODEL, rsphysics_fluspect_cx::Model);
@@ -455,6 +523,94 @@ where
         manifests.push(manifest);
     }
     Ok((buffers, manifests))
+}
+fn fvcb_row(o: rsphysics_fvcb::Output) -> Row {
+    let p = o.point;
+    Row {
+        scalars: vec![
+            ("net_assimilation_umol_m2_s", p.net_assimilation_umol_m2_s),
+            (
+                "assimilation_before_day_respiration_umol_m2_s",
+                p.assimilation_before_day_respiration_umol_m2_s,
+            ),
+            (
+                "rubisco_limited_assimilation_umol_m2_s",
+                p.rubisco_limited_assimilation_umol_m2_s,
+            ),
+            (
+                "electron_limited_assimilation_umol_m2_s",
+                p.electron_limited_assimilation_umol_m2_s,
+            ),
+            (
+                "tpu_limited_assimilation_umol_m2_s",
+                p.tpu_limited_assimilation_umol_m2_s,
+            ),
+            ("day_respiration_umol_m2_s", p.day_respiration_umol_m2_s),
+            ("vcmax_umol_m2_s", p.vcmax_umol_m2_s),
+            ("jmax_umol_m2_s", p.jmax_umol_m2_s),
+            (
+                "electron_transport_umol_m2_s",
+                p.electron_transport_umol_m2_s,
+            ),
+            ("kc_umol_mol", p.kc_umol_mol),
+            ("ko_mmol_mol", p.ko_mmol_mol),
+            ("gamma_star_umol_mol", p.gamma_star_umol_mol),
+            (
+                "michaelis_menten_co2_umol_mol",
+                p.michaelis_menten_co2_umol_mol,
+            ),
+            (
+                "intercellular_co2_umol_mol",
+                p.intercellular_co2_umol_mol.unwrap_or(f64::NAN),
+            ),
+            (
+                "stomatal_conductance_water_mol_m2_s",
+                p.stomatal_conductance_water_mol_m2_s.unwrap_or(f64::NAN),
+            ),
+            (
+                "stomatal_conductance_co2_mol_m2_s",
+                p.stomatal_conductance_co2_mol_m2_s.unwrap_or(f64::NAN),
+            ),
+            (
+                "transpiration_mmol_m2_s",
+                p.transpiration_mmol_m2_s.unwrap_or(f64::NAN),
+            ),
+            (
+                "co2_flux_residual_umol_m2_s",
+                p.co2_flux_residual_umol_m2_s.unwrap_or(f64::NAN),
+            ),
+            ("capacity_area_factor", o.capacity_area_factor),
+            ("leaf_area_factor", o.leaf_area_factor),
+        ],
+        integers: vec![
+            ("gas_exchange_computed", i64::from(p.gas_exchange_computed)),
+            (
+                "intercellular_co2_defined",
+                i64::from(p.intercellular_co2_defined),
+            ),
+            ("limitation_code", i64::from(p.limitation_code)),
+            ("solver_iterations", i64::from(p.solver_iterations)),
+            (
+                "tpu_limitation_enabled",
+                i64::from(p.tpu_limitation_enabled),
+            ),
+        ],
+        arrays: vec![
+            ("ci_axis_umol_mol", o.ci_axis_umol_mol),
+            ("ci_net_assimilation", o.ci_net_assimilation),
+            (
+                "ci_rubisco_limited_assimilation",
+                o.ci_rubisco_limited_assimilation,
+            ),
+            (
+                "ci_electron_limited_assimilation",
+                o.ci_electron_limited_assimilation,
+            ),
+            ("light_axis_umol_m2_s", o.light_axis_umol_m2_s),
+            ("light_net_assimilation", o.light_net_assimilation),
+        ],
+        ..Row::default()
+    }
 }
 fn foursail_row(o: rsphysics_foursail_tir::Output) -> Row {
     Row {
@@ -829,6 +985,14 @@ pub fn model_batch_native<'py>(
         "vegetation.prosail-d" | "thermal.foursail" => k == "leaf_angle_distribution",
         "vegetation.goms" => k == "geometry_convention",
         "atmosphere.smac" => matches!(k.as_str(), "coefficient_id" | "direction"),
+        "ecosystem.fvcb" | "ecosystem.fvcb-big-leaf" => matches!(
+            k.as_str(),
+            "gas_exchange_mode"
+                | "stomatal_model"
+                | "temperature_response"
+                | "tpu_limitation"
+                | "leuning_compensation"
+        ),
         "ecosystem.gort-gpp" => k == "numerical_convention",
         "microwave.water-cloud" => k == "descriptor_mode",
         "microwave.lmeb" => k == "surface_type",
@@ -861,6 +1025,14 @@ pub fn model_batch_native<'py>(
     // Initialize cached models/runtime with the GIL, then release it for all rows.
     super::runtime()?;
     let (buffers, manifests) = match id {
+        "ecosystem.fvcb" => {
+            let m = fvcb()?;
+            py.detach(|| typed(m, id, &values, shared_axes, fvcb_row, &fixed))
+        }
+        "ecosystem.fvcb-big-leaf" => {
+            let m = fvcb_big_leaf()?;
+            py.detach(|| typed(m, id, &values, shared_axes, fvcb_row, &fixed))
+        }
         "thermal.foursail" => {
             let m = foursail()?;
             py.detach(|| typed(m, id, &values, shared_axes, foursail_row, &fixed))

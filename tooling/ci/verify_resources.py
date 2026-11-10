@@ -5,6 +5,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 CHECKS = [
+    "benchmarks/reference/fvcb/verify.py",
     "benchmarks/reference/foursail-tir/verify.py",
     'benchmarks/reference/verify_extended.py',
     'benchmarks/reference/fluspect-cx/verify.py',

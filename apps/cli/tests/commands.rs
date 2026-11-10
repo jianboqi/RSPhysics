@@ -8,7 +8,16 @@ fn list_is_machine_readable_and_unknown_models_fail_with_json() {
         .unwrap();
     assert!(list.status.success());
     let models: serde_json::Value = serde_json::from_slice(&list.stdout).unwrap();
-    assert_eq!(models.as_array().unwrap().len(), 14);
+    assert_eq!(models.as_array().unwrap().len(), 16);
+    for id in ["ecosystem.fvcb", "ecosystem.fvcb-big-leaf"] {
+        assert!(
+            models
+                .as_array()
+                .unwrap()
+                .iter()
+                .any(|m| m["metadata"]["id"] == id)
+        );
+    }
     assert!(
         models
             .as_array()
