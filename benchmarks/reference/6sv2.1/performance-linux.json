@@ -1,0 +1,52 @@
+{
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "cpus_visible": 32,
+  "compiler": "GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "flags": "-O2 -std=legacy -fallow-argument-mismatch -ffixed-line-length-132",
+  "source_sha256": "42422db29c095a49eaa98556b416405eb818be1ee30139d2a1913dbf3b0c7de1",
+  "cases": {
+    "original_modis_brdf/sixsV2.1": {
+      "median_s": 0.2123984529999916,
+      "min_s": 0.21124935199998163,
+      "max_s": 0.21992199900000742,
+      "report_bytes": 11448
+    },
+    "monochromatic_550nm/sixsV2.1": {
+      "median_s": 0.1960075429999506,
+      "min_s": 0.19204917199999727,
+      "max_s": 0.20046637500001907,
+      "report_bytes": 10494
+    },
+    "uniform_400_900nm/sixsV2.1": {
+      "median_s": 0.9413458530000298,
+      "min_s": 0.9321687220000285,
+      "max_s": 0.9668524769999749,
+      "report_bytes": 10654
+    },
+    "original_modis_brdf/sixsV2.1-lutaero": {
+      "median_s": 0.22847953699999834,
+      "min_s": 0.2198935450001045,
+      "max_s": 0.24499294399993232,
+      "report_bytes": 35066
+    },
+    "monochromatic_550nm/sixsV2.1-lutaero": {
+      "median_s": 0.19956497900000159,
+      "min_s": 0.1958393200000046,
+      "max_s": 0.20075774700001148,
+      "report_bytes": 34161
+    },
+    "uniform_400_900nm/sixsV2.1-lutaero": {
+      "median_s": 0.9564537059999338,
+      "min_s": 0.9527339359999587,
+      "max_s": 0.9752599820000114,
+      "report_bytes": 34321
+    }
+  },
+  "batch": {
+    "count": 32,
+    "workers": 8,
+    "serial_s": 6.375790278999943,
+    "parallel_s": 0.8744692960000293,
+    "speedup": 7.2910396147284855
+  }
+}

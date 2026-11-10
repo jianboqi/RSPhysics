@@ -1,0 +1,115 @@
+{
+  "scope": "Initial three-case / two-entrypoint build-portability smoke suite, not exhaustive model validation",
+  "source_archive_sha256": "42422db29c095a49eaa98556b416405eb818be1ee30139d2a1913dbf3b0c7de1",
+  "original_vs_corrected_native": {
+    "monochromatic_550nm/sixsV2.1": {
+      "numeric_fields": 117,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 0,
+      "max_angle_difference_deg": 0.0
+    },
+    "uniform_400_900nm/sixsV2.1": {
+      "numeric_fields": 119,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 0,
+      "max_angle_difference_deg": 0.0
+    },
+    "original_modis_brdf/sixsV2.1": {
+      "numeric_fields": 140,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 0,
+      "max_angle_difference_deg": 0.0
+    },
+    "monochromatic_550nm/sixsV2.1-lutaero": {
+      "numeric_fields": 117,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 1372,
+      "max_angle_difference_deg": 0.0
+    },
+    "uniform_400_900nm/sixsV2.1-lutaero": {
+      "numeric_fields": 119,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 1372,
+      "max_angle_difference_deg": 0.0
+    },
+    "original_modis_brdf/sixsV2.1-lutaero": {
+      "numeric_fields": 124,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 1392,
+      "max_angle_difference_deg": 0.0
+    }
+  },
+  "original_vs_corrected_wasm": {
+    "monochromatic_550nm/sixsV2.1": {
+      "numeric_fields": 117,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 0,
+      "max_angle_difference_deg": 0.0
+    },
+    "uniform_400_900nm/sixsV2.1": {
+      "numeric_fields": 119,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 0,
+      "max_angle_difference_deg": 0.0
+    },
+    "original_modis_brdf/sixsV2.1": {
+      "numeric_fields": 140,
+      "max_absolute_difference": 3.999999997894577e-09,
+      "angular_coordinates": 0,
+      "max_angle_difference_deg": 0.0
+    },
+    "monochromatic_550nm/sixsV2.1-lutaero": {
+      "numeric_fields": 117,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 1372,
+      "max_angle_difference_deg": 7.499999998117346e-05
+    },
+    "uniform_400_900nm/sixsV2.1-lutaero": {
+      "numeric_fields": 119,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 1372,
+      "max_angle_difference_deg": 7.499999998117346e-05
+    },
+    "original_modis_brdf/sixsV2.1-lutaero": {
+      "numeric_fields": 124,
+      "max_absolute_difference": 0.0,
+      "angular_coordinates": 1392,
+      "max_angle_difference_deg": 7.499999998117346e-05
+    }
+  },
+  "native_build": {
+    "source_archive_sha256": "42422db29c095a49eaa98556b416405eb818be1ee30139d2a1913dbf3b0c7de1",
+    "kind": "native",
+    "compiler": "GNU Fortran (GCC) 16.2.0",
+    "flags": [
+      "-O2",
+      "-ffixed-line-length-132",
+      "-std=legacy",
+      "-fallow-argument-mismatch"
+    ],
+    "programs": [
+      "sixsV2.1",
+      "sixsV2.1-lutaero"
+    ],
+    "compatibility_patches": [
+      "initialize-unused-zero-direction"
+    ]
+  },
+  "wasm_build": {
+    "source_archive_sha256": "42422db29c095a49eaa98556b416405eb818be1ee30139d2a1913dbf3b0c7de1",
+    "kind": "wasm",
+    "compiler": "flang version 23.1.4 (https://github.com/r-wasm/llvm-project c2d615152b29ddd6efab74ed8be773078d3f9595)",
+    "flags": [
+      "--target=wasm32-unknown-emscripten",
+      "-O2",
+      "-ffixed-line-length=132"
+    ],
+    "programs": [
+      "sixsV2.1",
+      "sixsV2.1-lutaero"
+    ],
+    "compatibility_patches": [
+      "initialize-unused-zero-direction"
+    ]
+  }
+}
