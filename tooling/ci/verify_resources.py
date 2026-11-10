@@ -5,6 +5,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 CHECKS = [
+    'benchmarks/reference/sort/verify.py',
     'tooling/check-models/check_models.py',
     'tooling/sensor-data/verify.py',
     'tooling/smac-data/verify.py',

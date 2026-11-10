@@ -27,6 +27,7 @@ def check() -> None:
     packages = {Path(p["manifest_path"]).resolve().parent: p
                 for p in metadata["packages"] if p["id"] in members}
     manifests = sorted((ROOT / "crates" / "models").rglob("model.toml"))
+    manifests += sorted((ROOT / "crates" / "models").rglob("model-*.toml"))
     manifests += sorted((ROOT / "templates").rglob("model.toml"))
     official = {}
     declared = {}

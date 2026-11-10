@@ -34,3 +34,8 @@
 ### Ecosystem processes
 
 - [GORT-GPP — canopy photosynthesis](models/gort-gpp.md)
+
+### Soil optics
+
+- [SORT: directional soil reflectance](models/sort.md)
+- [SORT-L: Lambertian soil reflectance](models/sort-l.md)

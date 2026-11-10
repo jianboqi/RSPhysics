@@ -3,6 +3,7 @@
 .venv/
 *.whl
 *.pyd
+*.pdb
 *.so
 /dist/
 /.reference-cache/

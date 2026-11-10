@@ -29,3 +29,11 @@ manifest = "crates/models/microwave/lmeb/model.toml"
 [[models]]
 id = "ecosystem.gort-gpp"
 manifest = "crates/models/ecosystem/gort-gpp/model.toml"
+
+[[models]]
+id = "soil.sort"
+manifest = "crates/models/soil/sort/model.toml"
+
+[[models]]
+id = "soil.sort-l"
+manifest = "crates/models/soil/sort/model-l.toml"

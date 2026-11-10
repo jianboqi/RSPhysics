@@ -5,7 +5,7 @@ import pytest
 import rsphysics as rsp
 
 ROOT=Path(__file__).resolve().parents[3]
-MODELS=['vegetation.prospect-d','vegetation.prosail-d','surface.ross-li','microwave.tau-omega','microwave.water-cloud','microwave.lmeb','ecosystem.gort-gpp']
+MODELS=['vegetation.prospect-d','vegetation.prosail-d','surface.ross-li','microwave.tau-omega','microwave.water-cloud','microwave.lmeb','ecosystem.gort-gpp','soil.sort-l']
 
 @pytest.mark.parametrize('model',MODELS)
 def test_typed_buffers_match_all_existing_references_and_json_runtime(model):

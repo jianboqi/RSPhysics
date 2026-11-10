@@ -45,6 +45,8 @@ reflectance = leaf["result"]["reflectance"]
 | Passive microwave | [Tau–omega](docs/models/tau-omega.md) | Soil–vegetation brightness temperature |
 | Passive microwave | [L-MEB](docs/models/lmeb.md) | L-band dual-polarization emission |
 | Active microwave | [Water-cloud model](docs/models/water-cloud.md) | Vegetation and soil radar backscatter |
+| Soil optics | [SORT](docs/models/sort.md) | Dry and wet soil directional reflectance |
+| Soil optics | [SORT-L](docs/models/sort-l.md) | Lambertian dry and wet soil reflectance |
 | Atmosphere | [SMAC](docs/models/smac.md) | Band-wise atmospheric correction |
 | Ecosystem processes | [GORT-GPP](docs/models/gort-gpp.md) | Canopy photosynthesis and net carbon assimilation |
 

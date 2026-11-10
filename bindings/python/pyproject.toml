@@ -22,8 +22,8 @@ classifiers = [
     "Programming Language :: Rust",
     "Topic :: Scientific/Engineering :: Physics",
 ]
-license = "Apache-2.0 AND MIT AND GPL-3.0-only AND LicenseRef-User-Supplied-Research-Code"
-license-files = ["python/rsphysics/APACHE-2.0.txt", "python/rsphysics/THIRD_PARTY_NOTICES.md", "python/rsphysics/SMAC_GPL-3.0.txt", "python/rsphysics/NOTICE", "python/rsphysics/RIGHTS-STATEMENT.md", "python/rsphysics/SUPPLIED_MODELS_ORIGIN.md"]
+license = "Apache-2.0 AND MIT AND GPL-3.0-only AND LicenseRef-User-Supplied-Research-Code AND LicenseRef-SORT-Author-Authorized"
+license-files = ["python/rsphysics/APACHE-2.0.txt", "python/rsphysics/SORT_ORIGIN.md", "python/rsphysics/SORT_THIRD_PARTY_NOTICES.md", "python/rsphysics/THIRD_PARTY_NOTICES.md", "python/rsphysics/SMAC_GPL-3.0.txt", "python/rsphysics/NOTICE", "python/rsphysics/RIGHTS-STATEMENT.md", "python/rsphysics/SUPPLIED_MODELS_ORIGIN.md"]
 
 [project.optional-dependencies]
 test = ["pytest>=8,<10"]
@@ -35,6 +35,7 @@ Repository = "https://github.com/jianboqi/RSPhysics"
 Issues = "https://github.com/jianboqi/RSPhysics/issues"
 
 [tool.maturin]
+exclude = ["python/rsphysics/*.pdb"]
 python-source = "python"
 module-name = "rsphysics._native"
 features = ["extension-module"]

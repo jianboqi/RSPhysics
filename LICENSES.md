@@ -16,3 +16,6 @@ The Python distribution records the combined component terms. Full notices and
 attribution accompany the [package](bindings/python/python/rsphysics/THIRD_PARTY_NOTICES.md).
 The project license does not replace third-party conditions. See
 [NOTICE](NOTICE) and the [rights-contact statement](RIGHTS-STATEMENT.md).
+
+SORT and SORT-L retain the author's academic/non-commercial usage terms and the
+confirmed public distribution authorization; see [component rights](crates/models/soil/sort/LICENSE-ORIGIN.md) and its [MIT roughness notice](crates/models/soil/sort/THIRD_PARTY_NOTICES.md).

@@ -2,8 +2,8 @@
 * text=auto eol=lf
 
 # Scientific resources and golden fixtures are hashed as exact bytes.
-*.json -text
+*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 *.tsv -text
-*.csv -text
+*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 *.txt -text
 *.zlib binary

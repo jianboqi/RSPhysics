@@ -7,6 +7,7 @@ publish.workspace = true
 license.workspace = true
 
 [dependencies]
+rsphysics-sort.workspace = true
 rsphysics-lmeb.workspace = true
 rsphysics-gort-gpp.workspace = true
 rsphysics-model-api.workspace = true

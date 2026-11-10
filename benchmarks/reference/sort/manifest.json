@@ -1,0 +1,13 @@
+{
+  "fixture_hashes": {
+    "inputs.json": "5710ba1c649bab1dad3c9432a7319480c53f92760dfd017109f83b7c5962c972",
+    "expected.json": "102b91fcb347d0d34403cf800aea2e506eed5508ab892158834f7426add16e3d",
+    "provenance.json": "1235d375db0d1b5f0d4b8bf90813253d084c33a8147810e8200ed01b829c5a8a"
+  },
+  "soil_basis_sha256": "ad52839c4b9ad852595c0830ec9332476b399be7fb9f582e881c2acd8bfd4e88",
+  "tolerance": {
+    "absolute": 2e-09,
+    "relative": 2e-09
+  },
+  "cases": 16
+}

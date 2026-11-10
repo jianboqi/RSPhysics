@@ -1,0 +1,21 @@
+{
+  "archive": "SORT_mode_forward_20261029.zip",
+  "archive_sha256": "780469326ea98a6b08ce3dffbdb033da091ace7e6dd6048f42fb4ad9cefbb3ab",
+  "model_author": "Anxin Ding",
+  "scope": "SORT none/hapke_single/hapke_multi; refracted substrate, legacy_scalar water film",
+  "source_hashes": {
+    "sort_kernel/__init__.py": "f1d5bb67b07f5bf3fc7bd99e0f6b4c283ed77267e68a8348996350ec8e4f9482",
+    "sort_kernel/energy.py": "c9dc9b6264227e56a072b20228c4aaea89edff8aa7fe3143bfd1eacb4c505ce4",
+    "sort_kernel/full.py": "2f428bbf4eb43530b581ab15cc4bef6e5454cefd8df9e086f6c0a1d69890052e",
+    "sort_kernel/lambert.py": "cb4130b4eec4335c568a1e90760b2ab2f0050fb9e990365976f732c226a4b576",
+    "sort_kernel/layer.py": "3ba5dc1e56b37f7531a86da44bed8b256361b15334d2b8634b1a60ca1e20f889",
+    "sort_kernel/optics.py": "7bcf5a92f41b0de048b82f8d39d2d45845905e420b3632fabd7f6abbdf9221c1",
+    "sort_kernel/quality.py": "df763c89eb86f2ebdb3b1efcae17ce9b7c7b7c9e06516ffc0d1f2d47b446e13c",
+    "sort_kernel/soil_spectral_basis_embedded.py": "b49cba8c020121f99f2a116566438574fb059e6aae620c8d13935c8d2fbc0bee"
+  },
+  "parameters_units": {
+    "water_film_thickness_mm": "mm",
+    "wavelengths_nm": "nm"
+  },
+  "reference_only": true
+}

@@ -1,0 +1,80 @@
+[model]
+id = "soil.sort-l"
+name = "SORT-L"
+family = "SORT"
+category = "soil"
+scientific_version = "1.0.0"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "400-2400 nm embedded soil basis; forward optical reflectance. Lambertian angle-independent reflectance with diffuse film closure. Parameter ranges and energy screening do not establish observational validity."
+[source]
+crate = "rsphysics-sort"
+authors = ["Anxin Ding"]
+references = ["Ding, A. (2026). SORT / SORT-L: Soil Optical Radiative Transfer Model. Model documentation, version 1.0.0."]
+license = "LicenseRef-SORT-Author-Authorized AND MIT"
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "sort-l-supplied-python-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "sort-l-supplied-python-v1"
+implementation_version = "0.1.0"
+backend = "python"
+[data.hashes]
+soil_basis = "sha256:ad52839c4b9ad852595c0830ec9332476b399be7fb9f582e881c2acd8bfd4e88"
+[input_semantics."/soil_brightness"]
+unit = "1"
+axes = []
+description = "Soil spectral brightness multiplier."
+[input_semantics."/spectral_alpha_deg"]
+unit = "deg"
+axes = []
+description = "First spherical mixing angle of the soil spectral basis."
+[input_semantics."/spectral_gamma_deg"]
+unit = "deg"
+axes = []
+description = "Second spherical mixing angle of the soil spectral basis."
+[input_semantics."/water_coverage"]
+unit = "1"
+axes = []
+description = "Water-film covered surface fraction."
+[input_semantics."/water_film_thickness_mm"]
+unit = "mm"
+axes = []
+description = "Water-film thickness in millimetres."
+[input_semantics."/particle_volume_fraction"]
+unit = "1"
+axes = []
+description = "Particle volume fraction within the water film."
+[input_semantics."/particle_refractive_index"]
+unit = "1"
+axes = []
+description = "Real refractive index of particles in the film."
+[input_semantics."/particle_extinction_coefficient"]
+unit = "1"
+axes = []
+description = "Non-negative imaginary refractive index of film particles."
+[output_semantics."/wavelengths_nm"]
+unit = "nm"
+axes = ["wavelength"]
+description = "400-2400 nm, 1 nm sampling."
+[output_semantics."/dry_reflectance"]
+unit = "1"
+quantity = "reflectance"
+axes = ["wavelength"]
+description = "Angle-independent Lambertian reflectance."
+[output_semantics."/wet_reflectance"]
+unit = "1"
+quantity = "reflectance"
+axes = ["wavelength"]
+description = "Angle-independent Lambertian reflectance."

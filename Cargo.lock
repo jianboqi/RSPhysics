@@ -696,6 +696,7 @@ dependencies = [
  "rsphysics-prospect-d",
  "rsphysics-ross-li",
  "rsphysics-smac",
+ "rsphysics-sort",
  "rsphysics-tau-omega",
  "rsphysics-water-cloud",
 ]
@@ -814,6 +815,7 @@ dependencies = [
  "rsphysics-ross-li",
  "rsphysics-runtime",
  "rsphysics-smac",
+ "rsphysics-sort",
  "rsphysics-tau-omega",
  "rsphysics-water-cloud",
  "serde_json",
@@ -845,6 +847,19 @@ name = "rsphysics-smac"
 version = "0.1.0"
 dependencies = [
  "miniz_oxide",
+ "rsphysics-model-api",
+ "schemars",
+ "serde",
+ "serde_json",
+ "sha2",
+]
+
+[[package]]
+name = "rsphysics-sort"
+version = "0.1.0"
+dependencies = [
+ "num-complex",
+ "rsphysics-core",
  "rsphysics-model-api",
  "schemars",
  "serde",

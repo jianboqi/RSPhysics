@@ -9,6 +9,36 @@ use rsphysics_runtime::RunManifest;
 use serde_json::{Map, Value};
 use std::{collections::BTreeMap, sync::OnceLock};
 
+const SORT: &[&str] = &[
+    "solar_zenith_deg",
+    "view_zenith_deg",
+    "relative_azimuth_deg",
+    "phase_asymmetry",
+    "phase_backscatter",
+    "hotspot_amplitude",
+    "hotspot_width",
+    "solid_filling_factor",
+    "rms_slope",
+    "multifacet_reflectance",
+    "soil_brightness",
+    "spectral_alpha_deg",
+    "spectral_gamma_deg",
+    "water_coverage",
+    "water_film_thickness_mm",
+    "particle_volume_fraction",
+    "particle_refractive_index",
+    "particle_extinction_coefficient",
+];
+const SORT_L: &[&str] = &[
+    "soil_brightness",
+    "spectral_alpha_deg",
+    "spectral_gamma_deg",
+    "water_coverage",
+    "water_film_thickness_mm",
+    "particle_volume_fraction",
+    "particle_refractive_index",
+    "particle_extinction_coefficient",
+];
 const PROSPECT: &[&str] = &[
     "n",
     "chlorophyll",
@@ -118,6 +148,8 @@ const GORT: &[&str] = &[
 ];
 fn columns(id: &str) -> Result<&'static [&'static str], ModelError> {
     match id {
+        "soil.sort" => Ok(SORT),
+        "soil.sort-l" => Ok(SORT_L),
         "ecosystem.gort-gpp" => Ok(GORT),
         "microwave.lmeb" => Ok(LMEB),
         "vegetation.prospect-d" => Ok(PROSPECT),
@@ -249,6 +281,8 @@ macro_rules! cache {
         }
     };
 }
+cache!(sort, SORT_MODEL, rsphysics_sort::Model);
+cache!(sort_l, SORT_L_MODEL, rsphysics_sort::LambertModel);
 cache!(prosail, PROSAIL_MODEL, rsphysics_prosail_d::Model);
 cache!(ross, ROSS_MODEL, rsphysics_ross_li::Model);
 cache!(tau, TAU_MODEL, rsphysics_tau_omega::Model);
@@ -316,6 +350,26 @@ where
         manifests.push(manifest);
     }
     Ok((buffers, manifests))
+}
+fn sort_row(o: rsphysics_sort::Output) -> Row {
+    Row {
+        arrays: vec![
+            ("wavelengths_nm", o.wavelengths_nm.wavelengths_nm().to_vec()),
+            ("dry_brf", o.dry_brf),
+            ("wet_brf", o.wet_brf),
+        ],
+        ..Row::default()
+    }
+}
+fn sort_l_row(o: rsphysics_sort::LambertOutput) -> Row {
+    Row {
+        arrays: vec![
+            ("wavelengths_nm", o.wavelengths_nm.wavelengths_nm().to_vec()),
+            ("dry_reflectance", o.dry_reflectance),
+            ("wet_reflectance", o.wet_reflectance),
+        ],
+        ..Row::default()
+    }
 }
 fn prospect_row(o: rsphysics_prospect_d::Output) -> Row {
     Row {
@@ -496,13 +550,14 @@ pub fn model_batch_native<'py>(
     let names = columns(id).map_err(super::error)?;
     let fixed: Map<String, Value> = serde_json::from_str(fixed_parameters)
         .map_err(|e| pyo3::exceptions::PyValueError::new_err(e.to_string()))?;
-    if fixed
-        .keys()
-        .any(|k| id != "atmosphere.smac" || !matches!(k.as_str(), "coefficient_id" | "direction"))
-    {
+    if fixed.keys().any(|k| !match id {
+        "atmosphere.smac" => matches!(k.as_str(), "coefficient_id" | "direction"),
+        "soil.sort" => k == "roughness_correction",
+        _ => false,
+    }) {
         return Err(super::error(ModelError::new(
             ErrorKind::InvalidParameter,
-            "fixed selectors only accept SMAC coefficient_id and direction",
+            "fixed accepts only model string selectors: SMAC coefficient_id/direction or SORT roughness_correction",
         )));
     }
     if parameters.shape()[1] != names.len() {
@@ -519,6 +574,14 @@ pub fn model_batch_native<'py>(
     // Initialize cached models/runtime with the GIL, then release it for all rows.
     super::runtime()?;
     let (buffers, manifests) = match id {
+        "soil.sort" => {
+            let m = sort()?;
+            py.detach(|| typed(m, id, &values, shared_axes, sort_row, &fixed))
+        }
+        "soil.sort-l" => {
+            let m = sort_l()?;
+            py.detach(|| typed(m, id, &values, shared_axes, sort_l_row, &fixed))
+        }
         "ecosystem.gort-gpp" => {
             let m = gort()?;
             py.detach(|| typed(m, id, &values, shared_axes, gort_row, &fixed))

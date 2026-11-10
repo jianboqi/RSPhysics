@@ -45,6 +45,8 @@ impl Catalog {
 /// Scientific models compiled into this build. Templates/fixtures never enter this list.
 pub fn official_catalog() -> Result<Catalog, ModelError> {
     Catalog::new(vec![
+        Box::new(TypedAdapter::new(rsphysics_sort::Model::new()?)?),
+        Box::new(TypedAdapter::new(rsphysics_sort::LambertModel::new()?)?),
         Box::new(TypedAdapter::new(rsphysics_lmeb::Model::new()?)?),
         Box::new(TypedAdapter::new(rsphysics_gort_gpp::Model::new()?)?),
         Box::new(TypedAdapter::new(rsphysics_smac::Model::new()?)?),
