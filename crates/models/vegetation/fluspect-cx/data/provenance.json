@@ -1,0 +1,10 @@
+{
+  "source": {
+    "sha256": "03bd2dfc37e11fa085f00013ce99d6c8ed5a0b427e4c65211f4d32e36f8cc596",
+    "url": "https://raw.githubusercontent.com/Christiaanvandertol/SCOPE/f4d07b33828f82c572cb1965cf82b1db4579c5b4/input/fluspect_parameters/Optipar2017_ProspectD.mat",
+    "bytes": 89038
+  },
+  "sha256": "8867eb9c0617a955d60331b5f26b660e1440296a5117a11b9c8d37251e277318",
+  "raw_sha256": "8e5bd7d11d6afbfb5a6f03879935e2300b242c6d5e00b7b3adc6b1ebf7918dbe",
+  "export": "MATLAB fprintf %.17g; selected columns wl,nr,Kab,Kca,Ks,Kw,Kdm,KcaV,KcaZ,Kant,phi from optipar; unchanged numerical values."
+}

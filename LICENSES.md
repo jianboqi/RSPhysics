@@ -31,3 +31,10 @@ implementation. This component is identified as
 relicensing of the original MATLAB program. See
 `crates/models/microwave/i2em/LICENSE.component`. Original MATLAB source is
 not bundled. RSPhysics-authored interfaces and packaging are Apache-2.0.
+
+
+## FLUSPECT-CX
+
+The scientific implementation and optical data retain GPL-3.0 terms and author
+attribution. See the component NOTICE.md / packaged FLUSPECT_ORIGIN.md and
+FLUSPECT_GPL-3.0.txt. Original project code remains Apache-2.0.

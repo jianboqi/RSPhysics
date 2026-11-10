@@ -695,6 +695,7 @@ checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
 name = "rsphysics-catalog"
 version = "0.1.0"
 dependencies = [
+ "rsphysics-fluspect-cx",
  "rsphysics-gort-gpp",
  "rsphysics-i2em",
  "rsphysics-lmeb",
@@ -725,6 +726,18 @@ dependencies = [
  "schemars",
  "serde",
  "serde_json",
+]
+
+[[package]]
+name = "rsphysics-fluspect-cx"
+version = "0.1.0"
+dependencies = [
+ "miniz_oxide",
+ "rsphysics-model-api",
+ "schemars",
+ "serde",
+ "serde_json",
+ "sha2",
 ]
 
 [[package]]
@@ -825,6 +838,7 @@ dependencies = [
  "pyo3",
  "rsphysics-catalog",
  "rsphysics-core",
+ "rsphysics-fluspect-cx",
  "rsphysics-gort-gpp",
  "rsphysics-i2em",
  "rsphysics-lmeb",

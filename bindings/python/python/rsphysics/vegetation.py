@@ -68,3 +68,24 @@ def prospect_d_batch(parameters: np.ndarray, *, shared_axes=False) -> dict:
     are supported. An invalid row aborts the batch and is identified in the error.
     """
     return run_array('vegetation.prospect-d',parameters,shared_axes=shared_axes)
+
+
+FLUSPECT_CX_PARAMETERS=('n','chlorophyll','carotenoids','anthocyanins','brown_pigments','water','dry_matter','xanthophyll_state','fluorescence_efficiency')
+
+def fluspect_cx(*,n:float=1.5,chlorophyll:float=40.,carotenoids:float=8.,anthocyanins:float=0.,brown_pigments:float=0.,water:float=.01,dry_matter:float=.009,xanthophyll_state:float=0.,fluorescence_efficiency:float=.01)->dict:
+    """Leaf R/T (400..2400 nm) and combined-photosystem fluorescence matrices.
+
+    Matrices are (emission=53, excitation=71): 640..848/4 nm, 400..750/5 nm.
+    They include the original 5 nm excitation integration weight; no additional
+    weight is needed for a matrix-vector product with spectral irradiance.
+    No illumination is assumed and matrices are not absolute SIF radiance.
+    """
+    return run('vegetation.fluspect-cx',locals())
+
+def fluspect_cx_batch(parameters, *, shared_axes=False)->dict:
+    """Native NumPy (batch,9) in FLUSPECT_CX_PARAMETERS order.
+
+    R/T shape (batch,2001), matrices (batch,53,71). shared_axes=True returns
+    all coordinate arrays once in coordinates, including the two matrix axes.
+    """
+    return run_array('vegetation.fluspect-cx',parameters,shared_axes=shared_axes)

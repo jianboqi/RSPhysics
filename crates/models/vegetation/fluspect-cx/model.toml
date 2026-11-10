@@ -1,0 +1,106 @@
+[model]
+id = "vegetation.fluspect-cx"
+name = "FLUSPECT-CX"
+family = "fluspect-cx"
+category = "vegetation"
+scientific_version = "FLUSPECT-CX / PROSPECT-D optics / SCOPE light 5x4 nm"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Leaf-scale forward optics and fluorescence transfer, combined PSI+PSII. Optical grid 400..2400 nm at 1 nm. Excitation grid 400..750 nm at 5 nm; emission 640..848 nm at 4 nm. Matrices include the original 5 nm excitation integration weight; do not multiply by this weight twice. Fixed 59 degree leaf illumination transmission convention. PROSPECT-D optical data, no PRO protein/cellulose coefficients, no legacy -999 carotenoid selector, no photosystem separation, canopy or atmospheric coupling, energy balance, illumination spectrum or inversion. Matrices are transfer responses, not absolute SIF radiance."
+[source]
+crate = "rsphysics-fluspect-cx"
+authors = ["Nastassia Vilfan", "Christiaan van der Tol", "Wout Verhoef", "Joris Timmermans", "Onno Muller", "Uwe Rascher"]
+references = ["https://doi.org/10.1016/j.rse.2016.09.017", "https://doi.org/10.1016/j.rse.2018.04.012", "https://github.com/Christiaanvandertol/SCOPE"]
+license = "GPL-3.0-only"
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+[validation]
+[[validation.evidence]]
+kind = "implementation"
+suite = "fluspect-cx-matlab-light-v1"
+implementation_version = "0.1.0"
+backend = "native"
+[[validation.evidence]]
+kind = "implementation"
+suite = "fluspect-cx-matlab-light-v1"
+implementation_version = "0.1.0"
+backend = "python"
+[data.hashes]
+"optics.csv.zlib" = "sha256:8867eb9c0617a955d60331b5f26b660e1440296a5117a11b9c8d37251e277318"
+[input_semantics."/n"]
+unit = "1"
+axes = []
+description = "Leaf mesophyll structure parameter."
+[input_semantics."/chlorophyll"]
+unit = "ug cm^-2"
+axes = []
+description = "Chlorophyll a+b."
+[input_semantics."/carotenoids"]
+unit = "ug cm^-2"
+axes = []
+description = "Total carotenoids."
+[input_semantics."/anthocyanins"]
+unit = "ug cm^-2"
+axes = []
+description = "Anthocyanins."
+[input_semantics."/brown_pigments"]
+unit = "1"
+axes = []
+description = "Brown/senescent pigments."
+[input_semantics."/water"]
+unit = "g cm^-2"
+axes = []
+description = "Equivalent water thickness."
+[input_semantics."/dry_matter"]
+unit = "g cm^-2"
+axes = []
+description = "Dry matter content; PROSPECT-D coefficients."
+[input_semantics."/xanthophyll_state"]
+unit = "1"
+axes = []
+description = "Violaxanthin to zeaxanthin state, 0..1."
+[input_semantics."/fluorescence_efficiency"]
+unit = "1"
+axes = []
+description = "Combined PSI+PSII fluorescence efficiency; zero disables fluorescence."
+[output_semantics."/wavelengths_nm"]
+unit = "nm"
+axes = ["wavelength"]
+description = "2001 optical samples, 400..2400 nm."
+[output_semantics."/reflectance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Leaf reflectance."
+[output_semantics."/transmittance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Leaf transmittance."
+[output_semantics."/chlorophyll_absorption_fraction"]
+unit = "1"
+axes = ["wavelength"]
+description = "Chlorophyll fraction of total bulk absorption; not total absorptance."
+[output_semantics."/carotenoid_absorption_fraction"]
+unit = "1"
+axes = ["wavelength"]
+description = "Carotenoid fraction of total bulk absorption; not total absorptance."
+[output_semantics."/excitation_wavelengths_nm"]
+unit = "nm"
+axes = ["excitation"]
+description = "71 excitation samples, 400..750 nm step 5."
+[output_semantics."/emission_wavelengths_nm"]
+unit = "nm"
+axes = ["emission"]
+description = "53 emission samples, 640..848 nm step 4."
+[output_semantics."/fluorescence_backward"]
+unit = "1"
+axes = ["emission", "excitation"]
+description = "Combined-photosystem backward transfer matrix, includes 5 nm excitation-bin integration weight."
+[output_semantics."/fluorescence_forward"]
+unit = "1"
+axes = ["emission", "excitation"]
+description = "Combined-photosystem forward transfer matrix, includes 5 nm excitation-bin integration weight."

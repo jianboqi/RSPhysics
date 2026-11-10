@@ -41,3 +41,7 @@ manifest = "crates/models/soil/sort/model-l.toml"
 [[models]]
 id = "microwave.i2em"
 manifest = "crates/models/microwave/i2em/model.toml"
+
+[[models]]
+id = "vegetation.fluspect-cx"
+manifest = "crates/models/vegetation/fluspect-cx/model.toml"

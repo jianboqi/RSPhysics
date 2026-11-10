@@ -39,6 +39,7 @@ reflectance = leaf["result"]["reflectance"]
 
 | Category | Model | Main purpose |
 |---|---|---|
+| Vegetation optics | [FLUSPECT-CX](docs/models/fluspect-cx.md) | Leaf optics and fluorescence transfer |
 | Vegetation optics | [PROSPECT-D](docs/models/prospect-d.md) | Leaf reflectance and transmittance |
 | Vegetation optics | [PROSAIL-D](docs/models/prosail-d.md) | Canopy reflectance |
 | Surface reflectance | [Ross–Li](docs/models/ross-li.md) | Directional reflectance and BRDF |

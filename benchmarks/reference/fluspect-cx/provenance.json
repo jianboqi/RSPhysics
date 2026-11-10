@@ -1,0 +1,54 @@
+{
+  "repository": "https://github.com/Christiaanvandertol/SCOPE",
+  "revision": "f4d07b33828f82c572cb1965cf82b1db4579c5b4",
+  "source": {
+    "GNU_General_Public_Licence.txt": {
+      "sha256": "0b902d6b396c45bfa9d35e895383ba4d3af39de732b60b420868a347ffb721ae",
+      "url": "https://raw.githubusercontent.com/Christiaanvandertol/SCOPE/f4d07b33828f82c572cb1965cf82b1db4579c5b4/GNU_General_Public_Licence.txt",
+      "bytes": 31612
+    },
+    "src/RTMs/fluspect_B_CX.m": {
+      "sha256": "5dfcc9b0dd9c1d487422a6c959a6bc88d815cdf44bae1549eb27834b2555aa6a",
+      "url": "https://raw.githubusercontent.com/Christiaanvandertol/SCOPE/f4d07b33828f82c572cb1965cf82b1db4579c5b4/src/RTMs/fluspect_B_CX.m",
+      "bytes": 9787
+    },
+    "input/fluspect_parameters/Optipar2017_ProspectD.mat": {
+      "sha256": "03bd2dfc37e11fa085f00013ce99d6c8ed5a0b427e4c65211f4d32e36f8cc596",
+      "url": "https://raw.githubusercontent.com/Christiaanvandertol/SCOPE/f4d07b33828f82c572cb1965cf82b1db4579c5b4/input/fluspect_parameters/Optipar2017_ProspectD.mat",
+      "bytes": 89038
+    },
+    "docs/structs/constants/optipar.rst": {
+      "sha256": "07920541a960c4602cae9e114c4d29fe2367b881e5d374362e694098429fd2a8",
+      "url": "https://raw.githubusercontent.com/Christiaanvandertol/SCOPE/f4d07b33828f82c572cb1965cf82b1db4579c5b4/docs/structs/constants/optipar.rst",
+      "bytes": 2429
+    },
+    "README.md": {
+      "sha256": "37dbb4f009be4e3d7a15b2d2b7cef8122616c7e65c052b956a2108863aed0a2b",
+      "url": "https://raw.githubusercontent.com/Christiaanvandertol/SCOPE/f4d07b33828f82c572cb1965cf82b1db4579c5b4/README.md",
+      "bytes": 1382
+    }
+  },
+  "reference": "Unmodified src/RTMs/fluspect_B_CX.m with input/fluspect_parameters/Optipar2017_ProspectD.mat; Cp=Cbc=0, PROSPECT-D coefficients, original 15 doublings, 5 nm excitation integration weight, 4 nm emission sampling. MATLAB R2026a Windows x64.",
+  "shapes": {
+    "wavelengths_nm": [
+      2001
+    ],
+    "excitation_wavelengths_nm": [
+      71
+    ],
+    "emission_wavelengths_nm": [
+      53
+    ],
+    "fluorescence_backward": [
+      53,
+      71
+    ],
+    "fluorescence_forward": [
+      53,
+      71
+    ]
+  },
+  "zero_efficiency": "Original leaves Mb/Mf absent when fqe=0; reference wrapper fills defined 53x71 zero matrices.",
+  "coefficients_raw_sha256": "8e5bd7d11d6afbfb5a6f03879935e2300b242c6d5e00b7b3adc6b1ebf7918dbe",
+  "expected_raw_sha256": "23e7168b11e714ea41e3f0e5c40bbe58a5055ac0f84347a492d4fbac8f90e6b7"
+}

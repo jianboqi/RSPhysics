@@ -5,12 +5,13 @@ import pytest
 import rsphysics as rsp
 
 ROOT=Path(__file__).resolve().parents[3]
-MODELS=['microwave.i2em','vegetation.prospect-d','vegetation.prosail-d','surface.ross-li','microwave.tau-omega','microwave.water-cloud','microwave.lmeb','ecosystem.gort-gpp','soil.sort-l']
+MODELS=['vegetation.fluspect-cx','microwave.i2em','vegetation.prospect-d','vegetation.prosail-d','surface.ross-li','microwave.tau-omega','microwave.water-cloud','microwave.lmeb','ecosystem.gort-gpp','soil.sort-l']
 
 @pytest.mark.parametrize('model',MODELS)
 def test_typed_buffers_match_all_existing_references_and_json_runtime(model):
     slug=model.split('.')[1];suite=json.loads((ROOT/f'benchmarks/reference/{slug}/inputs.json').read_text())
     columns=rsp.parameters_for(model);cases=suite if isinstance(suite,list) else suite['cases']
+    if model=='vegetation.fluspect-cx':cases=[{'parameters':p} for p in cases]
     if model=='microwave.i2em':cases=[{'parameters':p} for p in cases if p['correlation_function']=='exponential']
     matrix=np.array([[c['parameters'][k] for k in columns] for c in cases])
     actual=rsp.run_array(model,matrix)

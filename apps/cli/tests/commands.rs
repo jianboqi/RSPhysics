@@ -8,7 +8,7 @@ fn list_is_machine_readable_and_unknown_models_fail_with_json() {
         .unwrap();
     assert!(list.status.success());
     let models: serde_json::Value = serde_json::from_slice(&list.stdout).unwrap();
-    assert_eq!(models.as_array().unwrap().len(), 11);
+    assert_eq!(models.as_array().unwrap().len(), 12);
     assert!(
         models
             .as_array()

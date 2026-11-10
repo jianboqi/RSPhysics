@@ -14,6 +14,7 @@
 
 ### Vegetation optics
 
+- [FLUSPECT-CX — leaf optics and fluorescence](models/fluspect-cx.md)
 - [PROSPECT-D — leaf reflectance and transmittance](models/prospect-d.md)
 - [PROSAIL-D — canopy reflectance](models/prosail-d.md)
 

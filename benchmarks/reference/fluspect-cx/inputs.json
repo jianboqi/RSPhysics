@@ -1,0 +1,134 @@
+[
+  {
+    "n": 1.5,
+    "chlorophyll": 40.0,
+    "carotenoids": 8.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.0,
+    "water": 0.01,
+    "dry_matter": 0.009,
+    "xanthophyll_state": 0.0,
+    "fluorescence_efficiency": 0.01
+  },
+  {
+    "n": 1.0,
+    "chlorophyll": 40.0,
+    "carotenoids": 8.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.0,
+    "water": 0.01,
+    "dry_matter": 0.009,
+    "xanthophyll_state": 0.0,
+    "fluorescence_efficiency": 0.01
+  },
+  {
+    "n": 2.5,
+    "chlorophyll": 70.0,
+    "carotenoids": 15.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.0,
+    "water": 0.025,
+    "dry_matter": 0.015,
+    "xanthophyll_state": 0.0,
+    "fluorescence_efficiency": 0.01
+  },
+  {
+    "n": 1.5,
+    "chlorophyll": 5.0,
+    "carotenoids": 2.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.0,
+    "water": 0.01,
+    "dry_matter": 0.009,
+    "xanthophyll_state": 0.0,
+    "fluorescence_efficiency": 0.01
+  },
+  {
+    "n": 1.5,
+    "chlorophyll": 40.0,
+    "carotenoids": 8.0,
+    "anthocyanins": 5.0,
+    "brown_pigments": 0.0,
+    "water": 0.01,
+    "dry_matter": 0.009,
+    "xanthophyll_state": 0.0,
+    "fluorescence_efficiency": 0.01
+  },
+  {
+    "n": 1.5,
+    "chlorophyll": 40.0,
+    "carotenoids": 8.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.8,
+    "water": 0.01,
+    "dry_matter": 0.009,
+    "xanthophyll_state": 0.0,
+    "fluorescence_efficiency": 0.01
+  },
+  {
+    "n": 1.5,
+    "chlorophyll": 40.0,
+    "carotenoids": 8.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.0,
+    "water": 0.01,
+    "dry_matter": 0.009,
+    "xanthophyll_state": 1.0,
+    "fluorescence_efficiency": 0.01
+  },
+  {
+    "n": 1.5,
+    "chlorophyll": 40.0,
+    "carotenoids": 8.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.0,
+    "water": 0.01,
+    "dry_matter": 0.009,
+    "xanthophyll_state": 0.5,
+    "fluorescence_efficiency": 0.01
+  },
+  {
+    "n": 1.5,
+    "chlorophyll": 40.0,
+    "carotenoids": 8.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.0,
+    "water": 0.01,
+    "dry_matter": 0.009,
+    "xanthophyll_state": 0.0,
+    "fluorescence_efficiency": 0.0
+  },
+  {
+    "n": 1.5,
+    "chlorophyll": 40.0,
+    "carotenoids": 8.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.0,
+    "water": 0.01,
+    "dry_matter": 0.009,
+    "xanthophyll_state": 0.0,
+    "fluorescence_efficiency": 0.02
+  },
+  {
+    "n": 1.5,
+    "chlorophyll": 0.0,
+    "carotenoids": 0.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.0,
+    "water": 0.0,
+    "dry_matter": 0.0,
+    "xanthophyll_state": 0.0,
+    "fluorescence_efficiency": 0.01
+  },
+  {
+    "n": 3.2,
+    "chlorophyll": 15.0,
+    "carotenoids": 12.0,
+    "anthocyanins": 0.0,
+    "brown_pigments": 0.0,
+    "water": 0.005,
+    "dry_matter": 0.02,
+    "xanthophyll_state": 0.8,
+    "fluorescence_efficiency": 0.01
+  }
+]

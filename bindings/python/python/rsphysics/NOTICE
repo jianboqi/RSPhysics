@@ -12,3 +12,6 @@ project maintainer. Scientific resources retain their source-specific terms.
 
 See LICENSES.md, the packaged THIRD_PARTY_NOTICES.md, and each component's
 source/license notices for the applicable scope.
+
+FLUSPECT-CX: Vilfan, van der Tol, Verhoef, Timmermans and colleagues.
+Scientific implementation and optical data retain GPLv3; see component notices.

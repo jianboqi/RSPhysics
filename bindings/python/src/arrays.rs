@@ -9,6 +9,17 @@ use rsphysics_runtime::RunManifest;
 use serde_json::{Map, Value};
 use std::{collections::BTreeMap, sync::OnceLock};
 
+const FLUSPECT: &[&str] = &[
+    "n",
+    "chlorophyll",
+    "carotenoids",
+    "anthocyanins",
+    "brown_pigments",
+    "water",
+    "dry_matter",
+    "xanthophyll_state",
+    "fluorescence_efficiency",
+];
 const I2EM: &[&str] = &[
     "frequency_ghz",
     "permittivity_real",
@@ -156,6 +167,7 @@ const GORT: &[&str] = &[
 ];
 fn columns(id: &str) -> Result<&'static [&'static str], ModelError> {
     match id {
+        "vegetation.fluspect-cx" => Ok(FLUSPECT),
         "microwave.i2em" => Ok(I2EM),
         "soil.sort" => Ok(SORT),
         "soil.sort-l" => Ok(SORT_L),
@@ -186,6 +198,7 @@ struct Row {
     scalars: Vec<(&'static str, f64)>,
     integers: Vec<(&'static str, i64)>,
     arrays: Vec<(&'static str, Vec<f64>)>,
+    matrices: Vec<(&'static str, Vec<Vec<f64>>)>,
 }
 struct Numeric {
     tail: Vec<usize>,
@@ -207,6 +220,8 @@ fn shared(key: &str, enabled: bool) -> bool {
                     | "sweep_zenith_deg"
                     | "sweep_aot550"
                     | "gap_zenith_deg"
+                    | "excitation_wavelengths_nm"
+                    | "emission_wavelengths_nm"
             )
 }
 impl Buffers {
@@ -240,6 +255,15 @@ impl Buffers {
                     },
                 );
             }
+        }
+        for (k, v) in template.matrices {
+            b.numbers.insert(
+                k,
+                Numeric {
+                    tail: vec![v.len(), v.first().map_or(0, Vec::len)],
+                    values: vec![],
+                },
+            );
         }
         b
     }
@@ -276,6 +300,16 @@ impl Buffers {
                 b.values.extend(v);
             }
         }
+        for (k, v) in row.matrices {
+            let b = self.numbers.get_mut(k).expect("typed matrix field");
+            if b.tail.len() != 2 || v.len() != b.tail[0] || v.iter().any(|r| r.len() != b.tail[1]) {
+                return Err(ModelError::new(
+                    ErrorKind::Internal,
+                    "variable matrix shape in NumPy batch",
+                ));
+            }
+            b.values.extend(v.into_iter().flatten());
+        }
         Ok(())
     }
 }
@@ -290,6 +324,7 @@ macro_rules! cache {
         }
     };
 }
+cache!(fluspect, FLUSPECT_MODEL, rsphysics_fluspect_cx::Model);
 cache!(i2em, I2EM_MODEL, rsphysics_i2em::Model);
 cache!(sort, SORT_MODEL, rsphysics_sort::Model);
 cache!(sort_l, SORT_L_MODEL, rsphysics_sort::LambertModel);
@@ -418,6 +453,7 @@ fn ross_row(o: rsphysics_ross_li::Output) -> Row {
             ("hemisphere_azimuth_deg", o.hemisphere_azimuth_deg),
             ("hemisphere_brf", o.hemisphere_brf),
         ],
+        ..Row::default()
     }
 }
 fn tau_row(o: rsphysics_tau_omega::Output) -> Row {
@@ -435,6 +471,30 @@ fn tau_row(o: rsphysics_tau_omega::Output) -> Row {
         arrays: vec![
             ("sweep_zenith_deg", o.sweep_zenith_deg),
             ("sweep_total", o.sweep_total),
+        ],
+        ..Row::default()
+    }
+}
+fn fluspect_row(o: rsphysics_fluspect_cx::Output) -> Row {
+    Row {
+        arrays: vec![
+            ("wavelengths_nm", o.wavelengths_nm),
+            ("reflectance", o.reflectance),
+            ("transmittance", o.transmittance),
+            (
+                "chlorophyll_absorption_fraction",
+                o.chlorophyll_absorption_fraction,
+            ),
+            (
+                "carotenoid_absorption_fraction",
+                o.carotenoid_absorption_fraction,
+            ),
+            ("excitation_wavelengths_nm", o.excitation_wavelengths_nm),
+            ("emission_wavelengths_nm", o.emission_wavelengths_nm),
+        ],
+        matrices: vec![
+            ("fluorescence_backward", o.fluorescence_backward),
+            ("fluorescence_forward", o.fluorescence_forward),
         ],
         ..Row::default()
     }
@@ -495,6 +555,7 @@ fn smac_row(o: rsphysics_smac::Output) -> Row {
             ("sweep_aot550", o.sweep_aot550),
             ("sweep_reflectance", o.sweep_reflectance),
         ],
+        ..Row::default()
     }
 }
 
@@ -598,6 +659,10 @@ pub fn model_batch_native<'py>(
     // Initialize cached models/runtime with the GIL, then release it for all rows.
     super::runtime()?;
     let (buffers, manifests) = match id {
+        "vegetation.fluspect-cx" => {
+            let m = fluspect()?;
+            py.detach(|| typed(m, id, &values, shared_axes, fluspect_row, &fixed))
+        }
         "microwave.i2em" => {
             let m = i2em()?;
             py.detach(|| typed(m, id, &values, shared_axes, i2em_row, &fixed))

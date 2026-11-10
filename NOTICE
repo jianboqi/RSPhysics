@@ -16,3 +16,6 @@ source/license notices for the applicable scope.
 I2EM: Adrian Fung, IEEE-GRSS RSCL DOI 10.21982/M8BC7Z; Ulaby & Long (2014).
 Adapted implementation distributed with maintainer-confirmed authorization;
 see crates/models/microwave/i2em/LICENSE.component. Original MATLAB excluded.
+
+FLUSPECT-CX: Vilfan, van der Tol, Verhoef, Timmermans and colleagues.
+Scientific implementation and optical data retain GPLv3; see component notices.

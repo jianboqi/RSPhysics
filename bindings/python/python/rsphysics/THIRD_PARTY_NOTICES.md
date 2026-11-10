@@ -116,3 +116,10 @@ MATLAB source, papers, and station spreadsheets are not bundled.
 I2EM: Adrian Fung, IEEE-GRSS RSCL DOI 10.21982/M8BC7Z; Ulaby & Long (2014).
 Adapted implementation distributed with maintainer-confirmed authorization.
 Original MATLAB source is not included. See I2EM_COMPONENT_LICENSE.txt.
+
+
+## FLUSPECT-CX
+
+The scientific implementation and optical data retain GPL-3.0 terms and author
+attribution. See the component NOTICE.md / packaged FLUSPECT_ORIGIN.md and
+FLUSPECT_GPL-3.0.txt. Original project code remains Apache-2.0.
