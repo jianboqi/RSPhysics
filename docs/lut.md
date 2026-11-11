@@ -63,6 +63,7 @@ For radar backscatter from I²EM, use `output=("sigma0_vv_db", "sigma0_hh_db")` 
 - `workers` sets the maximum number of Rust search threads. The default is 1. Workers share the prepared LUT and return results in observation order.
 - Use `max_score` to flag poor fits at a threshold appropriate to the score and data. `near_boundary` flags best-match parameters in the outer 5% of their sampling interval by default. Examine the top candidates together when different parameter combinations give similar scores.
 - Archives contain the accepted parameter samples, simulated observations, channels, context, sampling metadata, and available model and sensor provenance. Search uses bounded storage for the top `k` candidates per observation.
+- Large, low-dimensional tables can use an exact k-d tree for observations with all channels active. The matcher prepares the index on demand and reuses it across blocks. Observations with missing channels use a full scan. Both paths use the same scores and tie order.
 
 ## Process a raster in blocks
 
@@ -83,3 +84,9 @@ lai.flush()
 ```
 
 Each block includes its half-open flat pixel range `[start, stop)` and the zero-based row-major `pixel_indices` of matched pixels. The candidate arrays contain just those matched pixels. An entirely masked block yields empty candidate arrays. The iterator defaults to one best candidate and omits residual computation. Use `k` and `return_residuals=True` to request additional output.
+
+The [synthetic raster benchmark](../benchmarks/infrastructure/lut_image.py) reports timings for different worker counts and checks that retrieved parameters, scores and quality flags agree exactly. Run it from the repository root with the installed package.
+
+```console
+python benchmarks/infrastructure/lut_image.py --workers 1 8
+```

@@ -1,6 +1,14 @@
 //! Exact top-k lookup-table matching on row-major feature matrices.
 use rsphysics_core::DomainError;
-use std::{cmp::Ordering, collections::BinaryHeap, thread};
+use std::{cmp::Ordering, collections::BinaryHeap, sync::OnceLock, thread};
+
+mod index;
+use index::KdIndex;
+
+const INDEX_MIN_LUT_ROWS: usize = 4_096;
+const INDEX_MIN_QUERIES: usize = 32;
+const INDEX_MAX_CHANNELS: usize = 8;
+const SAFE_INDEX_MAGNITUDE: f64 = f64::MAX / 2.;
 
 #[derive(Debug)]
 pub struct Matches {
@@ -12,12 +20,14 @@ pub struct Matches {
 pub struct MatchTable<T> {
     values: T,
     channels: usize,
+    index: OnceLock<Option<KdIndex>>,
 }
 
 struct Queries<'a> {
     observations: &'a [f64],
     sigma: &'a [f64],
     mask: &'a [bool],
+    index: Option<&'a KdIndex>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -69,7 +79,11 @@ impl<T: AsRef<[f64]> + Sync> MatchTable<T> {
         if values.as_ref().iter().any(|x| !x.is_finite()) {
             return Err(DomainError("simulated LUT observations must be finite"));
         }
-        Ok(Self { values, channels })
+        Ok(Self {
+            values,
+            channels,
+            index: OnceLock::new(),
+        })
     }
 
     pub fn channels(&self) -> usize {
@@ -111,6 +125,7 @@ impl<T: AsRef<[f64]> + Sync> MatchTable<T> {
             observations,
             sigma,
             mask,
+            index: self.index_for(rows, k, mask),
         };
         let available = thread::available_parallelism().map_or(1, |count| count.get());
         let workers = workers.min(rows).min(available);
@@ -153,6 +168,33 @@ impl<T: AsRef<[f64]> + Sync> MatchTable<T> {
         Ok(result)
     }
 
+    fn index_for(&self, observations: usize, k: usize, mask: &[bool]) -> Option<&KdIndex> {
+        let table = self.values.as_ref();
+        let rows = table.len() / self.channels;
+        if rows < INDEX_MIN_LUT_ROWS || self.channels > INDEX_MAX_CHANNELS || k > rows / 16 {
+            return None;
+        }
+        if let Some(index) = self.index.get() {
+            return index.as_ref();
+        }
+        if observations < INDEX_MIN_QUERIES
+            || (!mask.is_empty()
+                && !mask
+                    .chunks_exact(self.channels)
+                    .any(|row| row.iter().all(|&v| v)))
+        {
+            return None;
+        }
+        self.index
+            .get_or_init(|| {
+                table
+                    .iter()
+                    .all(|x| x.abs() <= SAFE_INDEX_MAGNITUDE)
+                    .then(|| KdIndex::new(table, self.channels))
+            })
+            .as_ref()
+    }
+
     fn search_block(
         &self,
         queries: &Queries<'_>,
@@ -175,15 +217,24 @@ impl<T: AsRef<[f64]> + Sync> MatchTable<T> {
             let sigma = channel_row(queries.sigma, channels, row);
             let mask = channel_row(queries.mask, channels, row);
             active_channels(observed, mask, sigma, &mut active)?;
-            for (index, simulated) in table.chunks_exact(channels).enumerate() {
-                push_candidate(
-                    &mut best,
-                    k,
-                    Candidate {
-                        score: rmse(simulated, &active),
-                        index,
-                    },
-                );
+            if let Some(index) = queries.index
+                && active.len() == channels
+                && active
+                    .iter()
+                    .all(|&(_, value, _)| value.abs() <= SAFE_INDEX_MAGNITUDE)
+            {
+                index.search(table, &active, k, &mut best);
+            } else {
+                for (index, simulated) in table.chunks_exact(channels).enumerate() {
+                    push_candidate(
+                        &mut best,
+                        k,
+                        Candidate {
+                            score: rmse(simulated, &active),
+                            index,
+                        },
+                    );
+                }
             }
             if best.len() < k {
                 return Err(DomainError(
@@ -298,5 +349,41 @@ mod tests {
         let matches = match_rows(&[2e-200, 1e-200, 1e200], &[0.], 1, &[], &[true], 3).unwrap();
         assert_eq!(matches.indices, [1, 0, 2]);
         assert_eq!(matches.scores, [1e-200, 2e-200, 1e200]);
+    }
+
+    #[test]
+    fn indexed_search_equals_full_scan_with_ties_and_mixed_masks() {
+        let channels = 6;
+        let rows = 8192;
+        let queries = 73;
+        let mut state = 617_u64;
+        let mut uniform = || {
+            state ^= state << 13;
+            state ^= state >> 7;
+            state ^= state << 17;
+            (state >> 11) as f64 / (1_u64 << 53) as f64
+        };
+        let mut table: Vec<_> = (0..rows * channels).map(|_| uniform()).collect();
+        table.copy_within(0..channels, (rows - 1) * channels);
+        let mut obs: Vec<_> = (0..queries * channels).map(|_| uniform()).collect();
+        obs[..channels].copy_from_slice(&table[..channels]);
+        let sigma: Vec<_> = (0..obs.len())
+            .map(|_| 10_f64.powf(5. * uniform() - 3.))
+            .collect();
+        let mut mask = vec![true; obs.len()];
+        for row in (1..queries).step_by(3) {
+            mask[row * channels + 2] = false;
+            obs[row * channels + 2] = f64::NAN;
+        }
+
+        let scan = MatchTable::new(table.as_slice(), channels).unwrap();
+        assert!(scan.index.set(None).is_ok());
+        let expected = scan.search(&obs, &sigma, &mask, 7, 1).unwrap();
+        let indexed = MatchTable::new(table.as_slice(), channels).unwrap();
+        let actual = indexed.search(&obs, &sigma, &mask, 7, 4).unwrap();
+        assert!(indexed.index.get().is_some_and(Option::is_some));
+        assert_eq!(actual.indices, expected.indices);
+        assert_eq!(actual.scores, expected.scores);
+        assert_eq!(&actual.indices[..2], &[0, rows - 1]);
     }
 }
