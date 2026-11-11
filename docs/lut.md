@@ -69,7 +69,15 @@ For radar backscatter from I²EM, use `output=("sigma0_vv_db", "sigma0_hh_db")` 
 
 `iter_match` accepts an array shaped `(height, width, channels)` or `(pixels, channels)`. It reads one block at a time, including for memory-mapped files and noncontiguous views. Supply a boolean `pixel_mask` to restrict the search to the study area or exclude clouds. Nonfinite observations and values excluded by the optional band `mask` are ignored. Pixels with no active bands are skipped.
 
+Create a small raster using the synthetic spectrum and LUT from the previous example. For real data, load your reflectance and mask files using the same band order.
+
 ```python
+shape = (32, 32)
+np.save("surface_reflectance.npy", np.broadcast_to(observed, (*shape, len(channels))))
+valid = np.ones(shape, dtype=bool)
+valid[:8, :8] = False
+np.save("valid_pixels.npy", valid)
+
 image = np.load("surface_reflectance.npy", mmap_mode="r")  # B4, B5, B6 on the last axis
 valid_pixels = np.load("valid_pixels.npy", mmap_mode="r")
 lai = np.lib.format.open_memmap("lai.npy", mode="w+", dtype="float32", shape=image.shape[:2])

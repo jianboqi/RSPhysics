@@ -55,6 +55,10 @@ id = "vegetation.goms"
 manifest = "crates/models/vegetation/goms/model.toml"
 
 [[models]]
+id = "vegetation.inform"
+manifest = "crates/models/vegetation/inform/model.toml"
+
+[[models]]
 id = "thermal.foursail"
 manifest = "crates/models/thermal/foursail/model.toml"
 
