@@ -70,6 +70,53 @@ def test_mixed_units_require_an_error_scale():
     np.testing.assert_array_equal(table.match([0.1, 200], channels=channels, sigma=[0.01, 2])["indices"], [[0]])
 
 
+def test_threaded_match_preserves_rank_scores_and_optional_residuals():
+    rng = np.random.default_rng(47)
+    channels = tuple(lut.Channel(str(i), "reflectance") for i in range(4))
+    simulated = rng.random((173, 4))
+    simulated[1] = simulated[0]
+    observations = np.asfortranarray(simulated[:47])
+    sigma = np.asfortranarray(rng.uniform(0.01, 0.03, observations.shape))
+    mask = np.asfortranarray(rng.random(observations.shape) > 0.4)
+    mask[:, 0] = True
+    table = lut.LookupTable.from_arrays({"p": np.arange(len(simulated))}, simulated, channels)
+    with pytest.raises(ValueError):
+        table.simulated.setflags(write=True)
+    expected = table.match(observations, channels=channels, sigma=sigma, mask=mask, k=4)
+    actual = table.match(observations, channels=channels, sigma=sigma, mask=mask, k=4,
+                         workers=8, return_residuals=False)
+    np.testing.assert_array_equal(actual["indices"][0, :2], [0, 1])
+    for name in ("indices", "scores", "parameters", "near_boundary"):
+        np.testing.assert_array_equal(actual[name], expected[name])
+    assert actual["residuals"] is None
+    with pytest.raises(rsp.ModelError, match="workers"):
+        table.match(observations, channels=channels, workers=0)
+
+
+def test_image_blocks_handle_views_masks_missing_bands_and_empty_blocks():
+    channels = (lut.Channel("red", "reflectance"), lut.Channel("nir", "reflectance"))
+    table = lut.LookupTable.from_arrays({"lai": [1, 2, 3]}, [[0.1, 0.4], [0.12, 0.3], [0.2, 0.5]], channels)
+    image = np.array([[[.1, .4], [.12, np.nan], [.12, .3]],
+                      [[np.nan, np.nan], [.2, .5], [.2, .5]]], dtype=np.float32)[:, ::-1, :]
+    pixel_mask = [[True, True, False], [False, False, True]]
+    band_mask = np.ones_like(image, dtype=bool)
+    band_mask[0, 0, 0] = False
+    sigma = np.array([[[0.02]], [[0.03]]])
+    blocks = list(table.iter_match(image, channels=channels, mask=band_mask, pixel_mask=pixel_mask,
+                                   sigma=sigma, workers=4, block_size=2, k=2, return_residuals=True))
+    assert [(b["start"], b["stop"]) for b in blocks] == [(0, 2), (2, 4), (4, 6)]
+    np.testing.assert_array_equal(blocks[0]["pixel_indices"], [0, 1])
+    assert blocks[1]["pixel_indices"].size == 0
+    assert blocks[2]["pixel_indices"].size == 0
+    expected = table.match(image[0, :2], channels=channels, mask=[[False, True], [True, False]],
+                           sigma=0.02, k=2)
+    for name in ("indices", "scores", "parameters", "residuals"):
+        np.testing.assert_array_equal(blocks[0][name], expected[name])
+    block = next(table.iter_match(image.reshape(-1, 2), channels=channels, block_size=6))
+    np.testing.assert_array_equal(block["pixel_indices"], [0, 1, 2, 3, 4])
+    assert block["residuals"] is None
+
+
 @pytest.mark.parametrize("method", ["grid", "lhs"])
 def test_inform_retrieves_held_out_lai_from_sensor_bands(method):
     sensor = rsp.sensors.load("landsat-8.oli").select(["B4", "B5", "B6"])

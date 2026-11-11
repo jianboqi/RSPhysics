@@ -59,6 +59,27 @@ For radar backscatter from I²EM, use `output=("sigma0_vv_db", "sigma0_hh_db")` 
 
 - Pass one observation `(channels,)` or a matrix `(observations, channels)`. If a table defines `context`, supply the same observation context when matching. Channels compare by name, quantity, unit and order.
 - The score is RMSE across active channels. With `sigma`, each residual is divided by its channel's standard deviation before taking the RMSE. Standard deviations can be shared or specified per observation. A boolean `mask` excludes unavailable channels. Each observation needs at least one active channel.
-- `parameters` has shape `(observations, k, parameters)`, `scores` and `indices` have shape `(observations, k)`, and `residuals` has shape `(observations, k, channels)`. Lower scores fit better. Ties preserve table order. Masked residuals are NaN.
+- `parameters` has shape `(observations, k, parameters)`, `scores` and `indices` have shape `(observations, k)`, and `residuals` has shape `(observations, k, channels)`. Lower scores fit better. Ties preserve table order. Masked residuals are NaN. With `return_residuals=False`, the result contains `residuals=None`.
+- `workers` sets the maximum number of Rust search threads. The default is 1. Workers share the prepared LUT and return results in observation order.
 - Use `max_score` to flag poor fits at a threshold appropriate to the score and data. `near_boundary` flags best-match parameters in the outer 5% of their sampling interval by default. Examine the top candidates together when different parameter combinations give similar scores.
-- Archives contain the accepted parameter samples, simulated observations, channels, context, sampling metadata, and available model and sensor provenance. Search compares each observation with the LUT in Rust using bounded top-`k) storage per observation.
+- Archives contain the accepted parameter samples, simulated observations, channels, context, sampling metadata, and available model and sensor provenance. Search uses bounded storage for the top `k` candidates per observation.
+
+## Process a raster in blocks
+
+`iter_match` accepts an array shaped `(height, width, channels)` or `(pixels, channels)`. It reads one block at a time, including for memory-mapped files and noncontiguous views. Supply a boolean `pixel_mask` to restrict the search to the study area or exclude clouds. Nonfinite observations and values excluded by the optional band `mask` are ignored. Pixels with no active bands are skipped.
+
+```python
+image = np.load("surface_reflectance.npy", mmap_mode="r")  # B4, B5, B6 on the last axis
+valid_pixels = np.load("valid_pixels.npy", mmap_mode="r")
+lai = np.lib.format.open_memmap("lai.npy", mode="w+", dtype="float32", shape=image.shape[:2])
+lai[:] = np.nan
+
+for block in table.iter_match(
+    image, channels=channels, context=context, pixel_mask=valid_pixels,
+    workers=8, block_size=16_384, return_residuals=False,
+):
+    lai.flat[block["pixel_indices"]] = block["parameters"][:, 0, 0]
+lai.flush()
+```
+
+Each block includes its half-open flat pixel range `[start, stop)` and the zero-based row-major `pixel_indices` of matched pixels. The candidate arrays contain just those matched pixels. An entirely masked block yields empty candidate arrays. The iterator defaults to one best candidate and omits residual computation. Use `k` and `return_residuals=True` to request additional output.

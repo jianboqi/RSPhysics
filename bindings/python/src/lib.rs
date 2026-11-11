@@ -161,7 +161,7 @@ fn _native(module: &Bound<'_, PyModule>) -> PyResult<()> {
     module.add_function(wrap_pyfunction!(arrays::model_batch_native, module)?)?;
     module.add_function(wrap_pyfunction!(arrays::goms_multiband_native, module)?)?;
     module.add_function(wrap_pyfunction!(arrays::array_parameters, module)?)?;
-    module.add_function(wrap_pyfunction!(lut::lut_match, module)?)?;
+    module.add_class::<lut::LutMatcher>()?;
     module.add_function(wrap_pyfunction!(
         fluorescence::fluspect_irradiance_native,
         module

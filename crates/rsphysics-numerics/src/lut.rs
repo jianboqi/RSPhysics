@@ -1,11 +1,23 @@
 //! Exact top-k lookup-table matching on row-major feature matrices.
 use rsphysics_core::DomainError;
-use std::{cmp::Ordering, collections::BinaryHeap};
+use std::{cmp::Ordering, collections::BinaryHeap, thread};
 
 #[derive(Debug)]
 pub struct Matches {
     pub indices: Vec<usize>,
     pub scores: Vec<f64>,
+}
+
+/// A validated, row-major LUT. Workers borrow the same immutable matrix.
+pub struct MatchTable<T> {
+    values: T,
+    channels: usize,
+}
+
+struct Queries<'a> {
+    observations: &'a [f64],
+    sigma: &'a [f64],
+    mask: &'a [bool],
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -43,71 +55,181 @@ pub fn match_rows(
     mask: &[bool],
     k: usize,
 ) -> Result<Matches, DomainError> {
-    if channels == 0
-        || !table.len().is_multiple_of(channels)
-        || !observations.len().is_multiple_of(channels)
-        || mask.len() != observations.len()
-        || (!sigma.is_empty() && sigma.len() != observations.len())
-        || k == 0
-        || k > table.len() / channels
-    {
-        return Err(DomainError(
-            "invalid LUT matching shapes or candidate count",
-        ));
-    }
-    if table.iter().any(|x| !x.is_finite()) {
-        return Err(DomainError("simulated LUT observations must be finite"));
-    }
-    let capacity = (observations.len() / channels)
-        .checked_mul(k)
-        .ok_or(DomainError("LUT match output is too large"))?;
-    let mut result = Matches {
-        indices: Vec::with_capacity(capacity),
-        scores: Vec::with_capacity(capacity),
-    };
-    for (row, (observed, valid)) in observations
-        .chunks_exact(channels)
-        .zip(mask.chunks_exact(channels))
-        .enumerate()
-    {
-        let active = active_channels(observed, valid, sigma, row * channels)?;
-        let mut best = BinaryHeap::with_capacity(k);
-        for (index, simulated) in table.chunks_exact(channels).enumerate() {
-            let score = rmse(simulated, &active);
-            if score.is_finite() {
-                let candidate = Candidate { score, index };
-                if best.len() < k {
-                    best.push(candidate);
-                } else if let Some(mut largest) = best.peek_mut()
-                    && candidate < *largest
-                {
-                    *largest = candidate;
-                }
-            }
+    MatchTable::new(table, channels)?.search(observations, sigma, mask, k, 1)
+}
+
+impl<T: AsRef<[f64]> + Sync> MatchTable<T> {
+    pub fn new(values: T, channels: usize) -> Result<Self, DomainError> {
+        if channels == 0
+            || values.as_ref().is_empty()
+            || !values.as_ref().len().is_multiple_of(channels)
+        {
+            return Err(DomainError("invalid LUT table shape"));
         }
-        if best.len() < k {
+        if values.as_ref().iter().any(|x| !x.is_finite()) {
+            return Err(DomainError("simulated LUT observations must be finite"));
+        }
+        Ok(Self { values, channels })
+    }
+
+    pub fn channels(&self) -> usize {
+        self.channels
+    }
+
+    /// Sigma and mask may be empty, one shared channel row, or one row per observation.
+    /// Equal scores retain LUT row order regardless of the worker count.
+    pub fn search(
+        &self,
+        observations: &[f64],
+        sigma: &[f64],
+        mask: &[bool],
+        k: usize,
+        workers: usize,
+    ) -> Result<Matches, DomainError> {
+        let channels = self.channels;
+        let valid_shape = |len| len == 0 || len == channels || len == observations.len();
+        if !observations.len().is_multiple_of(channels)
+            || !valid_shape(sigma.len())
+            || !valid_shape(mask.len())
+            || k == 0
+            || k > self.values.as_ref().len() / channels
+            || workers == 0
+        {
             return Err(DomainError(
-                "too few LUT candidates have finite residual scores",
+                "invalid LUT matching shapes, candidate count or worker count",
             ));
         }
-        for candidate in best.into_sorted_vec() {
-            result.indices.push(candidate.index);
-            result.scores.push(candidate.score);
+        let rows = observations.len() / channels;
+        let capacity = rows
+            .checked_mul(k)
+            .ok_or(DomainError("LUT match output is too large"))?;
+        let mut result = Matches {
+            indices: vec![0; capacity],
+            scores: vec![0.; capacity],
+        };
+        let queries = Queries {
+            observations,
+            sigma,
+            mask,
+        };
+        let available = thread::available_parallelism().map_or(1, |count| count.get());
+        let workers = workers.min(rows).min(available);
+        if workers <= 1 {
+            self.search_block(&queries, 0, k, &mut result.indices, &mut result.scores)?;
+        } else {
+            let rows_per_worker = rows.div_ceil(workers);
+            let block_size = rows_per_worker * k;
+            let pairs = result
+                .indices
+                .chunks_mut(block_size)
+                .zip(result.scores.chunks_mut(block_size));
+            thread::scope(|scope| {
+                let mut handles = Vec::with_capacity(workers);
+                let mut status = Ok(());
+                let queries = &queries;
+                for (chunk, (indices, scores)) in pairs.enumerate() {
+                    let start = chunk * rows_per_worker;
+                    match thread::Builder::new().spawn_scoped(scope, move || {
+                        self.search_block(queries, start, k, indices, scores)
+                    }) {
+                        Ok(handle) => handles.push(handle),
+                        Err(_) => {
+                            status = Err(DomainError("could not start LUT search worker"));
+                            break;
+                        }
+                    }
+                }
+                for handle in handles {
+                    let result = handle
+                        .join()
+                        .unwrap_or(Err(DomainError("LUT search worker failed")));
+                    if status.is_ok() {
+                        status = result;
+                    }
+                }
+                status
+            })?;
+        }
+        Ok(result)
+    }
+
+    fn search_block(
+        &self,
+        queries: &Queries<'_>,
+        start: usize,
+        k: usize,
+        indices: &mut [usize],
+        scores: &mut [f64],
+    ) -> Result<(), DomainError> {
+        let channels = self.channels;
+        let table = self.values.as_ref();
+        let mut active = Vec::with_capacity(channels);
+        let mut best = BinaryHeap::with_capacity(k);
+        for (offset, (row_indices, row_scores)) in indices
+            .chunks_exact_mut(k)
+            .zip(scores.chunks_exact_mut(k))
+            .enumerate()
+        {
+            let row = start + offset;
+            let observed = channel_row(queries.observations, channels, row);
+            let sigma = channel_row(queries.sigma, channels, row);
+            let mask = channel_row(queries.mask, channels, row);
+            active_channels(observed, mask, sigma, &mut active)?;
+            for (index, simulated) in table.chunks_exact(channels).enumerate() {
+                push_candidate(
+                    &mut best,
+                    k,
+                    Candidate {
+                        score: rmse(simulated, &active),
+                        index,
+                    },
+                );
+            }
+            if best.len() < k {
+                return Err(DomainError(
+                    "too few LUT candidates have finite residual scores",
+                ));
+            }
+            for (index, score) in row_indices.iter_mut().zip(row_scores).rev() {
+                let candidate = best.pop().expect("validated candidate count");
+                *index = candidate.index;
+                *score = candidate.score;
+            }
+        }
+        Ok(())
+    }
+}
+
+fn channel_row<T>(values: &[T], channels: usize, row: usize) -> &[T] {
+    if values.len() <= channels {
+        values
+    } else {
+        &values[row * channels..(row + 1) * channels]
+    }
+}
+
+fn push_candidate(best: &mut BinaryHeap<Candidate>, k: usize, candidate: Candidate) {
+    if candidate.score.is_finite() {
+        if best.len() < k {
+            best.push(candidate);
+        } else if let Some(mut largest) = best.peek_mut()
+            && candidate < *largest
+        {
+            *largest = candidate;
         }
     }
-    Ok(result)
 }
 
 fn active_channels(
     observed: &[f64],
     valid: &[bool],
     sigma: &[f64],
-    offset: usize,
-) -> Result<Vec<(usize, f64, f64)>, DomainError> {
-    let mut active = Vec::with_capacity(observed.len());
-    for (channel, (&value, &enabled)) in observed.iter().zip(valid).enumerate() {
-        if enabled {
-            let deviation = sigma.get(offset + channel).copied().unwrap_or(1.);
+    active: &mut Vec<(usize, f64, f64)>,
+) -> Result<(), DomainError> {
+    active.clear();
+    for (channel, &value) in observed.iter().enumerate() {
+        if valid.get(channel).copied().unwrap_or(true) {
+            let deviation = sigma.get(channel).copied().unwrap_or(1.);
             if !value.is_finite() || !deviation.is_finite() || deviation <= 0. {
                 return Err(DomainError(
                     "active observations and standard deviations must be finite, with sigma > 0",
@@ -121,7 +243,7 @@ fn active_channels(
             "each observation needs at least one active channel",
         ));
     }
-    Ok(active)
+    Ok(())
 }
 
 fn rmse(simulated: &[f64], active: &[(usize, f64, f64)]) -> f64 {

@@ -3,6 +3,7 @@
 from collections.abc import Mapping
 from copy import deepcopy
 from dataclasses import asdict, dataclass, field
+from functools import cached_property
 from hashlib import sha256
 from itertools import product
 from math import prod
@@ -202,8 +203,9 @@ class LookupTable:
         simulated = _finite_array(self.simulated, ndim=2, name="simulated observations")
         if simulated.shape != (len(self.samples.values), len(channels)):
             raise _invalid("simulated observations must have one row per sample and one column per channel")
-        simulated = simulated.copy(order="C")
-        simulated.flags.writeable = False
+        # The Rust matcher keeps a snapshot. An immutable NumPy buffer keeps
+        # returned residuals in sync with that snapshot across calls.
+        simulated = np.frombuffer(simulated.tobytes(order="C"), dtype=np.float64).reshape(simulated.shape)
         object.__setattr__(self, "simulated", simulated)
         object.__setattr__(self, "channels", channels)
         object.__setattr__(self, "context", _record(self.context, "observation context"))
@@ -215,8 +217,13 @@ class LookupTable:
         samples = parameters if isinstance(parameters, Samples) else Samples.from_columns(parameters)
         return cls(samples, simulated, channels, context if context is not None else {})
 
+    @cached_property
+    def _matcher(self):
+        return _call(_native.LutMatcher, self.simulated)
+
     def match(self, observations, *, channels, sigma=None, mask=None, k=1,
-              max_score=None, boundary_fraction=0.05, context=None):
+              max_score=None, boundary_fraction=0.05, context=None, workers=1,
+              return_residuals=True):
         """Return exact top-k matches with signed residuals and quality indicators."""
         if _channels(channels) != self.channels:
             raise _invalid("observation channel names, quantities, units and order must match the LUT")
@@ -226,6 +233,9 @@ class LookupTable:
         if sigma is None and len({channel.unit for channel in self.channels}) > 1:
             raise _invalid("provide channel standard deviations when comparing different units")
         k = _integer(k, "k")
+        workers = _integer(workers, "workers")
+        if not isinstance(return_residuals, (bool, np.bool_)):
+            raise _invalid("return_residuals must be boolean")
         if k > len(self.simulated):
             raise _invalid("k cannot exceed the number of LUT samples")
         observations = real_array(observations, name="observations")
@@ -235,21 +245,22 @@ class LookupTable:
             raise _invalid("observations must have one column per LUT channel")
         shape = observations.shape
         deviations = (np.empty((0, 0)) if sigma is None
-                      else _broadcast(real_array(sigma, name="sigma"), shape, "sigma"))
+                      else _query_matrix(real_array(sigma, name="sigma"), shape, "sigma"))
         if mask is None:
-            valid = np.ones(shape, dtype=bool)
+            valid = np.empty((0, 0), dtype=bool)
         else:
-            valid = np.asarray(mask)
-            if valid.dtype.kind != "b":
-                raise _invalid("mask must contain boolean values")
-            valid = _broadcast(valid, shape, "mask")
+            valid = _query_matrix(_input_array(mask, "mask", "b"), shape, "mask")
         fraction = _scalar(boundary_fraction, "boundary_fraction", maximum=0.5)
         threshold = None if max_score is None else _scalar(max_score, "max_score")
-        matches = _call(_native.lut_match, self.simulated, observations, deviations, valid, k)
+        matches = _call(self._matcher.search, observations, deviations, valid, k, workers)
         indices, scores = matches["indices"], matches["scores"]
         candidates = self.samples.values[indices]
-        with np.errstate(over="ignore", invalid="ignore"):
-            residuals = np.where(valid[:, None, :], self.simulated[indices] - observations[:, None, :], np.nan)
+        residuals = None
+        if return_residuals:
+            with np.errstate(over="ignore", invalid="ignore"):
+                residuals = self.simulated[indices] - observations[:, None, :]
+            if valid.size:
+                np.copyto(residuals, np.nan, where=~valid[:, None, :])
         bounds = self.samples.design.get("bounds")
         if bounds is None:
             low, high = self.samples.values.min(axis=0), self.samples.values.max(axis=0)
@@ -267,6 +278,55 @@ class LookupTable:
             "near_boundary": near_boundary,
             "poor_fit": None if threshold is None else scores[:, 0] > threshold,
         }
+
+    def iter_match(self, observations, *, channels, sigma=None, mask=None,
+                   pixel_mask=None, k=1, max_score=None, boundary_fraction=0.05,
+                   context=None, workers=1, block_size=65_536, return_residuals=False):
+        """Yield matches for blocks of a (pixels, channels) array or a band-last raster.
+
+        Blocks follow row-major pixel order. The returned flat pixel indices
+        identify matched pixels. Nonfinite and masked channels are excluded.
+        Pixels without a usable channel and pixels excluded by pixel_mask are skipped.
+        NumPy memory maps and noncontiguous array views are read one block at a time.
+        """
+        image = _input_array(observations, "observations", "fiu")
+        if image.ndim not in (2, 3) or image.shape[-1] != len(self.channels):
+            raise _invalid("observations must be shaped (pixels, channels) or (height, width, channels)")
+        block_size = _integer(block_size, "block_size")
+        channels = _channels(channels)
+        shape = image.shape
+        count = prod(shape[:-1])
+        pixels = (None if pixel_mask is None
+                  else _broadcast(_input_array(pixel_mask, "pixel_mask", "b"), shape[:-1], "pixel_mask"))
+        valid_bands = (None if mask is None
+                       else _broadcast(_input_array(mask, "mask", "b"), shape, "mask"))
+        uncertainty = None if sigma is None else _input_array(sigma, "sigma", "fiu")
+        shared_sigma = uncertainty is not None and uncertainty.ndim <= 1
+        if uncertainty is not None and not shared_sigma:
+            uncertainty = _broadcast(uncertainty, shape, "sigma")
+
+        for start in range(0, count, block_size):
+            stop = min(start + block_size, count)
+            flat_indices = np.arange(start, stop, dtype=np.intp)
+            block = slice(start, stop) if image.ndim == 2 else np.divmod(flat_indices, shape[1])
+            values = image[block]
+            valid = np.isfinite(values)
+            if valid_bands is not None:
+                valid &= valid_bands[block]
+            usable = valid.any(axis=1)
+            if pixels is not None:
+                usable &= pixels[block]
+            deviation = (uncertainty if shared_sigma or uncertainty is None
+                         else uncertainty[block][usable])
+            # An all-valid block can use the unmasked native search.
+            valid = valid[usable]
+            block_mask = None if valid.all() else valid
+            matched = self.match(
+                values[usable], channels=channels, sigma=deviation, mask=block_mask,
+                k=k, max_score=max_score, boundary_fraction=boundary_fraction,
+                context=context, workers=workers, return_residuals=return_residuals,
+            )
+            yield {"start": start, "stop": stop, "pixel_indices": flat_indices[usable], **matched}
 
     def save(self, path):
         """Write a versioned NumPy archive, replacing the destination atomically."""
@@ -306,6 +366,22 @@ def _broadcast(value, shape, name):
         return np.broadcast_to(value, shape)
     except ValueError as error:
         raise _invalid(f"{name} must broadcast to the observation shape") from error
+
+
+def _query_matrix(value, shape, name):
+    target = (1, shape[1]) if value.ndim < 2 or value.shape[0] == 1 else shape
+    return _broadcast(value, target, name)
+
+
+def _input_array(value, name, kinds):
+    try:
+        array = np.asarray(value)
+    except (TypeError, ValueError) as error:
+        raise _invalid(f"{name} must be a rectangular array") from error
+    if array.dtype.kind not in kinds:
+        kind = "boolean" if kinds == "b" else "real numeric"
+        raise _invalid(f"{name} must contain {kind} values")
+    return array
 
 
 def _scalar(value, name, maximum=np.inf):
