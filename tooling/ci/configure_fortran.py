@@ -5,7 +5,8 @@ from pathlib import Path
 import shutil
 import subprocess
 
-compiler = os.environ.get("RSP_FORTRAN_COMPILER", "gfortran")
+# setup-fortran may leave its compiler output empty with update-environment disabled.
+compiler = os.environ.get("RSP_FORTRAN_COMPILER") or "gfortran"
 resolved = shutil.which(compiler)
 if resolved is None:
     raise SystemExit(f"GNU Fortran compiler not found: {compiler}")
