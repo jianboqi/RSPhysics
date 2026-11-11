@@ -16,6 +16,23 @@ use sha2::{Digest, Sha256};
 pub const BAND_COUNT: usize = 2101;
 const COEFFICIENTS: &str = include_str!("../data/coefficients.tsv");
 
+/// Evaluate the PROSPECT plate stack for a supplied per-layer absorption
+/// and refractive index. Used by variants with their own coefficient tables.
+pub fn leaf_optics_from_absorption(
+    n: f64,
+    refractive_index: f64,
+    absorption: f64,
+    incidence_angle_deg: f64,
+) -> (f64, f64) {
+    solver::solve_stack(
+        n,
+        absorption,
+        refractive_index,
+        solver::calctav(incidence_angle_deg, refractive_index),
+        solver::calctav(90.0, refractive_index),
+    )
+}
+
 #[derive(Debug, Clone, Serialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Output {

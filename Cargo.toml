@@ -11,6 +11,7 @@ members = [
     "crates/models/ecosystem/fvcb",
     "crates/models/thermal/foursail",
     "crates/models/vegetation/goms",
+    "crates/models/vegetation/inform",
     "crates/models/vegetation/fluspect-cx",
     "crates/models/microwave/i2em",
     "crates/models/soil/sort",
@@ -50,6 +51,7 @@ rsphysics-gsv = { path = "crates/models/soil/gsv" }
 rsphysics-fvcb = { path = "crates/models/ecosystem/fvcb" }
 rsphysics-foursail-tir = { path = "crates/models/thermal/foursail" }
 rsphysics-goms = { path = "crates/models/vegetation/goms" }
+rsphysics-inform = { path = "crates/models/vegetation/inform" }
 rsphysics-fluspect-cx = { path = "crates/models/vegetation/fluspect-cx" }
 rsphysics-i2em = { path = "crates/models/microwave/i2em" }
 rsphysics-sort = { path = "crates/models/soil/sort" }

@@ -49,6 +49,22 @@ pub struct Geometry {
 }
 impl Geometry {
     pub fn new(p: &Parameters) -> Self {
+        let distribution = match p.leaf_angle_distribution {
+            LeafAngleDistribution::Campbell => campbell(p.mean_leaf_angle_deg, &CAMPBELL_BINS),
+            LeafAngleDistribution::Verhoef => verhoef(p.lidf_a, p.lidf_b),
+        };
+        Self::from_distribution(p, distribution)
+    }
+
+    /// The 15 inclination classes used by INFORM.
+    pub fn inform(p: &Parameters) -> Self {
+        let bins = [
+            10., 20., 30., 40., 50., 60., 68., 76., 78., 80., 82., 84., 86., 88., 90.,
+        ];
+        Self::from_distribution(p, campbell(p.mean_leaf_angle_deg, &bins))
+    }
+
+    fn from_distribution(p: &Parameters, distribution: Vec<(f64, f64)>) -> Self {
         let sun = p.solar_zenith_deg.to_radians();
         let view = p.view_zenith_deg.to_radians();
         let mut g = Self {
@@ -61,10 +77,6 @@ impl Geometry {
                 - 2. * sun.tan() * view.tan() * p.relative_azimuth_deg.to_radians().cos())
             .max(0.)
             .sqrt(),
-        };
-        let distribution = match p.leaf_angle_distribution {
-            LeafAngleDistribution::Campbell => campbell(p.mean_leaf_angle_deg),
-            LeafAngleDistribution::Verhoef => verhoef(p.lidf_a, p.lidf_b),
         };
         for (angle, weight) in distribution {
             let (chi_s, chi_o, frho, ftau) = volscatt(
@@ -82,6 +94,15 @@ impl Geometry {
         g
     }
     pub fn coefficients(&self, rho: f64, tau: f64, p: &Parameters) -> Coefficients {
+        self.solve(rho, tau, p, false)
+    }
+
+    /// Four-stream coefficients with the INFORM hotspot scaling.
+    pub fn inform_coefficients(&self, rho: f64, tau: f64, p: &Parameters) -> Coefficients {
+        self.solve(rho, tau, p, true)
+    }
+
+    fn solve(&self, rho: f64, tau: f64, p: &Parameters, inform: bool) -> Coefficients {
         let Self {
             ks,
             ko,
@@ -133,28 +154,32 @@ impl Geometry {
             transport(att, sigb, m, 1., 1., vf, vb, ks, ko, lai);
         let tss = (-ks * lai).exp();
         let too = (-ko * lai).exp();
-        let alf = if p.hotspot > 0. {
+        let alf = if inform && p.hotspot > 0. {
+            self.dso / p.hotspot
+        } else if inform {
+            1e6
+        } else if p.hotspot > 0. {
             (self.dso / p.hotspot) * 2. / (ks + ko)
         } else {
             1e6
         }
-        .min(200.);
+        .min(if inform { 1e6 } else { 200. });
         let (tsstoo, sumint) = if alf == 0. {
-            (tss, (1. - tss) / (ks * lai))
+            (tss, -(-ks * lai).exp_m1() / (ks * lai))
         } else {
             let fhot = lai * (ko * ks).sqrt();
             let mut x1 = 0.;
             let mut y1 = 0.;
             let mut f1 = 1.;
             let mut sum = 0.;
-            let fint = (1. - (-alf).exp()) * 0.05;
+            let fint = -(-alf).exp_m1() * 0.05;
             for i in 1..=20 {
                 let x2 = if i < 20 {
-                    -(1. - i as f64 * fint).ln() / alf
+                    -(-i as f64 * fint).ln_1p() / alf
                 } else {
                     1.
                 };
-                let y2 = -(ko + ks) * lai * x2 + fhot * (1. - (-alf * x2).exp()) / alf;
+                let y2 = -(ko + ks) * lai * x2 - fhot * (-alf * x2).exp_m1() / alf;
                 let f2 = y2.exp();
                 // Continuous limit also covers numerically coincident integration endpoints.
                 sum += if y2 == y1 {
@@ -247,16 +272,18 @@ fn jfunc1(k: f64, m: f64, l: f64) -> f64 {
 fn jfunc2(k: f64, m: f64, l: f64) -> f64 {
     (1. - (-(k + m) * l).exp()) / (k + m)
 }
-fn campbell(ala: f64) -> Vec<(f64, f64)> {
-    let upper: [f64; 13] = [
-        10., 20., 30., 40., 50., 60., 70., 80., 82., 84., 86., 88., 90.,
-    ];
-    let lower: [f64; 13] = [
-        0., 10., 20., 30., 40., 50., 60., 70., 80., 82., 84., 86., 88.,
-    ];
+const CAMPBELL_BINS: [f64; 13] = [
+    10., 20., 30., 40., 50., 60., 70., 80., 82., 84., 86., 88., 90.,
+];
+
+fn campbell(ala: f64, upper: &[f64]) -> Vec<(f64, f64)> {
     let ecc = (-1.6184e-5 * ala.powi(3) + 2.1145e-3 * ala.powi(2) - 1.2390e-1 * ala + 3.2491).exp();
     let mut bins = Vec::new();
-    for (u, l) in upper.into_iter().zip(lower) {
+    for (u, l) in upper
+        .iter()
+        .copied()
+        .zip(std::iter::once(0.).chain(upper.iter().copied()))
+    {
         let x1 = ecc / (1. + ecc * ecc * u.to_radians().tan().powi(2)).sqrt();
         let x2 = ecc / (1. + ecc * ecc * l.to_radians().tan().powi(2)).sqrt();
         let weight = if ecc == 1. {

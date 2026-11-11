@@ -41,6 +41,7 @@ reflectance = leaf["result"]["reflectance"]
 | Vegetation optics | [PROSPECT-D](docs/models/prospect-d.md) | Leaf reflectance and transmittance |
 | Vegetation optics | [PROSAIL-D](docs/models/prosail-d.md) | Canopy reflectance |
 | Vegetation optics | [GOMS](docs/models/goms.md) | Discrete-crown reflectance and mutual shadowing |
+| Vegetation optics | [INFORM](docs/models/inform.md) | Forest reflectance with crown transmission and understory |
 | Thermal infrared | [4SAIL-TIR](docs/models/foursail-tir.md) | Four-component canopy thermal radiance and brightness temperature |
 | Surface reflectance | [Ross–Li](docs/models/ross-li.md) | Directional reflectance and BRDF |
 | Surface reflectance | [RPV](docs/models/rpv.md) | Semi-empirical directional reflectance and hotspot |

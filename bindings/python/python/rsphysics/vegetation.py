@@ -1,4 +1,5 @@
 """Leaf optics. Parameters are model-owned; units follow the author PROSPECT-D implementation."""
+from collections.abc import Mapping
 import json
 import numpy as np
 from . import _native
@@ -13,6 +14,40 @@ PROSAIL_D_PARAMETERS = PROSPECT_D_PARAMETERS + (
     "leaf_area_index", "mean_leaf_angle_deg", "hotspot", "solar_zenith_deg",
     "view_zenith_deg", "relative_azimuth_deg", "soil_brightness", "soil_dry_fraction", "lidf_a", "lidf_b",
 )
+INFORM_PARAMETERS = (
+    "crown_lai", "understory_lai", "stem_density_per_ha", "tree_height_m",
+    "crown_diameter_m", "crown_mean_leaf_angle_deg", "understory_mean_leaf_angle_deg",
+    "crown_hotspot", "understory_hotspot", "solar_zenith_deg", "view_zenith_deg",
+    "relative_azimuth_deg", "diffuse_fraction", "soil_reflectance", "soil_brightness",
+)
+
+
+def _inform_inputs(value):
+    if isinstance(value, Mapping):
+        return {key: _inform_inputs(item) for key, item in value.items()}
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+    return value
+
+
+def inform(**parameters) -> dict:
+    """Simulate forest reflectance, canopy transmission and crown/gap fractions.
+
+    Crown and understory leaf parameters are separate mappings. Optional
+    ``spectra`` defines a shared wavelength grid and accepts NumPy arrays for
+    soil reflectance, layer leaf optics and PROSPECT 3.01 coefficients.
+    """
+    return run("vegetation.inform", _inform_inputs(parameters))
+
+
+def inform_batch(parameters, *, shared_axes=False, crown_leaf=None, understory_leaf=None, spectra=None) -> dict:
+    """Run a NumPy matrix in INFORM_PARAMETERS order with fixed leaf and spectral inputs."""
+    fixed = {
+        key: _inform_inputs(value)
+        for key, value in (("crown_leaf", crown_leaf), ("understory_leaf", understory_leaf), ("spectra", spectra))
+        if value is not None
+    }
+    return run_array("vegetation.inform", parameters, shared_axes=shared_axes, fixed=fixed)
 
 
 def prosail_d(*, n: float = 1.5, chlorophyll: float = 40.0, carotenoids: float = 8.0,

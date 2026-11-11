@@ -18,6 +18,7 @@
 - [PROSPECT-D — leaf reflectance and transmittance](models/prospect-d.md)
 - [PROSAIL-D — canopy reflectance](models/prosail-d.md)
 - [GOMS — discrete-crown reflectance and mutual shadowing](models/goms.md)
+- [INFORM — forest reflectance, crown transmission, and understory](models/inform.md)
 
 ### Thermal infrared
 

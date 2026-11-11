@@ -212,6 +212,23 @@ const PROSAIL: &[&str] = &[
     "lidf_a",
     "lidf_b",
 ];
+const INFORM: &[&str] = &[
+    "crown_lai",
+    "understory_lai",
+    "stem_density_per_ha",
+    "tree_height_m",
+    "crown_diameter_m",
+    "crown_mean_leaf_angle_deg",
+    "understory_mean_leaf_angle_deg",
+    "crown_hotspot",
+    "understory_hotspot",
+    "solar_zenith_deg",
+    "view_zenith_deg",
+    "relative_azimuth_deg",
+    "diffuse_fraction",
+    "soil_reflectance",
+    "soil_brightness",
+];
 const ROSS: &[&str] = &[
     "f_iso",
     "f_vol",
@@ -314,6 +331,7 @@ fn columns(id: &str) -> Result<&'static [&'static str], ModelError> {
         "microwave.lmeb" => Ok(LMEB),
         "vegetation.prospect-d" => Ok(PROSPECT),
         "vegetation.prosail-d" => Ok(PROSAIL),
+        "vegetation.inform" => Ok(INFORM),
         "surface.ross-li" => Ok(ROSS),
         "microwave.tau-omega" => Ok(TAU),
         "microwave.water-cloud" => Ok(WATER),
@@ -477,6 +495,7 @@ cache!(
 );
 cache!(foursail, FOURSAIL_MODEL, rsphysics_foursail_tir::Model);
 cache!(goms, GOMS_MODEL, rsphysics_goms::Model);
+cache!(inform, INFORM_MODEL, rsphysics_inform::Model);
 cache!(fluspect, FLUSPECT_MODEL, rsphysics_fluspect_cx::Model);
 cache!(i2em, I2EM_MODEL, rsphysics_i2em::Model);
 cache!(sort, SORT_MODEL, rsphysics_sort::Model);
@@ -869,6 +888,37 @@ fn prosail_row(o: rsphysics_prosail_d::Output) -> Row {
         ..Row::default()
     }
 }
+fn inform_row(o: rsphysics_inform::Output) -> Row {
+    Row {
+        scalars: vec![
+            ("crown_cover", o.crown_cover),
+            ("shadow_cover", o.shadow_cover),
+            ("shadowed_crown_fraction", o.shadowed_crown_fraction),
+            ("sunlit_crown_fraction", o.sunlit_crown_fraction),
+            ("shadowed_gap_fraction", o.shadowed_gap_fraction),
+            ("sunlit_gap_fraction", o.sunlit_gap_fraction),
+        ],
+        arrays: vec![
+            ("wavelengths_nm", o.wavelengths_nm.wavelengths_nm().to_vec()),
+            ("reflectance", o.reflectance),
+            ("soil_reflectance", o.soil_reflectance),
+            ("understory_reflectance", o.understory_reflectance),
+            ("dense_crown_reflectance", o.dense_crown_reflectance),
+            ("crown_leaf_reflectance", o.crown_leaf_reflectance),
+            ("crown_leaf_transmittance", o.crown_leaf_transmittance),
+            ("understory_leaf_reflectance", o.understory_leaf_reflectance),
+            (
+                "understory_leaf_transmittance",
+                o.understory_leaf_transmittance,
+            ),
+            ("crown_transmittance_sun", o.crown_transmittance_sun),
+            ("crown_transmittance_view", o.crown_transmittance_view),
+            ("crown_factor", o.crown_factor),
+            ("ground_factor", o.ground_factor),
+        ],
+        ..Row::default()
+    }
+}
 fn ross_row(o: rsphysics_ross_li::Output) -> Row {
     Row {
         scalars: vec![
@@ -1103,6 +1153,7 @@ pub fn model_batch_native<'py>(
         "soil.soilspect" => k == "quadrature",
         "vegetation.prosail-d" | "thermal.foursail" => k == "leaf_angle_distribution",
         "vegetation.goms" => k == "geometry_convention",
+        "vegetation.inform" => matches!(k.as_str(), "crown_leaf" | "understory_leaf" | "spectra"),
         "atmosphere.smac" => matches!(k.as_str(), "coefficient_id" | "direction"),
         "ecosystem.fvcb" | "ecosystem.fvcb-big-leaf" => matches!(
             k.as_str(),
@@ -1207,6 +1258,10 @@ pub fn model_batch_native<'py>(
         "vegetation.prosail-d" => {
             let m = prosail()?;
             py.detach(|| typed(m, id, &values, shared_axes, prosail_row, &fixed))
+        }
+        "vegetation.inform" => {
+            let m = inform()?;
+            py.detach(|| typed(m, id, &values, shared_axes, inform_row, &fixed))
         }
         "surface.ross-li" => {
             let m = ross()?;

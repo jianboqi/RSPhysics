@@ -1,0 +1,217 @@
+[model]
+id = "vegetation.inform"
+name = "INFORM"
+family = "INFORM"
+category = "vegetation"
+scientific_version = "INFORM"
+implementation_version = "0.1.0"
+api_version = "0.1"
+status = "reference-validated"
+limitations = "Forward forest reflectance on 400–2500 nm; randomly distributed crowns, Lambertian soil, and homogeneous crown and understory foliage. The built-in leaf optics are PROSPECT-D. PROSPECT 3.01 requires supplied coefficients."
+
+[source]
+crate = "rsphysics-inform"
+authors = ["Clement Atzberger", "Martin Schlerf", "RSPhysics contributors"]
+references = ["https://doi.org/10.1016/j.rse.2005.10.006", "https://doi.org/10.3390/rs70607425", "https://www.eufar.net/documents/6406/"]
+license = "Apache-2.0"
+
+[capabilities]
+native = true
+python = true
+wasm = false
+batch = true
+precision = "f64"
+
+[[validation.evidence]]
+kind = "implementation"
+suite = "inform-matlab"
+implementation_version = "0.1.0"
+backend = "native"
+
+[data.hashes]
+prospect_d_coefficients = "sha256:cb2da8cef652ef90e666aef302689936d4ddf817c7908484a3fd06e1467fd3a5"
+
+[input_semantics."/crown_lai"]
+unit = "m² m⁻²"
+axes = []
+description = "Single-crown leaf area index."
+
+[input_semantics."/understory_lai"]
+unit = "m² m⁻²"
+axes = []
+description = "Leaf area index of the understory."
+
+[input_semantics."/stem_density_per_ha"]
+unit = "ha⁻¹"
+axes = []
+description = "Number of stems per hectare."
+
+[input_semantics."/tree_height_m"]
+unit = "m"
+axes = []
+description = "Stand tree height used in shadow displacement."
+
+[input_semantics."/crown_diameter_m"]
+unit = "m"
+axes = []
+description = "Average crown diameter."
+
+[input_semantics."/crown_mean_leaf_angle_deg"]
+unit = "deg"
+axes = []
+description = "Mean inclination of crown foliage."
+
+[input_semantics."/understory_mean_leaf_angle_deg"]
+unit = "deg"
+axes = []
+description = "Mean inclination of understory foliage."
+
+[input_semantics."/crown_hotspot"]
+unit = "1"
+axes = []
+description = "Dense crown SAIL hotspot parameter."
+
+[input_semantics."/understory_hotspot"]
+unit = "1"
+axes = []
+description = "Understory SAIL hotspot parameter."
+
+[input_semantics."/solar_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Solar zenith angle."
+
+[input_semantics."/view_zenith_deg"]
+unit = "deg"
+axes = []
+description = "Observer zenith angle."
+
+[input_semantics."/relative_azimuth_deg"]
+unit = "deg"
+axes = []
+description = "Sun–view azimuth separation. Zero is the same azimuth."
+
+[input_semantics."/diffuse_fraction"]
+unit = "1"
+axes = []
+description = "Fraction of incident illumination supplied as diffuse sky radiation."
+
+[input_semantics."/soil_reflectance"]
+unit = "1"
+axes = []
+description = "Wavelength-independent Lambertian soil reflectance, used if no soil spectrum is supplied."
+
+[input_semantics."/soil_brightness"]
+unit = "1"
+axes = []
+description = "Multiplier of the supplied soil reflectance."
+
+[input_semantics."/crown_leaf"]
+unit = "1"
+axes = []
+description = "Leaf optical parameters for the crown."
+
+[input_semantics."/understory_leaf"]
+unit = "1"
+axes = []
+description = "Leaf optical parameters for the understory."
+
+[input_semantics."/spectra"]
+unit = "1"
+axes = []
+description = "Optional common wavelength axis, soil spectrum, layer leaf optics and PROSPECT 3.01 coefficients."
+
+[output_semantics."/wavelengths_nm"]
+unit = "nm"
+axes = ["wavelength"]
+description = "Common wavelength axis, default 400–2500 nm at 1 nm sampling."
+
+[output_semantics."/reflectance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Forest directional reflectance factor under the specified illumination."
+
+[output_semantics."/soil_reflectance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Scaled Lambertian soil reflectance."
+
+[output_semantics."/understory_reflectance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Directional reflectance factor of the understory and soil."
+
+[output_semantics."/dense_crown_reflectance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Directional reflectance factor of the dense crown used in the crown term."
+
+[output_semantics."/crown_leaf_reflectance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Crown leaf reflectance."
+
+[output_semantics."/crown_leaf_transmittance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Crown leaf transmittance."
+
+[output_semantics."/understory_leaf_reflectance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Understory leaf reflectance."
+
+[output_semantics."/understory_leaf_transmittance"]
+unit = "1"
+axes = ["wavelength"]
+description = "Understory leaf transmittance."
+
+[output_semantics."/crown_transmittance_sun"]
+unit = "1"
+axes = ["wavelength"]
+description = "Effective crown transmittance for illumination at the solar zenith."
+
+[output_semantics."/crown_transmittance_view"]
+unit = "1"
+axes = ["wavelength"]
+description = "Effective crown transmittance for illumination at the view zenith."
+
+[output_semantics."/crown_factor"]
+unit = "1"
+axes = ["wavelength"]
+description = "Spectral weight applied to dense-crown reflectance."
+
+[output_semantics."/ground_factor"]
+unit = "1"
+axes = ["wavelength"]
+description = "Spectral weight applied to understory and soil reflectance."
+
+[output_semantics."/crown_cover"]
+unit = "1"
+axes = []
+description = "Fraction of ground masked by crowns along the viewing direction."
+
+[output_semantics."/shadow_cover"]
+unit = "1"
+axes = []
+description = "Fraction of ground shaded by crowns along the solar direction."
+
+[output_semantics."/shadowed_crown_fraction"]
+unit = "1"
+axes = []
+description = "Fraction of ground both masked by crowns and shaded."
+
+[output_semantics."/sunlit_crown_fraction"]
+unit = "1"
+axes = []
+description = "Fraction of ground masked by crowns and receiving direct sun."
+
+[output_semantics."/shadowed_gap_fraction"]
+unit = "1"
+axes = []
+description = "Visible gap fraction shaded by crowns."
+
+[output_semantics."/sunlit_gap_fraction"]
+unit = "1"
+axes = []
+description = "Visible gap fraction receiving direct sun."

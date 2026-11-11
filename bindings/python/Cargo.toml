@@ -22,6 +22,7 @@ rsphysics-gsv.workspace=true
 rsphysics-fvcb.workspace = true
 rsphysics-foursail-tir.workspace = true
 rsphysics-goms.workspace = true
+rsphysics-inform.workspace = true
 rsphysics-fluspect-cx.workspace = true
 rsphysics-i2em.workspace = true
 rsphysics-sort.workspace = true

@@ -725,6 +725,7 @@ dependencies = [
  "rsphysics-gort-gpp",
  "rsphysics-gsv",
  "rsphysics-i2em",
+ "rsphysics-inform",
  "rsphysics-lmeb",
  "rsphysics-model-api",
  "rsphysics-prosail-d",
@@ -836,6 +837,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "rsphysics-inform"
+version = "0.1.0"
+dependencies = [
+ "rsphysics-core",
+ "rsphysics-model-api",
+ "rsphysics-numerics",
+ "rsphysics-prospect-d",
+ "schemars",
+ "serde",
+]
+
+[[package]]
 name = "rsphysics-lmeb"
 version = "0.1.0"
 dependencies = [
@@ -921,6 +934,7 @@ dependencies = [
  "rsphysics-gort-gpp",
  "rsphysics-gsv",
  "rsphysics-i2em",
+ "rsphysics-inform",
  "rsphysics-lmeb",
  "rsphysics-model-api",
  "rsphysics-numerics",

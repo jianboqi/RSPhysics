@@ -54,6 +54,7 @@ pub fn official_catalog() -> Result<Catalog, ModelError> {
         Box::new(TypedAdapter::new(rsphysics_fvcb::BigLeafModel::new()?)?),
         Box::new(TypedAdapter::new(rsphysics_foursail_tir::Model::new()?)?),
         Box::new(TypedAdapter::new(rsphysics_goms::Model::new()?)?),
+        Box::new(TypedAdapter::new(rsphysics_inform::Model::new()?)?),
         Box::new(TypedAdapter::new(rsphysics_fluspect_cx::Model::new()?)?),
         Box::new(TypedAdapter::new(rsphysics_i2em::Model::new()?)?),
         Box::new(TypedAdapter::new(rsphysics_sort::Model::new()?)?),

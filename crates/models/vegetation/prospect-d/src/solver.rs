@@ -87,37 +87,58 @@ pub(crate) fn solve_band(input: &Input, coefficient: &Coefficient) -> (f64, f64)
         .map(|(c, a)| c * a)
         .sum::<f64>()
         / input.n;
-    let tau = if absorption <= 0.0 {
-        1.0
-    } else {
-        (1.0 - absorption) * (-absorption).exp()
-            + absorption * absorption * exponential_integral_e1(absorption)
-    };
     let talf = if input.incidence_angle_deg == 40.0 {
         coefficient.tav_40
     } else {
         calctav(input.incidence_angle_deg, coefficient.refractive_index)
     };
-    let t12 = coefficient.tav_90;
-    let t21 = t12 / coefficient.refractive_index.powi(2);
+    solve_stack(
+        input.n,
+        absorption,
+        coefficient.refractive_index,
+        talf,
+        coefficient.tav_90,
+    )
+}
+
+pub(crate) fn solve_stack(
+    n: f64,
+    absorption: f64,
+    refractive_index: f64,
+    talf: f64,
+    t12: f64,
+) -> (f64, f64) {
+    let tau = if absorption <= 0.0 {
+        1.0
+    } else if absorption >= 700.0 {
+        0.0
+    } else {
+        ((1.0 - absorption) * (-absorption).exp()
+            + absorption * absorption * exponential_integral_e1(absorption))
+        .max(0.0)
+    };
+    let t21 = t12 / refractive_index.powi(2);
     let r21 = 1.0 - t21;
     let denom = 1.0 - (r21 * r21 * (tau * tau));
     let ta = talf * tau * t21 / denom;
     let ra = 1.0 - talf + r21 * tau * ta;
     let t = t12 * tau * t21 / denom;
     let r = 1.0 - t12 + r21 * tau * t;
+    if n == 1.0 || t == 0.0 {
+        return (ra, ta);
+    }
     let (rsub, tsub) = if r + t >= 1.0 {
-        let tsub = t / (t + (1.0 - t) * (input.n - 1.0));
+        let tsub = t / (t + (1.0 - t) * (n - 1.0));
         (1.0 - tsub, tsub)
     } else {
         let d = ((1.0 + r + t) * (1.0 + r - t) * (1.0 - r + t) * (1.0 - r - t)).sqrt();
         let a = (1.0 + r * r - t * t + d) / (2.0 * r);
-        let b = (1.0 - r * r + t * t + d) / (2.0 * t);
-        let bnm1 = b.powf(input.n - 1.0);
+        let b_inverse = (2.0 * t) / (1.0 - r * r + t * t + d);
+        let bnm1 = b_inverse.powf(n - 1.0);
         let bn2 = bnm1 * bnm1;
         let a2 = a * a;
-        let denom = a2 * bn2 - 1.0;
-        (a * (bn2 - 1.0) / denom, bnm1 * (a2 - 1.0) / denom)
+        let denom = a2 - bn2;
+        (a * (1.0 - bn2) / denom, bnm1 * (a2 - 1.0) / denom)
     };
     let denom = 1.0 - rsub * r;
     (ra + ta * rsub * t / denom, ta * tsub / denom)
