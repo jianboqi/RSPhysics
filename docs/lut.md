@@ -90,3 +90,5 @@ The [synthetic raster benchmark](../benchmarks/infrastructure/lut_image.py) repo
 ```console
 python benchmarks/infrastructure/lut_image.py --workers 1 8
 ```
+
+The [Sentinel-2B INFORM benchmark](../benchmarks/infrastructure/inform_sentinel2/README.md) runs tiled crown LAI retrieval on a real L2A scene and writes GeoTIFFs with candidate statistics and quality flags.
