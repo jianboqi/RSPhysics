@@ -36,11 +36,11 @@ implementation_version="0.1.0"
 backend="wasm"
 [data.hashes]
 original_distribution="sha256:42422db29c095a49eaa98556b416405eb818be1ee30139d2a1913dbf3b0c7de1"
-standard_profiles_and_band_labels="sha256:1960055071dd7e7576fe6626b7a110e9ef7f05820f2a8833a7f3a015fa483491"
+standard_profiles_and_band_labels="sha256:c644ab7be0b5a7b137eff74b34a242fb0a09d4913255b8fe8ef7248d5316a546"
 [input_semantics."/geometry"]
 unit="deg, UTC hour, calendar month/day"
 axes=[]
-description="User-defined or original satellite observation geometry. Solar/view azimuths are absolute directions, not a BRDF relative-azimuth convention."
+description="Observation geometry and optional multiple-scattering order limit for user geometry. Solar/view azimuths are absolute directions."
 [input_semantics."/atmosphere"]
 unit="km, hPa, K, g m^-3, g cm^-2, atm-cm"
 axes=["radiosonde_level"]
@@ -104,4 +104,20 @@ description="Complete original auxiliary files, including Mie and aerosol LUT pr
 [output_semantics."/spectral_rows"]
 unit="original report units by column"
 axes=["wavelength", "quantity"]
-description="Original iwave=-2 step-output rows."
+description="Step-output rows. Column names and units are identified by spectral_columns."
+[output_semantics."/spectral_columns"]
+unit="column identifiers"
+axes=["quantity"]
+description="Ordered column identifiers for spectral_rows."
+[output_semantics."/diagnostics"]
+unit="field-dependent"
+axes=[]
+description="Ground irradiance, satellite radiance and reflectance components, and apparent polarization from the formatted report."
+[output_semantics."/aerosol_lut"]
+unit="um, deg, dimensionless"
+axes=["view_zenith", "scattering_angle"]
+description="Angular atmospheric reflectance from the aerosol lookup-table program."
+[output_semantics."/mie_tables"]
+unit="field-dependent"
+axes=["scattering_angle", "wavelength"]
+description="Optical coefficients and phase matrices for each saved Mie file."

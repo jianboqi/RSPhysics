@@ -45,6 +45,7 @@ pub fn filename(name: &str) -> bool {
 #[serde(default, deny_unknown_fields)]
 pub struct Geometry {
     pub mode: u8,
+    pub max_scattering_order: Option<u32>,
     pub solar_zenith_deg: f64,
     pub solar_azimuth_deg: f64,
     pub view_zenith_deg: f64,
@@ -63,6 +64,7 @@ impl Default for Geometry {
     fn default() -> Self {
         Self {
             mode: 0,
+            max_scattering_order: None,
             solar_zenith_deg: 30.,
             solar_azimuth_deg: 0.,
             view_zenith_deg: 20.,
@@ -379,7 +381,20 @@ impl Input {
         if g.day == 0 || g.day > days[g.month as usize - 1] {
             return Err(invalid("Invalid month/day"));
         }
-        s.push(g.mode.to_string());
+        let geometry_code = match g.max_scattering_order {
+            None => i32::from(g.mode),
+            // The original special branch requires igeom < -10.
+            Some(1) if g.mode == 0 => -11,
+            Some(order) if g.mode == 0 && (2..=i32::MAX as u32 / 10).contains(&order) => {
+                -(order as i32 * 10)
+            }
+            Some(_) => {
+                return Err(invalid(
+                    "max_scattering_order requires user geometry and an integer from 1 to 214748364",
+                ));
+            }
+        };
+        s.push(geometry_code.to_string());
         let date = [f64::from(g.month), f64::from(g.day)];
         match g.mode {
             0 => {
@@ -462,7 +477,7 @@ impl Input {
             return Err(invalid("aerosol.model must be -1..12"));
         }
         s.push(a.model.to_string());
-        if a.model == -1 {
+        let optical_model = if a.model == -1 {
             if a.layers.is_empty() || a.layers.len() > 50 {
                 return Err(invalid("Aerosol profile requires 1..50 layers"));
             }
@@ -473,11 +488,12 @@ impl Input {
                 finite("aerosol layer", layer)?;
                 range("layer height", layer[0], 0.000001, 300.)?;
                 range("layer AOT550", layer[1], 0., 10.)?;
-                if ![1., 2., 3., 5., 6., 7.].contains(&layer[2])
+                if !(1. ..=12.).contains(&layer[2])
+                    || layer[2].fract() != 0.
                     || kind.is_some_and(|k| k != layer[2])
                 {
                     return Err(invalid(
-                        "Layers must use the same predefined aerosol type (1,2,3,5,6,7)",
+                        "Layers must share one aerosol optical model (1..12)",
                     ));
                 }
                 kind = Some(layer[2]);
@@ -487,8 +503,11 @@ impl Input {
             if height > 300. {
                 return Err(invalid("Aerosol layer heights exceed 300 km"));
             }
-        }
-        if a.model == 4 {
+            kind.expect("nonempty validated layers") as i8
+        } else {
+            a.model
+        };
+        if optical_model == 4 {
             for &x in &a.components {
                 range("aerosol component fraction", x, 0., 1.)?;
             }
@@ -497,7 +516,7 @@ impl Input {
             }
             s.push(row(a.components));
         }
-        if (8..=10).contains(&a.model) {
+        if (8..=10).contains(&optical_model) {
             range("radius_min_um", a.radius_min_um, 0.0001, 100.)?;
             range(
                 "radius_max_um",
@@ -506,7 +525,7 @@ impl Input {
                 100.,
             )?;
         }
-        match a.model {
+        match optical_model {
             8 => {
                 if a.modes.is_empty() || a.modes.len() > 4 {
                     return Err(invalid("Log-normal distribution requires 1..4 modes"));
@@ -532,7 +551,7 @@ impl Input {
             }
             9 | 10 => {
                 s.push(row([a.radius_min_um, a.radius_max_um]));
-                if a.model == 9 {
+                if optical_model == 9 {
                     finite("gamma parameters", &a.gamma)?;
                     s.push(row(a.gamma));
                 } else {
@@ -574,7 +593,7 @@ impl Input {
             }
             _ => {}
         }
-        if (8..=11).contains(&a.model) {
+        if (8..=11).contains(&optical_model) {
             if !filename(&a.mie_file) {
                 return Err(invalid("Invalid Mie output basename"));
             }
@@ -607,7 +626,9 @@ impl Input {
             s.push((-h.target_altitude_km).to_string());
         }
         if let Some(z) = h.sensor_height_km {
-            range("sensor_height_km", z, 0., 99.)?;
+            if !z.is_finite() || !(0.0..100.0).contains(&z) || (z as f32) >= 100.0 {
+                return Err(invalid("sensor_height_km must be in [0, 100)"));
+            }
             s.push((-z).to_string());
             if z > 0. {
                 range("path water", h.path_water_vapour_g_cm2, -1., 20.)?;
@@ -734,15 +755,10 @@ impl Surface {
                     s.push(row([r.lower_um, r.upper_um]));
                     n
                 } else {
-                    if w.mode == "band" {
-                        return Err(invalid(
-                            "Heterogeneous tabulated reflectance requires explicit spectral bounds",
-                        ));
-                    }
-                    if w.mode == "monochromatic" {
-                        1
-                    } else {
-                        grid_count(w.lower_um, w.upper_um)?
+                    match w.mode.as_str() {
+                        "band" => crate::band_sample_count(w.band),
+                        "monochromatic" => 1,
+                        _ => grid_count(w.lower_um, w.upper_um)?,
                     }
                 };
                 if r.values.len() != count {

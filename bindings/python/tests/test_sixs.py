@@ -1,6 +1,7 @@
 """Installed direct-library API against original-Fortran reference reports."""
 
 from pathlib import Path
+from datetime import timedelta
 import copy, json, zlib
 import numpy as np
 import pytest
@@ -101,6 +102,139 @@ def test_full_raw_input_and_parser_preserve_results():
         assert a["result"]["report"] == b["result"]["report"]
         parsed = sixs.parse_report(a["result"]["report"], files=a["result"]["files"])
         assert parsed["apparent_reflectance"] == a["result"]["apparent_reflectance"]
+
+
+@pytest.mark.parametrize("program", ["standard", "lutaero"])
+def test_extended_inputs_against_fortran(program):
+    # These values were generated with the corresponding original executables.
+    window = sixs.Spectrum.band(42)
+    target = sixs.Surface.sampled_reflectance(
+        [0.4, 0.5, 0.6, 0.7, 0.8], [0.13, 0.18, 0.28, 0.35, 0.4], window
+    )
+    cases = [
+        (dict(geometry=sixs.Geometry.user(max_scattering_order=1)), 0.1872633),
+        (dict(geometry=sixs.Geometry.user(max_scattering_order=7)), 0.2045928),
+        (
+            dict(spectrum=window, surface=sixs.Surface.heterogeneous(target, 0.1)),
+            0.2729267,
+        ),
+        (
+            dict(
+                aerosol=sixs.Aerosol.layered(
+                    [[0.8, 0.2, 4], [1.2, 0.1, 4]], components=[0.5, 0.3, 0.1, 0.1]
+                )
+            ),
+            0.1808047,
+        ),
+    ]
+    assert sixs.prepare(cases[0][0])["prepared"]["input_cards"].splitlines()[0] == "-11"
+    assert sixs.prepare(cases[1][0])["prepared"]["input_cards"].splitlines()[0] == "-70"
+    for configuration, reference in cases:
+        assert sixs.run(configuration, program=program)["result"][
+            "apparent_reflectance"
+        ] == pytest.approx(reference, abs=2e-6)
+    with pytest.raises(rsp.ModelError, match="max_scattering_order"):
+        sixs.prepare({"geometry": {"mode": 2, "max_scattering_order": 1}})
+
+
+def test_structured_diagnostics_and_products_from_original_reports():
+    cases = {case["name"]: case for case in SUITE["cases"]}
+    original = sixs.parse_report(cases["default"]["report"])
+    diagnostics = original["diagnostics"]
+    assert diagnostics["direct_solar_irradiance_w_m2_um"] == 1077.845
+    assert diagnostics["diffuse_irradiance_fraction"] == 0.205
+    assert diagnostics["atmospheric_intrinsic_radiance_w_m2_sr_um"] == 23.724
+    assert diagnostics["pixel_reflectance"] == 0.126
+    assert diagnostics["apparent_polarized_reflectance"] == 0.0058
+    assert diagnostics["plane_of_polarization_deg"] == 31.14
+    for name in ("step", "default-lut", "mie-8"):
+        case = cases[name]
+        original = sixs.parse_report(case["report"], files=case["files"])
+        actual = sixs.run(case["parameters"])["result"]
+        if name == "step":
+            assert (
+                len(actual["spectral_columns"])
+                == actual["spectral_rows"].shape[1]
+                == 11
+            )
+            np.testing.assert_allclose(
+                actual["spectral_rows"], original["spectral_rows"], atol=0.11
+            )
+        elif name == "default-lut":
+            lut = actual["aerosol_lut"]
+            assert lut["rows"][0]["view_zenith_deg"] == 20
+            assert lut["rows"][0]["scattering_angles_deg"][-1] == pytest.approx(
+                130, abs=1e-4
+            )
+            assert lut["rows"][0]["intrinsic_reflectance"] == pytest.approx(
+                original["aerosol_lut"]["rows"][0]["intrinsic_reflectance"], abs=1e-5
+            )
+        else:
+            table = actual["mie_tables"]["aerosol.mie"]
+            assert (
+                table["phase_i"].shape
+                == table["phase_q"].shape
+                == table["phase_u"].shape
+                == (83, 20)
+            )
+            np.testing.assert_allclose(
+                table["phase_i"],
+                original["mie_tables"]["aerosol.mie"]["phase_i"],
+                atol=1e-3,
+                rtol=1e-4,
+            )
+
+
+def test_scan_and_spectral_interpolation_helpers():
+    response = sixs.Spectrum.from_samples([0.5, 0.503, 0.505], [0.0, 1.0, 0.0])
+    assert response["response"] == pytest.approx([0.0, 5 / 6, 0.0])
+    result = sixs.sensor_bands("modis", band_ids=[43, 42])
+    assert result["band_ids"] == [43, 42]
+    assert result["apparent_reflectance"] == pytest.approx(
+        [0.1942419, 0.1928082], abs=2e-6
+    )
+    result = sixs.principal_plane([-20, 0, 20], {"geometry": {"solar_azimuth_deg": 30}})
+    assert result["view_azimuth_deg"].tolist() == [210, 30, 30]
+    assert sixs.azimuth_scan(20, step_deg=120)["view_azimuth_deg"].tolist() == [
+        0,
+        120,
+        240,
+    ]
+    with pytest.raises(rsp.ModelError, match="requires structured"):
+        sixs.angles([0, 20], 90, {"geometry": {"mode": 1}})
+
+
+def test_observation_helpers(tmp_path):
+    geo = sixs.Geometry.from_time_and_location(40, -105, "2026-07-01T12:00:00-07:00")
+    assert 16 < geo["solar_zenith_deg"] < 18
+    assert 175 < geo["solar_azimuth_deg"] < 180
+    assert geo == sixs.Geometry.from_time_and_location(40, -105, "2026-07-01T19:00:00Z")
+    assert sixs.Atmosphere.from_latitude_and_date(45, "2026-07-01")["profile"] == 2
+    assert sixs.Atmosphere.from_latitude_and_date(-45, "2026-07-01")["profile"] == 3
+    csv = tmp_path / "site.lev20"
+    csv.write_text(
+        "AERONET Version 3\nDate(dd:mm:yyyy),Time(hh:mm:ss),AOD_500nm,AOD_675nm\n01:07:2026,19:10:00,0.22,0.162962962962963\n"
+    )
+    assert sixs.Aerosol.from_aeronet(csv, "2026-07-01T19:00:00Z")[
+        "aot550"
+    ] == pytest.approx(0.2)
+    with pytest.raises(rsp.ModelError, match="No valid AERONET"):
+        sixs.Aerosol.from_aeronet(
+            csv, "2026-07-01T19:00:00Z", max_age=timedelta(minutes=1)
+        )
+    sounding = tmp_path / "sounding.txt"
+    sounding.write_text(
+        "".join(f"{name:>7}" for name in ("PRES", "HGHT", "TEMP", "MIXR"))
+        + "\n"
+        + "".join(
+            "".join(f"{v:7.2f}" for v in row) + "\n"
+            for row in [[900, 1000, 14, 5], [800, 2000, 7, 4], [700, 3000, 0, 3]]
+        )
+    )
+    levels = np.array(sixs.Atmosphere.from_wyoming(sounding)["levels"])
+    assert levels.shape == (34, 5)
+    assert np.all(np.diff(levels[:, 1]) <= 0)
+    assert levels[2, 1:3] == pytest.approx([800, 280.15])
 
 
 @pytest.mark.parametrize(

@@ -1,10 +1,35 @@
 //! Structured configuration and output handling for the original 6SV2.1 kernel.
 mod input;
 mod output;
+mod products;
 pub use input::*;
 pub use output::*;
 pub const RESOURCES_JSON: &str = include_str!("../data/resources.json");
 use rsphysics_model_api::{ModelError, ModelMetadata, PhysicsModel, parse_model_manifest};
+use serde::Deserialize;
+use std::sync::OnceLock;
+
+fn band_sample_count(band: u16) -> usize {
+    #[derive(Deserialize)]
+    struct Band {
+        id: u16,
+        lower_um: f32,
+        upper_um: f32,
+    }
+    #[derive(Deserialize)]
+    struct Resources {
+        bands: Vec<Band>,
+    }
+    static RESOURCES: OnceLock<Resources> = OnceLock::new();
+    let band_id = band;
+    let band = &RESOURCES
+        .get_or_init(|| serde_json::from_str(RESOURCES_JSON).expect("valid bundled 6S resources"))
+        .bands[usize::from(band_id - 2)];
+    debug_assert_eq!(band.id, band_id);
+    // Match the indexing of the single-precision Fortran band bounds.
+    let index = |um| ((um - 0.25_f32) / 0.0025 + 1.5) as usize;
+    index(band.upper_um) - index(band.lower_um) + 1
+}
 pub struct Model {
     metadata: ModelMetadata,
 }

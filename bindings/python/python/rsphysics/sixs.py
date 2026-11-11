@@ -8,10 +8,19 @@ mixed-precision kernel, full formatted report and auxiliary files are retained.
 from __future__ import annotations
 from copy import deepcopy
 from concurrent.futures import ProcessPoolExecutor
+from datetime import date, timedelta
+import math
 import json
 from collections.abc import Mapping
 import numpy as np
-from . import _native
+from . import _native, spectral, sensors
+from ._sixs_observations import (
+    aeronet_aot,
+    radiosonde_levels,
+    solar_angles,
+    utc_datetime,
+    wyoming_levels,
+)
 from ._api import (
     ModelError,
     _call,
@@ -62,7 +71,7 @@ BRDF_MODELS = {
 
 
 def bands():
-    """Original band IDs 2..199 and labels, extracted from the pinned source."""
+    """6S band IDs 2..199, sensor families and integration bounds in µm."""
     return json.loads(_call(_native.sixs_resources_json))["bands"]
 
 
@@ -187,22 +196,130 @@ def spectrum(wavelengths_um, configuration=None, *, workers=1):
         raise ModelError(
             "invalid_parameter", "wavelengths_um must be a finite one-dimensional array"
         )
+    base = _plain(configuration or {})
+    if base.get("input_cards"):
+        raise ModelError(
+            "invalid_parameter", "Wavelength sweep requires structured inputs"
+        )
     rows = []
     for wavelength in wavelengths:
-        row = deepcopy(_plain(configuration or {}))
+        row = base.copy()
         row["spectrum"] = Spectrum.monochromatic(float(wavelength))
         rows.append(row)
     runs = run_batch(rows, workers=workers)
     return {
         "wavelengths_um": wavelengths.copy(),
-        "apparent_reflectance": np.array(
-            [r["result"]["apparent_reflectance"] for r in runs]
-        ),
-        "apparent_radiance_w_m2_sr_um": np.array(
-            [r["result"]["apparent_radiance_w_m2_sr_um"] for r in runs]
-        ),
+        **_scan_outputs(runs),
+    }
+
+
+def _scan_outputs(runs):
+    keys = ("apparent_reflectance", "apparent_radiance_w_m2_sr_um")
+    return {
+        **{key: np.array([run["result"][key] for run in runs]) for key in keys},
         "runs": runs,
     }
+
+
+def sensor_bands(sensor, configuration=None, *, band_ids=None, workers=1):
+    """Sweep a built-in 6S sensor family or a registry sensor ID.
+
+    Use ``bands()`` for built-in family names and ``sensors.list_sensors()`` for
+    the registry. Band IDs are integers for 6S families and strings for registry
+    profiles. Requested bands are returned in the given order.
+    """
+    original = [band for band in bands() if band["sensor"] == sensor]
+    if original:
+        selected = {band["id"]: band["name"] for band in original}
+        ids = list(selected) if band_ids is None else list(band_ids)
+        try:
+            names = [selected[band_id] for band_id in ids]
+        except KeyError as error:
+            raise ModelError(
+                "invalid_parameter", f"Unknown 6S band for {sensor}: {error.args[0]}"
+            ) from error
+        windows = [Spectrum.band(band_id) for band_id in ids]
+    else:
+        profile = sensors.load(sensor)
+        if band_ids is not None:
+            profile = profile.select(band_ids)
+        ids = list(profile.band_ids)
+        names = ids.copy()
+        windows = [
+            Spectrum.from_samples(b.wavelengths_nm / 1000, b.response)
+            for b in profile.bands
+        ]
+    base = _plain(configuration or {})
+    if not ids or base.get("input_cards"):
+        raise ModelError(
+            "invalid_parameter",
+            "Sensor sweep needs at least one band and structured inputs",
+        )
+    runs = run_batch(
+        [dict(base, spectrum=window) for window in windows], workers=workers
+    )
+    return {"band_ids": ids, "band_names": names, **_scan_outputs(runs)}
+
+
+def angles(view_zenith_deg, view_azimuth_deg, configuration=None, *, workers=1):
+    """Sweep paired view angles in degrees; a scalar broadcasts across an array."""
+    try:
+        zenith, azimuth = np.broadcast_arrays(
+            np.atleast_1d(np.asarray(view_zenith_deg, dtype=float)),
+            np.atleast_1d(np.asarray(view_azimuth_deg, dtype=float)),
+        )
+    except (TypeError, ValueError) as error:
+        raise ModelError(
+            "invalid_parameter", "View angles must be broadcastable numeric arrays"
+        ) from error
+    if zenith.ndim != 1 or not zenith.size or not np.isfinite([zenith, azimuth]).all():
+        raise ModelError(
+            "invalid_parameter",
+            "View angles must be nonempty finite one-dimensional arrays",
+        )
+    base = _plain(configuration or {})
+    geometry = base.get("geometry", {})
+    if base.get("input_cards") or geometry.get("mode", 0) != 0:
+        raise ModelError(
+            "invalid_parameter", "Angle sweep requires structured user geometry"
+        )
+    rows = [
+        dict(
+            base,
+            geometry=dict(
+                geometry, view_zenith_deg=float(z), view_azimuth_deg=float(a)
+            ),
+        )
+        for z, a in zip(zenith, azimuth)
+    ]
+    return {
+        "view_zenith_deg": zenith.copy(),
+        "view_azimuth_deg": azimuth.copy(),
+        **_scan_outputs(run_batch(rows, workers=workers)),
+    }
+
+
+def principal_plane(signed_view_zenith_deg, configuration=None, *, workers=1):
+    """Sweep the solar principal plane; negative angles face away from the sun."""
+    base = _plain(configuration or {})
+    azimuth = base.get("geometry", {}).get("solar_azimuth_deg", 0.0)
+    signed = np.atleast_1d(np.asarray(signed_view_zenith_deg, dtype=float))
+    result = angles(
+        np.abs(signed),
+        (azimuth + np.where(signed < 0, 180, 0)) % 360,
+        base,
+        workers=workers,
+    )
+    return dict(result, signed_view_zenith_deg=signed.copy())
+
+
+def azimuth_scan(view_zenith_deg, configuration=None, *, step_deg=5.0, workers=1):
+    """Sweep azimuth from 0° to below 360° at a fixed view zenith."""
+    if not math.isfinite(step_deg) or not 0 < step_deg <= 360:
+        raise ModelError("invalid_parameter", "step_deg must be in (0, 360]")
+    return angles(
+        view_zenith_deg, np.arange(0, 360, step_deg), configuration, workers=workers
+    )
 
 
 class SixS:
@@ -234,6 +351,8 @@ class Geometry:
         view_azimuth_deg=90.0,
         month=7,
         day=1,
+        *,
+        max_scattering_order=None,
     ):
         return dict(
             mode=0,
@@ -243,11 +362,40 @@ class Geometry:
             view_azimuth_deg=view_azimuth_deg,
             month=month,
             day=day,
+            max_scattering_order=max_scattering_order,
         )
 
     @staticmethod
     def satellite(mode, **parameters):
         return dict(mode=mode, **parameters)
+
+    @staticmethod
+    def from_time_and_location(
+        latitude_deg,
+        longitude_deg,
+        when,
+        *,
+        view_zenith_deg=0.0,
+        view_azimuth_deg=0.0,
+        max_scattering_order=None,
+    ):
+        """Approximate geometric solar angles for an ISO 8601 or aware datetime."""
+        utc = utc_datetime(when)
+        zenith, azimuth = solar_angles(latitude_deg, longitude_deg, utc)
+        if zenith > 89:
+            raise ModelError(
+                "invalid_parameter",
+                "Solar zenith is outside the daytime 6S range (0–89°)",
+            )
+        return Geometry.user(
+            zenith,
+            azimuth,
+            view_zenith_deg,
+            view_azimuth_deg,
+            utc.month,
+            utc.day,
+            max_scattering_order=max_scattering_order,
+        )
 
 
 class Atmosphere:
@@ -265,6 +413,45 @@ class Atmosphere:
     def radiosonde(levels):
         return dict(profile=7, levels=_plain(levels))
 
+    @staticmethod
+    def from_latitude_and_date(latitude_deg, when):
+        """Select a climatological 6S profile using latitude and hemisphere season.
+
+        Tropical below 23.5° absolute latitude, midlatitude below 60°, and
+        subarctic at higher latitudes. Northern summer is May–October.
+        """
+        if isinstance(when, str):
+            try:
+                when = date.fromisoformat(when)
+            except ValueError as error:
+                raise ModelError(
+                    "invalid_parameter", "Expected an ISO calendar date"
+                ) from error
+        if not isinstance(when, date) or not -90 <= latitude_deg <= 90:
+            raise ModelError(
+                "invalid_parameter", "Expected a date and latitude in [-90, 90]"
+            )
+        if abs(latitude_deg) < 23.5:
+            return Atmosphere.standard(1)
+        summer = (5 <= when.month <= 10) == (latitude_deg > 0)
+        return Atmosphere.standard(
+            (2 if abs(latitude_deg) < 60 else 4) + int(not summer)
+        )
+
+    @staticmethod
+    def from_radiosonde(levels, *, fallback_profile=6):
+        """Map measured [km,hPa,K,water g/m³,optional ozone g/m³] to 34 levels."""
+        return Atmosphere.radiosonde(
+            radiosonde_levels(levels, standard_levels(fallback_profile))
+        )
+
+    @staticmethod
+    def from_wyoming(path, *, fallback_profile=6):
+        """Read a downloaded University of Wyoming TEXT:LIST sounding."""
+        return Atmosphere.from_radiosonde(
+            wyoming_levels(path), fallback_profile=fallback_profile
+        )
+
 
 class Aerosol:
     @staticmethod
@@ -272,12 +459,33 @@ class Aerosol:
         return dict(model=model, aot550=aot550, visibility_km=visibility_km)
 
     @staticmethod
+    def from_aeronet(path, when, *, model=1, max_age=timedelta(hours=1)):
+        """Use AERONET AOD at 550 nm or interpolate between bracketing channels.
+
+        Takes a downloaded all-points CSV and a timezone-aware observation
+        time. The selected 6S aerosol type controls optical properties.
+        """
+        if max_age is not None and (
+            not isinstance(max_age, timedelta) or max_age < timedelta()
+        ):
+            raise ModelError(
+                "invalid_parameter", "max_age must be a nonnegative timedelta or None"
+            )
+        if model not in (1, 2, 3, 5, 6, 7):
+            raise ModelError(
+                "invalid_parameter", "AERONET AOD requires a predefined aerosol model"
+            )
+        aot = aeronet_aot(path, utc_datetime(when), max_age)
+        return Aerosol.predefined(model if aot > 0 else 0, aot550=aot)
+
+    @staticmethod
     def mixture(components, **loading):
         return dict(model=4, components=_plain(components), **loading)
 
     @staticmethod
-    def layered(layers):
-        return dict(model=-1, layers=_plain(layers))
+    def layered(layers, **optical_properties):
+        """Layer thickness and AOT with one optical model shared by the layers."""
+        return dict(model=-1, layers=_plain(layers), **_plain(optical_properties))
 
     @staticmethod
     def lognormal(modes, *, radius_min_um=0.01, radius_max_um=1.0, **options):
@@ -396,6 +604,64 @@ class Spectrum:
             response=_plain(response),
         )
 
+    @staticmethod
+    def from_samples(wavelengths_um, response):
+        """Resample a response curve to the 6S grid; zero outside the table."""
+        x = np.asarray(wavelengths_um, dtype=float) * 1000
+        response = np.asarray(response, dtype=float)
+        if (
+            x.ndim != 1
+            or x.size < 2
+            or x.shape != response.shape
+            or not np.isfinite(x).all()
+            or not np.isfinite(response).all()
+            or np.any(np.diff(x) <= 0)
+            or np.any(response < 0)
+            or x[0] < 250
+            or x[-1] > 4000
+        ):
+            raise ModelError(
+                "invalid_parameter",
+                "Expected increasing wavelengths in [0.25, 4] µm and a matching nonnegative response",
+            )
+        lo = math.floor((x[0] - 250) / 2.5)
+        hi = math.ceil((x[-1] - 250) / 2.5)
+        grid = 250 + 2.5 * np.arange(lo, hi + 1)
+        inside = (grid >= x[0] - 1e-9) & (grid <= x[-1] + 1e-9)
+        values = np.zeros(grid.size)
+        if np.any(inside):
+            values[inside] = spectral.resample(
+                x, response, np.clip(grid[inside], x[0], x[-1])
+            )
+        if not np.any(values > 0):
+            raise ModelError(
+                "invalid_parameter", "Response has no positive sample on the 6S grid"
+            )
+        return Spectrum.response(grid[0] / 1000, grid[-1] / 1000, values)
+
+
+def _spectrum_grid_nm(window):
+    mode = window.get("mode", "monochromatic")
+    if mode == "band":
+        band = next(
+            (item for item in bands() if item["id"] == window.get("band")), None
+        )
+        if band is None:
+            raise ModelError("invalid_parameter", "Unknown built-in 6S band")
+        lo, hi = band["lower_um"], band["upper_um"]
+    elif mode == "monochromatic":
+        lo = hi = window.get("wavelength_um", 0.55)
+    elif mode in ("step", "uniform", "response"):
+        lo, hi = window["lower_um"], window["upper_um"]
+    else:
+        raise ModelError("invalid_parameter", "Unknown 6S spectrum mode")
+    if not 0.25 <= lo <= hi <= 4:
+        raise ModelError(
+            "invalid_parameter", "6S spectral bounds must be in [0.25, 4] µm"
+        )
+    lo, hi = [math.floor((bound - 0.25) / 0.0025 + 0.5) for bound in (lo, hi)]
+    return 250 + 2.5 * np.arange(lo, hi + 1)
+
 
 class Surface:
     @staticmethod
@@ -416,6 +682,29 @@ class Surface:
                 upper_um=upper_um,
                 values=_plain(reflectance),
             ),
+        )
+
+    @staticmethod
+    def sampled_reflectance(wavelengths_um, reflectance, spectrum):
+        """Resample a ground spectrum for a 6S band without extrapolation.
+
+        Pass the returned mapping to ``Surface.heterogeneous`` as a target or
+        background, or set it as the target of a uniform Lambertian surface.
+        """
+        grid = _spectrum_grid_nm(spectrum)
+        x = np.asarray(wavelengths_um, dtype=float) * 1000
+        y = np.asarray(reflectance, dtype=float)
+        if y.ndim != 1 or not np.isfinite(y).all() or np.any((y < 0) | (y > 1)):
+            raise ModelError(
+                "invalid_parameter",
+                "Ground reflectance must be a finite one-dimensional array in [0, 1]",
+            )
+        values = spectral.resample(x, y, grid)
+        return dict(
+            spectrum=-1,
+            lower_um=grid[0] / 1000,
+            upper_um=grid[-1] / 1000,
+            values=values.tolist(),
         )
 
     @staticmethod

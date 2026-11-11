@@ -52,6 +52,10 @@ using UTC hour and the corresponding image column/line, ascending-node position,
 or ground longitude/latitude. Historical satellite geometry conventions should
 be checked before using them with another instrument.
 
+`Geometry.user(max_scattering_order=7)` sets the multiple-scattering order
+limit for user geometry. Omitting it uses the solver default of 20. The
+satellite geometry modes do not accept this override.
+
 | Profile | Atmosphere |
 |---|---|
 | 0 | No gaseous absorption |
@@ -90,7 +94,9 @@ retained. Supply all 34 rows, with strictly increasing altitudes.
 | 12 | Previously saved Mie optical properties |
 
 Use `aot550` or `visibility_km` for aerosol loading. Layered profiles contain
-1–50 rows and use a common predefined aerosol type. Mixture and log-normal mode
+1–50 rows and share one aerosol optical model, including custom mixtures and
+Mie distributions. Pass the optical model parameters to `Aerosol.layered`.
+Mixture and log-normal mode
 fractions must sum to one. Microphysical distributions use radii in μm and exactly
 20 refractive-index samples at `sixs.REFRACTIVE_WAVELENGTHS_UM`. NumPy arrays are
 accepted by the Python helpers.
@@ -199,12 +205,19 @@ original vector solver, whose `ipol=1` behavior is retained.
 ## Results, batches, and original input cards
 
 The result contains apparent reflectance, apparent radiance, `quantities`,
-`spectral_rows`, the complete `report`, and named auxiliary `files`. Gas and
+`diagnostics`, the complete `report`, and named auxiliary `files`. Gas and
 scattering transmission vectors are ordered downward/upward/total. Optical
 depth, spherical albedo, and Stokes reflection vectors are ordered
 Rayleigh/aerosol/total. Undefined diagnostics are represented by `None`.
 Results retain the original report's printed precision and the kernel's mixed
 REAL/DOUBLE PRECISION arithmetic.
+
+`diagnostics` includes ground irradiance, satellite radiance and reflectance
+components, and apparent polarization. `spectral_columns` labels the columns
+in `spectral_rows` for a step calculation. `aerosol_lut` gives reflectance
+samples by view zenith and scattering angle when a LUT is produced.
+`mie_tables` contains optical coefficients and phase matrices with scattering
+angle rows and wavelength columns when the run produces a Mie file.
 
 ```python
 rows = [{"aerosol": {"aot550": x}} for x in [0.1, 0.2, 0.4]]
@@ -226,6 +239,39 @@ independent calculations, use `sixs.run_batch(rows, workers=N)` under the usual
 memory follows the selected series order; the original maximum is retained.
 
 See [the executable example](../../bindings/python/examples/sixs_workflow.py).
+
+## Observation data and scans
+
+```python
+geometry = sixs.Geometry.from_time_and_location(40, -105, "2026-07-01T19:00:00Z")
+profile = sixs.Atmosphere.from_latitude_and_date(40, "2026-07-01")
+config = {"geometry": geometry, "atmosphere": profile}
+
+modis = sixs.sensor_bands("modis", config, band_ids=[42, 43])
+plane = sixs.principal_plane([-30, -15, 0, 15, 30], config)
+azimuth = sixs.azimuth_scan(20, config, step_deg=30)
+
+window = sixs.Spectrum.band(42)
+target = sixs.Surface.sampled_reflectance([0.5, 0.6, 0.7, 0.8],
+                                          [0.1, 0.2, 0.3, 0.4], window)
+surface = sixs.Surface.heterogeneous(target, 0.1)
+```
+
+`sixs.bands()` lists built-in band families and integration bounds.
+`sensor_bands` also accepts a registry sensor ID, such as `landsat-8.oli`.
+`Spectrum.from_samples` places tabulated responses on the 2.5 nm grid.
+`Surface.sampled_reflectance` requires measured wavelengths to cover the
+entire simulation band.
+
+`Atmosphere.from_radiosonde` interpolates observed levels onto the standard
+6S grid. Outside the measured heights it uses the chosen standard profile,
+with its pressure scaled to meet the observations at the transition.
+`Atmosphere.from_wyoming` reads downloaded Wyoming TEXT:LIST tables.
+`Aerosol.from_aeronet` reads a local all-points CSV and selects the nearest
+valid measurement within one hour by default. It estimates AOT at 550 nm
+from bracketing channels when the 550 nm channel is unavailable. The aerosol
+optical model is selected separately. Solar angles use NOAA's approximate
+geometric equations and require an explicit UTC offset. [NOAA solar equations](https://gml.noaa.gov/grad/solcalc/solareqns.PDF) · [Wyoming sounding columns](https://weather.uwyo.edu/upperair/columns.html)
 
 ## Authors and references
 

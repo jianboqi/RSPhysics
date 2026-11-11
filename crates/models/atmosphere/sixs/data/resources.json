@@ -1505,795 +1505,1389 @@
   "bands": [
     {
       "id": 2,
-      "name": "meteosat"
+      "name": "meteosat",
+      "sensor": "meteo",
+      "lower_um": 0.3499999,
+      "upper_um": 1.11
     },
     {
       "id": 3,
-      "name": "goes east"
+      "name": "goes east",
+      "sensor": "goes",
+      "lower_um": 0.49,
+      "upper_um": 0.8999999
     },
     {
       "id": 4,
-      "name": "goes west"
+      "name": "goes west",
+      "sensor": "goes",
+      "lower_um": 0.49,
+      "upper_um": 0.8999999
     },
     {
       "id": 5,
-      "name": "avhrr 1 (noaa6)"
+      "name": "avhrr 1 (noaa6)",
+      "sensor": "avhrr",
+      "lower_um": 0.55,
+      "upper_um": 0.75
     },
     {
       "id": 6,
-      "name": "avhrr 2 (noaa6)"
+      "name": "avhrr 2 (noaa6)",
+      "sensor": "avhrr",
+      "lower_um": 0.69,
+      "upper_um": 1.12
     },
     {
       "id": 7,
-      "name": "avhrr 1 (noaa7)"
+      "name": "avhrr 1 (noaa7)",
+      "sensor": "avhrr",
+      "lower_um": 0.5,
+      "upper_um": 0.8
     },
     {
       "id": 8,
-      "name": "avhrr 2 (noaa7)"
+      "name": "avhrr 2 (noaa7)",
+      "sensor": "avhrr",
+      "lower_um": 0.64,
+      "upper_um": 1.17
     },
     {
       "id": 9,
-      "name": "avhrr 1 (noaa8)"
+      "name": "avhrr 1 (noaa8)",
+      "sensor": "avhrr",
+      "lower_um": 0.54,
+      "upper_um": 1.01
     },
     {
       "id": 10,
-      "name": "avhrr 2 (noaa8)"
+      "name": "avhrr 2 (noaa8)",
+      "sensor": "avhrr",
+      "lower_um": 0.68,
+      "upper_um": 1.12
     },
     {
       "id": 11,
-      "name": "avhrr 1 (noaa9)"
+      "name": "avhrr 1 (noaa9)",
+      "sensor": "avhrr",
+      "lower_um": 0.53,
+      "upper_um": 0.81
     },
     {
       "id": 12,
-      "name": "avhrr 2 (noaa9)"
+      "name": "avhrr 2 (noaa9)",
+      "sensor": "avhrr",
+      "lower_um": 0.68,
+      "upper_um": 1.17
     },
     {
       "id": 13,
-      "name": "avhrr 1 (noaa10)"
+      "name": "avhrr 1 (noaa10)",
+      "sensor": "avhrr",
+      "lower_um": 0.53,
+      "upper_um": 0.78
     },
     {
       "id": 14,
-      "name": "avhrr 2 (noaa10)"
+      "name": "avhrr 2 (noaa10)",
+      "sensor": "avhrr",
+      "lower_um": 0.6,
+      "upper_um": 1.19
     },
     {
       "id": 15,
-      "name": "avhrr 1 (noaa11)"
+      "name": "avhrr 1 (noaa11)",
+      "sensor": "avhrr",
+      "lower_um": 0.54,
+      "upper_um": 0.82
     },
     {
       "id": 16,
-      "name": "avhrr 2 (noaa11)"
+      "name": "avhrr 2 (noaa11)",
+      "sensor": "avhrr",
+      "lower_um": 0.6,
+      "upper_um": 1.12
     },
     {
       "id": 17,
-      "name": "hrv1 1"
+      "name": "hrv1 1",
+      "sensor": "hrv",
+      "lower_um": 0.4699999,
+      "upper_um": 0.6499999
     },
     {
       "id": 18,
-      "name": "hrv1 2"
+      "name": "hrv1 2",
+      "sensor": "hrv",
+      "lower_um": 0.6,
+      "upper_um": 0.72
     },
     {
       "id": 19,
-      "name": "hrv1 3"
+      "name": "hrv1 3",
+      "sensor": "hrv",
+      "lower_um": 0.73,
+      "upper_um": 0.93
     },
     {
       "id": 20,
-      "name": "hrv1 pan"
+      "name": "hrv1 pan",
+      "sensor": "hrv",
+      "lower_um": 0.4699999,
+      "upper_um": 0.79
     },
     {
       "id": 21,
-      "name": "hrv2 1"
+      "name": "hrv2 1",
+      "sensor": "hrv",
+      "lower_um": 0.4699999,
+      "upper_um": 0.6499999
     },
     {
       "id": 22,
-      "name": "hrv2 2"
+      "name": "hrv2 2",
+      "sensor": "hrv",
+      "lower_um": 0.5899999,
+      "upper_um": 0.73
     },
     {
       "id": 23,
-      "name": "hrv2 3"
+      "name": "hrv2 3",
+      "sensor": "hrv",
+      "lower_um": 0.74,
+      "upper_um": 0.94
     },
     {
       "id": 24,
-      "name": "hrv2 pan"
+      "name": "hrv2 pan",
+      "sensor": "hrv",
+      "lower_um": 0.4699999,
+      "upper_um": 0.79
     },
     {
       "id": 25,
-      "name": "tm  1"
+      "name": "tm  1",
+      "sensor": "tm",
+      "lower_um": 0.43,
+      "upper_um": 0.56
     },
     {
       "id": 26,
-      "name": "tm  2"
+      "name": "tm  2",
+      "sensor": "tm",
+      "lower_um": 0.5,
+      "upper_um": 0.6499999
     },
     {
       "id": 27,
-      "name": "tm  3"
+      "name": "tm  3",
+      "sensor": "tm",
+      "lower_um": 0.5799999,
+      "upper_um": 0.74
     },
     {
       "id": 28,
-      "name": "tm  4"
+      "name": "tm  4",
+      "sensor": "tm",
+      "lower_um": 0.73,
+      "upper_um": 0.95
     },
     {
       "id": 29,
-      "name": "tm  5"
+      "name": "tm  5",
+      "sensor": "tm",
+      "lower_um": 1.5025,
+      "upper_um": 1.89
     },
     {
       "id": 30,
-      "name": "tm  7"
+      "name": "tm  7",
+      "sensor": "tm",
+      "lower_um": 1.95,
+      "upper_um": 2.41
     },
     {
       "id": 31,
-      "name": "mss 4"
+      "name": "mss 4",
+      "sensor": "mss",
+      "lower_um": 0.4749999,
+      "upper_um": 0.6399999
     },
     {
       "id": 32,
-      "name": "mss 5"
+      "name": "mss 5",
+      "sensor": "mss",
+      "lower_um": 0.5799999,
+      "upper_um": 0.75
     },
     {
       "id": 33,
-      "name": "mss 6"
+      "name": "mss 6",
+      "sensor": "mss",
+      "lower_um": 0.6549999,
+      "upper_um": 0.8549998
     },
     {
       "id": 34,
-      "name": "mss 7"
+      "name": "mss 7",
+      "sensor": "mss",
+      "lower_um": 0.7849999,
+      "upper_um": 1.1
     },
     {
       "id": 35,
-      "name": "mas 1"
+      "name": "mas 1",
+      "sensor": "mas",
+      "lower_um": 0.5025,
+      "upper_um": 0.5875
     },
     {
       "id": 36,
-      "name": "mas 2"
+      "name": "mas 2",
+      "sensor": "mas",
+      "lower_um": 0.6075,
+      "upper_um": 0.7
     },
     {
       "id": 37,
-      "name": "mas 3"
+      "name": "mas 3",
+      "sensor": "mas",
+      "lower_um": 0.83,
+      "upper_um": 0.9125
     },
     {
       "id": 38,
-      "name": "mas 4"
+      "name": "mas 4",
+      "sensor": "mas",
+      "lower_um": 0.9,
+      "upper_um": 0.9975
     },
     {
       "id": 39,
-      "name": "mas 5"
+      "name": "mas 5",
+      "sensor": "mas",
+      "lower_um": 1.82,
+      "upper_um": 1.9575
     },
     {
       "id": 40,
-      "name": "mas 6"
+      "name": "mas 6",
+      "sensor": "mas",
+      "lower_um": 2.095,
+      "upper_um": 2.1925
     },
     {
       "id": 41,
-      "name": "mas 7"
+      "name": "mas 7",
+      "sensor": "mas",
+      "lower_um": 3.58,
+      "upper_um": 3.87
     },
     {
       "id": 42,
-      "name": "modis 1"
+      "name": "modis 1",
+      "sensor": "modis",
+      "lower_um": 0.61,
+      "upper_um": 0.685
     },
     {
       "id": 43,
-      "name": "modis 2"
+      "name": "modis 2",
+      "sensor": "modis",
+      "lower_um": 0.82,
+      "upper_um": 0.9025
     },
     {
       "id": 44,
-      "name": "modis 3"
+      "name": "modis 3",
+      "sensor": "modis",
+      "lower_um": 0.45,
+      "upper_um": 0.4825
     },
     {
       "id": 45,
-      "name": "modis 4"
+      "name": "modis 4",
+      "sensor": "modis",
+      "lower_um": 0.54,
+      "upper_um": 0.57
     },
     {
       "id": 46,
-      "name": "modis 5"
+      "name": "modis 5",
+      "sensor": "modis",
+      "lower_um": 1.215,
+      "upper_um": 1.27
     },
     {
       "id": 47,
-      "name": "modis 6"
+      "name": "modis 6",
+      "sensor": "modis",
+      "lower_um": 1.6,
+      "upper_um": 1.665
     },
     {
       "id": 48,
-      "name": "modis 7"
+      "name": "modis 7",
+      "sensor": "modis",
+      "lower_um": 2.0575,
+      "upper_um": 2.1825
     },
     {
       "id": 49,
-      "name": "avhrr 1 (noaa12)"
+      "name": "avhrr 1 (noaa12)",
+      "sensor": "avhrr",
+      "lower_um": 0.55,
+      "upper_um": 0.75
     },
     {
       "id": 50,
-      "name": "avhrr 2 (noaa12)"
+      "name": "avhrr 2 (noaa12)",
+      "sensor": "avhrr",
+      "lower_um": 0.69,
+      "upper_um": 1.12
     },
     {
       "id": 51,
-      "name": "avhrr 1 (noaa14)"
+      "name": "avhrr 1 (noaa14)",
+      "sensor": "avhrr",
+      "lower_um": 0.5,
+      "upper_um": 0.8
     },
     {
       "id": 52,
-      "name": "avhrr 2 (noaa14)"
+      "name": "avhrr 2 (noaa14)",
+      "sensor": "avhrr",
+      "lower_um": 0.64,
+      "upper_um": 1.17
     },
     {
       "id": 53,
-      "name": "polder 1"
+      "name": "polder 1",
+      "sensor": "polder",
+      "lower_um": 0.4125,
+      "upper_um": 0.4775
     },
     {
       "id": 54,
-      "name": "polder 2"
+      "name": "polder 2",
+      "sensor": "polder",
+      "lower_um": 0.41,
+      "upper_um": 0.5225
     },
     {
       "id": 55,
-      "name": "polder 3"
+      "name": "polder 3",
+      "sensor": "polder",
+      "lower_um": 0.5325,
+      "upper_um": 0.595
     },
     {
       "id": 56,
-      "name": "polder 4"
+      "name": "polder 4",
+      "sensor": "polder",
+      "lower_um": 0.63,
+      "upper_um": 0.7025
     },
     {
       "id": 57,
-      "name": "polder 5"
+      "name": "polder 5",
+      "sensor": "polder",
+      "lower_um": 0.745,
+      "upper_um": 0.78
     },
     {
       "id": 58,
-      "name": "polder 6"
+      "name": "polder 6",
+      "sensor": "polder",
+      "lower_um": 0.7,
+      "upper_um": 0.83
     },
     {
       "id": 59,
-      "name": "polder 7"
+      "name": "polder 7",
+      "sensor": "polder",
+      "lower_um": 0.81,
+      "upper_um": 0.92
     },
     {
       "id": 60,
-      "name": "polder 8"
+      "name": "polder 8",
+      "sensor": "polder",
+      "lower_um": 0.865,
+      "upper_um": 0.94
     },
     {
       "id": 61,
-      "name": "seawifs 1"
+      "name": "seawifs 1",
+      "sensor": "seawifs",
+      "lower_um": 0.3825,
+      "upper_um": 0.7
     },
     {
       "id": 62,
-      "name": "seawifs 2"
+      "name": "seawifs 2",
+      "sensor": "seawifs",
+      "lower_um": 0.38,
+      "upper_um": 0.58
     },
     {
       "id": 63,
-      "name": "seawifs 3"
+      "name": "seawifs 3",
+      "sensor": "seawifs",
+      "lower_um": 0.38,
+      "upper_um": 1.02
     },
     {
       "id": 64,
-      "name": "seawifs 4"
+      "name": "seawifs 4",
+      "sensor": "seawifs",
+      "lower_um": 0.38,
+      "upper_um": 1.02
     },
     {
       "id": 65,
-      "name": "seawifs 5"
+      "name": "seawifs 5",
+      "sensor": "seawifs",
+      "lower_um": 0.3825,
+      "upper_um": 1.15
     },
     {
       "id": 66,
-      "name": "seawifs 6"
+      "name": "seawifs 6",
+      "sensor": "seawifs",
+      "lower_um": 0.3825,
+      "upper_um": 1.05
     },
     {
       "id": 67,
-      "name": "seawifs 7"
+      "name": "seawifs 7",
+      "sensor": "seawifs",
+      "lower_um": 0.38,
+      "upper_um": 1.15
     },
     {
       "id": 68,
-      "name": "seawifs 8"
+      "name": "seawifs 8",
+      "sensor": "seawifs",
+      "lower_um": 0.38,
+      "upper_um": 1.15
     },
     {
       "id": 69,
-      "name": "aatsr   1"
+      "name": "aatsr   1",
+      "sensor": "aatsr",
+      "lower_um": 0.525,
+      "upper_um": 0.5925
     },
     {
       "id": 70,
-      "name": "aatsr   2"
+      "name": "aatsr   2",
+      "sensor": "aatsr",
+      "lower_um": 0.6275,
+      "upper_um": 0.6975
     },
     {
       "id": 71,
-      "name": "aatsr   3"
+      "name": "aatsr   3",
+      "sensor": "aatsr",
+      "lower_um": 0.8325,
+      "upper_um": 0.9025
     },
     {
       "id": 72,
-      "name": "aatsr   4"
+      "name": "aatsr   4",
+      "sensor": "aatsr",
+      "lower_um": 1.4475,
+      "upper_um": 1.7775
     },
     {
       "id": 73,
-      "name": "meris   1"
+      "name": "meris   1",
+      "sensor": "meris",
+      "lower_um": 0.4025,
+      "upper_um": 0.42
     },
     {
       "id": 74,
-      "name": "meris   2"
+      "name": "meris   2",
+      "sensor": "meris",
+      "lower_um": 0.4325,
+      "upper_um": 0.45
     },
     {
       "id": 75,
-      "name": "meris   3"
+      "name": "meris   3",
+      "sensor": "meris",
+      "lower_um": 0.48,
+      "upper_um": 0.4975
     },
     {
       "id": 76,
-      "name": "meris   4"
+      "name": "meris   4",
+      "sensor": "meris",
+      "lower_um": 0.5,
+      "upper_um": 0.5175
     },
     {
       "id": 77,
-      "name": "meris   5"
+      "name": "meris   5",
+      "sensor": "meris",
+      "lower_um": 0.55,
+      "upper_um": 0.5675
     },
     {
       "id": 78,
-      "name": "meris   6"
+      "name": "meris   6",
+      "sensor": "meris",
+      "lower_um": 0.61,
+      "upper_um": 0.6275
     },
     {
       "id": 79,
-      "name": "meris   7"
+      "name": "meris   7",
+      "sensor": "meris",
+      "lower_um": 0.655,
+      "upper_um": 0.6725
     },
     {
       "id": 80,
-      "name": "meris   8"
+      "name": "meris   8",
+      "sensor": "meris",
+      "lower_um": 0.6725,
+      "upper_um": 0.6875
     },
     {
       "id": 81,
-      "name": "meris   9"
+      "name": "meris   9",
+      "sensor": "meris",
+      "lower_um": 0.7,
+      "upper_um": 0.7175
     },
     {
       "id": 82,
-      "name": "meris   10"
+      "name": "meris   10",
+      "sensor": "meris",
+      "lower_um": 0.745,
+      "upper_um": 0.76
     },
     {
       "id": 83,
-      "name": "meris   11"
+      "name": "meris   11",
+      "sensor": "meris",
+      "lower_um": 0.755,
+      "upper_um": 0.765
     },
     {
       "id": 84,
-      "name": "meris   12"
+      "name": "meris   12",
+      "sensor": "meris",
+      "lower_um": 0.7675,
+      "upper_um": 0.79
     },
     {
       "id": 85,
-      "name": "meris   13"
+      "name": "meris   13",
+      "sensor": "meris",
+      "lower_um": 0.85,
+      "upper_um": 0.8775
     },
     {
       "id": 86,
-      "name": "meris   14"
+      "name": "meris   14",
+      "sensor": "meris",
+      "lower_um": 0.875,
+      "upper_um": 0.8925
     },
     {
       "id": 87,
-      "name": "meris   15"
+      "name": "meris   15",
+      "sensor": "meris",
+      "lower_um": 0.89,
+      "upper_um": 0.9075
     },
     {
       "id": 88,
-      "name": "gli     1"
+      "name": "gli     1",
+      "sensor": "gli",
+      "lower_um": 0.37,
+      "upper_um": 0.3925
     },
     {
       "id": 89,
-      "name": "gli     2"
+      "name": "gli     2",
+      "sensor": "gli",
+      "lower_um": 0.3875,
+      "upper_um": 0.4125
     },
     {
       "id": 90,
-      "name": "gli     3"
+      "name": "gli     3",
+      "sensor": "gli",
+      "lower_um": 0.3975,
+      "upper_um": 0.4275
     },
     {
       "id": 91,
-      "name": "gli     4"
+      "name": "gli     4",
+      "sensor": "gli",
+      "lower_um": 0.4325,
+      "upper_um": 0.4525
     },
     {
       "id": 92,
-      "name": "gli     5"
+      "name": "gli     5",
+      "sensor": "gli",
+      "lower_um": 0.4475,
+      "upper_um": 0.47
     },
     {
       "id": 93,
-      "name": "gli     6"
+      "name": "gli     6",
+      "sensor": "gli",
+      "lower_um": 0.475,
+      "upper_um": 0.505
     },
     {
       "id": 94,
-      "name": "gli     7"
+      "name": "gli     7",
+      "sensor": "gli",
+      "lower_um": 0.5075,
+      "upper_um": 0.5325
     },
     {
       "id": 95,
-      "name": "gli     8"
+      "name": "gli     8",
+      "sensor": "gli",
+      "lower_um": 0.5275,
+      "upper_um": 0.56
     },
     {
       "id": 96,
-      "name": "gli     9"
+      "name": "gli     9",
+      "sensor": "gli",
+      "lower_um": 0.5475,
+      "upper_um": 0.5825
     },
     {
       "id": 97,
-      "name": "gli     10"
+      "name": "gli     10",
+      "sensor": "gli",
+      "lower_um": 0.61,
+      "upper_um": 0.64
     },
     {
       "id": 98,
-      "name": "gli     11"
+      "name": "gli     11",
+      "sensor": "gli",
+      "lower_um": 0.6525,
+      "upper_um": 0.6825
     },
     {
       "id": 99,
-      "name": "gli     12"
+      "name": "gli     12",
+      "sensor": "gli",
+      "lower_um": 0.665,
+      "upper_um": 0.695
     },
     {
       "id": 100,
-      "name": "gli     13"
+      "name": "gli     13",
+      "sensor": "gli",
+      "lower_um": 0.6625,
+      "upper_um": 0.6975
     },
     {
       "id": 101,
-      "name": "gli     14"
+      "name": "gli     14",
+      "sensor": "gli",
+      "lower_um": 0.6925,
+      "upper_um": 0.7275
     },
     {
       "id": 102,
-      "name": "gli     15"
+      "name": "gli     15",
+      "sensor": "gli",
+      "lower_um": 0.6925,
+      "upper_um": 0.7275
     },
     {
       "id": 103,
-      "name": "gli     16"
+      "name": "gli     16",
+      "sensor": "gli",
+      "lower_um": 0.7325,
+      "upper_um": 0.7675
     },
     {
       "id": 104,
-      "name": "gli     17"
+      "name": "gli     17",
+      "sensor": "gli",
+      "lower_um": 0.75,
+      "upper_um": 0.775
     },
     {
       "id": 105,
-      "name": "gli     18"
+      "name": "gli     18",
+      "sensor": "gli",
+      "lower_um": 0.84,
+      "upper_um": 0.8925
     },
     {
       "id": 106,
-      "name": "gli     19"
+      "name": "gli     19",
+      "sensor": "gli",
+      "lower_um": 0.85,
+      "upper_um": 0.88
     },
     {
       "id": 107,
-      "name": "gli     20"
+      "name": "gli     20",
+      "sensor": "gli",
+      "lower_um": 0.415,
+      "upper_um": 0.5075
     },
     {
       "id": 108,
-      "name": "gli     21"
+      "name": "gli     21",
+      "sensor": "gli",
+      "lower_um": 0.505,
+      "upper_um": 0.58
     },
     {
       "id": 109,
-      "name": "gli     22"
+      "name": "gli     22",
+      "sensor": "gli",
+      "lower_um": 0.6075,
+      "upper_um": 0.715
     },
     {
       "id": 110,
-      "name": "gli     23"
+      "name": "gli     23",
+      "sensor": "gli",
+      "lower_um": 0.745,
+      "upper_um": 0.9075
     },
     {
       "id": 111,
-      "name": "gli     24"
+      "name": "gli     24",
+      "sensor": "gli",
+      "lower_um": 1.03,
+      "upper_um": 1.07
     },
     {
       "id": 112,
-      "name": "gli     25"
+      "name": "gli     25",
+      "sensor": "gli",
+      "lower_um": 1.085,
+      "upper_um": 1.19
     },
     {
       "id": 113,
-      "name": "gli     26"
+      "name": "gli     26",
+      "sensor": "gli",
+      "lower_um": 1.22,
+      "upper_um": 1.2625
     },
     {
       "id": 114,
-      "name": "gli     27"
+      "name": "gli     27",
+      "sensor": "gli",
+      "lower_um": 1.3475,
+      "upper_um": 1.415
     },
     {
       "id": 115,
-      "name": "gli     28"
+      "name": "gli     28",
+      "sensor": "gli",
+      "lower_um": 1.515,
+      "upper_um": 1.77
     },
     {
       "id": 116,
-      "name": "gli     29"
+      "name": "gli     29",
+      "sensor": "gli",
+      "lower_um": 2.055,
+      "upper_um": 2.345
     },
     {
       "id": 117,
-      "name": "gli     30"
+      "name": "gli     30",
+      "sensor": "gli",
+      "lower_um": 3.22,
+      "upper_um": 4.0
     },
     {
       "id": 118,
-      "name": "ali     1p"
+      "name": "ali     1p",
+      "sensor": "ali",
+      "lower_um": 0.4225,
+      "upper_um": 0.4625
     },
     {
       "id": 119,
-      "name": "ali     1"
+      "name": "ali     1",
+      "sensor": "ali",
+      "lower_um": 0.4325,
+      "upper_um": 0.55
     },
     {
       "id": 120,
-      "name": "ali      2"
+      "name": "ali      2",
+      "sensor": "ali",
+      "lower_um": 0.5,
+      "upper_um": 0.63
     },
     {
       "id": 121,
-      "name": "ali      3"
+      "name": "ali      3",
+      "sensor": "ali",
+      "lower_um": 0.5775,
+      "upper_um": 0.73
     },
     {
       "id": 122,
-      "name": "ali     4"
+      "name": "ali     4",
+      "sensor": "ali",
+      "lower_um": 0.7525,
+      "upper_um": 0.8375
     },
     {
       "id": 123,
-      "name": "ali     4p"
+      "name": "ali     4p",
+      "sensor": "ali",
+      "lower_um": 0.8025,
+      "upper_um": 0.935
     },
     {
       "id": 124,
-      "name": "ali     5p"
+      "name": "ali     5p",
+      "sensor": "ali",
+      "lower_um": 1.13,
+      "upper_um": 1.345
     },
     {
       "id": 125,
-      "name": "ali     5"
+      "name": "ali     5",
+      "sensor": "ali",
+      "lower_um": 1.47,
+      "upper_um": 1.82
     },
     {
       "id": 126,
-      "name": "ali      7"
+      "name": "ali      7",
+      "sensor": "ali",
+      "lower_um": 1.98,
+      "upper_um": 2.53
     },
     {
       "id": 127,
-      "name": "aster   1"
+      "name": "aster   1",
+      "sensor": "aster",
+      "lower_um": 0.485,
+      "upper_um": 0.6425
     },
     {
       "id": 128,
-      "name": "aster   2"
+      "name": "aster   2",
+      "sensor": "aster",
+      "lower_um": 0.59,
+      "upper_um": 0.73
     },
     {
       "id": 129,
-      "name": "aster   3n"
+      "name": "aster   3n",
+      "sensor": "aster",
+      "lower_um": 0.72,
+      "upper_um": 0.9075
     },
     {
       "id": 130,
-      "name": "aster   3b"
+      "name": "aster   3b",
+      "sensor": "aster",
+      "lower_um": 0.72,
+      "upper_um": 0.9225
     },
     {
       "id": 131,
-      "name": "aster   4"
+      "name": "aster   4",
+      "sensor": "aster",
+      "lower_um": 1.57,
+      "upper_um": 1.7675
     },
     {
       "id": 132,
-      "name": "aster   5"
+      "name": "aster   5",
+      "sensor": "aster",
+      "lower_um": 2.12,
+      "upper_um": 2.2825
     },
     {
       "id": 133,
-      "name": "aster   6"
+      "name": "aster   6",
+      "sensor": "aster",
+      "lower_um": 2.15,
+      "upper_um": 2.295
     },
     {
       "id": 134,
-      "name": "aster   7"
+      "name": "aster   7",
+      "sensor": "aster",
+      "lower_um": 2.21,
+      "upper_um": 2.39
     },
     {
       "id": 135,
-      "name": "aster   8"
+      "name": "aster   8",
+      "sensor": "aster",
+      "lower_um": 2.25,
+      "upper_um": 2.44
     },
     {
       "id": 136,
-      "name": "aster   9"
+      "name": "aster   9",
+      "sensor": "aster",
+      "lower_um": 2.2975,
+      "upper_um": 2.4875
     },
     {
       "id": 137,
-      "name": "etm     1"
+      "name": "etm     1",
+      "sensor": "etm",
+      "lower_um": 0.435,
+      "upper_um": 0.52
     },
     {
       "id": 138,
-      "name": "etm     2"
+      "name": "etm     2",
+      "sensor": "etm",
+      "lower_um": 0.5,
+      "upper_um": 0.6225
     },
     {
       "id": 139,
-      "name": "etm     3"
+      "name": "etm     3",
+      "sensor": "etm",
+      "lower_um": 0.615,
+      "upper_um": 0.7025
     },
     {
       "id": 140,
-      "name": "etm     4"
+      "name": "etm     4",
+      "sensor": "etm",
+      "lower_um": 0.74,
+      "upper_um": 0.9125
     },
     {
       "id": 141,
-      "name": "etm     5"
+      "name": "etm     5",
+      "sensor": "etm",
+      "lower_um": 1.51,
+      "upper_um": 1.7875
     },
     {
       "id": 142,
-      "name": "etm     7"
+      "name": "etm     7",
+      "sensor": "etm",
+      "lower_um": 2.015,
+      "upper_um": 2.3775
     },
     {
       "id": 143,
-      "name": "hypblue  1"
+      "name": "hypblue  1",
+      "sensor": "hypblue",
+      "lower_um": 0.4375,
+      "upper_um": 0.5
     },
     {
       "id": 144,
-      "name": "hypblue  2"
+      "name": "hypblue  2",
+      "sensor": "hypblue",
+      "lower_um": 0.435,
+      "upper_um": 0.52
     },
     {
       "id": 145,
-      "name": "vgt     1"
+      "name": "vgt     1",
+      "sensor": "vgt",
+      "lower_um": 0.4175,
+      "upper_um": 0.5
     },
     {
       "id": 146,
-      "name": "vgt     2"
+      "name": "vgt     2",
+      "sensor": "vgt",
+      "lower_um": 0.5975,
+      "upper_um": 0.7675
     },
     {
       "id": 147,
-      "name": "vgt     3"
+      "name": "vgt     3",
+      "sensor": "vgt",
+      "lower_um": 0.7325,
+      "upper_um": 0.9575
     },
     {
       "id": 148,
-      "name": "vgt     4"
+      "name": "vgt     4",
+      "sensor": "vgt",
+      "lower_um": 1.5225,
+      "upper_um": 1.8
     },
     {
       "id": 149,
-      "name": "viirs   m1"
+      "name": "viirs   m1",
+      "sensor": "viirs",
+      "lower_um": 0.39,
+      "upper_um": 0.44
     },
     {
       "id": 150,
-      "name": "viirs   m2"
+      "name": "viirs   m2",
+      "sensor": "viirs",
+      "lower_um": 0.42,
+      "upper_um": 0.47
     },
     {
       "id": 151,
-      "name": "viirs   m3"
+      "name": "viirs   m3",
+      "sensor": "viirs",
+      "lower_um": 0.46,
+      "upper_um": 0.52
     },
     {
       "id": 152,
-      "name": "viirs   m4"
+      "name": "viirs   m4",
+      "sensor": "viirs",
+      "lower_um": 0.52,
+      "upper_um": 0.62
     },
     {
       "id": 153,
-      "name": "viirs   m5"
+      "name": "viirs   m5",
+      "sensor": "viirs",
+      "lower_um": 0.63,
+      "upper_um": 0.71
     },
     {
       "id": 154,
-      "name": "viirs   m6"
+      "name": "viirs   m6",
+      "sensor": "viirs",
+      "lower_um": 0.72,
+      "upper_um": 0.77
     },
     {
       "id": 155,
-      "name": "viirs   m7"
+      "name": "viirs   m7",
+      "sensor": "viirs",
+      "lower_um": 0.81,
+      "upper_um": 0.92
     },
     {
       "id": 156,
-      "name": "viirs   m8"
+      "name": "viirs   m8",
+      "sensor": "viirs",
+      "lower_um": 1.21,
+      "upper_um": 1.27
     },
     {
       "id": 157,
-      "name": "viirs   m9"
+      "name": "viirs   m9",
+      "sensor": "viirs",
+      "lower_um": 1.35,
+      "upper_um": 1.4
     },
     {
       "id": 158,
-      "name": "viirs   m10"
+      "name": "viirs   m10",
+      "sensor": "viirs",
+      "lower_um": 1.525,
+      "upper_um": 1.7
     },
     {
       "id": 159,
-      "name": "viirs   m11"
+      "name": "viirs   m11",
+      "sensor": "viirs",
+      "lower_um": 2.22,
+      "upper_um": 2.325
     },
     {
       "id": 160,
-      "name": "viirs   m12"
+      "name": "viirs   m12",
+      "sensor": "viirs",
+      "lower_um": 3.45,
+      "upper_um": 3.95
     },
     {
       "id": 161,
-      "name": "viirs  i1"
+      "name": "viirs  i1",
+      "sensor": "viirs",
+      "lower_um": 0.58,
+      "upper_um": 0.7
     },
     {
       "id": 162,
-      "name": "viirs   i2"
+      "name": "viirs   i2",
+      "sensor": "viirs",
+      "lower_um": 0.81,
+      "upper_um": 0.92
     },
     {
       "id": 163,
-      "name": "viirs   i3"
+      "name": "viirs   i3",
+      "sensor": "viirs",
+      "lower_um": 1.525,
+      "upper_um": 1.7
     },
     {
       "id": 164,
-      "name": "viirs  i4"
+      "name": "viirs  i4",
+      "sensor": "viirs",
+      "lower_um": 3.4,
+      "upper_um": 4.0
     },
     {
       "id": 165,
-      "name": "ldcm     1"
+      "name": "ldcm     1",
+      "sensor": "ldcm",
+      "lower_um": 0.4275,
+      "upper_um": 0.4575
     },
     {
       "id": 166,
-      "name": "ldcm     2"
+      "name": "ldcm     2",
+      "sensor": "ldcm",
+      "lower_um": 0.4375,
+      "upper_um": 0.5275
     },
     {
       "id": 167,
-      "name": "ldcm    3"
+      "name": "ldcm    3",
+      "sensor": "ldcm",
+      "lower_um": 0.5125,
+      "upper_um": 0.6
     },
     {
       "id": 168,
-      "name": "ldcm     4"
+      "name": "ldcm     4",
+      "sensor": "ldcm",
+      "lower_um": 0.6275,
+      "upper_um": 0.6825
     },
     {
       "id": 169,
-      "name": "ldcm     5"
+      "name": "ldcm     5",
+      "sensor": "ldcm",
+      "lower_um": 0.83,
+      "upper_um": 0.895
     },
     {
       "id": 170,
-      "name": "ldcm    6"
+      "name": "ldcm    6",
+      "sensor": "ldcm",
+      "lower_um": 1.5175,
+      "upper_um": 1.695
     },
     {
       "id": 171,
-      "name": "ldcm     7"
+      "name": "ldcm     7",
+      "sensor": "ldcm",
+      "lower_um": 2.0375,
+      "upper_um": 2.35
     },
     {
       "id": 172,
-      "name": "ldcm     8"
+      "name": "ldcm     8",
+      "sensor": "ldcm",
+      "lower_um": 0.4875,
+      "upper_um": 0.6925
     },
     {
       "id": 173,
-      "name": "ldcm    9"
+      "name": "ldcm    9",
+      "sensor": "ldcm",
+      "lower_um": 1.3425,
+      "upper_um": 1.4025
     },
     {
       "id": 174,
-      "name": "modis    8"
+      "name": "modis    8",
+      "sensor": "modis1km",
+      "lower_um": 0.4,
+      "upper_um": 0.425
     },
     {
       "id": 175,
-      "name": "modis    9"
+      "name": "modis    9",
+      "sensor": "modis1km",
+      "lower_um": 0.4325,
+      "upper_um": 0.45
     },
     {
       "id": 176,
-      "name": "modis  10"
+      "name": "modis  10",
+      "sensor": "modis1km",
+      "lower_um": 0.4775,
+      "upper_um": 0.495
     },
     {
       "id": 177,
-      "name": "modis   11"
+      "name": "modis   11",
+      "sensor": "modis1km",
+      "lower_um": 0.52,
+      "upper_um": 0.54
     },
     {
       "id": 178,
-      "name": "modis   12"
+      "name": "modis   12",
+      "sensor": "modis1km",
+      "lower_um": 0.5375,
+      "upper_um": 0.5575
     },
     {
       "id": 179,
-      "name": "modis  13"
+      "name": "modis  13",
+      "sensor": "modis1km",
+      "lower_um": 0.655,
+      "upper_um": 0.675
     },
     {
       "id": 180,
-      "name": "modis   14"
+      "name": "modis   14",
+      "sensor": "modis1km",
+      "lower_um": 0.665,
+      "upper_um": 0.69
     },
     {
       "id": 181,
-      "name": "modis   15"
+      "name": "modis   15",
+      "sensor": "modis1km",
+      "lower_um": 0.735,
+      "upper_um": 0.7575
     },
     {
       "id": 182,
-      "name": "modis  16"
+      "name": "modis  16",
+      "sensor": "modis1km",
+      "lower_um": 0.85,
+      "upper_um": 0.8825
     },
     {
       "id": 183,
-      "name": "modis   17"
+      "name": "modis   17",
+      "sensor": "modis1km",
+      "lower_um": 0.87,
+      "upper_um": 0.94
     },
     {
       "id": 184,
-      "name": "modis   18"
+      "name": "modis   18",
+      "sensor": "modis1km",
+      "lower_um": 0.9225,
+      "upper_um": 0.95
     },
     {
       "id": 185,
-      "name": "modis  19"
+      "name": "modis  19",
+      "sensor": "modis1km",
+      "lower_um": 0.8875,
+      "upper_um": 0.99
     },
     {
       "id": 186,
-      "name": "cavis    1"
+      "name": "cavis    1",
+      "sensor": "cavis",
+      "lower_um": 0.4,
+      "upper_um": 0.425
     },
     {
       "id": 187,
-      "name": "cavis    2"
+      "name": "cavis    2",
+      "sensor": "cavis",
+      "lower_um": 0.4525,
+      "upper_um": 0.5175
     },
     {
       "id": 188,
-      "name": "cavis   3"
+      "name": "cavis   3",
+      "sensor": "cavis",
+      "lower_um": 0.6275,
+      "upper_um": 0.695
     },
     {
       "id": 189,
-      "name": "cavis    4"
+      "name": "cavis    4",
+      "sensor": "cavis",
+      "lower_um": 0.825,
+      "upper_um": 0.9075
     },
     {
       "id": 190,
-      "name": "cavis    5"
+      "name": "cavis    5",
+      "sensor": "cavis",
+      "lower_um": 0.8825,
+      "upper_um": 0.9475
     },
     {
       "id": 191,
-      "name": "cavis   6"
+      "name": "cavis   6",
+      "sensor": "cavis",
+      "lower_um": 0.9125,
+      "upper_um": 0.9875
     },
     {
       "id": 192,
-      "name": "cavis    7"
+      "name": "cavis    7",
+      "sensor": "cavis",
+      "lower_um": 1.1975,
+      "upper_um": 1.2725
     },
     {
       "id": 193,
-      "name": "cavis    8"
+      "name": "cavis    8",
+      "sensor": "cavis",
+      "lower_um": 1.3375,
+      "upper_um": 1.4325
     },
     {
       "id": 194,
-      "name": "cavis   9"
+      "name": "cavis   9",
+      "sensor": "cavis",
+      "lower_um": 1.58,
+      "upper_um": 1.7225
     },
     {
       "id": 195,
-      "name": "cavis   10"
+      "name": "cavis   10",
+      "sensor": "cavis",
+      "lower_um": 2.06,
+      "upper_um": 2.3
     },
     {
       "id": 196,
-      "name": "cavis   11"
+      "name": "cavis   11",
+      "sensor": "cavis",
+      "lower_um": 0.52,
+      "upper_um": 0.595
     },
     {
       "id": 197,
-      "name": "dmc      1"
+      "name": "dmc      1",
+      "sensor": "dmc",
+      "lower_um": 0.51,
+      "upper_um": 0.62
     },
     {
       "id": 198,
-      "name": "dmc      2"
+      "name": "dmc      2",
+      "sensor": "dmc",
+      "lower_um": 0.61,
+      "upper_um": 0.71
     },
     {
       "id": 199,
-      "name": "dmc     3"
+      "name": "dmc     3",
+      "sensor": "dmc",
+      "lower_um": 0.7525,
+      "upper_um": 0.9275
     }
   ]
 }
