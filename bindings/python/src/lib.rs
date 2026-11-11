@@ -15,6 +15,7 @@ use std::sync::OnceLock;
 const ID: &str = "vegetation.prospect-d";
 mod arrays;
 mod fluorescence;
+mod lut;
 mod operators;
 mod physics;
 static RUNTIME: OnceLock<Result<Runtime, ModelError>> = OnceLock::new();
@@ -160,6 +161,7 @@ fn _native(module: &Bound<'_, PyModule>) -> PyResult<()> {
     module.add_function(wrap_pyfunction!(arrays::model_batch_native, module)?)?;
     module.add_function(wrap_pyfunction!(arrays::goms_multiband_native, module)?)?;
     module.add_function(wrap_pyfunction!(arrays::array_parameters, module)?)?;
+    module.add_function(wrap_pyfunction!(lut::lut_match, module)?)?;
     module.add_function(wrap_pyfunction!(
         fluorescence::fluspect_irradiance_native,
         module

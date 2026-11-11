@@ -9,6 +9,7 @@
 
 - [Spectral processing, sensor bands, and radiometric calibration](python-infrastructure.md)
 - [Fresnel reflection and Planck radiation](basic-physics.md)
+- [Lookup-table sampling and inversion](lut.md)
 
 ## Models
 
