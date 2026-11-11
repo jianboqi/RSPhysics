@@ -16,8 +16,8 @@ import shlex
 import shutil
 import subprocess
 
-ROOT = Path(__file__).resolve().parents[3]
-COMPONENT = ROOT / "components/6sv2.1"
+COMPONENT = Path(__file__).resolve().parents[1]
+ROOT = COMPONENT.parents[4]
 SOURCE = COMPONENT / "upstream"
 COMPATIBILITY_PATCHES = [
     "initialize-unused-zero-direction",

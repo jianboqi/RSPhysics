@@ -22,5 +22,5 @@ build alone does not establish numerical agreement across compilers.
 `build_tools/` contains the source-package build implementation. The native
 and WASM products expose a direct C entry point around the retained Fortran
 kernel. See [compatibility corrections](COMPATIBILITY.md),
-[build and validation commands](../../tooling/sixs/README.md), and the
-[Python model interface](../../docs/models/sixsv21.md).
+[build and validation commands](../../../../../tooling/sixs/README.md), and the
+[Python model interface](../../../../../docs/models/sixsv21.md).

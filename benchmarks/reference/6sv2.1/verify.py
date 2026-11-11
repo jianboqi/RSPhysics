@@ -10,7 +10,7 @@ import zlib
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
 spec = importlib.util.spec_from_file_location(
-    "sixs_source", ROOT / "components/6sv2.1/build_tools/build.py"
+    "sixs_source", ROOT / "crates/models/atmosphere/sixs/fortran/build_tools/build.py"
 )
 source = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(source)

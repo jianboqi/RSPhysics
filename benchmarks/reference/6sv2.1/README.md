@@ -4,7 +4,7 @@
 
 `full-reference.json.zlib` stores 330 complete reports and auxiliary products
 from GNU Fortran 16.2 executables compiled from the original source with the
-[documented compatibility corrections](../../../components/6sv2.1/COMPATIBILITY.md).
+[documented compatibility corrections](../../../crates/models/atmosphere/sixs/fortran/COMPATIBILITY.md).
 It includes the oracle build recipe. `manifest.json` pins the compressed fixture
 hash, suite identifier, and case count; `cases.py` defines the inputs.
 

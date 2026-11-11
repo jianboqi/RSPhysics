@@ -1,11 +1,9 @@
 use std::{env, fs, path::PathBuf, process::Command};
 fn main() {
     let _ = rsphysics_sixs_source::VERSION;
-    let root = PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").unwrap()).join("../..");
-    println!(
-        "cargo:rerun-if-changed={}",
-        root.join("components/6sv2.1").display()
-    );
+    let source = PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").unwrap())
+        .join("../models/atmosphere/sixs/fortran");
+    println!("cargo:rerun-if-changed={}", source.display());
     for name in ["FC", "FFLAGS", "PYO3_PYTHON", "PYTHON"] {
         println!("cargo:rerun-if-env-changed={name}");
     }
@@ -14,7 +12,7 @@ fn main() {
         .or_else(|| env::var_os("PYTHON"))
         .unwrap_or_else(|| "python".into());
     let result = Command::new(python)
-        .arg(root.join("components/6sv2.1/build_tools/library.py"))
+        .arg(source.join("build_tools/library.py"))
         .args(["native", "--output"])
         .arg(&output)
         .output()

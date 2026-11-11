@@ -17,7 +17,7 @@ python tooling/sixs/validate_library.py --library-dir target/sixs-library
 
 Use `FC` or `--fc PATH` to select GNU Fortran. Native Python builds invoke the
 same recipe automatically. The build implementation resides in the source-only
-Cargo component under `components/6sv2.1/build_tools`, so source archives are
+Cargo component under `crates/models/atmosphere/sixs/fortran/build_tools`, so source archives are
 self-contained. The CLI files here are thin entry points.
 
 `library-build-info.json` records compiler flags, original archive hash,
@@ -40,7 +40,7 @@ python tooling/sixs/generate_reference.py --corrected target/sixs-native
 Use `--fc PATH` or `FC` to select the compiler executable. Compiler warnings are
 retained in per-source `.log` files. `build-info.json` records the source archive
 hash, compiler, flags, programs, and applied compatibility corrections.
-See [compatibility corrections](../../components/6sv2.1/COMPATIBILITY.md).
+See [compatibility corrections](../../crates/models/atmosphere/sixs/fortran/COMPATIBILITY.md).
 
 ## WebAssembly
 

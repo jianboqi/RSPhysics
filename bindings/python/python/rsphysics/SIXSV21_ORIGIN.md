@@ -11,7 +11,7 @@ Archive SHA-256: 42422db29c095a49eaa98556b416405eb818be1ee30139d2a1913dbf3b0c7de
 The retrieved archive contains no standalone license file. Its original
 authorship and applicable terms are not replaced by Apache-2.0. The RSPhysics
 interfaces and build adapters are project-original Apache-2.0 code. Build-copy
-corrections are documented in components/6sv2.1/COMPATIBILITY.md in the source
+corrections are documented in crates/models/atmosphere/sixs/fortran/COMPATIBILITY.md in the source
 distribution and repository.
 
 Native binaries also include or bundle applicable GNU compiler runtimes:

@@ -11,7 +11,7 @@ crates/models/soil/gsv/data/*.txt -text -whitespace
 *.dat -text
 *.zlib binary
 # Preserve the original 6SV2.1 distribution byte for byte.
-components/6sv2.1/upstream/** -text -whitespace
+crates/models/atmosphere/sixs/fortran/upstream/** -text -whitespace
 # Preserve the official GNU runtime license texts verbatim.
 bindings/python/python/rsphysics/GCC_RUNTIME_EXCEPTION.txt -text -whitespace
 bindings/python/python/rsphysics/LGPL-2.1.txt -text -whitespace

@@ -9,7 +9,7 @@ publish.workspace=true
 libloading="0.8.9"
 sha2.workspace=true
 [build-dependencies]
-rsphysics-sixs-source={path="../../components/6sv2.1"}
+rsphysics-sixs-source={path="../models/atmosphere/sixs/fortran"}
 # Only the foreign-function boundary needs unsafe; numerical/model crates retain
 # the workspace-wide forbid. Each unsafe operation is contained in native.rs.
 [lints.rust]

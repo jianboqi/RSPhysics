@@ -1,9 +1,9 @@
 [workspace]
 resolver = "3"
 members = [
-    "components/6sv2.1",
     "crates/rsphysics-sixs-native",
     "crates/models/atmosphere/sixs",
+    "crates/models/atmosphere/sixs/fortran",
     "crates/models/surface/rpv",
     "crates/models/soil/soilspect",
     "crates/models/soil/bsm",

@@ -1,7 +1,7 @@
 """Export literal standard atmospheres and band metadata from pinned source."""
 
 import hashlib, json, re
-from build import ROOT, SOURCE, verify_source
+from build import COMPONENT, SOURCE, verify_source
 
 verify_source()
 profiles = {}
@@ -85,7 +85,7 @@ data = {
     "profiles": profiles,
     "bands": band_metadata,
 }
-p = ROOT / "crates/models/atmosphere/sixs/data/resources.json"
+p = COMPONENT.parent / "data/resources.json"
 p.parent.mkdir(parents=True, exist_ok=True)
 p.write_text(json.dumps(data, indent=2) + "\n", encoding="utf8", newline="\r\n")
 print(
