@@ -225,7 +225,7 @@ def build(kind, output, fc=None, jobs=8, compatibility=True):
         else ["--target=wasm32-unknown-emscripten", "-O2", "-ffixed-line-length=132"]
     )
     if kind == "native":
-        flags += ["-std=legacy", "-fallow-argument-mismatch"]
+        flags += ["-std=legacy", "-fallow-argument-mismatch", "-ffp-contract=off"]
     flags += compiler_flags
     objects = object_names()
     names = [Path(x).stem for x in objects] + ["main", "mainlutaero"]

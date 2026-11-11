@@ -74,6 +74,15 @@ The LUT initialization diagnostic uses the reserved `rm(mu)` slot before it
 is populated. That slot now uses the selected viewing cosine `xmuv` in the
 diagnostic, without changing the subsequent solver or LUT construction.
 
+## Preserve wavelength rounding in native builds
+
+GNU Fortran builds use `-ffp-contract=off` for the solver and executable
+reference builds. In the Kuusk BRDF branch, the single-precision wavelength
+expression can round to opposite sides of the 550 nm midpoint depending on
+whether the multiply and add are fused. This selects different entries in the
+leaf optical table. Separate rounding preserves the reference table selection
+on targets with fused multiply-add instructions.
+
 ## Direct-library adaptation
 
 `library.py` makes additional structural changes in build copies only:

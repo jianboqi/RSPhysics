@@ -346,6 +346,7 @@ def build_library(kind, output, fc=None, jobs=8):
             "-ffixed-line-length-132",
             "-std=legacy",
             "-fallow-argument-mismatch",
+            "-ffp-contract=off",
             "-fPIC",
         ]
         if kind == "native"
