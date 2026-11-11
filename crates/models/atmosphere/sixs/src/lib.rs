@@ -9,7 +9,7 @@ use rsphysics_model_api::{ModelError, ModelMetadata, PhysicsModel, parse_model_m
 use serde::Deserialize;
 use std::sync::OnceLock;
 
-fn band_sample_count(band: u16) -> usize {
+fn band_grid_indices(band: u16) -> std::ops::RangeInclusive<usize> {
     #[derive(Deserialize)]
     struct Band {
         id: u16,
@@ -27,8 +27,8 @@ fn band_sample_count(band: u16) -> usize {
         .bands[usize::from(band_id - 2)];
     debug_assert_eq!(band.id, band_id);
     // Match the indexing of the single-precision Fortran band bounds.
-    let index = |um| ((um - 0.25_f32) / 0.0025 + 1.5) as usize;
-    index(band.upper_um) - index(band.lower_um) + 1
+    let index = |um| ((um - 0.25_f32) / 0.0025 + 1.5) as usize - 1;
+    index(band.lower_um)..=index(band.upper_um)
 }
 pub struct Model {
     metadata: ModelMetadata,

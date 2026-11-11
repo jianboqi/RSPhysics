@@ -9,18 +9,26 @@ from __future__ import annotations
 from copy import deepcopy
 from concurrent.futures import ProcessPoolExecutor
 from datetime import date, timedelta
+from enum import IntEnum
+from functools import cache
 import math
 import json
+import re
 from collections.abc import Mapping
 import numpy as np
 from . import _native, spectral, sensors
 from ._sixs_observations import (
     aeronet_aot,
+    aeronet_inversion,
+    aster_samples,
+    bas_levels,
     radiosonde_levels,
     solar_angles,
     utc_datetime,
     wyoming_levels,
+    wyoming_url_levels,
 )
+from ._sixs_plots import plot_angular_grid, plot_principal_plane, plot_spectrum
 from ._api import (
     ModelError,
     _call,
@@ -70,9 +78,24 @@ BRDF_MODELS = {
 }
 
 
+@cache
+def _bands():
+    entries = json.loads(_call(_native.sixs_resources_json))["bands"]
+    for entry in entries:
+        label = re.sub(r"[^A-Z0-9]+", "_", entry["name"].upper()).strip("_")
+        label = re.sub(r"_(\d[A-Z0-9]*)$", r"_B\1", label)
+        if entry["sensor"] in {"tm", "mss", "etm"}:
+            label = "LANDSAT_" + label
+        entry["key"] = label
+    return entries
+
+
 def bands():
-    """6S band IDs 2..199, sensor families and integration bounds in µm."""
-    return json.loads(_call(_native.sixs_resources_json))["bands"]
+    """6S band IDs, symbolic names, sensor families and integration bounds in µm."""
+    return deepcopy(_bands())
+
+
+Band = IntEnum("Band", {entry["key"]: entry["id"] for entry in _bands()})
 
 
 def standard_levels(profile=6):
@@ -189,7 +212,7 @@ def run_batch(configurations, *, workers=1):
     return results
 
 
-def spectrum(wavelengths_um, configuration=None, *, workers=1):
+def spectrum(wavelengths_um, configuration=None, *, output=None, workers=1):
     """Monochromatic spectral sweep; return NumPy signals and full ordered runs."""
     wavelengths = np.asarray(wavelengths_um, dtype=float)
     if wavelengths.ndim != 1 or not np.isfinite(wavelengths).all():
@@ -209,36 +232,98 @@ def spectrum(wavelengths_um, configuration=None, *, workers=1):
     runs = run_batch(rows, workers=workers)
     return {
         "wavelengths_um": wavelengths.copy(),
-        **_scan_outputs(runs),
+        **_scan_outputs(runs, output),
     }
 
 
-def _scan_outputs(runs):
+def extract_output(runs, field):
+    """Collect a dotted numeric result field; array indices are zero-based."""
+    if not isinstance(field, str) or not field:
+        raise ModelError("invalid_parameter", "A numeric result field name is required")
+    values = []
+    try:
+        for run in runs:
+            value = run["result"]
+            for segment in field.split("."):
+                value = value[segment if isinstance(value, Mapping) else int(segment)]
+            array = np.asarray(value)
+            if array.dtype.kind not in "iufO" or isinstance(value, Mapping):
+                raise ValueError
+            values.append(np.asarray(value, dtype=float))
+        return np.asarray(values, dtype=float)
+    except (KeyError, IndexError, ValueError, TypeError) as error:
+        raise ModelError(
+            "invalid_parameter", f"Unknown or non-numeric 6S output: {field}"
+        ) from error
+
+
+def _scan_outputs(runs, output=None, *, shape=None):
     keys = ("apparent_reflectance", "apparent_radiance_w_m2_sr_um")
-    return {
-        **{key: np.array([run["result"][key] for run in runs]) for key in keys},
-        "runs": runs,
-    }
+    values = {key: extract_output(runs, key) for key in keys}
+    if output is not None:
+        values["values"] = extract_output(runs, output)
+    if shape is not None:
+        values = {
+            key: array.reshape(*shape, *array.shape[1:])
+            for key, array in values.items()
+        }
+    return dict(values, runs=runs)
 
 
-def sensor_bands(sensor, configuration=None, *, band_ids=None, workers=1):
+def _spectral_range(lower, upper, step):
+    if not math.isfinite(step) or step <= 0:
+        raise ModelError(
+            "invalid_parameter", "Spectral spacing must be finite and positive"
+        )
+    count = math.floor((upper - lower) / step + 1e-10) + 1
+    return np.minimum(lower + step * np.arange(count), upper)
+
+
+def vnir(configuration=None, *, spacing_um=0.005, output=None, workers=1):
+    """Monochromatic sweep from 0.40 to 1.40 µm."""
+    return spectrum(
+        _spectral_range(0.4, 1.4, spacing_um),
+        configuration,
+        output=output,
+        workers=workers,
+    )
+
+
+def full_spectrum(configuration=None, *, spacing_um=0.01, output=None, workers=1):
+    """Monochromatic sweep across the 6SV2.1 range of 0.25 to 4.00 µm."""
+    return spectrum(
+        _spectral_range(0.25, 4, spacing_um),
+        configuration,
+        output=output,
+        workers=workers,
+    )
+
+
+def sensor_bands(sensor, configuration=None, *, band_ids=None, output=None, workers=1):
     """Sweep a built-in 6S sensor family or a registry sensor ID.
 
     Use ``bands()`` for built-in family names and ``sensors.list_sensors()`` for
-    the registry. Band IDs are integers for 6S families and strings for registry
-    profiles. Requested bands are returned in the given order.
+    the registry. Use numbers or symbolic names for 6S families, and band IDs
+    such as "B2" for registry profiles. Requested bands are returned in order.
     """
-    original = [band for band in bands() if band["sensor"] == sensor]
+    original = [band for band in _bands() if band["sensor"] == sensor]
     if original:
-        selected = {band["id"]: band["name"] for band in original}
-        ids = list(selected) if band_ids is None else list(band_ids)
+        selected = {band["id"]: band for band in original}
+        if isinstance(band_ids, (str, int, np.integer)):
+            band_ids = [band_ids]
+        ids = (
+            list(selected)
+            if band_ids is None
+            else [Spectrum.band(b)["band"] for b in band_ids]
+        )
         try:
-            names = [selected[band_id] for band_id in ids]
+            names = [selected[band_id]["name"] for band_id in ids]
         except KeyError as error:
             raise ModelError(
                 "invalid_parameter", f"Unknown 6S band for {sensor}: {error.args[0]}"
             ) from error
         windows = [Spectrum.band(band_id) for band_id in ids]
+        centres = [(selected[i]["lower_um"] + selected[i]["upper_um"]) / 2 for i in ids]
     else:
         profile = sensors.load(sensor)
         if band_ids is not None:
@@ -249,6 +334,7 @@ def sensor_bands(sensor, configuration=None, *, band_ids=None, workers=1):
             Spectrum.from_samples(b.wavelengths_nm / 1000, b.response)
             for b in profile.bands
         ]
+        centres = [(w["lower_um"] + w["upper_um"]) / 2 for w in windows]
     base = _plain(configuration or {})
     if not ids or base.get("input_cards"):
         raise ModelError(
@@ -258,10 +344,17 @@ def sensor_bands(sensor, configuration=None, *, band_ids=None, workers=1):
     runs = run_batch(
         [dict(base, spectrum=window) for window in windows], workers=workers
     )
-    return {"band_ids": ids, "band_names": names, **_scan_outputs(runs)}
+    return {
+        "band_ids": ids,
+        "band_names": names,
+        "centre_wavelengths_um": np.array(centres),
+        **_scan_outputs(runs, output),
+    }
 
 
-def angles(view_zenith_deg, view_azimuth_deg, configuration=None, *, workers=1):
+def angles(
+    view_zenith_deg, view_azimuth_deg, configuration=None, *, output=None, workers=1
+):
     """Sweep paired view angles in degrees; a scalar broadcasts across an array."""
     try:
         zenith, azimuth = np.broadcast_arrays(
@@ -277,6 +370,16 @@ def angles(view_zenith_deg, view_azimuth_deg, configuration=None, *, workers=1):
             "invalid_parameter",
             "View angles must be nonempty finite one-dimensional arrays",
         )
+    return {
+        "view_zenith_deg": zenith.copy(),
+        "view_azimuth_deg": azimuth.copy(),
+        **_scan_outputs(
+            _run_angle_pairs(zenith, azimuth, configuration, "view", workers), output
+        ),
+    }
+
+
+def _run_angle_pairs(zenith, azimuth, configuration, direction, workers):
     base = _plain(configuration or {})
     geometry = base.get("geometry", {})
     if base.get("input_cards") or geometry.get("mode", 0) != 0:
@@ -287,19 +390,58 @@ def angles(view_zenith_deg, view_azimuth_deg, configuration=None, *, workers=1):
         dict(
             base,
             geometry=dict(
-                geometry, view_zenith_deg=float(z), view_azimuth_deg=float(a)
+                geometry,
+                **{
+                    f"{direction}_zenith_deg": float(z),
+                    f"{direction}_azimuth_deg": float(a),
+                },
             ),
         )
         for z, a in zip(zenith, azimuth)
     ]
+    return run_batch(rows, workers=workers)
+
+
+def angular_grid(
+    zenith_deg,
+    azimuth_deg,
+    configuration=None,
+    *,
+    direction="view",
+    output=None,
+    workers=1,
+):
+    """Sweep a solar or view grid with output axes (zenith, azimuth, ...)."""
+    if direction not in ("solar", "view"):
+        raise ModelError("invalid_parameter", "direction must be solar or view")
+    axes = [np.asarray(axis, dtype=float) for axis in (zenith_deg, azimuth_deg)]
+    if any(
+        axis.ndim != 1
+        or not axis.size
+        or not np.isfinite(axis).all()
+        or np.any(np.diff(axis) <= 0)
+        for axis in axes
+    ):
+        raise ModelError(
+            "invalid_parameter",
+            "Angle grid axes must be increasing finite one-dimensional arrays",
+        )
+    zenith, azimuth = axes
+    grid_z, grid_a = np.meshgrid(zenith, azimuth, indexing="ij")
+    runs = _run_angle_pairs(
+        grid_z.ravel(), grid_a.ravel(), configuration, direction, workers
+    )
     return {
-        "view_zenith_deg": zenith.copy(),
-        "view_azimuth_deg": azimuth.copy(),
-        **_scan_outputs(run_batch(rows, workers=workers)),
+        "zenith_deg": zenith.copy(),
+        "azimuth_deg": azimuth.copy(),
+        "direction": direction,
+        **_scan_outputs(runs, output, shape=grid_z.shape),
     }
 
 
-def principal_plane(signed_view_zenith_deg, configuration=None, *, workers=1):
+def principal_plane(
+    signed_view_zenith_deg, configuration=None, *, output=None, workers=1
+):
     """Sweep the solar principal plane; negative angles face away from the sun."""
     base = _plain(configuration or {})
     azimuth = base.get("geometry", {}).get("solar_azimuth_deg", 0.0)
@@ -308,17 +450,24 @@ def principal_plane(signed_view_zenith_deg, configuration=None, *, workers=1):
         np.abs(signed),
         (azimuth + np.where(signed < 0, 180, 0)) % 360,
         base,
+        output=output,
         workers=workers,
     )
     return dict(result, signed_view_zenith_deg=signed.copy())
 
 
-def azimuth_scan(view_zenith_deg, configuration=None, *, step_deg=5.0, workers=1):
+def azimuth_scan(
+    view_zenith_deg, configuration=None, *, step_deg=5.0, output=None, workers=1
+):
     """Sweep azimuth from 0° to below 360° at a fixed view zenith."""
     if not math.isfinite(step_deg) or not 0 < step_deg <= 360:
         raise ModelError("invalid_parameter", "step_deg must be in (0, 360]")
     return angles(
-        view_zenith_deg, np.arange(0, 360, step_deg), configuration, workers=workers
+        view_zenith_deg,
+        np.arange(0, 360, step_deg),
+        configuration,
+        output=output,
+        workers=workers,
     )
 
 
@@ -447,10 +596,34 @@ class Atmosphere:
 
     @staticmethod
     def from_wyoming(path, *, fallback_profile=6):
-        """Read a downloaded University of Wyoming TEXT:LIST sounding."""
+        """Read a downloaded University of Wyoming TEXT:LIST or TEXT:CSV sounding."""
         return Atmosphere.from_radiosonde(
             wyoming_levels(path), fallback_profile=fallback_profile
         )
+
+    @staticmethod
+    def from_wyoming_url(url, *, fallback_profile=6, timeout=20):
+        """Fetch one University of Wyoming TEXT:LIST or TEXT:CSV sounding."""
+        return Atmosphere.from_radiosonde(
+            wyoming_url_levels(url, timeout), fallback_profile=fallback_profile
+        )
+
+    @staticmethod
+    def from_bas(path, *, fallback_profile=6):
+        """Read the legacy BAS radiosonde table (hPa, m, °C, dew point °C)."""
+        return Atmosphere.from_radiosonde(
+            bas_levels(path), fallback_profile=fallback_profile
+        )
+
+
+def _aeronet_time(when, max_age):
+    if max_age is not None and (
+        not isinstance(max_age, timedelta) or max_age < timedelta()
+    ):
+        raise ModelError(
+            "invalid_parameter", "max_age must be a nonnegative timedelta or None"
+        )
+    return utc_datetime(when)
 
 
 class Aerosol:
@@ -465,18 +638,29 @@ class Aerosol:
         Takes a downloaded all-points CSV and a timezone-aware observation
         time. The selected 6S aerosol type controls optical properties.
         """
-        if max_age is not None and (
-            not isinstance(max_age, timedelta) or max_age < timedelta()
-        ):
-            raise ModelError(
-                "invalid_parameter", "max_age must be a nonnegative timedelta or None"
-            )
         if model not in (1, 2, 3, 5, 6, 7):
             raise ModelError(
                 "invalid_parameter", "AERONET AOD requires a predefined aerosol model"
             )
-        aot = aeronet_aot(path, utc_datetime(when), max_age)
+        aot = aeronet_aot(path, _aeronet_time(when, max_age), max_age)
         return Aerosol.predefined(model if aot > 0 else 0, aot550=aot)
+
+    @staticmethod
+    def from_aeronet_inversion(path, when, *, max_age=timedelta(hours=1)):
+        """Configure Mie aerosol from a single-site V3 ALL or V2 Combined file.
+
+        The refractive index is interpolated to the 20 6S wavelengths with
+        constant endpoints outside the measured wavelength interval.
+        """
+        aot, size_distribution, real, imaginary = aeronet_inversion(
+            path, _aeronet_time(when, max_age), max_age, REFRACTIVE_WAVELENGTHS_UM
+        )
+        return Aerosol.sunphotometer(
+            size_distribution,
+            aot550=aot,
+            refractive_real=real,
+            refractive_imag=imaginary,
+        )
 
     @staticmethod
     def mixture(components, **loading):
@@ -585,6 +769,13 @@ class Spectrum:
 
     @staticmethod
     def band(band):
+        if isinstance(band, str):
+            try:
+                band = Band[band.upper()].value
+            except KeyError as error:
+                raise ModelError(
+                    "invalid_parameter", f"Unknown 6S band: {band}"
+                ) from error
         return dict(mode="band", band=band)
 
     @staticmethod
@@ -708,6 +899,27 @@ class Surface:
         )
 
     @staticmethod
+    def sampled_curve(wavelengths_um, reflectance):
+        """Reflectance input resampled separately for each simulated band."""
+        return dict(
+            spectrum=-1,
+            wavelengths_um=_plain(wavelengths_um),
+            values=_plain(reflectance),
+        )
+
+    @staticmethod
+    def from_samples(wavelengths_um, reflectance):
+        """Uniform Lambertian surface defined by arbitrary spectral samples."""
+        return dict(
+            mode="lambertian", target=Surface.sampled_curve(wavelengths_um, reflectance)
+        )
+
+    @staticmethod
+    def from_aster(path):
+        """Read an ASTER/ECOSTRESS reflectance file as a Lambertian surface."""
+        return Surface.from_samples(*aster_samples(path))
+
+    @staticmethod
     def heterogeneous(target, background, *, radius_km=1.0):
         def select(value):
             return (
@@ -746,6 +958,107 @@ class Surface:
             "hapke",
             [single_scattering_albedo, asymmetry, hotspot_amplitude, hotspot_width],
         )
+
+    @staticmethod
+    def roujean(isotropic, geometric, volumetric):
+        return Surface.brdf("roujean", [isotropic, geometric, volumetric])
+
+    @staticmethod
+    def walthall(quadratic_product, quadratic_sum, azimuth_term, albedo):
+        return Surface.brdf(
+            "walthall", [quadratic_product, quadratic_sum, azimuth_term, albedo]
+        )
+
+    @staticmethod
+    def minnaert(k, albedo):
+        return Surface.brdf("minnaert", [k, albedo])
+
+    @staticmethod
+    def rahman(rho0, asymmetry, k):
+        return Surface.brdf("rahman", [rho0, asymmetry, k])
+
+    @staticmethod
+    def iaquinta_pinty(
+        leaf_angle,
+        hotspot,
+        lai,
+        hotspot_size,
+        leaf_reflectance,
+        leaf_transmittance,
+        soil_albedo,
+    ):
+        return Surface.brdf(
+            "iaquinta_pinty",
+            [
+                leaf_angle,
+                hotspot,
+                lai,
+                hotspot_size,
+                leaf_reflectance,
+                leaf_transmittance,
+                soil_albedo,
+            ],
+        )
+
+    @staticmethod
+    def verstraete(
+        extinction,
+        phase_function,
+        multiple_scattering,
+        leaf_area_density,
+        sunfleck_radius,
+        orientation_a,
+        orientation_b,
+        single_scattering_albedo,
+        phase_a=0.0,
+        phase_b=0.0,
+    ):
+        return Surface.brdf(
+            "verstraete",
+            [
+                extinction,
+                phase_function,
+                multiple_scattering,
+                leaf_area_density,
+                sunfleck_radius,
+                orientation_a,
+                orientation_b,
+                single_scattering_albedo,
+                phase_a,
+                phase_b,
+            ],
+        )
+
+    @staticmethod
+    def kuusk(
+        lai,
+        lad_eccentricity,
+        lad_angle_deg,
+        relative_leaf_size,
+        chlorophyll_ug_cm2,
+        water_thickness_cm,
+        internal_layers,
+        refractive_index_ratio,
+        soil_price_weight,
+    ):
+        return Surface.brdf(
+            "kuusk",
+            [
+                lai,
+                lad_eccentricity,
+                lad_angle_deg,
+                relative_leaf_size,
+                chlorophyll_ug_cm2,
+                water_thickness_cm,
+                internal_layers,
+                refractive_index_ratio,
+                soil_price_weight,
+            ],
+        )
+
+    @staticmethod
+    def ross_li_maignan(isotropic, volumetric, geometric):
+        return Surface.brdf("ross_li_maignan", [isotropic, volumetric, geometric])
 
     @staticmethod
     def modis(isotropic, volumetric, geometric):

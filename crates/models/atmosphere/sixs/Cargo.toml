@@ -10,6 +10,7 @@ serde.workspace = true
 serde_json.workspace = true
 schemars.workspace = true
 rsphysics-model-api.workspace = true
+rsphysics-numerics.workspace = true
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 rsphysics-sixs-native = { path = "../../../rsphysics-sixs-native" }
 [lints]

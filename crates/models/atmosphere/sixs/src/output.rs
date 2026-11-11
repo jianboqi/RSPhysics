@@ -37,6 +37,19 @@ pub struct Diagnostics {
     pub plane_of_polarization_deg: Option<f64>,
     pub polarization_ratio: Option<f64>,
     pub total_gaseous_transmittance: Option<f64>,
+    pub ground_pressure_hpa: Option<f64>,
+    pub ground_altitude_km: Option<f64>,
+    pub visibility_km: Option<f64>,
+    pub aot550: Option<f64>,
+    pub reflectance_water_vapour_above_aerosol: Option<f64>,
+    pub reflectance_water_vapour_mixed_with_aerosol: Option<f64>,
+    pub reflectance_water_vapour_below_aerosol: Option<f64>,
+    pub solar_spectral_irradiance_w_m2_um: Option<f64>,
+    pub integrated_filter_response_um: Option<f64>,
+    pub integrated_solar_irradiance_w_m2: Option<f64>,
+    pub ocean_foam_reflectance: Option<f64>,
+    pub ocean_water_reflectance: Option<f64>,
+    pub ocean_glint_reflectance: Option<f64>,
 }
 
 impl Diagnostics {
@@ -84,6 +97,57 @@ impl Diagnostics {
                     d.total_gaseous_transmittance = last_number(text);
                     continue;
                 }
+                text if text.starts_with("ground pressure") => {
+                    d.ground_pressure_hpa =
+                        text.split_once("[mb]").and_then(|(_, v)| last_number(v));
+                    continue;
+                }
+                text if text.starts_with("ground altitude") => {
+                    d.ground_altitude_km =
+                        text.split_once("[km]").and_then(|(_, v)| last_number(v));
+                    continue;
+                }
+                text if text.starts_with("visibility :") => {
+                    d.visibility_km = text.split_once(" km").and_then(|(v, _)| last_number(v));
+                    d.aot550 = last_number(text);
+                    continue;
+                }
+                text if text.starts_with("user def. opt. thick. at 550 nm") => {
+                    d.aot550 = last_number(text);
+                    continue;
+                }
+                text if text.starts_with("wv above aerosol :") => {
+                    if let Some((above, mixed)) = text.split_once("wv mixed with aerosol :") {
+                        d.reflectance_water_vapour_above_aerosol = last_number(above);
+                        d.reflectance_water_vapour_mixed_with_aerosol = last_number(mixed);
+                    }
+                    continue;
+                }
+                text if text.starts_with("wv under aerosol :") => {
+                    d.reflectance_water_vapour_below_aerosol = last_number(text);
+                    continue;
+                }
+                text if text.starts_with("sol. spect (in w/m2/mic)") => {
+                    d.solar_spectral_irradiance_w_m2_um = lines.next().and_then(last_number);
+                    continue;
+                }
+                text if text.starts_with("int. funct filter (in mic)") => {
+                    if let Some(values) = lines.next() {
+                        d.integrated_filter_response_um = report_number(values, 11..23);
+                        d.integrated_solar_irradiance_w_m2 = report_number(values, 53..63);
+                    }
+                    continue;
+                }
+                text if text.starts_with("Foam:") => {
+                    if let Some((foam, rest)) = text.split_once("Water:")
+                        && let Some((water, glint)) = rest.split_once("Glint:")
+                    {
+                        d.ocean_foam_reflectance = last_number(foam);
+                        d.ocean_water_reflectance = last_number(water);
+                        d.ocean_glint_reflectance = last_number(glint);
+                    }
+                    continue;
+                }
                 _ => continue,
             };
             if let Some(values) = lines.nth(1) {
@@ -122,6 +186,9 @@ fn last_number(text: &str) -> Option<f64> {
             .split_whitespace()
             .last()?,
     )
+}
+fn report_number(line: &str, columns: std::ops::Range<usize>) -> Option<f64> {
+    finite_number(line.get(columns)?)
 }
 fn numbers(line: &str) -> Vec<f64> {
     line.split_whitespace()

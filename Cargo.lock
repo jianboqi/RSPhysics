@@ -974,6 +974,7 @@ name = "rsphysics-sixs"
 version = "0.1.0"
 dependencies = [
  "rsphysics-model-api",
+ "rsphysics-numerics",
  "rsphysics-sixs-native",
  "schemars",
  "serde",

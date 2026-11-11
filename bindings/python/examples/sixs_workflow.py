@@ -26,13 +26,9 @@ def main():
     if args.plot:
         import matplotlib.pyplot as plt
 
-        figure, axis = plt.subplots(figsize=(6, 4), layout="constrained")
-        axis.plot(
-            scan["wavelengths_um"], scan["apparent_reflectance"], "o-", color="#187a61"
-        )
-        axis.set(xlabel="Wavelength (μm)", ylabel="TOA reflectance")
-        figure.savefig(args.output_dir / "spectrum.png", dpi=160)
-        plt.close(figure)
+        axis = sixs.plot_spectrum(scan, marker="o", color="#187a61")
+        axis.figure.savefig(args.output_dir / "spectrum.png", dpi=160)
+        plt.close(axis.figure)
 
 
 if __name__ == "__main__":

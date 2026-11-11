@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from datetime import timedelta
+from io import BytesIO
 import copy, json, zlib
 import numpy as np
 import pytest
@@ -235,6 +236,167 @@ def test_observation_helpers(tmp_path):
     assert levels.shape == (34, 5)
     assert np.all(np.diff(levels[:, 1]) <= 0)
     assert levels[2, 1:3] == pytest.approx([800, 280.15])
+
+
+def test_named_diagnostics_from_reference_reports():
+    cases = {case["name"]: case["report"] for case in SUITE["cases"]}
+    ground = sixs.parse_report(cases["ground"])["diagnostics"]
+    assert ground["ground_pressure_hpa"] == 1013
+    assert ground["ground_altitude_km"] == 0
+    assert ground["visibility_km"] == 26.74
+    assert ground["aot550"] == 0.2
+    assert ground["solar_spectral_irradiance_w_m2_um"] == 1810.209
+    band = sixs.parse_report(cases["uniform"])["diagnostics"]
+    assert band["integrated_filter_response_um"] == 0.1
+    assert band["integrated_solar_irradiance_w_m2"] == 179.415
+    assert band["solar_spectral_irradiance_w_m2_um"] is None
+    ocean = sixs.parse_report(cases["brdf-6"])["diagnostics"]
+    assert ocean["ocean_foam_reflectance"] == 0.00019
+    assert ocean["ocean_water_reflectance"] == 0.00605
+    assert ocean["ocean_glint_reflectance"] == 0.00751
+    assert ocean["reflectance_water_vapour_mixed_with_aerosol"] == 0.063
+
+
+def test_named_band_and_sampled_surface_in_multi_band_run():
+    assert len(sixs.Band) == 198
+    assert sixs.Spectrum.band("LANDSAT_TM_B1") == sixs.Spectrum.band(
+        sixs.Band.LANDSAT_TM_B1
+    )
+    x, y = [0.4, 0.55, 0.7], [0.11, 0.25, 0.34]
+    curve = sixs.Surface.sampled_curve(x, y)
+    sample = sixs.sensor_bands(
+        "tm",
+        {"surface": sixs.Surface.heterogeneous(curve, 0.1)},
+        band_ids=["LANDSAT_TM_B2", "LANDSAT_TM_B1"],
+        output="diagnostics.pixel_radiance_w_m2_sr_um",
+    )
+    assert sample["band_ids"] == [26, 25]
+    assert sample["centre_wavelengths_um"] == pytest.approx([0.575, 0.495])
+    for i, band in enumerate(sample["band_ids"]):
+        window = sixs.Spectrum.band(band)
+        target = sixs.Surface.sampled_reflectance(x, y, window)
+        direct = sixs.run(
+            spectrum=window, surface=sixs.Surface.heterogeneous(target, 0.1)
+        )["result"]
+        assert sample["apparent_reflectance"][i] == pytest.approx(
+            direct["apparent_reflectance"], abs=1e-6
+        )
+        assert sample["values"][i] == pytest.approx(
+            direct["diagnostics"]["pixel_radiance_w_m2_sr_um"], abs=0.002
+        )
+        assert sixs.run(spectrum=window, surface=sixs.Surface.from_samples(x, y))[
+            "result"
+        ]["apparent_reflectance"] == pytest.approx(
+            sixs.run(spectrum=window, surface={"mode": "lambertian", "target": target})[
+                "result"
+            ]["apparent_reflectance"],
+            abs=1e-6,
+        )
+    with pytest.raises(rsp.ModelError, match="Surface reflectance sampling"):
+        sixs.prepare(
+            {
+                "spectrum": sixs.Spectrum.band(42),
+                "surface": sixs.Surface.from_samples([0.63, 0.7], [0.2, 0.25]),
+            }
+        )
+
+
+def test_arbitrary_output_and_angular_grid():
+    field = "quantities.global_gas_trans.2"
+    scan = sixs.angular_grid([10, 25], [0, 90, 180], direction="solar", output=field)
+    assert scan["values"].shape == scan["apparent_reflectance"].shape == (2, 3)
+    assert (
+        scan["runs"][-1]["manifest"]["parameters"]["geometry"]["solar_zenith_deg"] == 25
+    )
+    assert (
+        scan["runs"][-1]["manifest"]["parameters"]["geometry"]["solar_azimuth_deg"]
+        == 180
+    )
+    np.testing.assert_equal(
+        scan["values"].ravel(), sixs.extract_output(scan["runs"], field)
+    )
+    vn = sixs.vnir(spacing_um=0.5, output="diagnostics.ocean_foam_reflectance")
+    assert vn["wavelengths_um"] == pytest.approx([0.4, 0.9, 1.4])
+    assert np.isnan(vn["values"]).all()
+    assert sixs.full_spectrum(spacing_um=1.25)["wavelengths_um"] == pytest.approx(
+        [0.25, 1.5, 2.75, 4]
+    )
+    with pytest.raises(rsp.ModelError, match="non-numeric"):
+        sixs.extract_output(scan["runs"], "report")
+
+
+@pytest.mark.parametrize("version", [2, 3])
+def test_aeronet_inversion_prefers_nearest_complete_observation(tmp_path, version):
+    file = tmp_path / "sample.all"
+    fields = (
+        "AOD_Coincident_Input[440nm],AOD_Coincident_Input[675nm],"
+        "Refractive_Index-Real_Part[440nm],Refractive_Index-Real_Part[675nm],"
+        "Refractive_Index-Imaginary_Part[440nm],Refractive_Index-Imaginary_Part[675nm],"
+        if version == 3
+        else "AOT_440,AOT_675,REFR(440),REFR(675),REFI(440),REFI(675),"
+    )
+    file.write_text(
+        f"AERONET Version {version}\n"
+        f"Date(dd:mm:yyyy),Time(hh:mm:ss),{fields}"
+        "0.050000,0.100000,0.200000,0.400000\n"
+        "01:07:2026,19:00:00,0.25,0.162962963,1.46,1.53,-999,0.009,0.001,0.006,0.004,0.001\n"
+        "01:07:2026,19:10:00,0.25,0.162962963,1.46,1.53,0.012,0.009,0.001,0.006,0.004,0.001\n"
+    )
+    aerosol = sixs.Aerosol.from_aeronet_inversion(file, "2026-07-01T19:00:00Z")
+    assert aerosol["model"] == 11
+    assert aerosol["aot550"] == pytest.approx(0.2)
+    assert (
+        aerosol["refractive_real"][0] == 1.46 and aerosol["refractive_real"][-1] == 1.53
+    )
+    assert aerosol["refractive_imag"][0] == 0.012
+    assert np.isfinite(sixs.run(aerosol=aerosol)["result"]["apparent_reflectance"])
+
+
+def test_aster_and_sounding_adapters(tmp_path, monkeypatch):
+    aster = tmp_path / "leaf.txt"
+    aster.write_text(
+        "X Units: Wavelength (micrometers)\nY Units: Reflectance (percent)\n\n0.70 40\n0.50 20\n"
+    )
+    surface = sixs.Surface.from_aster(aster)
+    assert surface["target"]["wavelengths_um"] == [0.5, 0.7]
+    assert surface["target"]["values"] == [0.2, 0.4]
+    assert sixs.run(surface=surface)["result"]["apparent_reflectance"] > 0
+    raw = "".join(f"{name:>7}" for name in ("PRES", "HGHT", "TEMP", "MIXR")) + "\n"
+    raw += "".join(
+        "".join(f"{v:7.2f}" for v in row) + "\n"
+        for row in [[900, 1000, 14, 5], [800, 2000, 7, 4], [700, 3000, 0, 3]]
+    )
+    monkeypatch.setattr(
+        "rsphysics._sixs_observations.urlopen",
+        lambda url, timeout: BytesIO(("<pre>\n" + raw + "</pre>").encode()),
+    )
+    wyoming = sixs.Atmosphere.from_wyoming_url(
+        "https://weather.uwyo.edu/wsgi/sounding?type=TEXT%3ALIST"
+    )
+    assert wyoming["levels"][2][1:3] == pytest.approx([800, 280.15])
+    bas = tmp_path / "bas.txt"
+    bas.write_text(
+        "header\n0 0 900 1000 14 0 4\n0 0 800 2000 7 0 0\n0 0 700 3000 0 0 -5\n"
+    )
+    profile = sixs.Atmosphere.from_bas(bas)
+    assert profile["levels"][2][1:3] == pytest.approx([800, 280.15])
+    assert profile["levels"][2][3] > 0
+    csv = (
+        "time,pressure_hPa,geopotential height_m,temperature_C,dew point temperature_C\n"
+        "2026-07-01 12:00:00,900,1000,14,4\n"
+        "2026-07-01 12:00:00,800,2000,7,0\n"
+        "2026-07-01 12:00:00,700,3000,0,-5\n"
+    )
+    monkeypatch.setattr(
+        "rsphysics._sixs_observations.urlopen",
+        lambda url, timeout: BytesIO(csv.encode()),
+    )
+    assert (
+        sixs.Atmosphere.from_wyoming_url(
+            "https://weather.uwyo.edu/wsgi/sounding?type=TEXT%3ACSV"
+        )
+        == profile
+    )
 
 
 @pytest.mark.parametrize(

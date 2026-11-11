@@ -211,6 +211,8 @@ pub struct Reflectance {
     pub lower_um: f64,
     pub upper_um: f64,
     pub values: Vec<f64>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub wavelengths_um: Vec<f64>,
 }
 impl Default for Reflectance {
     fn default() -> Self {
@@ -219,6 +221,7 @@ impl Default for Reflectance {
             value: 0.2,
             lower_um: 0.5,
             upper_um: 0.6,
+            wavelengths_um: vec![],
             values: vec![],
         }
     }
@@ -741,6 +744,9 @@ impl Surface {
         uniform: bool,
         w: &Spectrum,
     ) -> Result<(), ModelError> {
+        if !r.wavelengths_um.is_empty() && r.spectrum != -1 {
+            return Err(invalid("Surface wavelengths require spectrum=-1"));
+        }
         match r.spectrum {
             0 => {
                 range("surface reflectance", r.value, 0., 1.)?;
@@ -750,13 +756,35 @@ impl Surface {
                 for &v in &r.values {
                     range("surface spectrum", v, 0., 1.)?;
                 }
+                let grid = match w.mode.as_str() {
+                    "band" => crate::band_grid_indices(w.band),
+                    "monochromatic" => {
+                        let index = sixs_grid_index(w.wavelength_um);
+                        index..=index
+                    }
+                    _ => sixs_grid_index(w.lower_um)..=sixs_grid_index(w.upper_um),
+                };
+                if !r.wavelengths_um.is_empty() {
+                    let target: Vec<_> = grid.map(|i| (250.0 + 2.5 * i as f64) / 1000.0).collect();
+                    let values = rsphysics_numerics::spectral::resample(
+                        &r.wavelengths_um,
+                        &r.values,
+                        &target,
+                    )
+                    .map_err(|e| invalid(format!("Surface reflectance sampling: {e}")))?;
+                    if uniform {
+                        s.push(row([target[0], target[target.len() - 1]]));
+                    }
+                    s.push(row(values));
+                    return Ok(());
+                }
                 let count = if uniform {
                     let n = grid_count(r.lower_um, r.upper_um)?;
                     s.push(row([r.lower_um, r.upper_um]));
                     n
                 } else {
                     match w.mode.as_str() {
-                        "band" => crate::band_sample_count(w.band),
+                        "band" => grid.count(),
                         "monochromatic" => 1,
                         _ => grid_count(w.lower_um, w.upper_um)?,
                     }
@@ -860,4 +888,8 @@ impl Surface {
         }
         Ok(())
     }
+}
+
+fn sixs_grid_index(um: f64) -> usize {
+    ((um as f32 - 0.25) / 0.0025 + 1.5) as usize - 1
 }

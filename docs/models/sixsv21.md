@@ -136,7 +136,7 @@ All wavelength arguments use μm.
 
 ```python
 bands = sixs.bands()                         # 198 original band IDs, 2–199
-band = sixs.Spectrum.band(43)
+band = sixs.Spectrum.band(sixs.Band.LANDSAT_TM_B1)
 uniform = sixs.Spectrum.uniform(0.5, 0.6)
 response = sixs.Spectrum.response(0.5, 0.51, [0, 0.5, 1, 0.5, 0])
 step = sixs.Spectrum.step(0.5, 0.51)
@@ -155,9 +155,16 @@ and include positive support. `step` retains the per-wavelength rows in
 `Surface.spectrum(lower_um, upper_um, values)` supplies a tabulated spectrum.
 `Surface.heterogeneous(target, background, radius_km=...)` models a circular
 target and its background; each spectrum is a scalar or a reflectance mapping.
+`Surface.from_samples(wavelengths_um, reflectance)` defines a uniform
+Lambertian surface from a measured spectrum. For a heterogeneous surface, pass
+`Surface.sampled_curve(wavelengths_um, reflectance)` as either the target or
+background. Each run resamples the curve to the active band. Measured
+wavelengths must cover that band's 6S grid.
 
 For directional surfaces, use `Surface.brdf(name_or_id, parameters)`. Parameters
 are flattened in the following order; integer option selectors remain integers.
+The named constructors also accept keyword arguments, for example
+`Surface.rahman(rho0=0.15, asymmetry=-0.2, k=0.8)`.
 
 | ID / name | Parameter order |
 |---|---|
@@ -213,7 +220,9 @@ Results retain the original report's printed precision and the kernel's mixed
 REAL/DOUBLE PRECISION arithmetic.
 
 `diagnostics` includes ground irradiance, satellite radiance and reflectance
-components, and apparent polarization. `spectral_columns` labels the columns
+components, apparent polarization, ground pressure and altitude, visibility
+and AOT at 550 nm, solar irradiance, and ocean reflectance components. Fields
+that are absent in a particular 6S report return `None`. `spectral_columns` labels the columns
 in `spectral_rows` for a step calculation. `aerosol_lut` gives reflectance
 samples by view zenith and scattering angle when a LUT is produced.
 `mie_tables` contains optical coefficients and phase matrices with scattering
@@ -250,6 +259,13 @@ config = {"geometry": geometry, "atmosphere": profile}
 modis = sixs.sensor_bands("modis", config, band_ids=[42, 43])
 plane = sixs.principal_plane([-30, -15, 0, 15, 30], config)
 azimuth = sixs.azimuth_scan(20, config, step_deg=30)
+grid = sixs.angular_grid(
+    [10, 20, 30, 40],
+    [0, 60, 120, 180, 240, 300],
+    config,
+    output="diagnostics.pixel_reflectance",
+)
+print(grid["values"].shape)  # (4, 6), ordered by zenith then azimuth
 
 window = sixs.Spectrum.band(42)
 target = sixs.Surface.sampled_reflectance([0.5, 0.6, 0.7, 0.8],
@@ -257,21 +273,39 @@ target = sixs.Surface.sampled_reflectance([0.5, 0.6, 0.7, 0.8],
 surface = sixs.Surface.heterogeneous(target, 0.1)
 ```
 
-`sixs.bands()` lists built-in band families and integration bounds.
+`sixs.bands()` lists built-in band families, symbolic names and integration bounds.
 `sensor_bands` also accepts a registry sensor ID, such as `landsat-8.oli`.
 `Spectrum.from_samples` places tabulated responses on the 2.5 nm grid.
-`Surface.sampled_reflectance` requires measured wavelengths to cover the
-entire simulation band.
+`Surface.sampled_reflectance` prepares a curve for a single known band.
+`Surface.from_aster` reads a local ASTER/ECOSTRESS reflectance file.
+
+`vnir` and `full_spectrum` select preset wavelength ranges. Pass
+`direction="solar"` to `angular_grid` to vary the solar geometry. The
+`output` argument on scan functions accepts a dotted result path such as
+`diagnostics.pixel_radiance_w_m2_sr_um` or
+`quantities.global_gas_trans.2`. The selected values are collected in
+`values`. Undefined numeric values become NumPy NaN.
+
+Install the optional `examples` dependencies to use `plot_spectrum`,
+`plot_principal_plane`, and `plot_angular_grid` with Matplotlib.
 
 `Atmosphere.from_radiosonde` interpolates observed levels onto the standard
 6S grid. Outside the measured heights it uses the chosen standard profile,
 with its pressure scaled to meet the observations at the transition.
-`Atmosphere.from_wyoming` reads downloaded Wyoming TEXT:LIST tables.
+`Atmosphere.from_wyoming` reads downloaded Wyoming TEXT:CSV or TEXT:LIST
+tables. `Atmosphere.from_wyoming_url` fetches a single sounding from its
+results URL, and
+`Atmosphere.from_bas` reads the legacy BAS text table.
 `Aerosol.from_aeronet` reads a local all-points CSV and selects the nearest
 valid measurement within one hour by default. It estimates AOT at 550 nm
 from bracketing channels when the 550 nm channel is unavailable. The aerosol
-optical model is selected separately. Solar angles use NOAA's approximate
-geometric equations and require an explicit UTC offset. [NOAA solar equations](https://gml.noaa.gov/grad/solcalc/solareqns.PDF) · [Wyoming sounding columns](https://weather.uwyo.edu/upperair/columns.html)
+optical model is selected separately. `Aerosol.from_aeronet_inversion`
+uses a single-site V3 ALL or V2 Combined file to build a Mie aerosol from
+particle size and refractive index. It uses the nearest complete retrieval
+within the time window. Refractive indices are interpolated onto the 20
+6S wavelengths and held constant outside the measured interval. The 6S Mie
+calculation assumes spherical particles. Solar angles use NOAA's geometric
+approximation and require an explicit UTC offset. [AERONET V3 products](https://aeronet.gsfc.nasa.gov/print_web_data_help_v3_inv.html) · [NOAA solar equations](https://gml.noaa.gov/grad/solcalc/solareqns.PDF) · [Wyoming sounding columns](https://weather.uwyo.edu/upperair/columns.html)
 
 ## Authors and references
 
