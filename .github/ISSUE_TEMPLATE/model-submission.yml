@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         Submit your existing implementation in its original language. A maintainer
-        will review the submission and reproduce the example before deciding
+        will review the submission before deciding
         whether to port the model to Rust. Follow this issue for questions and updates.
   - type: textarea
     id: model
@@ -19,13 +19,13 @@ body:
     id: implementation
     attributes:
       label: Reference implementation and permissions
-      description: Link to the code and identify the release or commit. Include the license or permission details for the code and any required data or coefficient tables.
+      description: Paste a source link or drag a ZIP archive of the code into this field (up to 25 MB). Identify the version and include the license or permission details for the code and any required data or coefficient tables.
     validations:
       required: true
   - type: textarea
     id: example
     attributes:
-      label: Reproducible example
-      description: Provide the command or function call, input values and units, and expected output values and units. Link any files needed to run the example.
+      label: Reproducible example (optional)
+      description: If available, share a command or function call, inputs and units, and expected outputs and units. You can link or attach example files.
     validations:
-      required: true
+      required: false
