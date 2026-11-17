@@ -35,6 +35,8 @@ reflectance = leaf["result"]["reflectance"]
 
 ## Models
 
+[Submit a model](https://github.com/jianboqi/RSPhysics/issues/new?template=model-submission.yml) for a maintainer to review and port to Rust.
+
 | Category | Model | Main purpose |
 |---|---|---|
 | Vegetation optics | [FLUSPECT-CX](docs/models/fluspect-cx.md) | Leaf optics and fluorescence transfer |

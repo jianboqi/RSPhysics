@@ -13,6 +13,8 @@
 
 ## Models
 
+[Submit a model](https://github.com/jianboqi/RSPhysics/issues/new?template=model-submission.yml) for a maintainer to review and port to Rust.
+
 ### Vegetation optics
 
 - [FLUSPECT-CX — leaf optics and fluorescence](models/fluspect-cx.md)

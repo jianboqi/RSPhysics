@@ -1,0 +1,31 @@
+name: Submit a model
+description: Propose a remote sensing model for inclusion in RSPhysics.
+title: "[Model] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit your existing implementation in its original language. A maintainer
+        will review the submission and reproduce the example before deciding
+        whether to port the model to Rust. Follow this issue for questions and updates.
+  - type: textarea
+    id: model
+    attributes:
+      label: Model description and attribution
+      description: Give the model name, physical assumptions, intended use, original authors, and preferred citation or documentation link.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Reference implementation and permissions
+      description: Link to the code and identify the release or commit. Include the license or permission details for the code and any required data or coefficient tables.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Reproducible example
+      description: Provide the command or function call, input values and units, and expected output values and units. Link any files needed to run the example.
+    validations:
+      required: true

@@ -3,7 +3,9 @@
 Contributions of models, scientific examples, documentation, and numerical
 improvements are welcome. Use English for documentation and contribution descriptions.
 
-For a model contribution, include its physical assumptions, parameter/output units,
+To propose a model in its original language, use the [Submit a model](https://github.com/jianboqi/RSPhysics/issues/new?template=model-submission.yml) form.
+
+For a Rust model contribution, include its physical assumptions, parameter/output units,
 scientific authors and references, appropriate source/data permissions, and
 numerical validation. Start with [the model template](templates/rust-model/README.md)
 and use existing model crates as examples.
